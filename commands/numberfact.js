@@ -1,7 +1,7 @@
 const snek = require('snekfetch')
 
 exports.run = (client, msg, args) => {
-  snek.get(`http://numbersapi.com/${args.join(' ')}/trivia?default=Boring+number+is+boring.`).then(res => {
+  snek.get(`http://numbersapi.com/${args[0]}/trivia?default=Boring+number+is+boring.`).then(res => {
     msg.channel.send(res.body.text)
   })
 }
