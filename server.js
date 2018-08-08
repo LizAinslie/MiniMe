@@ -1,22 +1,9 @@
 const Discord = require('discord.js')
 const fs = require('fs')
-const music = require('./music.js')
-const http = require('http')
-const express = require('express')
+// const music = require('./music.js')
 const Enmap = require('enmap')
 const EnmapSql = require('enmap-sqlite')
 // Initialize the provider
-
-let app = express()
-
-app.get('/', (request, response) => {
-  console.log(Date.now() + ' Ping Received')
-  response.sendStatus(200)
-})
-app.listen(process.env.PORT)
-setInterval(() => {
-  http.get(`http://mini-me.glitch.me/`)
-}, 280000)
 
 const client = new Discord.Client()
 const config = require('./config.json')
@@ -25,6 +12,8 @@ client.config = config
 client.railEmoji = client.emojis.find('name', 'rail')
 
 client.points = new Enmap({provider: new EnmapSql({ name: 'points' })})
+
+client.guildSettings = new Enmap({provider: new EnmapSql({ name: 'settings' })})
 
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error(err)
@@ -48,5 +37,5 @@ fs.readdir('./commands/', (err, files) => {
   })
 })
 
-music(client, { commandPrefix: 'm-', global: false, maxQueueSize: 10, clearInvoker: true, channel: 'Music' })
+// music(client, { commandPrefix: 'm!', global: false, maxQueueSize: 10, clearInvoker: true, channel: 'Music' })
 client.login(process.env.DISCORD_TOKEN)

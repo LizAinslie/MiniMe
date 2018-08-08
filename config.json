@@ -1,1 +1,7 @@
-{"prefix":"m!","color":5663536,"ownerID":"433445465707773963","emoji":"⭐"}
+{
+  "prefix": "m::",
+  "color": 5663536,
+  "ownerID": "433445465707773963",
+  "emoji": "⭐",
+  "openweathermap": "2772312234c3d598731d64f08274c261"
+}

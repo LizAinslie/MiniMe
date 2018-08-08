@@ -1,4 +1,5 @@
 const funcs = require('../modules/functions.js')
+const config = require('../config.json')
 
 exports.run = (client, message, args) => {
   if (!args[0]) return message.channel.send('You must supply a <role> option.')
@@ -40,7 +41,7 @@ exports.run = (client, message, args) => {
   message.guild.createRole(newRole)
   .then(role => {
     const embed = {
-      color: 5663536,
+      color: config.color,
       timestamp: new Date(),
       author: {
         name: newRole.name
@@ -82,5 +83,6 @@ exports.help = {
   name: 'addrole',
   description: 'Have the bot add a role.',
   usage: 'addrole <name> <color> <position> <mentionable> <separate>',
-  fullDesc: 'Have the bot add a role. Permissions must be set up in the server\'s settings.'
+  fullDesc: 'Have the bot add a role. Permissions must be set up in the server\'s settings.',
+  type: 'util'
 }

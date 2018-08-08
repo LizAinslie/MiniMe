@@ -7,7 +7,7 @@ module.exports = async (client, message) => {
 
   // Define an empty user for now. This will be used later in the guide.
   let user = ''
-  if (entry.extra.channel.id === message.channel.id && (entry.target.id === message.author.id) && (entry.createdTimestamp > (Date.now() - 5000)) && (entry.extra.count >= 1)) {
+  if (entry.extra.channel.id === message.channel.id && (entry.target.id === message.author.id)) {
     user = entry.executor.username
   } else {
     user = message.author.username

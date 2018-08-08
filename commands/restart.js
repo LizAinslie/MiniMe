@@ -1,9 +1,10 @@
+const config = require('../config.json')
+
 exports.run = (client, message) => {
-  if (message.member.roles.find('name', 'Owner') || message.member.roles.find('name', 'Mod')) {
-    message.channel.send('Restarting...')
-    .then(msg => client.destroy())
-    .then(() => client.login(process.env.DISCORD_TOKEN))
-  }
+  if (message.author.id != config.ownerID) return message.reply('Sorry, only my developer can use this command.')
+  message.channel.send('Restarting...')
+  .then(msg => client.destroy())
+  .then(() => client.login(process.env.DISCORD_TOKEN))
 }
 
 exports.type = 'text'
@@ -12,5 +13,6 @@ exports.help = {
   name: 'restart',
   description: 'Restarts the bot.',
   usage: 'restart',
-  fullDesc: 'Restarts the bot. Must be the owner of the server or a mod.'
+  fullDesc: 'Restarts the bot.',
+  type: 'dev'
 }

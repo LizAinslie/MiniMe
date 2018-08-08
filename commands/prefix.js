@@ -18,5 +18,6 @@ exports.help = {
   name: 'prefix',
   description: "Changes the bot's command prefix.",
   usage: 'prefix <prefix>',
-  fullDesc: "Changes the bot's command prefix. Default prefix is `m!`."
+  fullDesc: "Changes the bot's command prefix. Default prefix is `m!`.",
+  type: 'unlist'
 }

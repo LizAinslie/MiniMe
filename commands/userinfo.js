@@ -1,15 +1,23 @@
 const dateformat = require('dateformat')
 const util = require('../util.js')
 const funcs = require('../modules/functions.js')
+const config = require('../config.json')
+
+const statuses = {
+  online: '<:online:313956277808005120>',
+  idle: '<:away:313956277220802560>',
+  dnd: '<:dnd:313956276893646850>',
+  offline: '<:offline:313956277237710868>'
+}
 
 exports.run = (client, message, args) => {
   util.resolveUser(client, args.length > 0 ? args.join(' ') : message.author.id).then((user) => {
     message.channel.send({
       embed: {
         title: user.username + '#' + user.discriminator,
-        'color': 14501173,
+        'color': config.color,
         thumbnail: {
-          url: user.avatar ? (user.avatar.startsWith('a_') ? 'https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.gif?size=256' : 'https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.png?size=256') : 'https://cdn.discordapp.com/embed/avatars/' + (user.discriminator % 5) + '.png?size=256'
+          url: user.displayAvatarURL
         },
         fields: [
           {
@@ -28,8 +36,18 @@ exports.run = (client, message, args) => {
             inline: true
           },
           {
+            name: 'Username:',
+            value: user.username,
+            inline: true
+          },
+          {
+            name: 'Discriminator:',
+            value: user.discriminator,
+            inline: true
+          },
+          {
             name: 'Status:',
-            value: funcs.toTitleCase(user.presence.status),
+            value: `${statuses[user.presence.status]} | ${funcs.toTitleCase(user.presence.status)}`,
             inline: true
           }
         ]
@@ -46,5 +64,6 @@ exports.help = {
   name: 'userinfo',
   description: 'Gives info on the specified user.',
   usage: 'userinfo[ <user>]',
-  fullDesc: 'Gives info on the specified user. If no user is given, info on the user running the command.'
+  fullDesc: 'Gives info on the specified user. If no user is given, info on the user running the command.',
+  type: 'util'
 }

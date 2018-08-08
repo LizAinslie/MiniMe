@@ -1,37 +1,11 @@
 const YoutubeDL = require('youtube-dl')
 const ytdl = require('ytdl-core')
-const fs = require('fs')
 
 module.exports = (client, config) => {
   var module = {}
 
   var queue = []
-
-  client.on('message', msg => {
-    let message = msg.content.trim()
-
-    if (message.toLowerCase().startsWith(config.commandPrefix.toLowerCase())) {
-      const command = message.substring(config.commandPrefix.length).split(/[ \n]/)[0].toLowerCase().trim()
-      const suffix = message.substring(config.commandPrefix.length + command.length).trim()
-
-      switch (command) {
-        case 'play':
-          return play(msg, suffix)
-        case 'queue':
-          return listQueue(msg, suffix)
-        case 'clearqueue':
-          return clearQueue(msg, suffix)
-        case 'remove':
-          return removeItem(msg, suffix)
-        case 'skip':
-          return skip(msg, suffix)
-        case 'playlist':
-          return playPlaylist(msg, suffix)
-      }
-      msg.delete().then(msg => console.log(`Deleted music message from ${msg.author.username}`)).catch(console.error)
-    }
-  })
-
+  
   var play = (msg, suffix) => {
     var voiceChannel = msg.member.voiceChannel
     if (!voiceChannel) return msg.channel.send(':interrobang: | You\'re not in a voice channel!')
@@ -142,6 +116,31 @@ module.exports = (client, config) => {
     }
     playQueue(msg, suffix, voiceChannel)
   }
+  
+  client.on('message', msg => {
+    let message = msg.content.trim()
+
+    if (message.toLowerCase().startsWith(config.commandPrefix.toLowerCase())) {
+      const command = message.substring(config.commandPrefix.length).split(/[ \n]/)[0].toLowerCase().trim()
+      const suffix = message.substring(config.commandPrefix.length + command.length).trim()
+
+      switch (command) {
+        case 'play':
+          return play(msg, suffix)
+        case 'queue':
+          return listQueue(msg, suffix)
+        case 'clearqueue':
+          return clearQueue(msg, suffix)
+        case 'remove':
+          return removeItem(msg, suffix)
+        case 'skip':
+          return skip(msg, suffix)
+        case 'playlist':
+          return playPlaylist(msg, suffix)
+      }
+      msg.delete().then(msg => console.log(`Deleted music message from ${msg.author.username}`)).catch(console.error)
+    }
+  })
 
   return module
 }

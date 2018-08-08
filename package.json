@@ -1,31 +1,40 @@
 {
   "name": "mini-me-bot",
-  "version": "0.0.2",
+  "version": "1.2.1",
   "description": "A bot for my discord server",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "eslint . --ext .json --ext .js --fix"
+    "start": "nodejs server.js",
+    "test": "eslint . --ext .js --fix",
+    "restart": "pm2 restart 13 --update-env && pm2 logs 13 --lines 45"
   },
   "dependencies": {
+    "bufferutil": "^3.0.5",
+    "canvas": "github:Automattic/node-canvas#92b192447e9b9ae98da0f801e4e34afdd1dc1ef8",
+    "canvas-prebuilt": "^2.0.0-alpha.12",
     "cheerio": "^0.22.0",
     "child_process": "^1.0.2",
+    "colorcolor": "^1.1.1",
     "dateformat": "^3.0.3",
     "discord.js": "^11.3.2",
     "enmap": "^2.6.2",
     "enmap-sqlite": "^2.0.3",
-    "eslint": "^4.19.1",
     "express": "^4.16.3",
+    "figlet": "^1.2.0",
+    "gm": "^1.23.1",
     "google-translate-api": "^2.3.0",
+    "libsodium": "^0.7.3",
+    "libsodium-wrappers": "^0.7.3",
     "moment": "^2.22.2",
     "moment-duration-format": "^2.2.2",
     "node-opus": "^0.3.0",
     "querystring": "^0.2.0",
-    "snekfetch": "^4.0.2",
+    "random-puppy": "^1.1.0",
+    "snekfetch": "^4.0.4",
+    "urban-dictionary": "^2.1.2",
+    "uws": "^10.148.2",
     "youtube-dl": "^1.12.2",
-    "ytdl-core": "^0.20.4",
-    "libsodium-wrappers": "^0.7.3",
-    "bufferutil": "^3.0.5"
+    "ytdl-core": "^0.20.4"
   },
   "engines": {
     "node": "8.x"
@@ -36,9 +45,9 @@
   "license": "MIT",
   "keywords": [],
   "devDependencies": {
+    "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0"

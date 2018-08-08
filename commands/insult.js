@@ -22,5 +22,6 @@ exports.help = {
   name: 'insult',
   description: 'Insults a user.',
   usage: 'insult <@user>',
-  fullDesc: 'Insults a user. Must mention someone to insult.'
+  fullDesc: 'Insults a user. Must mention someone to insult.',
+  type: 'fun'
 }

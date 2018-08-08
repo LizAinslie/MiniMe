@@ -12,5 +12,6 @@ exports.help = {
   name: 'dadjoke',
   description: 'Tells a joke.',
   usage: 'dadjoke',
-  fullDesc: 'Tells a joke. All jokes are dad jokes.'
+  fullDesc: 'Tells a joke. All jokes are dad jokes.',
+  type: 'fun'
 }

@@ -28,7 +28,9 @@ exports.resolveUser = (client, query, returnIDOnly = false, preventUsernameSearc
 
 exports.log = (message, info) => {
   let logs = message.guild.channels.find('name', 'logs')
-  logs.send(info)
+  logs.send(info).catch(err => {
+    console.debug("I didn't have the permissions to log something to the #logs channel.")
+  })
 }
 
 const formatSize = (bytes) => {
@@ -56,6 +58,7 @@ exports.uploadToHastebin = (message) => {
 		})
 	})
 }
+
 exports.get = (id, channel, client) => {
 	if (!channel.id) channel = client.channels.get(channel)
 	if (!channel || channel.type !== 'text' || !channel.permissionsFor(channel.guild.me).has('VIEW_CHANNEL')) return Promise.resolve()
@@ -64,3 +67,8 @@ exports.get = (id, channel, client) => {
 		? Promise.resolve(channel.messages.get(id))
 		: channel.messages.fetch(id)
 }
+
+exports.stripTrailingZero = (temperature) => {
+	if (temperature % 1 === 0) return Math.trunc(temperature);
+	return temperature.toFixed(1);
+};

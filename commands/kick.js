@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
   // This command must be limited to mods and admins. In this example we just hardcode the role names.
   // Please read on Array.some() to understand this bit:
   // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
-  if (!message.member.roles.some(r => ['Owner', 'Mod'].includes(r.name))) { return message.reply(':no_entry_sign: | Sorry, you don\'t have permissions to use this!') }
+  if (!message.member.roles.some(r => ['Owner', 'Owners', 'Mod', 'Mods'].includes(r.name))) { return message.reply(':no_entry_sign: | Sorry, you don\'t have permissions to use this!') }
 
   // Let's first check if we have a member and if we can kick them!
   // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
@@ -28,5 +28,6 @@ exports.help = {
   name: 'kick',
   description: 'Kicks a user.',
   usage: 'kick <user> <reason>',
-  fullDesc: 'Kicks a user. Only available to Mods and Owners'
+  fullDesc: 'Kicks a user. Only available to Mods and Owners',
+  type: 'mod'
 }

@@ -28,5 +28,6 @@ exports.help = {
   name: 'eval',
   description: 'Evaluates JavaScript.',
   usage: 'eval <code>',
-  fullDesc: 'Evaluates Javascript. Can only be used by @RailRunner16#1174. :P'
+  fullDesc: 'Evaluates Javascript. Can only be used by @RailRunner16#1174. :P',
+  type: 'dev'
 }

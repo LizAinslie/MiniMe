@@ -32,5 +32,6 @@ exports.help = {
   name: 'google',
   description: 'Searches Google.',
   usage: 'google <keyword>',
-  fullDesc: 'Searches Google. Must supply a search string'
+  fullDesc: 'Searches Google. Must supply a search string',
+  type: 'util'
 }

@@ -1,5 +1,5 @@
 exports.run = async (client, message, args) => {
-  if (!message.member.roles.some(r => ['Owner', 'Mod'].includes(r.name))) {
+  if (!message.member.roles.some(r => ['Owner', 'Owners', 'Mod', 'Mods'].includes(r.name))) {
     return message.reply(':no_entry_sign: | Sorry, you don\'t have permissions to use this!')
   }
   let member = message.mentions.members.first()
@@ -18,5 +18,6 @@ exports.help = {
   name: 'ban',
   description: 'Bans a user.',
   usage: 'ban <user> <reason>',
-  fullDesc: 'Bans a user. Only available to Mods and Owners'
+  fullDesc: 'Bans a user. Only available to Mods and Owners',
+  type: 'mod'
 }
