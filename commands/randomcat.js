@@ -4,6 +4,7 @@ const Discord = require('discord.js')
 exports.run = (client, msg) => {
   snekfetch.get('https://catapi.glitch.me/random').then(res => {
     const embed = new Discord.RichEmbed()
+    .setColor(client.config.color)
     .setAuthor(`Cat | Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
     .setImage(res.body.url)
     msg.channel.send(embed)

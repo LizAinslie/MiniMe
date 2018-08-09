@@ -5,6 +5,7 @@ exports.run = (client, msg) => {
   snekfetch.get('https://dog.ceo/api/breeds/image/random').then((result) => {
     snekfetch.get(result.body.message).then((result) => {
       const embed = new Discord.RichEmbed()
+      .setColor(client.config.color)
       .setAuthor(`Dog | Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
       .setImage(result.body)
       msg.channel.send(embed)

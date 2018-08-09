@@ -4,6 +4,7 @@ const Discord = require('discord.js')
 exports.run = (client, msg) => {
   snek.get('https://randomfox.ca/floof/').then(res => {
     const embed = new Discord.RichEmbed()
+    .setColor(client.config.color)
     .setAuthor(`Fox | Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
     .setImage(res.body.image)
     msg.channel.send(embed)

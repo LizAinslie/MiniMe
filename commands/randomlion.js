@@ -4,6 +4,7 @@ const Discord = require('discord.js')
 exports.run = (client, msg) => {
   snekfetch.get('https://animals.anidiots.guide/lion').then(res => {
     const embed = new Discord.RichEmbed()
+    .setColor(client.config.color)
     .setAuthor(`Lion | Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
     .setImage(res.body.link)
     msg.channel.send(embed)
