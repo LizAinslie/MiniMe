@@ -1,5 +1,5 @@
 exports.run = async (client, message, args) => {
-  if (!message.member.roles.some(r => ['Owner', 'Owners', 'Mod', 'Mods'].includes(r.name))) {
+  if (!message.member.roles.some(r => [client.guildSettings.getProp(message.guild.id, 'ownerRole'), client.guildSettings.getProp(message.guild.id, 'modRole')].includes(r.name))) {
     return message.reply(':no_entry_sign: | Sorry, you don\'t have permissions to use this!')
   }
   let member = message.mentions.members.first()

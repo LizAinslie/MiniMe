@@ -16,7 +16,7 @@ const applyText = (canvas, text) => {
  };
 
 module.exports = async (client, member) => {
-  const defaultChannel = member.guild.channels.find('name', 'general')
+  const defaultChannel = member.guild.channels.get(client.guildSettings.getProp(member.guild.id, 'welcomeChannel'))
   
   if (!defaultChannel) return
 

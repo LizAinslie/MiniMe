@@ -25,11 +25,11 @@ exports.run = (client, message, params) => {
     let command = params[0]
     if (client.commands.has(command)) {
       command = client.commands.get(command)
-      const embed = new Discord.RichEmbed.setTitle(command.help.name)
+      const embed = new Discord.RichEmbed().setTitle(command.help.name)
       .setColor(config.color)
       .setDescription(command.help.fullDesc)
-      .addField('Usage', client.config.prefix + command.help.usage, true)
-      .addfield('Type', cmdTypes[command.help.type], true)
+      .addField('Usage', '`' + client.config.prefix + command.help.usage + '`', true)
+      .addField('Type', cmdTypes[command.help.type], true)
       message.channel.send(embed)
     }
   }

@@ -12,7 +12,7 @@ module.exports = async (client, message) => {
   } else {
     user = message.author.username
   }
-  util.log(message, {
+  util.log(client, message, {
     embed: {
       title: 'Message Delete',
       color: config.color,

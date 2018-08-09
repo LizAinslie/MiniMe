@@ -13,7 +13,7 @@ client.railEmoji = client.emojis.find('name', 'rail')
 
 client.points = new Enmap({provider: new EnmapSql({ name: 'points' })})
 
-client.guildSettings = new Enmap({provider: new EnmapSql({ name: 'settings' })})
+client.guildSettings = new Enmap({provider: new EnmapSql({ name: 'settings', dataDir: './settings' })})
 
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error(err)

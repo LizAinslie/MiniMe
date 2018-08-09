@@ -5,7 +5,7 @@ const dateformat = require('dateformat')
 module.exports = async (client, channel) => {
   const entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_CREATE'}).then(audit => audit.entries.first())
   
-  util.log(channel, {
+  util.log(client, channel, {
     embed: {
       title: 'Channel Create',
       color: config.color,

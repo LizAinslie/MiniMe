@@ -9,7 +9,9 @@ exports.run = (client, msg, args) => {
     .setTitle(`${user.username}#${user.discriminator}'s avatar:`)
     .setImage(user.avatarURL)
     msg.channel.send(embed)
-  })
+  }).catch((error) => {
+    msg.channel.send(':exclamation: | Failed to run the command.');
+  });
 }
 
 exports.help = {
