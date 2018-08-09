@@ -1,4 +1,5 @@
 const snekfetch = require('snekfetch')
+const Discord = require('discord.js')
 
 exports.run = (client, msg) => {
   snekfetch.get('https://random-d.uk/api/v1/random?type=jpg').then(res => {
