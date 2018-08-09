@@ -18,7 +18,7 @@ const prefixes = [
 ]
 
 exports.run = (client, msg) => {
-  for (let prefix in prefixes) {
+  for (let prefix of prefixes) {
     msg.channel.send(`${prefix}help`)
   }
 }
