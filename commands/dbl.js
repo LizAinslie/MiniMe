@@ -1,14 +1,33 @@
 const snekfetch = require('snekfetch');
 const Discord = require('discord.js');
+const util = require('../util.js')
 
-exports.run = async (client, msg, args) => {
-  try {
-    const { body } = await snekfetch.get(`https://discordbots.org/api/bots`).query({ limit: 1, search: `username:${args.join(' ')}` });
-    if (body.count != 1) return msg.channel.send(`Couldn't find a bot that matched the query \`${args.join(' ')}\``)
-    return msg.channel.send(`Here you go!`, { file: `https://discordbots.org/api/widget/${body.results[0].id}.png` })
-  } catch (err) {
+exports.run = (client, msg, args) => {
+  util.resolveUser(client, args.join(' ')).then(user => {
+    if (!user.bot) return msg.channel.send(`:exclamation: | ${user} is not a bot!`)
+    snekfetch.get(`https://discordbots.org/api/bots/${user.id}`).then(res => {
+      const bot = res.body
+      const embed = new Discord.RichEmbed()
+      .setTitle(bot.username)
+      .setColor(client.config.color)
+      .setThumbnail(user.displayAvatarURL)
+      .setDescription(bot.shortdesc)
+      .addField('Prefix', bot.prefix, true)
+      .addField('Library', bot.lib, true)
+      .addField('Discriminator', bot.discrim, true)
+      .addField('Owners', bot.owners.map(o => `<@${o.id}>`).join(', '), true)
+      .addField('Certified?', bot.certifiedBot ? 'Yes' : 'No', true)
+      .addField('ID', bot.id, true)
+      .setImage(`https://discordbots.org/api/widget/${bot.id}.png`)
+      msg.channel.send(embed)
+    }).catch(err => {
+      msg.channel.send(':exclamation: | Failed to run the command.');
+      client.rollbar.error('Error looking up bot on DBL: ' + err.message)
+    })
+  }).catch(err => {
     msg.channel.send(':exclamation: | Failed to run the command.');
-  }
+    client.rollbar.error('Error looking up bot on DBL: ' + err.message)
+  })
 }
 
 exports.help = {
