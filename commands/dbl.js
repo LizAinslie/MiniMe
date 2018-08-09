@@ -14,7 +14,7 @@ exports.run = (client, msg, args) => {
       .setDescription(bot.shortdesc)
       .addField('Prefix', bot.prefix, true)
       .addField('Library', bot.lib, true)
-      .addField('Discriminator', bot.discrim, true)
+      .addField('Discriminator', bot.discriminator, true)
       .addField('Owners', bot.owners.map(o => `<@${o.id}>`).join(', '), true)
       .addField('Certified?', bot.certifiedBot ? 'Yes' : 'No', true)
       .addField('ID', bot.id, true)
