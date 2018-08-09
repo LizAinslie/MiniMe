@@ -15,10 +15,22 @@ exports.run = (client, message, params) => {
     .addField(':computer: | **Developer Commands:**', client.commands.filter(c => c.help.type == 'dev').map(c => '`' + c.help.name + '`').join(', '))
     message.channel.send(embed)
   } else {
+    const cmdTypes = {
+      util: 'Utility',
+      fun: 'Fun',
+      mod: 'Moderator',
+      nsfw: 'NSFW',
+      dev: 'Developer'
+    }
     let command = params[0]
     if (client.commands.has(command)) {
       command = client.commands.get(command)
-      message.channel.send(`= ${command.help.name} = \n${command.help.fullDesc}\nusage::${client.config.prefix + command.help.usage}`, {code: 'asciidoc'})
+      const embed = new Discord.RichEmbed.setTitle(command.help.name)
+      .setColor(config.color)
+      .setDescription(command.help.fullDesc)
+      .addField('Usage', client.config.prefix + command.help.usage, true)
+      .addfield('Type', cmdTypes[command.help.type], true)
+      message.channel.send(embed)
     }
   }
 }
