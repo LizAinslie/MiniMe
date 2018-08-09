@@ -4,6 +4,7 @@ const fs = require('fs')
 const Enmap = require('enmap')
 const EnmapSql = require('enmap-sqlite')
 var Rollbar = require("rollbar");
+const guildCount = require('./addons/guildCount.js')
 // Initialize the provider
 
 const client = new Discord.Client()
@@ -16,7 +17,11 @@ client.points = new Enmap({provider: new EnmapSql({ name: 'points' })})
 
 client.guildSettings = new Enmap({provider: new EnmapSql({ name: 'settings', dataDir: './settings' })})
 
-client.rollbar = new Rollbar(config.apis.rollbar);
+client.rollbar = new Rollbar({
+  accessToken: config.apis.rollbar,
+  captureUncaught: true,
+  captureUnhandledRejections: true
+});
 
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error(err)
@@ -40,10 +45,7 @@ fs.readdir('./commands/', (err, files) => {
   })
 })
 
-process.on('unhandledRejection', error => {
-  // Will print "unhandledRejection err is not defined"
-  console.log('unhandledRejection', error.message);
-});
+guildCount(client)
 
 // music(client, { commandPrefix: 'm!', global: false, maxQueueSize: 10, clearInvoker: true, channel: 'Music' })
 client.login(process.env.DISCORD_TOKEN)

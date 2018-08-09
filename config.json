@@ -5,6 +5,9 @@
   "emoji": "⭐",
   "apis": {
     "openweathermap": "2772312234c3d598731d64f08274c261",
-    "rollbar": "75a54d82a5024752adb7204eab018067"
+    "rollbar": "75a54d82a5024752adb7204eab018067",
+    "botlists": {
+      "dbl": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ1NjkyNjU3ODIyODcyMzcyNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTMzNjU2ODk1fQ.co0yMtyGEV7v3p_F8rA7RxAbG30iED2hfsdXox9CKBs"
+    }
   }
 }
