@@ -4,7 +4,7 @@ const util = require('../util')
 
 exports.run = (client, msg, args) => {
   if (args.length < 1) return msg.channel.send(':question: | You must provide a location.');
-  snekfetch.get('https://api.openweathermap.org/data/2.5/weather?q=' + encodeURIComponent(args.join(' ')) + '&APPID=' + config.openweathermap).then((result) => {
+  snekfetch.get('https://api.openweathermap.org/data/2.5/weather?q=' + encodeURIComponent(args.join(' ')) + '&APPID=' + config.apis.openweathermap).then((result) => {
     msg.channel.send({
       embed: {
         title: 'Weather',

@@ -30,6 +30,7 @@
     "node-opus": "^0.3.0",
     "querystring": "^0.2.0",
     "random-puppy": "^1.1.0",
+    "rollbar": "^2.4.4",
     "snekfetch": "^4.0.4",
     "urban-dictionary": "^2.1.2",
     "uws": "^10.148.2",

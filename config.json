@@ -3,5 +3,8 @@
   "color": 5663536,
   "ownerID": "433445465707773963",
   "emoji": "⭐",
-  "openweathermap": "2772312234c3d598731d64f08274c261"
+  "apis": {
+    "openweathermap": "2772312234c3d598731d64f08274c261",
+    "rollbar": "75a54d82a5024752adb7204eab018067"
+  }
 }
