@@ -7,7 +7,7 @@ exports.run = async (client, msg, args) => {
     if (body.count != 1) return msg.channel.send(`Couldn't find a bot that matched the query \`${args.join(' ')}\``)
     return msg.channel.send(`Here you go!`, { file: `https://discordbots.org/api/widget/${body.results[0].id}.png` })
   } catch (err) {
-    console.error(err)
+    msg.channel.send(':exclamation: | Failed to run the command.');
   }
 }
 

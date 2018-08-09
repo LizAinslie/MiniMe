@@ -3,7 +3,7 @@ exports.run = (client, msg) => {
   snekfetch.get('https://talaikis.com/api/quotes/random/').then((result) => {
     msg.channel.send(':scroll: | ' + result.body.quote + ' — *' + result.body.author + '*');
   }).catch((error) => {
-    msg.channel.send(':exclamation: | Failed to run the command. This incident has been reported.');
+    msg.channel.send(':exclamation: | Failed to run the command.');
   });
 }
 

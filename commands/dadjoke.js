@@ -3,9 +3,9 @@ const snekfetch = require('snekfetch')
 exports.run = (client, msg) => {
   snekfetch.get('https://icanhazdadjoke.com/', { headers: { 'accept': 'application/json' } }).then((result) => {
     msg.channel.send(result.body.joke)
-  }).catch((e) => {
-    console.log(e)
-  })
+  }).catch((error) => {
+    msg.channel.send(':exclamation: | Failed to run the command.');
+  });
 }
 
 exports.help = {
