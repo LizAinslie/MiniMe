@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 const config = require('../config.json')
 
 exports.run = (client, msg, args) => {
-  if (msg.guild.id == '374071874222686211' && !msg.channel.nsfw) return msg.channel.send(':exclamation: | You can only run this command in a NSFW channel!');
+  if (!msg.channel.nsfw) return msg.channel.send(':exclamation: | You can only run this command in a NSFW channel!');
   ud.term(args.join(' '), (error, entries, tags, sounds) => {
     if (error) {
       console.error(error.message)
@@ -24,5 +24,5 @@ exports.help = {
   description: 'Search the Urban Dictionary.',
   usage: 'urban <term>',
   fullDesc: 'Search the Urban Dictionary.',
-  type: 'util'
+  type: 'nsfw'
 }
