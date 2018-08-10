@@ -1,7 +1,9 @@
+const snekfetch = require('snekfetch')
+
 module.exports = (client) => {
   client.on('ready', () => {
     setInterval(() => {
-      snekfetch.post(`https://botsfordiscord.com/api//bots/${client.user.id}/stats`)
+      snekfetch.post(`https://botsfordiscord.com/api/bots/${client.user.id}/stats`)
         .set('Authorization', client.config.apis.botlists.dbl)
         .send({
           server_count: client.guilds.size
