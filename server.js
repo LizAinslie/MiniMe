@@ -48,4 +48,4 @@ fs.readdir('./commands/', (err, files) => {
 guildCount(client)
 
 // music(client, { commandPrefix: 'm!', global: false, maxQueueSize: 10, clearInvoker: true, channel: 'Music' })
-client.login(process.env.DISCORD_TOKEN)
+client.login(client.config.token)

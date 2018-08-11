@@ -3,6 +3,7 @@ const util = require('../util.js')
 const filter = a => a === a
 
 exports.run = (client, msg, args) => {
+  args = args.join(' ').split('|').trim()
   let owner, mod, helper, welcome, logs
   util.resolveChannel(client, args[0], msg.guild).then(channel => {
     logs = channel.id
@@ -20,20 +21,17 @@ exports.run = (client, msg, args) => {
     helper = role.name
   })
   const key = `${msg.guild.id}`
-  // Triggers on new users we haven't seen before.
-  if (!client.guildSettings.has(key)) {
     // The user and guild properties will help us in filters and leaderboards.
-    client.guildSettings.set(key, {
-      ownerRole: owner, modRole: mod, helperRole: helper, logChannel: logs, welcomeChannel: welcome
-    })
-  }
+  client.guildSettings.set(key, {
+    ownerRole: owner, modRole: mod, helperRole: helper, logChannel: logs, welcomeChannel: welcome
+  })
   msg.channel.send('All done! Your server is now all set up!')
 }
 
 exports.help = {
   name: 'setup',
   description: 'Sets your server up.',
-  usage: 'setup <logChannel> <welcomeChannel> <ownerRole> <modRole> <helperRole>',
+  usage: 'setup <logChannel> | <welcomeChannel> | <ownerRole> | <modRole> | <helperRole>',
   fullDesc: 'Sets your server up for use with advanced features.',
   type: 'util'
 }
