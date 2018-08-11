@@ -4,8 +4,12 @@ const fs = require('fs')
 const Enmap = require('enmap')
 const EnmapSql = require('enmap-sqlite')
 var Rollbar = require("rollbar");
+// const Music = require('discord.js-musicbot-addon')
 const guildCount = require('./addons/guildCount.js')
+
 // Initialize the provider
+
+process.on('unhandledRejection', error => console.error(`Uncaught Promise Rejection:\n${error}`));
 
 const client = new Discord.Client()
 const config = require('./config.json')
@@ -47,5 +51,10 @@ fs.readdir('./commands/', (err, files) => {
 
 guildCount(client)
 
+// Music.start(client, {
+//   youtubeKey: client.config.apis.yt,
+//   prefix: 'm::',
+//   helpCmd: 'musichelp'
+// })
 // music(client, { commandPrefix: 'm!', global: false, maxQueueSize: 10, clearInvoker: true, channel: 'Music' })
-client.login(client.config.token)
+client.login(config.token)

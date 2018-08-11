@@ -9,6 +9,7 @@ exports.run = (client, msg, args) => {
       .setTitle(`${msg.author.username} kissed ${user.username}!`)
       .setColor(client.config.color)
       .setImage(res.body.url)
+      msg.channel.send(embed)
     }).catch(err => {
       msg.channel.send(':exclamation: | Failed to run the command. This incident has been reported.')
       client.rollbar.error('[kiss.js] Error getting image from nekos.life: ' + err.message)

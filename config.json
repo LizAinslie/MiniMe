@@ -1,5 +1,5 @@
 {
-  "token": "NDU2OTI2NTc4MjI4NzIzNzI0.Dk_JHA.eXfBhWF32_EYhqtpd0LTB_RSZj4",
+  "token": "NDU2OTI2NTc4MjI4NzIzNzI0.DlC1hg.6ACN1oclDb6RyR1tKQcLC31QqzI",
   "prefix": "m::",
   "color": 5663536,
   "ownerID": "433445465707773963",
@@ -7,6 +7,7 @@
   "apis": {
     "openweathermap": "2772312234c3d598731d64f08274c261",
     "rollbar": "75a54d82a5024752adb7204eab018067",
+    "yt": "AIzaSyDppjLHjWLid4VCm6cXqXY5q1s7DkWISKU",
     "botlists": {
       "dbl": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ1NjkyNjU3ODIyODcyMzcyNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTMzNjU2ODk1fQ.co0yMtyGEV7v3p_F8rA7RxAbG30iED2hfsdXox9CKBs"
     }

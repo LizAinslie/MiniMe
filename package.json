@@ -35,7 +35,7 @@
     "urban-dictionary": "^2.1.2",
     "uws": "^10.148.2",
     "youtube-dl": "^1.12.2",
-    "ytdl-core": "^0.20.4"
+    "ytdl-core": "^0.24.0"
   },
   "engines": {
     "node": "8.x"

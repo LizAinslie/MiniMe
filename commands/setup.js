@@ -1,25 +1,20 @@
 const util = require('../util.js')
-
-const filter = a => a === a
+const config = require('../config.json')
 
 exports.run = (client, msg, args) => {
-  args = args.join(' ').split('|').trim()
+  args = args.join(' ').split('|')
   let owner, mod, helper, welcome, logs
-  util.resolveChannel(client, args[0], msg.guild).then(channel => {
-    logs = channel.id
-  })
-  util.resolveChannel(client, args[1], msg.guild).then(channel => {
-    welcome = channel.id
-  })
-  util.resolveRole(client, args[2], msg.guild).then(role => {
-    owner = role.name
-  })
-  util.resolveRole(client, args[3], msg.guild).then(role => {
-    mod = role.name
-  })
-  util.resolveRole(client, args[4], msg.guild).then(role => {
-    helper = role.name
-  })
+  
+  logs = msg.guild.channels.find('name', args[0].trim()).id || msg.guild.channels.get(args[0]).id || msg.mentions.channels.array()[0].id
+  
+  welcome = msg.guild.channels.find('name', args[1].trim()).id || msg.guild.channels.get(args[1]).id || msg.mentions.channels.array()[1].id
+  
+  owner = msg.guild.roles.find('name', args[2].trim()).name || msg.guild.roles.get(args[2]).name || msg.mentions.roles.array()[0].name
+  
+  mod = msg.guild.roles.find("name", args[3].trim()).name || msg.guild.roles.get(args[3]).name || msg.mentions.roles.array()[1].name
+  
+  helper = msg.guild.roles.find('name', args[4].trim()).name || msg.guild.roles.get(args[4]).name || msg.mentions.roles.array()[2].name
+
   const key = `${msg.guild.id}`
     // The user and guild properties will help us in filters and leaderboards.
   client.guildSettings.set(key, {
@@ -32,6 +27,6 @@ exports.help = {
   name: 'setup',
   description: 'Sets your server up.',
   usage: 'setup <logChannel> | <welcomeChannel> | <ownerRole> | <modRole> | <helperRole>',
-  fullDesc: 'Sets your server up for use with advanced features.',
+  fullDesc: 'Sets your server up for use with advanced features. Example: `' + config.prefix + 'setup bot-hell | welcome | Owner | Admin | Web Mod`',
   type: 'util'
 }
