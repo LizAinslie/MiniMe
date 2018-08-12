@@ -15,7 +15,7 @@ exports.run = (client, msg, args) => {
       .addField('Prefix', bot.prefix, true)
       .addField('Library', bot.lib, true)
       .addField('Discriminator', bot.discriminator, true)
-      .addField('Owners', bot.owners.map(o => `<@${o.id}>`).join(', '), true)
+      .addField('Owners', bot.owners.map(o => `<@${o}>`).join(', '), true)
       .addField('Certified?', bot.certifiedBot ? 'Yes' : 'No', true)
       .addField('ID', bot.id, true)
       .setImage(`https://discordbots.org/api/widget/${bot.id}.png`)

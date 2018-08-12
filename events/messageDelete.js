@@ -3,7 +3,7 @@ const util = require('../util.js')
 const config = require('../config.json')
 
 module.exports = async (client, message) => {
-  if (!client.guildSettings.getProp(message.guild.id, 'doLogs')) retuen
+  if (!client.guildSettings.getProp(message.guild.id, 'doLogs')) return
   const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
 
   // Define an empty user for now. This will be used later in the guide.
