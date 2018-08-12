@@ -3,6 +3,7 @@ const config = require('../config.json')
 const dateformat = require('dateformat')
 
 module.exports = async (client, channel) => {
+  if (!client.guildSettings.getProp(channel.guild.id, 'doLogs')) return
   const entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_CREATE'}).then(audit => audit.entries.first())
   
   util.log(client, channel, {

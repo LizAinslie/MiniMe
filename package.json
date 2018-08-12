@@ -28,6 +28,7 @@
     "moment": "^2.22.2",
     "moment-duration-format": "^2.2.2",
     "node-opus": "^0.3.0",
+    "pokedex-api": "^1.1.1",
     "querystring": "^0.2.0",
     "random-puppy": "^1.1.0",
     "rollbar": "^2.4.4",

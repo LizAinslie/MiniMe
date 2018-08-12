@@ -51,5 +51,5 @@ module.exports = async (client, member) => {
 
  	const attachment = new Discord.Attachment(canvas.toBuffer(), 'welcome-image.png')
   
-  defaultChannel.send(`Welcome ${member} to the server!`, attachment).catch(console.error)
+  defaultChannel.send(`Welcome ${member.username}#${member.discriminator} to the server!`, attachment).catch(console.error)
 }
