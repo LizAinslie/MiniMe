@@ -23,7 +23,7 @@ exports.run = (client, msg, args) => {
   client.guildSettings.set(key, {
     ownerRole: owner, modRole: mod, helperRole: helper, muteRole: mute, logChannel: logs, welcomeChannel: welcome, doLogs: true, doWelcomes: true
   })
-  msg.channel.send('All done! Your server is now all set up!')
+  msg.channel.send('All done! Your server is now set up!')
 }
 
 exports.help = {

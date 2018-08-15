@@ -4,6 +4,8 @@ const fs = require('fs')
 const Enmap = require('enmap')
 const EnmapSql = require('enmap-sqlite')
 var Rollbar = require("rollbar");
+//const Idiot = require('idiotic-api')
+const music = require('./addons/music.js')
 
 // Initialize the provider
 
@@ -14,7 +16,7 @@ const config = require('./config.json')
 client.config = config
 
 client.railEmoji = client.emojis.find('name', 'rail')
-
+//client.idiot = new Idiot.Client(config.apis.idiot, { dev: true })
 //client.points = new Enmap({provider: new EnmapSql({ name: 'points' })})
 
 client.guildSettings = new Enmap({provider: new EnmapSql({ name: 'settings', dataDir: './settings' })})
@@ -31,6 +33,7 @@ fs.readdir('./events/', (err, files) => {
     const event = require(`./events/${file}`)
     let eventName = file.split('.')[0]
     client.on(eventName, event.bind(null, client))
+    delete require.cache[require.resolve(`./events/${file}`)]
   })
 })
 
@@ -47,5 +50,6 @@ fs.readdir('./commands/', (err, files) => {
   })
 })
 
-// music(client, { commandPrefix: 'm!', global: false, maxQueueSize: 10, clearInvoker: true, channel: 'Music' })
+music(client, { prefix: 'm::' })
+
 client.login(config.token)

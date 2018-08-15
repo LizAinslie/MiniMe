@@ -106,7 +106,7 @@ module.exports = (client, config) => {
     var voiceChannel = msg.member.voiceChannel
     if (!voiceChannel) return msg.channel.send(':interrobang: | You\'re not in a voice channel!')
     let playlist = require(`./playlists/${suffix}.json`)
-    for (let song in playlist.songs) {
+    for (let song of playlist.songs) {
       queue.push({
         name: song.name,
         url: song.url,
