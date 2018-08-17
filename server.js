@@ -5,7 +5,6 @@ const Enmap = require('enmap')
 const EnmapSql = require('enmap-sqlite')
 var Rollbar = require("rollbar");
 //const Idiot = require('idiotic-api')
-const music = require('./addons/music.js')
 
 // Initialize the provider
 
@@ -49,7 +48,5 @@ fs.readdir('./commands/', (err, files) => {
     client.commands.set(commandName, props)
   })
 })
-
-music(client, { prefix: 'm::' })
 
 client.login(config.token)

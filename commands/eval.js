@@ -10,11 +10,11 @@ const clean = text => {
   }
 }
 
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   if (message.author.id !== config.ownerID) { return }
     try {
       const code = args.join(' ')
-      let evaled = eval(code)
+      let evaled = await eval(code)
 
       if (typeof evaled !== 'string') { evaled = require('util').inspect(evaled) }
 
@@ -28,6 +28,6 @@ exports.help = {
   name: 'eval',
   description: 'Evaluates JavaScript.',
   usage: 'eval <code>',
-  fullDesc: 'Evaluates Javascript. Can only be used by @RailRunner16#1174. :P',
+  fullDesc: `Evaluates Javascript. Can only be used by <@${config.ownerID}>. :P`,
   type: 'dev'
 }

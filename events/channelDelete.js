@@ -4,11 +4,11 @@ const dateformat = require('dateformat')
 module.exports = async (client, channel) => {
   if (!client.guildSettings.has(channel.guild.id)) return
   if (!client.guildSettings.getProp(channel.guild.id, 'doLogs')) return
-  const entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_CREATE'}).then(audit => audit.entries.first())
+  const entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_DELETE'}).then(audit => audit.entries.first())
   
   util.log(client, channel, {
     embed: {
-      title: 'Channel Create',
+      title: 'Channel Delete',
       color: client.config.color,
       thumbnail: {
         url: entry.executor.avatarURL
