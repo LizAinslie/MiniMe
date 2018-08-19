@@ -1,7 +1,7 @@
 const util = require('../util.js')
 const dateformat = require('dateformat')
 
-module.exports = async (client, guild, user) => {
+module.exports = (client, guild, user) => {
   if (!client.guildSettings.has(guild.id)) return
   if (!client.guildSettings.getProp(guild.id, 'doLogs')) return
   

@@ -10,8 +10,8 @@ exports.run = async (client, message, args) => {
   if (!reason) { reason = 'No reason provided' }
 
   await member.ban(reason)
-    .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`))
-  message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`)
+    .catch(error => message.channel.send(`Sorry ${message.author} I couldn't ban because of : ${error}`))
+  message.channel.send(`${member.user.username}#${member.user.discriminator} has been banned by ${message.author.username}#${message.author.discriminator} because: ${reason}`)
 }
 
 exports.help = {

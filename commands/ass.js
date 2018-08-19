@@ -13,12 +13,13 @@ exports.run = (client, msg) => {
           embed: {
             author: {
               icon_url: msg.author.displayAvatarURL,
-              text: `Ass | requested by ${msg.author.username}#${msg.author.discriminator}`
+              name: `Ass | Requested by ${msg.author.username}#${msg.author.discriminator}`
             },
             color: client.config.color,
             image: {
               url: url
             },
+            timestamp: new Date(),
             footer: {
               icon_url: client.user.avatarURL,
               text: "Status: 200"

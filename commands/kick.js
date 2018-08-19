@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
   // Now, time for a swift kick in the nuts!
   await member.kick(reason)
     .catch(error => message.channel.send(`Sorry ${message.author} I couldn't kick because of : ${error}`))
-  message.channel.send(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`)
+    message.channel.send(`${member.user.username}#${member.user.discriminator} has been kicked by ${message.author.username}#${message.author.discriminator} because: ${reason}`)
 }
 
 exports.help = {

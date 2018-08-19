@@ -10,9 +10,9 @@ exports.run = (client, msg) => {
 }
 
 exports.help = {
-  name: 'meme',
-  description: 'Have the bot find a meme.',
-  usage: 'meme',
-  fullDesc: 'Have the bot find a meme. You get nothing else.',
+  name: 'badmeme',
+  description: 'Have the bot find a bad meme.',
+  usage: 'badmeme',
+  fullDesc: 'Have the bot find a bad meme.',
   type: 'fun'
 }

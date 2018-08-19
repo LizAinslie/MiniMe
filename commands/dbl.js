@@ -1,5 +1,4 @@
 const snekfetch = require('snekfetch');
-const Discord = require('discord.js');
 const util = require('../util.js')
 
 exports.run = (client, msg, args) => {
@@ -7,26 +6,67 @@ exports.run = (client, msg, args) => {
     if (!user.bot) return msg.channel.send(`:exclamation: | ${user} is not a bot!`)
     snekfetch.get(`https://discordbots.org/api/bots/${user.id}`).then(res => {
       const bot = res.body
-      const embed = new Discord.RichEmbed()
-      .setTitle(bot.username)
-      .setColor(client.config.color)
-      .setThumbnail(user.displayAvatarURL)
-      .setDescription(bot.shortdesc)
-      .addField('Prefix', bot.prefix, true)
-      .addField('Library', bot.lib, true)
-      .addField('Discriminator', bot.discriminator, true)
-      .addField('Owners', bot.owners.map(o => `<@${o}>`).join(', '), true)
-      .addField('Certified?', bot.certifiedBot ? 'Yes' : 'No', true)
-      .addField('ID', bot.id, true)
-      .setImage(`https://discordbots.org/api/widget/${bot.id}.png`)
-      msg.channel.send(embed)
+      msg.channel.send({
+        embed: {
+          title: bot.username,
+          color: client.config.color,
+          thumbnail: {
+            url: user.displayAvatarURL
+          },
+          description: bot.shortdesc,
+          image:{
+            url: `https://discordbots.org/api/widget/${bot.id}.png`
+          },
+          author: {
+            icon_url: msg.author.displayAvatarURL,
+            name: `DBL | Requested by ${msg.author.username}#${msg.author.discriminator}`
+          },
+          footer: {
+            icon_url: client.user.avatarURL,
+            text: 'Status: 200'
+          },
+          timestamp: new Date(),
+          fields: [
+            {
+              name: 'Prefix',
+              value: bot.prefix,
+              inline: true
+            },
+            {
+              name: 'Library',
+              value: bot.lib,
+              inline: true
+            },
+            {
+              name: 'Discriminator',
+              value: bot.discriminator,
+              inline: true
+            },
+            {
+              name: 'Owners',
+              value: bot.owners.map(o => `<@${o}>`).join(', '),
+              inline: true
+            },
+            {
+              name: 'Certified?',
+              value: bot.certifiedBot ? 'Yes' : 'No',
+              inline: true
+            },
+            {
+              name: 'ID',
+              value: bot.id,
+              inline: true
+            }
+          ]
+        }
+      })
     }).catch(err => {
-      msg.channel.send(':exclamation: | Failed to run the command.');
-      client.rollbar.error('Error looking up bot on DBL: ' + err.message)
+      msg.channel.send(':exclamation: | Failed to run the command. This incident has been reported.');
+      client.rollbar.error('Error looking up bot on DBL: ' + err)
     })
   }).catch(err => {
-    msg.channel.send(':exclamation: | Failed to run the command.');
-    client.rollbar.error('Error looking up bot on DBL: ' + err.message)
+    msg.channel.send(':exclamation: | Failed to run the command. This incident has been reported.');
+    client.rollbar.error('Error looking up bot on DBL: ' + err)
   })
 }
 

@@ -1,5 +1,4 @@
-const randomPuppy = require('random-puppy');
-const Discord = require('discord.js')
+const randomPuppy = require('random-puppy')
 const snekfetch = require('snekfetch')
 
 exports.run = (client, msg) => {
@@ -14,12 +13,13 @@ exports.run = (client, msg) => {
           embed: {
             author: {
               icon_url: msg.author.displayAvatarURL,
-              text: `Porn Gif | requested by ${msg.author.username}#${msg.author.discriminator}`
+              name: `Porn Gif | Requested by ${msg.author.username}#${msg.author.discriminator}`
             },
             color: client.config.color,
             image: {
               url: url
             },
+            timestamp: new Date(),
             footer: {
               icon_url: client.user.avatarURL,
               text: "Status: 200"

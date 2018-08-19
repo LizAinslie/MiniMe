@@ -1,4 +1,5 @@
-const randomPuppy = require('random-puppy');
+const randomPuppy = require('random-puppy')
+const snekfetch = require('snekfetch')
 
 exports.run = (client, msg) => {
   if (!msg.channel.nsfw) return msg.channel.send(':exclamation: | You can only run this command in a NSFW channel!');

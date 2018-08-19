@@ -18,7 +18,7 @@ exports.run = (client, message, args) => {
     message.channel.send({
       embed: {
         description: `**${message.author.username}** Achievement!`,
-        color: 'GREEN',
+        color: client.config.color,
         image: {
           url: url
         }

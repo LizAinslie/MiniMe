@@ -1,5 +1,5 @@
-const randomPuppy = require('random-puppy');
-const Discord = require('discord.js')
+const randomPuppy = require('random-puppy')
+const snekfetch = require('snekfetch')
 
 exports.run = (client, msg) => {
   if (!msg.channel.nsfw) return msg.channel.send(':exclamation: | You can only run this command in a NSFW channel!');
@@ -13,12 +13,13 @@ exports.run = (client, msg) => {
           embed: {
             author: {
               icon_url: msg.author.displayAvatarURL,
-              text: `Lesbian | requested by ${msg.author.username}#${msg.author.discriminator}`
+              name: `Lesbian | Requested by ${msg.author.username}#${msg.author.discriminator}`
             },
             color: client.config.color,
             image: {
               url: url
             },
+            timestamp: new Date(),
             footer: {
               icon_url: client.user.avatarURL,
               text: "Status: 200"

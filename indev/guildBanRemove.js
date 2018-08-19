@@ -1,7 +1,7 @@
 const util = require('../util.js')
 const dateformat = require('dateformat')
 
-module.exports = async (client, guild, user) => {
+module.exports = (client, guild, user) => {
   if (!client.guildSettings.has(guild.id)) return
   if (!client.guildSettings.getProp(guild.id, 'doLogs')) return
   
@@ -9,9 +9,6 @@ module.exports = async (client, guild, user) => {
     embed: {
       title: 'User Unban',
       color: client.config.color,
-      thumbnail: {
-        url: entry.executor.avatarURL
-      },
       fields: [
         {
           name: 'User Unbanned:',

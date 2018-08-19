@@ -1,17 +1,43 @@
 const c2c = require('colorcolor')
-const Discord = require('discord.js')
 
 exports.run = (client, msg, args) => {
   const color = args.join(' ')
-  const embed = new Discord.RichEmbed()
-  .setTitle('Color')
-  .setColor(color)
-  .addField('Hex', c2c(color, 'hex'), true)
-  .addField('RGBA', c2c(color, 'rgba'), true)
-  .addField('HSLA', c2c(color, 'hsla'), true)
-  .addField('HSV', c2c(color, 'hsv'), true)
-  
-  msg.channel.send(embed)
+  msg.channel.send({
+    embed: {
+      author: {
+        icon_url: msg.author.displayAvatarURL,
+        text: `Color | Requested by ${msg.author.username}#${msg.author.discriminator}`
+      },
+      color: client.config.color,
+      footer: {
+        icon_url: client.user.avatarURL,
+        text: 'Status: 200'
+      },
+      timestamp: new Date(),
+      fields: [
+        {
+          name: 'Hex',
+          value: c2c(color, 'hex'),
+          inline: true
+        },
+        {
+          name: 'RGBA',
+          value: c2c(color, 'rgba'),
+          inline: true
+        },
+        {
+          name: 'HSLA',
+          value: c2c(color, 'hsla'),
+          inline: true
+        },
+        {
+          name: 'HSV',
+          value: c2c(color, 'hsv'),
+          inline: true
+        }
+      ]
+    }
+  })
 }
 
 exports.help = {

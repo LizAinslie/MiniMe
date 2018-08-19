@@ -1,21 +1,50 @@
-const Discord = require('discord.js')
-const config = require('../config.json')
-
 const cmdStatuses = []
 exports.run = (client, message, params) => {
   if (!params[0]) {
     const commandNames = Array.from(client.commands.keys())
     const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0)
-    const embed = new Discord.RichEmbed().setTitle('Command List')
-    .setColor(config.color)
-    .setDescription(`Use \`${client.config.prefix}help <commandname>\` for details.`)
-    .addField(':wrench: | **Utility Commands:**', client.commands.filter(c => c.help.type == 'util').map(c => '`' + c.help.name + '`').join(', '))
-    .addField(':tada: | **Fun Commands:**', client.commands.filter(c => c.help.type == 'fun').map(c => '`' + c.help.name + '`').join(', '))
-    .addField(':scroll: | **Roleplay Commands:**', client.commands.filter(c => c.help.type == 'rp').map(c => '`' + c.help.name + '`').join(', '))
-    .addField(':hammer: | **Moderator Commands:**', client.commands.filter(c => c.help.type == 'mod').map(c => '`' + c.help.name + '`').join(', '))
-    .addField(':underage: | **NSFW Commands:**', client.commands.filter(c => c.help.type == 'nsfw').map(c => '`' + c.help.name + '`').join(', '))
-    .addField(':computer: | **Developer Commands:**', client.commands.filter(c => c.help.type == 'dev').map(c => '`' + c.help.name + '`').join(', '))
-    message.channel.send(embed)
+    message.channel.send({
+      embed: {
+        title: 'Command List',
+        color: client.config.color,
+        description: `Use \`${client.config.prefix}help <commandname>\` for details.`,
+        author: {
+          icon_url: message.author.displayAvatarURL,
+          name: `Help | Requested by ${message.author.username}#${message.author.discriminator}`
+        },
+        footer: {
+          icon_url: client.user.avatarURL,
+          text: 'Status: 200'
+        },
+        timestamp: new Date(),
+        fields: [
+          {
+            name: ':wrench: | **Utility Commands:**',
+            value: client.commands.filter(c => c.help.type == 'util').map(c => '`' + c.help.name + '`').join(', ')
+          },
+          {
+            name: ':tada: | **Fun Commands:**',
+            value: client.commands.filter(c => c.help.type == 'fun').map(c => '`' + c.help.name + '`').join(', ')
+          },
+          {
+            name: ':scroll: | **Roleplay Commands:**',
+            value: client.commands.filter(c => c.help.type == 'rp').map(c => '`' + c.help.name + '`').join(', ')
+          },
+          {
+            name: ':hammer: | **Moderator Commands:**',
+            value: client.commands.filter(c => c.help.type == 'mod').map(c => '`' + c.help.name + '`').join(', ')
+          },
+          {
+            name: ':underage: | **NSFW Commands:**',
+            value: client.commands.filter(c => c.help.type == 'nsfw').map(c => '`' + c.help.name + '`').join(', ')
+          },
+          {
+            name: ':computer: | **Developer Commands:**',
+            value: client.commands.filter(c => c.help.type == 'dev').map(c => '`' + c.help.name + '`').join(', ')
+          }
+        ]
+      }
+    })
   } else {
     const cmdTypes = {
       util: 'Utility',
@@ -29,12 +58,34 @@ exports.run = (client, message, params) => {
     let command = params[0]
     if (client.commands.has(command)) {
       command = client.commands.get(command)
-      const embed = new Discord.RichEmbed().setTitle(command.help.name)
-      .setColor(config.color)
-      .setDescription(command.help.fullDesc)
-      .addField('Usage', '`' + client.config.prefix + command.help.usage + '`', true)
-      .addField('Type', cmdTypes[command.help.type], true)
-      message.channel.send(embed)
+      message.channel.send({
+        embed: {
+          title: command.help.name,
+          author: {
+            icon_url: message.author.displayAvatarURL,
+            name: `Help | Requested by ${message.author.username}#${message.author.discriminator}`
+          },
+          footer: {
+            icon_url: client.user.avatarURL,
+            text: 'Status: 200'
+          },
+          timestamp: new Date(),
+          color: client.config.color,
+          description: command.help.fullDesc,
+          fields: [
+            {
+              name: 'Usage',
+              value: '`' + client.config.prefix + command.help.usage + '`',
+              inline: true
+            },
+            {
+              name: 'Type',
+              value: cmdTypes[command.help.type],
+              inline: true
+            }
+          ]
+        }
+      })
     }
   }
 }
