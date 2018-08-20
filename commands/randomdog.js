@@ -1,20 +1,25 @@
-const snekfetch = require('snekfetch')
-const Discord = require('discord.js')
+const randomPuppy = require('random-puppy')
 
 exports.run = (client, msg) => {
-  snekfetch.get('https://dog.ceo/api/breeds/image/random').then((result) => {
-    snekfetch.get(result.body.message).then((result) => {
-      const embed = new Discord.RichEmbed()
-      .setColor(client.config.color)
-      .setAuthor(`Dog | Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
-      .setImage(result.body)
-      msg.channel.send(embed)
-    }).catch((error) => {
-      msg.channel.send(':exclamation: | Failed to run the command.');
-    });
-  }).catch((error) => {
-    msg.channel.send(':exclamation: | Failed to run the command.');
-  });
+  randomPuppy().then(url => {
+    msg.channel.send({
+      embed: {
+        color: client.config.color,
+        author: {
+          icon_url: msg.author.displayAvatarURL,
+          name: `Dog | Requested by ${msg.author.username}#${msg.author.discriminator}`
+        },
+        image: {
+          url: url
+        },
+        footer: {
+          icon_url: client.user.avatarURL,
+          text: 'Status: 200'
+        },
+        timestamp: new Date()
+      }
+    })
+  })
 }
 
 exports.help = {
