@@ -21,8 +21,8 @@ exports.run = (client, msg, args) => {
       color: client.config.color,
       description: ascii,
       author: {
-        icon_url: message.author.displayAvatarURL,
-        name: `Help | Requested by ${message.author.username}#${message.author.discriminator}`
+        icon_url: msg.author.displayAvatarURL,
+        name: `Ascii	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`
       },
       footer: {
         icon_url: client.user.avatarURL,

@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
   // This command must be limited to mods and admins. In this example we just hardcode the role names.
   // Please read on Array.some() to understand this bit:
   // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
-  if (!message.member.roles.some(r => [client.guildSettings.getProp(message.guild.id, 'ownerRole'), client.guildSettings.getProp(message.guild.id, 'modRole')].includes(r.name))) { return message.channel.send(':no_entry_sign: | Sorry, you don\'t have permissions to use this!') }
+  if (!message.member.roles.some(r => [client.guildSettings.getProp(message.guild.id, 'ownerRole'), client.guildSettings.getProp(message.guild.id, 'modRole')].includes(r.name))) { return message.channel.send(':no_entry_sign:	׀ Sorry, you don\'t have permissions to use this!') }
 
   // Let's first check if we have a member and if we can kick them!
   // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.

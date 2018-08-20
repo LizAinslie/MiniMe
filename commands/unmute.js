@@ -1,9 +1,9 @@
 const Discord = require('discord.js')
 
 exports.run = (client, msg, args) => {
-  if (!msg.member.roles.some(r => [client.guildSettings.getProp(msg.guild.id, 'ownerRole'), client.guildSettings.getProp(msg.guild.id, 'modRole'), client.guildSettings.getProp(msg.guild.id, 'helperRole')])) return msg.channel.send(':no_entry_sign: | You do not have pepermission to use this!')
+  if (!msg.member.roles.some(r => [client.guildSettings.getProp(msg.guild.id, 'ownerRole'), client.guildSettings.getProp(msg.guild.id, 'modRole'), client.guildSettings.getProp(msg.guild.id, 'helperRole')])) return msg.channel.send(':no_entry_sign:	׀ You do not have pepermission to use this!')
   let member = msg.mentions.members.first()
-  if (!member) return msg.reply('You must mention a valid member of this server!')
+  if (!member) return msg.channel.send(':interrobang:	׀ You must mention a valid member of this server!')
   
   let reason = args.slice(1).join(' ')
   if (!reason) reason = 'No reason provided.'

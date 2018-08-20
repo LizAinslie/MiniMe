@@ -2,27 +2,27 @@ const snekfetch = require('snekfetch');
 
 exports.run = (client, msg, args) => {
   if (args.length > 0) {
-    if (isNaN(args[0])) return msg.channel.send(':exclamation: | The comic number must be a valid number.');
-    if (Number(args[0]) < 1) return msg.channel.send(':exclamation: | The comic number must be greater than or equal to 1.');
+    if (isNaN(args[0])) return msg.channel.send(':exclamation:	׀ The comic number must be a valid number.');
+    if (Number(args[0]) < 1) return msg.channel.send(':exclamation:	׀ The comic number must be greater than or equal to 1.');
     snekfetch.get('https://xkcd.com/info.0.json').then((result) => {
       const max = result.body.num;
-      if (Number(args[0]) > max) return msg.channel.send(':exclamation: | The comic number must be less than or equal to ' + max.toLocaleString() + '.');
+      if (Number(args[0]) > max) return msg.channel.send(':exclamation:	׀ The comic number must be less than or equal to ' + max.toLocaleString() + '.');
       snekfetch.get('https://xkcd.com/' + Number(args[0]) + '/info.0.json').then((result) => {
         msg.channel.send({
           embed: {
             title: result.body.safe_title,
             description: result.body.alt,
-            color: this.bot.embedColor,
+            color: client.config.color,
             image: {
               url: result.body.img
             }
           }
         });
       }).catch((error) => {
-        msg.channel.send(':exclamation: | Failed to run the command.');
+        msg.channel.send(':exclamation:	׀ Failed to run the command.');
       });
     }).catch((error) => {
-      msg.channel.send(':exclamation: | Failed to run the command.');
+      msg.channel.send(':exclamation:	׀ Failed to run the command.');
     });
   } else {
     snekfetch.get('https://xkcd.com/info.0.json').then((result) => {
@@ -32,17 +32,17 @@ exports.run = (client, msg, args) => {
           embed: {
             title: result.body.safe_title,
             description: result.body.alt,
-            color: this.bot.embedColor,
+            color: client.config.color,
             image: {
               url: result.body.img
             }
           }
         });
       }).catch((error) => {
-        msg.channel.send(':exclamation: | Failed to run the command.');
+        msg.channel.send(':exclamation:	׀ Failed to run the command.');
       });
     }).catch((error) => {
-      msg.channel.send(':exclamation: | Failed to run the command.');
+      msg.channel.send(':exclamation:	׀ Failed to run the command.');
     });
   }
 }

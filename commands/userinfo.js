@@ -1,7 +1,6 @@
 const dateformat = require('dateformat')
 const util = require('../util.js')
 const funcs = require('../modules/functions.js')
-const config = require('../config.json')
 
 const statuses = {
   online: '<:online:313956277808005120>',
@@ -15,10 +14,19 @@ exports.run = (client, message, args) => {
     message.channel.send({
       embed: {
         title: user.username + '#' + user.discriminator,
-        'color': config.color,
+        color: client.config.color,
         thumbnail: {
           url: user.displayAvatarURL
         },
+        author: {
+          icon_url: message.author.displayAvatarURL,
+          name: `User Info	׀ Requested by ${message.author.username}#${message.author.discriminator}`
+        },
+        footer: {
+          icon_url: client.user.avatarURL,
+          text: 'Status: 200'
+        },
+        timestamp: new Date(),
         fields: [
           {
             name: 'Created At:',

@@ -2,7 +2,7 @@ const randomPuppy = require('random-puppy')
 const snekfetch = require('snekfetch')
 
 exports.run = (client, msg) => {
-  if (!msg.channel.nsfw) return msg.channel.send(':exclamation: | You can only run this command in a NSFW channel!');
+  if (!msg.channel.nsfw) return msg.channel.send(':exclamation:	׀ You can only run this command in a NSFW channel!');
   snekfetch.get(`https://botlist.space/api/bots/${client.user.id}/upvotes?ids=true`)
   .set('Authorization', client.config.apis.bls)
   .end((err, res) => {

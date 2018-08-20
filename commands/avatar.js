@@ -6,7 +6,7 @@ exports.run = (client, msg, args) => {
         color: client.config.color,
         author: {
           icon_url: msg.author.displayAvatarURL,
-          name: `${user.username}#${user.discriminator}'s avatar | Requested by ${msg.author.username}#${msg.author.discriminator}`
+          name: `${user.username}#${user.discriminator}'s avatar	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`
         },
         footer: {
           icon_url: client.user.avatarURL,
@@ -19,7 +19,7 @@ exports.run = (client, msg, args) => {
       }
     })
   }).catch((error) => {
-    msg.channel.send(':exclamation: | Failed to run the command.');
+    msg.channel.send(':exclamation:	׀ Failed to run the command.');
   });
 }
 

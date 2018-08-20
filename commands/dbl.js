@@ -19,7 +19,7 @@ exports.run = (client, msg, args) => {
           },
           author: {
             icon_url: msg.author.displayAvatarURL,
-            name: `DBL | Requested by ${msg.author.username}#${msg.author.discriminator}`
+            name: `DBL	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`
           },
           footer: {
             icon_url: client.user.avatarURL,

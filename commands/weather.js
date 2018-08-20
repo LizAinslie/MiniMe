@@ -62,8 +62,8 @@ exports.run = (client, msg, args) => {
       }
     });
   }).catch((error) => {
-    if (error.statusCode === 404) return msg.channel.send(':exclamation: | Unable to find any locations by that name.');
-    msg.channel.send(':exclamation: | Failed to run the command.');
+    if (error.statusCode === 404) return msg.channel.send(':exclamation:	׀ Unable to find any locations by that name.');
+    msg.channel.send(':exclamation:	׀ Failed to run the command.');
   });
 }
 

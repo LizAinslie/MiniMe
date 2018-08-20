@@ -29,8 +29,8 @@ exports.run = async (client, message, args) => {
 
     message.channel.send(args.join(' ').split('').map(c => mapping[c] || c).join(''))
     } catch(err) {
-      message.channel.send(`:exclamation: | There was an error running the command. This incident has been reported.`)
-      client.rollbar.error(`Error on emojify commands!\n\nError:\n\n ${err}`)
+      message.channel.send(`:exclamation:	׀ There was an error running the command. This incident has been reported.`)
+      client.rollbar.error(`Error on emojify commands\n\nError:\n\n ${err}`)
     }
 }
 

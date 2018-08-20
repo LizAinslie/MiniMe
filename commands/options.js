@@ -17,7 +17,7 @@ exports.run = (client, msg, args) => {
     .addField('Logs', logs.toString(), true)
     msg.channel.send(embed)
   } else {
-    msg.channel.send(':exclamation: | Please run `' + client.config.prefix + 'setup` to setup your server first!')
+    msg.channel.send(':exclamation:	׀ Please run `' + client.config.prefix + 'setup` to setup your server first!')
   }
 }
 

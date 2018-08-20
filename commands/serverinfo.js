@@ -12,7 +12,7 @@ exports.run = (client, msg) => {
         url: guild.iconURL
       },
       author: {
-        name: `Server Info | Requested by ${msg.author.username}#${msg.author.discriminator}`,
+        name: `Server Info	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`,
         icon_url: msg.author.displayAvatarURL
       },
       fields: [

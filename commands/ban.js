@@ -1,6 +1,6 @@
 exports.run = async (client, message, args) => {
   if (!message.member.roles.some(r => [client.guildSettings.getProp(message.guild.id, 'ownerRole'), client.guildSettings.getProp(message.guild.id, 'modRole')].includes(r.name))) {
-    return message.reply(':no_entry_sign: | Sorry, you don\'t have permissions to use this!')
+    return message.reply(':no_entry_sign:	׀ Sorry, you don\'t have permissions to use this!')
   }
   let member = message.mentions.members.first()
   if (!member) { return message.reply('Please mention a valid member of this server') }
