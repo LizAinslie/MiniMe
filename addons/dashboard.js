@@ -3,10 +3,17 @@ const Strategy = require("passport-discord").Strategy
 const session = require("express-session");
 const LevelStore = require("level-session-store")(session)
 
+const moment = require("moment");
+require("moment-duration-format");
 const express = require("express");
 const app = express();
 
 const helmet = require("helmet")
+
+const url = require("url");
+const path = require("path");
+
+const md = require("marked")
 
 module.exports = client => {
   passport.serializeUser((user, done) => {
@@ -282,8 +289,8 @@ module.exports = client => {
     if (!isManaged && !req.session.isAdmin) res.redirect("/")
 
     renderTemplate(res, req, "guild/manage.ejs", {guild});
-    })
-  });
+  })
+ 
 
   app.post("/dashboard/:guildID/manage", checkAuth, (req, res) => {
     client.guildSettings.set(req.params.guildID, {
