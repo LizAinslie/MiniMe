@@ -73,105 +73,85 @@
         <label for="serverlog">Server-Log</label>
         <br>
         <div class="form-group">
-          <select style="width: 100px;" name="serverlog" required class="form-control">
-            <% if (serverLogChannel == 'off'){ %>
-              <% guild.channels.forEach(channel => {
-                if (channel.type != 'text') return;
-              %>
-              <option value="<%= channel.id %>">#<%= channel.name %></option>
-              <% }); %>  
-            <% } %>
-            <% if (serverLogChannel != 'off'){ %>
-            <option value="off">Off</option>
+          <select style="width: 100px;" name="serverLog" required class="form-control">
             <% guild.channels.forEach(channel => {
               if (channel.type != 'text') return;
               if (channel.id == serverLogChannel){ %>
-              <option selected value="<%= channel.id %>">#<%= channel.name %></option>
+                <option selected value="<%= channel.id %>">#<%= channel.name %></option>
             <% } %>
             <option value="<%= channel.id %>">#<%= channel.name %></option>
-          <% }); %>  
-        <% } %>
-      </select>
-    </div>
-    <label for="joinrole">Auto Role</label>
-    <div class="form-group">
-      <select style="width: 100px;" name="joinrole" class="form-control">
-    <% if (joinRole == 'off'){ %>
-      <option selected value="off">Off</option>
-      <% 
-      guild.roles.forEach(role => {
-        if (role.name == '@everyone') return;
-        %>
-        <option value="<%= role.name %>"><%= role.name %></option>
-        <% }); %>  
-      <% } %>
-      <% if (joinRole != 'off'){ %>
-      <option value="off">Off</option>
-      <% 
-      guild.roles.forEach(role => {
-        if (role.name == '@everyone') return;
-          if (role.id == joinRole){ %>
-          <option selected value="<%= role.id %>"><%= role.name %></option>
-        <% } %>
-        <option value="<%= role.id %>"><%= role.name %></option>
-        <% }); %>  
-      <% } %>
-  </select>
-</div>  
-  <label for="welcomelog">Welcomer</label>
-<div class="form-group">
-  <select style="width: 100px;" name="welcomelog" class="form-control">
-    <% if (welcomeLog == 'off'){ %>
-      <option selected value="off">Off</option>
-      <% 
-      guild.channels.forEach(channel => {
-          if (channel.type != 'text') return;
-        %>
-        <option value="<%= channel.id %>">#<%= channel.name %></option>
-        <% }); %>  
-      <% } %>
-      <% if (welcomeLog != 'off'){ %>
-      <option value="off">Off</option>
-      <% 
-      guild.channels.forEach(channel => {
-          if (channel.type != 'text') return;
-          if (channel.id == welcomeLog){ %>
-          <option selected value="<%= channel.id %>">#<%= channel.name %></option>
-        <% } %>
-        <option value="<%= channel.id %>">#<%= channel.name %></option>
-        <% }); %>  
-      <% } %>
-  </select>
-</div>
-<% if (welcomeLog != 'off') { %>
-<label for="welcomemessage">Welcome Message</label>
-<br>
-<div class="form-group">
-<input maxlength=2499 name="welcomemessage" placeholder="Welcome {user.mention} to {server.name}!" class="form-control" value="<%= welcomeMessage %>">
-</div>
-<label for="leavemessage">Leave Message</label>
-<br>
-<div class="form-group">
-<input maxlength=2499 name="leavemessage" placeholder="{user.name} has left {server.name}!" class="form-control" value="<%= leaveMessage %>">
-</div>
-<br>
-<label>Variables</label>
-<code>
-{user.mention}
-{user.name}
-{server.name}
-{member.count}
-</code>
-<% } %>
-        <div style="width: 100%; text-align: right; margin-top: 20px;">
-          <button type="submit" class="btn btn-primary">Save Changes <i class="fa fa-fw fa-save" aria-hidden="true"></i></button>
-        </div>
-      </form>
-    </div>
+          <% }); %>
+        </select>
+      </div>
+      <label for="ownerRole">Owner Role</label>
+      <div class="form-group">
+        <select style="width: 100px;" name="ownerRole" class="form-control">
+          <% guild.roles.forEach(role => {
+            if (role.name == '@everyone') return;
+            if (role.name == ownerRole){ %>
+              <option selected value="<%= role.name %>"><%= role.name %></option>
+            <% } %>
+            <option value="<%= role.id %>"><%= role.name %></option>
+          <% }); %>
+        </select>
+      </div>
+      <label for="ownerRole">Moderator Role</label>
+      <div class="form-group">
+        <select style="width: 100px;" name="modRole" class="form-control">
+          <% guild.roles.forEach(role => {
+            if (role.name == '@everyone') return;
+            if (role.name == modRole){ %>
+              <option selected value="<%= role.name %>"><%= role.name %></option>
+            <% } %>
+            <option value="<%= role.id %>"><%= role.name %></option>
+          <% }); %>
+        </select>
+      </div>
+      <label for="ownerRole">Helper Role</label>
+      <div class="form-group">
+        <select style="width: 100px;" name="helperRole" class="form-control">
+          <% guild.roles.forEach(role => {
+            if (role.name == '@everyone') return;
+            if (role.name == joinRole){ %>
+              <option selected value="<%= role.name %>"><%= role.name %></option>
+            <% } %>
+            <option value="<%= role.id %>"><%= role.name %></option>
+          <% }); %>
+        </select>
+      </div>
+      <label for="ownerRole">Muted Role</label>
+      <div class="form-group">
+        <select style="width: 100px;" name="muteRole" class="form-control">
+          <% guild.roles.forEach(role => {
+            if (role.name == '@everyone') return;
+            if (role.name == muteRole){ %>
+              <option selected value="<%= role.name %>"><%= role.name %></option>
+            <% } %>
+            <option value="<%= role.id %>"><%= role.name %></option>
+          <% }); %>
+        </select>
+      </div>
+      <label for="welcomeLog">Welcomer</label>
+      <div class="form-group">
+        <select style="width: 100px;" name="welcomeLog" class="form-control">
+            <% guild.channels.forEach(channel => {
+              if (channel.type != 'text') return;
+              if (channel.id == welcomeLog){ %>
+                <option selected value="<%= channel.id %>">#<%= channel.name %></option>
+              <% } %>
+              <option value="<%= channel.id %>">#<%= channel.name %></option>
+            <% }); %>
+        </select>
+      </div>
+      <div style="width: 100%; text-align: right; margin-top: 20px;">
+        <button type="submit" class="btn btn-primary">Save Changes <i class="fa fa-fw fa-save" aria-hidden="true"></i></button>
+      </div>
+    </form>
   </div>
-  <% include ../blocks/guild-modals %>
-  <script type="text/javascript">
-    var ts = parseInt($('#guildCreate').text());
-    $('#guildCreate').html(`<strong>Created:</strong>: ${moment(ts).format('MMMM Do YYYY (h:mm a)')}`);
-  </script>
+</div>
+<% include ../blocks/guild-modals %>
+<script type="text/javascript">
+  var ts = parseInt($('#guildCreate').text());
+  $('#guildCreate').html(`<strong>Created:</strong>: ${moment(ts).format('MMMM Do YYYY (h:mm a)')}`);
+</script>
 <% include ../blocks/footer %>
