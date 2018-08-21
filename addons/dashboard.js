@@ -16,6 +16,12 @@ const path = require("path");
 const md = require("marked")
 
 module.exports = client => {
+  const dataDir = path.resolve(`${process.cwd()}${path.sep}dashboard`);
+
+  const templateDir = path.resolve(`${dataDir}${path.sep}templates`);
+
+  app.use("/public", express.static(path.resolve(`${dataDir}${path.sep}public`)));
+  
   passport.serializeUser((user, done) => {
     done(null, user);
   });
