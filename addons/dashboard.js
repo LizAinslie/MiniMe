@@ -23,7 +23,7 @@ module.exports = client => {
     done(null, obj);
   });
   passport.use(new Strategy({
-    clientID: client.appInfo.id,
+    clientID: client.config.info.id,
     clientSecret: client.config.dashboard.secret,
     callbackURL: client.config.dashboard.callback,
     scope: ["identify", "guilds", "guilds.join"]

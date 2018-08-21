@@ -10,6 +10,6 @@ module.exports = client => {
    *
    */
   
-  dashboard(client)
-  console.log('loaded Dashboard extension')
+//   dashboard(client)
+//   console.log('loaded Dashboard extension')
 }

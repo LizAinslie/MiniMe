@@ -3,14 +3,7 @@ const funcs = require('../modules/functions.js')
                       
 exports.run = (client, msg, args) => {
   args = args.join(' ').split('|')
-  let text, font
-  if (!args[1]) {
-    text = args[0]
-    font = 'Big'
-  } else {
-    text = args[1]
-    font = args[0]
-  }
+  const font = args[0], text = args[1]
   const ascii = '```' + figlet.textSync(text.trim(), {
     font: funcs.toTitleCase(font),
     horizontalLayout: 'default',
