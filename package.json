@@ -25,6 +25,7 @@
     "figlet": "^1.2.0",
     "gm": "^1.23.1",
     "google-translate-api": "github:mini-me-makers/google-translate-api",
+    "helmet": "^3.13.0",
     "idiotic-api": "^0.2.11",
     "level-session-store": "^2.1.0",
     "libsodium": "^0.7.3",

@@ -1,10 +1,5 @@
 <%- include('../blocks/header', {bot, user, path}) %>
 <div class="row">
-  <div class="col col-4">
-    <%- include('../blocks/guild-card', {guild, levelValue, modLogChannel, serverLogChannel}) %>
-  </div>
-  <br>
-  <br> 
   <style>
       .switch {
         position: relative;
@@ -141,6 +136,20 @@
               <% } %>
               <option value="<%= channel.id %>">#<%= channel.name %></option>
             <% }); %>
+        </select>
+      </div>
+      <label for="welcomeLog">Welcomer On/Off</label>
+      <div class="form-group">
+        <select style="width: 100px;" name="welcomes" class="form-control">
+          <option selected value="<%= false %>">False</option>
+          <option value="<%= true %>">True</option>
+        </select>
+      </div>
+      <label for="welcomeLog">Server Logs On/Off</label>
+      <div class="form-group">
+        <select style="width: 100px;" name="logs" class="form-control">
+          <option selected value="<%= false %>">False</option>
+          <option value="<%= true %>">True</option>
         </select>
       </div>
       <div style="width: 100%; text-align: right; margin-top: 20px;">
