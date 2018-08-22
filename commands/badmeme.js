@@ -5,7 +5,8 @@ exports.run = (client, msg) => {
     const meme = res.body.data.memes[Math.floor(Math.random() * res.body.data.memes.length)]
     msg.channel.send(meme.name, { file: meme.url })
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command.')
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
+    client.rollbar.error(`[badmeme.js] snekfetch error: ${error}`)
   })
 }
 

@@ -6,8 +6,12 @@ exports.run = (client, msg) => {
   snekfetch.get(`https://botlist.space/api/bots/${client.user.id}/upvotes?ids=true`)
   .set('Authorization', client.config.apis.bls)
   .end((err, res) => {
+    if (err) {
+      msg.channel.send(':exclamation: │ There was an error running the command. This incident has been reported.')
+      client.rollbar.error(`[lesbian.js] snekfetch error: ${err}`)
+    }
     var check = res.body.includes(msg.author.id)
-    if (check == 1) {
+    if (check === 1) {
       randomPuppy('lesbians').then(url => {
         msg.channel.send({
           embed: {

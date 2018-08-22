@@ -17,7 +17,8 @@ module.exports = (client, config) => {
       })
       .then(dispatcher => {
         dispatcher.on('error', error => {
-          voiceChannel.leave
+          voiceChannel.leave // eslint-disable-line no-unused-expressions
+          client.rollbar.error(`music error: ${error}`)
         })
         dispatcher.on('end', end => {
           msg.channel.send(`Finished playing music in ${voiceChannel}`)
@@ -35,6 +36,7 @@ module.exports = (client, config) => {
       switch (command) {
         case 'play':
           play(message, suffix)
+          break
         default:
       }
     }

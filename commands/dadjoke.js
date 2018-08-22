@@ -4,7 +4,8 @@ exports.run = (client, msg) => {
   snekfetch.get('https://icanhazdadjoke.com/', { headers: { 'accept': 'application/json' } }).then((result) => {
     msg.channel.send(result.body.joke)
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command.')
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
   })
 }
 

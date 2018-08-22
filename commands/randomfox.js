@@ -9,7 +9,8 @@ exports.run = (client, msg) => {
     .setImage(res.body.image)
     msg.channel.send(embed)
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command.')
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
+    client.rollbar.error(`[badmeme.js] snekfetch error: ${error}`)
   })
 }
 

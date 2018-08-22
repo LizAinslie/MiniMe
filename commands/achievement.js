@@ -1,6 +1,3 @@
-const Discord = require('discord.js')
-const snekfetch = require('snekfetch')
-
 exports.run = (client, message, args) => {
   try {
     let [title, contents] = args.join(' ').split('|')

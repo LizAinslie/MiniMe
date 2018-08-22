@@ -1,8 +1,8 @@
-const cmdStatuses = []
+const cmdStatuses = [] // eslint-disable-line no-unused-vars
 exports.run = (client, message, params) => {
   if (!params[0]) {
     const commandNames = Array.from(client.commands.keys())
-    const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0)
+//     const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0)
     message.channel.send({
       embed: {
         title: 'Command List',
@@ -20,31 +20,31 @@ exports.run = (client, message, params) => {
         fields: [
           {
             name: ':wrench: │ **Utility Commands:**',
-            value: client.commands.filter(c => c.help.type == 'util').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'util').map(c => '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':loud_sound: │ **Voice Commands:**',
-            value: client.commands.filter(c => c.help.type == 'vc').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'vc').map(c => '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':tada: │ **Fun Commands:**',
-            value: client.commands.filter(c => c.help.type == 'fun').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'fun').map(c => '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':scroll: │ **Roleplay Commands:**',
-            value: client.commands.filter(c => c.help.type == 'rp').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'rp').map(c => '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':hammer: │ **Moderator Commands:**',
-            value: client.commands.filter(c => c.help.type == 'mod').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'mod').map(c => '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':underage: │ **NSFW Commands:**',
-            value: client.commands.filter(c => c.help.type == 'nsfw').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'nsfw').map(c => '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':computer: │ **Developer Commands:**',
-            value: client.commands.filter(c => c.help.type == 'dev').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'dev').map(c => '`' + c.help.name + '`').join(', ')
           }
         ]
       }

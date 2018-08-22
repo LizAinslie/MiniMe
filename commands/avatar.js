@@ -19,7 +19,8 @@ exports.run = (client, msg, args) => {
       }
     })
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command.')
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    client.rollbar.error(`[avatar.js] resolveUser error: ${error}`)
   })
 }
 

@@ -1,5 +1,4 @@
 const snek = require('snekfetch')
-const Discord = require('discord.js')
 const util = require('../util.js')
 
 exports.run = (client, msg, args) => {

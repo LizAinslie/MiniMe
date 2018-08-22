@@ -1,6 +1,7 @@
 const passport = require('passport')
 const Strategy = require('passport-discord').Strategy
 const session = require('cookie-session')
+const Discord = require('discord.js')
 
 const moment = require('moment')
 require('moment-duration-format')
@@ -11,8 +12,6 @@ const helmet = require('helmet')
 
 const url = require('url')
 const path = require('path')
-
-const md = require('marked')
 
 module.exports = client => {
   console.log('dashboard 1')
@@ -89,7 +88,7 @@ module.exports = client => {
 
   app.get('/login', (req, res, next) => {
     if (req.session.backURL) {
-      req.session.backURL = req.session.backURL
+      req.session.backURL = req.session.backURL // eslint-disable-line no-self-assign
     } else if (req.headers.referer) {
       const parsed = url.parse(req.headers.referer)
       if (parsed.hostname === app.locals.domain) {

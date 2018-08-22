@@ -1,5 +1,3 @@
-const resolveUser = require('../util.js').resolveUser
-
 exports.run = async (client, message, args) => {
   // This command must be limited to mods and admins. In this example we just hardcode the role names.
   // Please read on Array.some() to understand this bit:

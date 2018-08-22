@@ -9,6 +9,10 @@ exports.run = (client, msg, args) => {
   snekfetch.get(`https://api.fortnitetracker.com/v1/profile/${platforms[args[0]]}/${args[1]}`)
   .set('TRN-Api-Key', client.config.apis.fortnite)
   .end((err, res) => {
+    if (err) {
+      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+      client.rollbar.error(`[fortnitestats.js] snekfetch error: ${err}`)
+    }
     const player = res.body
     let values
     for (let stat of player.lifeTimeStats) {
@@ -36,6 +40,7 @@ exports.run = (client, msg, args) => {
     })
   }).catch(err => {
     msg.channel.send(':exclamation: │ Failed to retrieve stats for that user!')
+    client.rollbar.error(`[fortnitestats.js] snekfetch error: ${err}`)
   })
 }
 
