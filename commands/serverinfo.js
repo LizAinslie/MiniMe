@@ -6,63 +6,63 @@ exports.run = (client, msg) => {
       timestamp: new Date(),
       footer: {
         icon_url: client.user.avatarURL,
-        text: "Status: 200"
+        text: 'Status: 200'
       },
       thumbnail: {
         url: guild.iconURL
       },
       author: {
-        name: `Server Info	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`,
+        name: `Server Info │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
         icon_url: msg.author.displayAvatarURL
       },
       fields: [
         {
-          name: "Region",
+          name: 'Region',
           value: guild.region,
           inline: true
         },
         {
-          name: "Owner",
+          name: 'Owner',
           value: guild.owner.toString(),
           inline: true
         },
         {
-          name: "ID",
+          name: 'ID',
           value: guild.id,
           inline: true
         },
         {
-          name: "Members",
+          name: 'Members',
           value: guild.members.size,
           inline: true
         },
         {
-          name: "Channels",
+          name: 'Channels',
           value: guild.channels.size,
           inline: true
         },
         {
-          name: "Large?",
+          name: 'Large?',
           value: guild.large ? 'Yes' : 'No',
           inline: true
         },
         {
-          name: "AFK Channel",
+          name: 'AFK Channel',
           value: guild.afkChannel ? guild.afkChannel.toString() : 'None',
           inline: true
         },
         {
-          name: "Default Role",
+          name: 'Default Role',
           value: `<@&${guild.defaultRole.id}>`,
           inline: true
         },
         {
-          name: "Roles",
-          value: guild.roles.map(r =>  `<@&${r.id}>`).join(', '),
+          name: 'Roles',
+          value: guild.roles.map(r => `<@&${r.id}>`).join(', '),
           inline: true
         },
         {
-          name: "Custom Emoji",
+          name: 'Custom Emoji',
           value: guild.emojis.map(e => `${e}`).join(', '),
           inline: true
         }

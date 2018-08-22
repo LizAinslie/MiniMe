@@ -3,28 +3,30 @@ const fs = require('fs')
 // const music = require('./music.js')
 const Enmap = require('enmap')
 const EnmapSql = require('enmap-sqlite')
-var Rollbar = require("rollbar");
-//const Idiot = require('idiotic-api')
+var Rollbar = require('rollbar')
+// const Idiot = require('idiotic-api')
 
 // Initialize the provider
 
-process.on('unhandledRejection', console.error);
+process.on('unhandledRejection', console.error)
 
 const client = new Discord.Client()
 const config = require('./config.json')
 client.config = config
 
 client.railEmoji = client.emojis.find('name', 'rail')
-//client.idiot = new Idiot.Client(config.apis.idiot, { dev: true })
-//client.points = new Enmap({provider: new EnmapSql({ name: 'points' })})
+// client.idiot = new Idiot.Client(config.apis.idiot, { dev: true })
+// client.points = new Enmap({provider: new EnmapSql({ name: 'points' })})
 
 client.guildSettings = new Enmap({provider: new EnmapSql({ name: 'settings', dataDir: './settings' })})
+
+client.userData = new Enmap({provider: new EnmapSql({ name: 'userData', dataDir: './data/' })})
 
 client.rollbar = new Rollbar({
   accessToken: config.apis.rollbar,
   captureUncaught: true,
   captureUnhandledRejections: true
-});
+})
 
 fs.readdir('./events/', (err, files) => {
   if (err) return console.error(err)

@@ -5,7 +5,7 @@ module.exports = async (client, channel) => {
   if (!client.guildSettings.has(channel.guild.id)) return
   if (!client.guildSettings.getProp(channel.guild.id, 'doLogs')) return
   const entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_DELETE'}).then(audit => audit.entries.first())
-  
+
   util.log(client, channel, {
     embed: {
       title: 'Channel Delete',

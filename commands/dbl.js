@@ -1,4 +1,4 @@
-const snekfetch = require('snekfetch');
+const snekfetch = require('snekfetch')
 const util = require('../util.js')
 
 exports.run = (client, msg, args) => {
@@ -14,12 +14,12 @@ exports.run = (client, msg, args) => {
             url: user.displayAvatarURL
           },
           description: bot.shortdesc,
-          image:{
+          image: {
             url: `https://discordbots.org/api/widget/${bot.id}.png`
           },
           author: {
             icon_url: msg.author.displayAvatarURL,
-            name: `DBL	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`
+            name: `DBL │ Requested by ${msg.author.username}#${msg.author.discriminator}`
           },
           footer: {
             icon_url: client.user.avatarURL,
@@ -61,11 +61,11 @@ exports.run = (client, msg, args) => {
         }
       })
     }).catch(err => {
-      msg.channel.send(':exclamation: | Failed to run the command. This incident has been reported.');
+      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
       client.rollbar.error('Error looking up bot on DBL: ' + err)
     })
   }).catch(err => {
-    msg.channel.send(':exclamation: | Failed to run the command. This incident has been reported.');
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
     client.rollbar.error('Error looking up bot on DBL: ' + err)
   })
 }

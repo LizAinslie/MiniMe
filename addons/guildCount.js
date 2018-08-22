@@ -8,7 +8,7 @@ module.exports = (client) => {
         .send({
           server_count: client.guilds.size
         }).then(() => console.log('Updated discordbots.org stats.'))
-        .catch(err => client.rollbar.error(`Discordbots.org server count update failed : ${err.body}`));
-    }, 1800000);
+        .catch(err => client.rollbar.error(`Discordbots.org server count update failed : ${err.body}`))
+    }, 1800000)
   })
 }

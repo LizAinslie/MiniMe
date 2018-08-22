@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 module.exports = (client, oldMsg, newMsg) => {
   if (!client.guildSettings.has(newMsg.guild.id)) return
   if (!client.guildSettings.getProp(newMsg.guild.id, 'doLogs')) return
-  
+
   const logChannel = newMsg.guild.channels.get(client.guildSettings.getProp(newMsg.guild.id, 'logChannel'))
   const embed = new Discord.RichEmbed()
   .setTitle('Message Edit')

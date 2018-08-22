@@ -11,11 +11,11 @@ exports.run = (client, msg, args) => {
       .setImage(res.body.url)
       msg.channel.send(embed)
     }).catch(err => {
-      msg.channel.send(':exclamation:	׀ Failed to run the command. This incident has been reported.')
+      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
       client.rollbar.error('[slap.js] Error getting image from nekos.life: ' + err.message)
     })
   }).catch(err => {
-    msg.channel.send(':exclamation:	׀ Failed to run the command. This incident has been reported.')
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
     client.rollbar.error('[slap.js] Error resolving user: ' + err.message + '][' + err.body)
   })
 }

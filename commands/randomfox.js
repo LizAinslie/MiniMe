@@ -5,12 +5,12 @@ exports.run = (client, msg) => {
   snek.get('https://randomfox.ca/floof/').then(res => {
     const embed = new Discord.RichEmbed()
     .setColor(client.config.color)
-    .setAuthor(`Fox	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
+    .setAuthor(`Fox │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
     .setImage(res.body.image)
     msg.channel.send(embed)
   }).catch((error) => {
-    msg.channel.send(':exclamation:	׀ Failed to run the command.');
-  });
+    msg.channel.send(':exclamation: │ Failed to run the command.')
+  })
 }
 
 exports.help = {

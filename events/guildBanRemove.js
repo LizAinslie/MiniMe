@@ -4,7 +4,7 @@ const dateformat = require('dateformat')
 module.exports = (client, guild, user) => {
   if (!client.guildSettings.has(guild.id)) return
   if (!client.guildSettings.getProp(guild.id, 'doLogs')) return
-  
+
   util.log(client, guild.channels.get(client.guildSettings.getProp(guild.id, 'logChannel')), {
     embed: {
       title: 'User Unban',

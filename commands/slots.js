@@ -11,25 +11,25 @@ exports.run = (client, message) => {
     ':doughnut:',
     ':cookie:',
     ':ice_cream:'
-  ];
+  ]
 
-  let reels = [];
+  let reels = []
   for (let i = 0; i < 3; i++) {
-    reels.push(reel[Math.floor(Math.random() * reel.length)]);
+    reels.push(reel[Math.floor(Math.random() * reel.length)])
   }
 
   message.channel.send({
     embed: {
       color: client.config.color,
       title: 'Slot Machine',
-      description: reels.join(' \u05C0 '),
+      description: reels.join(' │ '),
       footer: {
         text: reels[0] === reels[1] && reels[1] === reels[2] ? 'Congrats! You won.' : 'Sorry, you lost.'
       }
     }
   }).catch(e => {
-    client.rollbar.error(e);
-  });
+    client.rollbar.error(e)
+  })
 }
 
 exports.help = {

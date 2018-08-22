@@ -2,13 +2,13 @@ const snekfetch = require('snekfetch')
 const config = require('../config.json')
 
 exports.run = (client, msg, args) => {
-  if (args.length < 1) return msg.channel.send(':question:	׀ You must provide a server IP address.');
-  const host = args.join('').split(':')[0];
-  const port = args.join('').split(':')[1] || '25565';
-  if (isNaN(port)) return msg.channel.send(':exclamation:	׀ The port must be a valid number.');
-  if (Number(port) > 65536) return msg.channel.send(':exclamation:	׀ The port must be less than or equal to 65536.');
+  if (args.length < 1) return msg.channel.send(':question: │ You must provide a server IP address.')
+  const host = args.join('').split(':')[0]
+  const port = args.join('').split(':')[1] || '25565'
+  if (isNaN(port)) return msg.channel.send(':exclamation: │ The port must be a valid number.')
+  if (Number(port) > 65536) return msg.channel.send(':exclamation: │ The port must be less than or equal to 65536.')
   snekfetch.get('https://mcapi.us/server/status?ip=' + host + '&port=' + port).then((server) => {
-    server = server.body;
+    server = server.body
     if (server.status === 'success') {
       const send = (favicon) => {
         const data = {
@@ -27,19 +27,19 @@ exports.run = (client, msg, args) => {
               inline: true
             }
           ]
-        };
-        if (favicon) data.thumbnail = { url: favicon };
+        }
+        if (favicon) data.thumbnail = { url: favicon }
         msg.channel.send({
           embed: data
-        });
-      };
+        })
+      }
       send()
     } else {
-      msg.channel.send(':exclamation:	׀ Unable to ping any servers by that IP address.');
+      msg.channel.send(':exclamation: │ Unable to ping any servers by that IP address.')
     }
   }).catch((error) => {
-    msg.channel.send(':exclamation:	׀ Failed to run the command.');
-  });
+    msg.channel.send(':exclamation: │ Failed to run the command.')
+  })
 }
 
 exports.help = {

@@ -1,9 +1,9 @@
 const figlet = require('figlet')
 const funcs = require('../modules/functions.js')
-                      
+
 exports.run = (client, msg, args) => {
   args = args.join(' ').split('|')
-  const font = args[0], text = args[1]
+  const font = args[0]; const text = args[1]
   const ascii = '```' + figlet.textSync(text.trim(), {
     font: funcs.toTitleCase(font),
     horizontalLayout: 'default',
@@ -15,7 +15,7 @@ exports.run = (client, msg, args) => {
       description: ascii,
       author: {
         icon_url: msg.author.displayAvatarURL,
-        name: `Ascii	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`
+        name: `Ascii │ Requested by ${msg.author.username}#${msg.author.discriminator}`
       },
       footer: {
         icon_url: client.user.avatarURL,

@@ -1,7 +1,7 @@
-const randomPuppy = require('random-puppy');
+const randomPuppy = require('random-puppy')
 
 exports.run = (client, msg) => {
-  if (!msg.channel.nsfw) return msg.channel.send(':exclamation: | You can only run this command in a NSFW channel!');
+  if (!msg.channel.nsfw) return msg.channel.send(':exclamation: | You can only run this command in a NSFW channel!')
   randomPuppy('lesbians').then(url => {
     msg.channel.send('Here, have some lesbian porn.', { file: url })
   })

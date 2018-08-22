@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 module.exports = async (client, message) => {
   // Ignore all bots
   if (message.author.bot) return
-  //let key
+  // let key
   if (message.guild) {
     // We'll use the key often enough that simplifying it is worth the trouble.
   //  key = `${message.guild.id}-${message.author.id}`
@@ -19,11 +19,11 @@ module.exports = async (client, message) => {
     // Get only the current points for the user.
   //  let currentPoints = client.points.getProp(key, 'points')
     // Increment the points and save them.
-    //client.points.setProp(key, 'points', ++currentPoints)
+    // client.points.setProp(key, 'points', ++currentPoints)
     // Set the date; for clearing out old users from the database.
     // client.points.setProp(key, "lastSeen", new Date())
     // Calculate the user's current level
-    //const curLevel = Math.floor(0.1 * Math.sqrt(currentPoints))
+    // const curLevel = Math.floor(0.1 * Math.sqrt(currentPoints))
     // Act upon level up by sending a message and updating the user's level in enmap.
    // if (client.points.getProp(key, 'level') < curLevel) {
       // message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`)
@@ -33,7 +33,7 @@ module.exports = async (client, message) => {
 
   // Ignore messages not starting with the prefix (in config.json)
   if (message.content.indexOf(client.config.prefix) !== 0) return
-  
+
 //  if (message.content === '!join') {
 //    client.emit('guildMemberAdd', message.member || await message.guild.fetchMember(message.author));
 //  }
@@ -87,21 +87,21 @@ module.exports = async (client, message) => {
 //     This will require you to add the following in the points code above: client.points.setProp(key, "lastSeen", new Date());
 
 //     Get a filtered list (for this guild only).
-   //const filtered = client.points.filter(p => p.guild === message.guild.id)
+   // const filtered = client.points.filter(p => p.guild === message.guild.id)
 
 //     We then filter it again (ok we could just do this one, but for clarity's sake...)
 //     So we get only users that haven't been online for a month, or are no longer in the guild.
  //  const rightNow = new Date()
   // const toRemove = filtered.filter(data => {
-   //return !message.guild.members.has(data.user) || rightNow - 2592000000 > data.lastSeen
+   // return !message.guild.members.has(data.user) || rightNow - 2592000000 > data.lastSeen
   // })
 
-   //toRemove.forEach(data => {
+   // toRemove.forEach(data => {
   //   client.points.delete(`${message.guild.id}-${data.user}`)
  //  })
 
  //  message.channel.send(`I've cleaned up ${toRemove.size} old farts.`)
- //}
+ // }
 
   // Grab the command data from the client.commands Enmap
   const cmd = client.commands.get(command)

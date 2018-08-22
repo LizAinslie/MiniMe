@@ -23,7 +23,7 @@ const responses = [
 exports.run = (client, message, args) => {
   if (args.length < 1) return message.channel.send(':question: │ Missing `<question>` option.')
   if (!(args[args.length - 1].endsWith('?'))) return message.channel.send(':question: │ Missing a `?`.')
-  message.channel.send(':crystal_ball:	׀ ' + responses[Math.floor(Math.random() * responses.length)])
+  message.channel.send(':crystal_ball: │ ' + responses[Math.floor(Math.random() * responses.length)])
 }
 
 exports.help = {

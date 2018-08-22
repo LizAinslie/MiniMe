@@ -22,11 +22,11 @@ exports.run = (client, msg, args) => {
         }
       })
     }).catch(err => {
-      msg.channel.send(':exclamation:	׀ Failed to run the command. This incident has been reported.')
+      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
       client.rollbar.error('[kiss.js] Error getting image from nekos.life: ' + err)
     })
   }).catch(err => {
-    msg.channel.send(':exclamation:	׀ Failed to run the command. This incident has been reported.')
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
     client.rollbar.error('[kiss.js] Error resolving user: ' + err)
   })
 }

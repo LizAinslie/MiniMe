@@ -7,13 +7,13 @@ exports.run = (client, msg, args) => {
       util.resolveUser(client, args.join(' ')).then((user) => {
         msg.channel.send((msg.channel.guild && msg.channel.guild.members.has(user.id) ? '<@' + user.id + '>' : user.username + '#' + user.discriminator) + ' ' + JSON.parse(result.body).insult)
       }).catch(() => {
-        msg.channel.send(':exclamation:	׀ Unable to find any users by that query.')
+        msg.channel.send(':exclamation: │ Unable to find any users by that query.')
       })
     } else {
       msg.channel.send('<@' + msg.author.id + '> ' + JSON.parse(result.body).insult)
     }
   }).catch((error) => {
-    msg.channel.send(':exclamation:	׀ Failed to run the command.')
+    msg.channel.send(':exclamation: │ Failed to run the command.')
     client.error(error)
   })
 }

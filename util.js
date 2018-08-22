@@ -69,50 +69,50 @@ exports.get = (id, channel, client) => {
 }
 
 exports.stripTrailingZero = (temperature) => {
-	if (temperature % 1 === 0) return Math.trunc(temperature);
-	return temperature.toFixed(1);
-};
+	if (temperature % 1 === 0) return Math.trunc(temperature)
+	return temperature.toFixed(1)
+}
 
 exports.resolveChannel = (bot, query, guild) => {
 	return new Promise((resolve, reject) => {
 		if (/^\d+$/.test(query)) {
 			if (guild) {
-				if (!guild.channels.has(query)) reject();
-				resolve(guild.channels.get(query));
+				if (!guild.channels.has(query)) reject()
+				resolve(guild.channels.get(query))
 			} else {
-				const channel = query in bot.channelGuildMap && bot.guilds.get(bot.channelGuildMap[query]).channels.get(query);
-				if (channel) return resolve(channel);
+				const channel = query in bot.channelGuildMap && bot.guilds.get(bot.channelGuildMap[query]).channels.get(query)
+				if (channel) return resolve(channel)
 			}
 		} else if (/^<#(\d+)>$/.test(query)) {
-			const match = query.match(/^<#(\d+)>$/);
+			const match = query.match(/^<#(\d+)>$/)
 			if (guild) {
-				if (!guild.channels.has(match[1])) reject();
-				resolve(guild.channels.get(match[1]));
+				if (!guild.channels.has(match[1])) reject()
+				resolve(guild.channels.get(match[1]))
 			} else {
-				const channel = match[1] in bot.channelGuildMap && bot.guilds.get(bot.channelGuildMap[match[1]]).channels.get(match[1]);
-				if (channel) return resolve(channel);
+				const channel = match[1] in bot.channelGuildMap && bot.guilds.get(bot.channelGuildMap[match[1]]).channels.get(match[1])
+				if (channel) return resolve(channel)
 			}
 		} else if (guild) {
-			const channels = guild.channels.filter((channel) => channel.name.toLowerCase().includes(query.toLowerCase()));
-			if (channels.length > 0) return resolve(channels[0]);
+			const channels = guild.channels.filter((channel) => channel.name.toLowerCase().includes(query.toLowerCase()))
+			if (channels.length > 0) return resolve(channels[0])
 		}
-		reject();
-	});
+		reject()
+	})
 }
 
 exports.resolveRole = (bot, query, guild) => {
 	return new Promise((resolve, reject) => {
 		if (/^\d+$/.test(query)) {
-			const role = guild.roles.get(query);
-			if (role) return resolve(role);
+			const role = guild.roles.get(query)
+			if (role) return resolve(role)
 		} else if (/^<@&(\d+)>$/.test(query)) {
-			const match = query.match(/^<@&(\d+)>$/);
-			const role = guild.roles.get(match[1]);
-			if (role) return resolve(role);
+			const match = query.match(/^<@&(\d+)>$/)
+			const role = guild.roles.get(match[1])
+			if (role) return resolve(role)
 		} else {
-			const roles = guild.roles.filter((role) => role.name.toLowerCase().includes(query.toLowerCase()));
-			if (roles.length > 0) return resolve(roles[0]);
+			const roles = guild.roles.filter((role) => role.name.toLowerCase().includes(query.toLowerCase()))
+			if (roles.length > 0) return resolve(roles[0])
 		}
-		reject();
-	});
-};
+		reject()
+	})
+}

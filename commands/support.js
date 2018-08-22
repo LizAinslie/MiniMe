@@ -3,9 +3,9 @@ exports.run = (client, msg) => {
 }
 
 exports.help = {
-  name: "support",
-  description: "Have the bot provide support.",
-  usage: "support",
-  fullDesc: "Have the bot provide support. Will link to the support server.",
+  name: 'support',
+  description: 'Have the bot provide support.',
+  usage: 'support',
+  fullDesc: 'Have the bot provide support. Will link to the support server.',
   type: 'util'
 }

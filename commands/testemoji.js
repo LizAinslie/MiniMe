@@ -4,7 +4,7 @@ const emojis = [
 
 exports.run = (client, msg) => {
   for (let emoji in emojis) {
-    msg.channel.send("emoji: <:online:313956277808005120>")
+    msg.channel.send('emoji: <:online:313956277808005120>')
   }
 }
 

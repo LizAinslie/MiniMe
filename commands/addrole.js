@@ -2,19 +2,19 @@ const funcs = require('../modules/functions.js')
 const config = require('../config.json')
 
 exports.run = (client, message, args) => {
-  if (!args[0]) return message.channel.send(':interrobang:	׀ You must supply a <role> option.')
+  if (!args[0]) return message.channel.send(':interrobang: │ You must supply a <role> option.')
   let newRole = {
     name: args[0]
   }
   if (args[1]) {
     newRole.color = args[1].toUpperCase()
   } else {
-    return message.channel.send(':interrobang:	׀ You must supply a <color> option.')
+    return message.channel.send(':interrobang: │ You must supply a <color> option.')
   }
   if (args[2]) {
     newRole.position = parseInt(args[2], 10)
   } else {
-    return message.channel.send(':interrobang:	׀ You must supply a <color> option.')
+    return message.channel.send(':interrobang: │ You must supply a <color> option.')
   }
   if (args[3]) {
     if (args[3].toLowerCase() === 'true') {
@@ -22,10 +22,10 @@ exports.run = (client, message, args) => {
     } else if (args[3].toLowerCase() === 'false') {
       newRole.mentionable = false
     } else {
-      return message.channel.send(':interrobang:	׀ You must either specify `true` or `false` for the <mentionable> option.')
+      return message.channel.send(':interrobang: │ You must either specify `true` or `false` for the <mentionable> option.')
     }
   } else {
-    return message.channel.send(':interrobang:	׀ You must supply a <mentionable> option.')
+    return message.channel.send(':interrobang: │ You must supply a <mentionable> option.')
   }
   if (args[4]) {
     if (args[4].toLowerCase() === 'true') {
@@ -33,10 +33,10 @@ exports.run = (client, message, args) => {
     } else if (args[4].toLowerCase() === 'false') {
       newRole.hoist = false
     } else {
-      return message.channel.send(':interrobang:	׀ You must either specify `true` or `false` for the <separate> option.')
+      return message.channel.send(':interrobang: │ You must either specify `true` or `false` for the <separate> option.')
     }
   } else {
-    return message.channel.send(':interrobang:	׀ You must supply a <separate> option.')
+    return message.channel.send(':interrobang: │ You must supply a <separate> option.')
   }
   message.guild.createRole(newRole)
   .then(role => {

@@ -4,8 +4,8 @@ exports.run = (client, msg) => {
   snekfetch.get('http://api.icndb.com/jokes/random').then((result) => {
     msg.channel.send(result.body.value.joke)
   }).catch((error) => {
-    msg.channel.send(':exclamation:	׀ Failed to run the command.');
-  });
+    msg.channel.send(':exclamation: │ Failed to run the command.')
+  })
 }
 
 exports.help = {

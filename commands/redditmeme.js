@@ -7,7 +7,7 @@ exports.run = (client, msg) => {
         color: client.config.color,
         author: {
           icon_url: msg.author.displayAvatarURL,
-          name: `Meme	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`
+          name: `Meme │ Requested by ${msg.author.username}#${msg.author.discriminator}`
         },
         image: {
           url: url

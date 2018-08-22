@@ -4,8 +4,8 @@ exports.run = (client, msg, args) => {
   snek.get(`http://numbersapi.com/${args[0]}/trivia?default=Boring+number+is+boring.`).then(res => {
     msg.channel.send(res.body.toString())
   }).catch((error) => {
-    msg.channel.send(':exclamation:	׀ Failed to run the command.');
-  });
+    msg.channel.send(':exclamation: │ Failed to run the command.')
+  })
 }
 
 exports.help = {

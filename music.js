@@ -5,7 +5,7 @@ module.exports = (client, config) => {
   var module = {}
 
   var queue = []
-  
+
   var play = (msg, suffix) => {
     var voiceChannel = msg.member.voiceChannel
     if (!voiceChannel) return msg.channel.send(':interrobang: | You\'re not in a voice channel!')
@@ -116,7 +116,7 @@ module.exports = (client, config) => {
     }
     playQueue(msg, suffix, voiceChannel)
   }
-  
+
   client.on('message', msg => {
     let message = msg.content.trim()
 

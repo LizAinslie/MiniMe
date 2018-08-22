@@ -5,7 +5,7 @@ module.exports = async (client, role) => {
   if (!client.guildSettings.has(role.guild.id)) return
   if (!client.guildSettings.getProp(role.guild.id, 'doLogs')) return
   const entry = await role.guild.fetchAuditLogs({type: 'ROLE_CREATE'}).then(audit => audit.entries.first())
-  
+
   util.log(client, role.guild.channels.get(client.guildSettings.getProp(role.guild.id, 'logChannel')), {
     embed: {
       title: 'Role Create',

@@ -2,7 +2,7 @@ const randomPuppy = require('random-puppy')
 const snekfetch = require('snekfetch')
 
 exports.run = (client, msg) => {
-  if (!msg.channel.nsfw) return msg.channel.send(':exclamation:	׀ You can only run this command in a NSFW channel!');
+  if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
   snekfetch.get(`https://botlist.space/api/bots/${client.user.id}/upvotes?ids=true`)
   .set('Authorization', client.config.apis.bls)
   .end((err, res) => {
@@ -13,7 +13,7 @@ exports.run = (client, msg) => {
           embed: {
             author: {
               icon_url: msg.author.displayAvatarURL,
-              name: `Porn Gif	׀ Requested by ${msg.author.username}#${msg.author.discriminator}`
+              name: `Porn Gif │ Requested by ${msg.author.username}#${msg.author.discriminator}`
             },
             color: client.config.color,
             image: {
@@ -22,7 +22,7 @@ exports.run = (client, msg) => {
             timestamp: new Date(),
             footer: {
               icon_url: client.user.avatarURL,
-              text: "Status: 200"
+              text: 'Status: 200'
             }
           }
         })
@@ -30,18 +30,18 @@ exports.run = (client, msg) => {
     } else {
       msg.channel.send({
         embed: {
-          title: "Upvoters-Only Command",
-          url: "https://botlist.space/view/456926578228723724",
-          description: "This command is available only for upvoters",
+          title: 'Upvoters-Only Command',
+          url: 'https://botlist.space/view/456926578228723724',
+          description: 'This command is available only for upvoters',
           fields: [{
-              name: "Go upvote at",
-              value: "https://botlist.space/view/456926578228723724"
+              name: 'Go upvote at',
+              value: 'https://botlist.space/view/456926578228723724'
             }
           ],
           timestamp: new Date(),
           footer: {
             icon_url: client.user.avatarURL,
-            text: "Status: 403"
+            text: 'Status: 403'
           }
         }
       })

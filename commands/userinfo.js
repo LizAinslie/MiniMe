@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
         },
         author: {
           icon_url: message.author.displayAvatarURL,
-          name: `User Info	׀ Requested by ${message.author.username}#${message.author.discriminator}`
+          name: `User Info │ Requested by ${message.author.username}#${message.author.discriminator}`
         },
         footer: {
           icon_url: client.user.avatarURL,
@@ -55,7 +55,7 @@ exports.run = (client, message, args) => {
           },
           {
             name: 'Status:',
-            value: `${statuses[user.presence.status]} | ${funcs.toTitleCase(user.presence.status)}`,
+            value: `${statuses[user.presence.status]} │ ${funcs.toTitleCase(user.presence.status)}`,
             inline: true
           }
         ]

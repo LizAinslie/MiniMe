@@ -1,7 +1,5 @@
 const ytdl = require('ytdl-core')
 
-
-
 module.exports = (client, config) => {
   const play = (msg, suffix) => {
     const voiceChannel = msg.member.voiceChannel
@@ -33,12 +31,11 @@ module.exports = (client, config) => {
     if (message.toLowerCase().startsWith(config.prefix.toLowerCase())) {
       const command = message.substring(config.prefix.length).split(/[ \n]/)[0].toLowerCase().trim()
       const suffix = message.substring(config.prefix.length + command.length).trim()
-      
+
       switch (command) {
         case 'play':
           play(message, suffix)
         default:
-          return
       }
     }
   })

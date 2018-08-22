@@ -1,10 +1,8 @@
 exports.run = (client, message, args, level) => {
+  let question = args.slice(0).join(' ')
 
-  let question = args.slice(0).join(" ");
+  if (args.length === 0) { return message.reply('**Invalid Format:** `!poll <Question>`') }
 
-  if (args.length === 0)
-  return message.reply('**Invalid Format:** `!poll <Question>`')
-  
   message.channel.send({
     embed: {
       title: 'A Poll Has Been Started!',
@@ -21,8 +19,18 @@ exports.run = (client, message, args, level) => {
       timestamp: new Date()
     }
   })
-  .then(() => message.react('👍'))
-  .then(() => message.react('👎'))
-  .then(() => message.react('🤷'))
-  .catch(() => client.rollbar.error('[poll.js] Emoji failed to react.'));
+  .then(msg => {
+    msg.react('👍')
+    msg.react('🤷')
+    msg.react('👎')
+  })
+  .catch(() => client.rollbar.error('[poll.js] Emoji failed to react.'))
+}
+
+exports.help = {
+  name: 'poll',
+  description: 'Starts a poll.',
+  usage: 'poll <question>',
+  fullDesc: 'Starts a poll.',
+  type: 'fun'
 }

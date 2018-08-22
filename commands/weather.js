@@ -3,7 +3,7 @@ const config = require('../config.json')
 const util = require('../util')
 
 exports.run = (client, msg, args) => {
-  if (args.length < 1) return msg.channel.send(':question: | You must provide a location.');
+  if (args.length < 1) return msg.channel.send(':question: │ You must provide a location.')
   snekfetch.get('https://api.openweathermap.org/data/2.5/weather?q=' + encodeURIComponent(args.join(' ')) + '&APPID=' + config.apis.openweathermap).then((result) => {
     msg.channel.send({
       embed: {
@@ -17,17 +17,17 @@ exports.run = (client, msg, args) => {
           },
           {
             name: 'Temperature',
-            value: util.stripTrailingZero((result.body.main.temp * (9/5)) - 459.67) + ' °F / ' + util.stripTrailingZero(result.body.main.temp - 273.15) + ' °C',
+            value: util.stripTrailingZero((result.body.main.temp * (9 / 5)) - 459.67) + ' °F / ' + util.stripTrailingZero(result.body.main.temp - 273.15) + ' °C',
             inline: true
           },
           {
             name: 'Min. Temperature',
-            value: util.stripTrailingZero((result.body.main.temp_min * (9/5)) - 459.67) + ' °F / ' + util.stripTrailingZero(result.body.main.temp_min - 273.15) + ' °C',
+            value: util.stripTrailingZero((result.body.main.temp_min * (9 / 5)) - 459.67) + ' °F / ' + util.stripTrailingZero(result.body.main.temp_min - 273.15) + ' °C',
             inline: true
           },
           {
             name: 'Max. Temperature',
-            value: util.stripTrailingZero((result.body.main.temp_max * (9/5)) - 459.67) + ' °F / ' + util.stripTrailingZero(result.body.main.temp_max - 273.15) + ' °C',
+            value: util.stripTrailingZero((result.body.main.temp_max * (9 / 5)) - 459.67) + ' °F / ' + util.stripTrailingZero(result.body.main.temp_max - 273.15) + ' °C',
             inline: true
           },
           {
@@ -47,7 +47,7 @@ exports.run = (client, msg, args) => {
           },
           {
             name: 'Wind',
-            value: util.stripTrailingZero(result.body.wind.speed * (25/11)) + ' mph / ' + util.stripTrailingZero(result.body.wind.speed * 3.6) + ' km/h',
+            value: util.stripTrailingZero(result.body.wind.speed * (25 / 11)) + ' mph / ' + util.stripTrailingZero(result.body.wind.speed * 3.6) + ' km/h',
             inline: true
           },
           {
@@ -60,11 +60,11 @@ exports.run = (client, msg, args) => {
           text: 'Information provided via Open Weather Map'
         }
       }
-    });
+    })
   }).catch((error) => {
-    if (error.statusCode === 404) return msg.channel.send(':exclamation:	׀ Unable to find any locations by that name.');
-    msg.channel.send(':exclamation:	׀ Failed to run the command.');
-  });
+    if (error.statusCode === 404) return msg.channel.send(':exclamation: │ Unable to find any locations by that name.')
+    msg.channel.send(':exclamation: │ Failed to run the command.')
+  })
 }
 
 exports.help = {

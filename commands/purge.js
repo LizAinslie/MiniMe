@@ -1,6 +1,6 @@
 exports.run = async (client, msg, args) => {
   // This command removes all messages from all users in the channel, up to 100.
-  if (!msg.member.roles.some(r => [client.guildSettings.getProp(msg.guild.id, 'ownerRole'), client.guildSettings.getProp(msg.guild.id, 'modRole'), client.guildSettings.getProp(msg.guild.id, 'helperRole')].includes(r.name))) { return msg.reply(':no_entry_sign:	׀ Sorry, you don\'t have permissions to use this!') }
+  if (!msg.member.roles.some(r => [client.guildSettings.getProp(msg.guild.id, 'ownerRole'), client.guildSettings.getProp(msg.guild.id, 'modRole'), client.guildSettings.getProp(msg.guild.id, 'helperRole')].includes(r.name))) { return msg.reply(':no_entry_sign: │ Sorry, you don\'t have permissions to use this!') }
   // get the delete count, as an actual number.
   const deleteCount = parseInt(args[0], 10)
 
