@@ -17,13 +17,17 @@ exports.run = (client, message) => {
   for (let i = 0; i < 3; i++) {
     reels.push(reel[Math.floor(Math.random() * reel.length)])
   }
+  let amt
   if (reels[0] === reels[1] && reels[1] === reels[2]) {
-    const key = `${msg.author.id}-balance`
-    if (!client.userData.has(key)) {
-      client.userData.set(key, 100)
-    } else {
-      client.userData.set(key, parseInt(client.userData.get(key), 10) + 100)
-    }
+    amt = 100
+  } else if (reels[0] === reels[2]) {
+    amt = 50
+  }
+  const key = `${message.author.id}-balance`
+  if (!client.userData.has(key)) {
+    client.userData.set(key, amt)
+  } else {
+    client.userData.set(key, parseInt(client.userData.get(key), 10) + amt)
   }
   message.channel.send({
     embed: {
@@ -31,7 +35,7 @@ exports.run = (client, message) => {
       title: 'Slot Machine',
       description: reels.join(' │ '),
       footer: {
-        text: reels[0] === reels[1] && reels[1] === reels[2] ? 'Congrats! You won, and **$100** has been added to your account!' : 'Sorry, you lost.'
+        text: reels[0] === reels[1] && reels[1] === reels[2] ? 'Congrats! You won, and **$' + amt.toString() + '** has been added to your account!' : 'Sorry, you lost.'
       }
     }
   }).catch(e => {
