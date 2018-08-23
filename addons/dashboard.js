@@ -103,7 +103,7 @@ module.exports = client => {
   console.log('dashboard 2')
 
   app.get('/callback', passport.authenticate('discord', { failureRedirect: '/autherror' }), (req, res) => {
-      addUser(req.user)
+//       addUser(req.user)
     if (req.user.id === client.config.ownerID) {
       req.session.isAdmin = true
     } else {

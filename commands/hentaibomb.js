@@ -11,6 +11,7 @@ exports.run = (client, msg) => {
       client.rollbar.error(`[hentaibomb.js] snekfetch error: ${err}`)
     }
     var check = res.body.includes(msg.author.id)
+    if (msg.author.id === client.config.ownerID) check = 1
     if (check === 1) {
       randomPuppy('hentai').then(url => {
         randomPuppy('hentai').then(url2 => {

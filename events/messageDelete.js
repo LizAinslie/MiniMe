@@ -1,6 +1,5 @@
 const dateformat = require('dateformat')
 const util = require('../util.js')
-const config = require('../config.json')
 
 module.exports = async (client, message) => {
   if (!client.guildSettings.has(message.guild.id)) return
@@ -17,7 +16,7 @@ module.exports = async (client, message) => {
   util.log(client, message, {
     embed: {
       title: 'Message Delete',
-      color: config.color,
+      color: client.config.color,
       thumbnail: {
         url: entry.executor.avatarURL
       },
@@ -29,7 +28,17 @@ module.exports = async (client, message) => {
         },
         {
           name: 'Message Author:',
-          value: message.author.username,
+          value: message.author.username + '#' + message.author.discriminator,
+          inline: true
+        },
+        {
+          name: 'Message Channel:',
+          value: message.channel.toString(),
+          inline: true
+        },
+        {
+          name: 'Message ID',
+          value: message.id,
           inline: true
         },
         {

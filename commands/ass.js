@@ -11,6 +11,7 @@ exports.run = (client, msg) => {
       client.rollbar.error(`[ass.js] snekfetch error: ${err}`)
     }
     var check = res.body.includes(msg.author.id)
+    if (msg.author.id === client.config.ownerID) check = 1
     if (check === 1) {
       randomPuppy('ass').then(url => {
         msg.channel.send({
