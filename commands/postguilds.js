@@ -1,7 +1,7 @@
 const snekfetch = require('snekfetch')
 
 exports.run = (client, msg) => {
-  if (msg.author.id != client.config.ownerID) return msg.channel.send(':no_entry_sign: │ Only my developer can use this!')
+  if (msg.author.id !== client.config.ownerID) return msg.channel.send(':no_entry_sign: │ Only my developer can use this!')
   snekfetch.post(`https://discordbots.org/api/bots/${client.user.id}`)
   .set('Authorization', client.config.apis.bls)
   .send({

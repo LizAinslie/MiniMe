@@ -8,10 +8,12 @@ exports.run = (client, msg, args) => {
       if (names.body.length < 2) return msg.channel.send(':exclamation: │ `' + result.body[0].name + '` has had no previous usernames.')
       msg.channel.send(':clipboard: │ `' + result.body[0].name + '` has had the following names: `' + names.body.map((name) => name.name).join(' → ') + '`')
     }).catch((error) => {
-      msg.channel.send(':exclamation: │ Failed to run the command.')
+      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+      client.rollbar.error(`[mcoldnames.js] snekfetch error: ${error}`)
     })
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command.')
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    client.rollbar.error(`[mcoldnames.js] snekfetch error: ${error}`)
   })
 }
 

@@ -6,7 +6,8 @@ exports.run = (client, msg, args) => {
     if (result.body.length < 1) return msg.channel.send(':exclamation: │ Unable to find any players by that username.')
     msg.channel.send(':clipboard: │ Player `' + result.body[0].name + '`\'s UUID is `' + result.body[0].id + '`.')
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command.')
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    client.rollbar.error(`[mcuuid.js] snekfetch error: ${error}`)
   })
 }
 

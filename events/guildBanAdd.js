@@ -1,9 +1,10 @@
 const util = require('../util.js')
 const dateformat = require('dateformat')
 
-module.exports = (client, guild, user) => {
+module.exports = async (client, guild, user) => {
   if (!client.guildSettings.has(guild.id)) return
   if (!client.guildSettings.getProp(guild.id, 'doLogs')) return
+  const entry = await guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
 
   util.log(client, guild.channels.get(client.guildSettings.getProp(guild.id, 'logChannel')), {
     embed: {

@@ -1,4 +1,3 @@
-const util = require('../util.js')
 const config = require('../config.json')
 
 exports.run = (client, msg, args) => {

@@ -1,15 +1,15 @@
-const jimp = require('jimp')
+const Jimp = require('jimp')
 
 exports.run = (message, bot) => {
   if (!message.args[0]) message.suffix = "When the user who ran this command is currently participating in a gay orgy, because he didn't put any text after the command."
-  jimp.read('../assets/nut.jpg', (err, image) => {
+  Jimp.read('../assets/nut.jpg', (err, image) => {
     if (err) return console.log(err)
-    var text = new jimp(630, 150, function (err, text) {
+    var text = new Jimp(630, 150, function (err, text) { // eslint-disable-line no-unused vars
       if (err) return console.log(err)
-      jimp.loadFont(jimp.FONT_SANS_32_BLACK).then(function (font) {
+      Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
          text.print(font, 0, 0, message.suffix, 650)
          image.composite(text, 15, 5)
-         image.getBuffer(jimp.AUTO, (err, buffer) => {
+         image.getBuffer(Jimp.AUTO, (err, buffer) => {
            if (err) return console.log(err)
            message.channel.sendFile(buffer)
          })

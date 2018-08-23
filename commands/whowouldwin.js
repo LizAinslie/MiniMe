@@ -1,5 +1,5 @@
 const snekfetch = require('snekfetch')
-const Discord = reqire('discord.js')
+const Discord = require('discord.js')
 const Canvas = require('canvas')
 
 exports.run = async (client, msg, args) => {
@@ -15,7 +15,7 @@ exports.run = async (client, msg, args) => {
   ctx.drawImage(avatar1, 0, 0, 250, canvas.height)
   ctx.drawImage(avatar2, 250, 0, 250, canvas.height)
 
-  const attachment = new Discord.attachment(canvas.toBuffer(), 'whowouldwin.png')
+  const attachment = new Discord.Attachment(canvas.toBuffer(), 'whowouldwin.png')
 
   msg.channel.send('Who would win?', attachment)
 }

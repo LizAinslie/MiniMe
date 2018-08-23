@@ -6,7 +6,8 @@ exports.run = (client, msg, args) => {
 	translate(args.slice(1).join(' '), { to: args[0] }).then((result) => {
 		msg.channel.send(':scroll: │ ' + result.text)
 	}).catch((error) => {
-		msg.channel.send(':exclamation: │ Failed to run the command.')
+		msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    client.rollbar.error(`[translate.js] translate error: ${error}`)
 	})
 }
 

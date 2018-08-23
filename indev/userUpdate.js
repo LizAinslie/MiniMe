@@ -3,9 +3,9 @@ const Discord = require('discord.js')
 const Canvas = require('canvas')
 
 module.exports = async (client, oldUser, newUser) => {
-  if (oldUser.displayAvatarURL != newUser.displayAvatarURL) {
+  if (oldUser.displayAvatarURL !== newUser.displayAvatarURL) {
     const canvas = Canvas.createCanvas(500, 250)
- 	  const ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext('2d')
 
     const { body: oldAvatarBuffer } = await snekfetch.get(oldUser.displayAvatarURL)
     // Wait for Canvas to load the image
@@ -28,12 +28,12 @@ module.exports = async (client, oldUser, newUser) => {
       logChannel.send(`${newUser.username}#${newUser.discriminator} changed their avatar!`, attachment)
     }
   }
-  if (oldUser.username != newUser.username) {
+  if (oldUser.username !== newUser.username) {
     const userGuilds = client.guilds.filter(guild => guild.members.has(newUser.id))
 
     for (let guild in userGuilds) {
       let logChannel = guild.channels.find(c => c.permissionsFor(guild.me).has('SEND_MESSAGES'))
-      logChannel.send(`${oldUser.username}#${oldUser.discriminator} changed their name to ${newUser.username}#${newUser.discriminator}`, attachment)
+      logChannel.send(`${oldUser.username}#${oldUser.discriminator} changed their name to ${newUser.username}#${newUser.discriminator}`)
     }
   }
 }

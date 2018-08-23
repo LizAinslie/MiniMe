@@ -1,5 +1,4 @@
 const snek = require('snekfetch')
-const Discord = require('discord.js')
 
 exports.run = (client, message) => {
   snek.get('https://api.whatdoestrumpthink.com/api/v1/quotes/random').then(r => {

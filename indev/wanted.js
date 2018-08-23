@@ -1,10 +1,11 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js')
 const util = require('../util.js')
 
 exports.run = async (client, msg, args) => {
-  util.resolveUser(client, args.join(' ')).then(user => {
+  util.resolveUser(client, args.join(' ')).then(async user => {
     console.log(client.idiot.wanted(user.displayAvatarURL()))
-    msg.channel.send(new Discord.Attachment(await client.idiot.wanted(user.displayAvatarURL(), 'wanted.png'), 'wanted.png'))
+    const idiotImg = await client.idiot.wanted(user.displayAvatarURL(), 'wanted.png')
+    msg.channel.send(new Discord.Attachment(idiotImg, 'wanted.png'))
   })
 }
 

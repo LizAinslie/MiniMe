@@ -38,7 +38,8 @@ exports.run = (client, msg, args) => {
       msg.channel.send(':exclamation: │ Unable to ping any servers by that IP address.')
     }
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command.')
+    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    client.rollbar.error(`[mcserver.js] snekfetch error: ${error}`)
   })
 }
 

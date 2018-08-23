@@ -8,12 +8,13 @@ exports.run = (client, msg) => {
     if (!client.userData.has(key)) {
       client.userData.set(key, 2)
     } else {
-      client.userData.set(key, client.userData.get(key) + 2)
+      client.userData.set(key, parseInt(client.userData.get(key), 10) + 2)
     }
-    // Adds the user to the set so that they can't talk for a minute
+    msg.channel.send(':dollar: │ You begged and got **$2**.')
+    // Adds the user to the set so that they can't talk for 30 seconds
     cooldown.add(msg.author.id)
     setTimeout(() => {
-      // Removes the user from the set after a minute
+      // Removes the user from the set after 30 seconds
       cooldown.delete(msg.author.id)
     }, 30000)
   }

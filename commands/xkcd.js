@@ -19,10 +19,12 @@ exports.run = (client, msg, args) => {
           }
         })
       }).catch((error) => {
-        msg.channel.send(':exclamation: │ Failed to run the command.')
+        msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+        client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
       })
     }).catch((error) => {
-      msg.channel.send(':exclamation: │ Failed to run the command.')
+      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+      client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
     })
   } else {
     snekfetch.get('https://xkcd.com/info.0.json').then((result) => {
@@ -39,10 +41,12 @@ exports.run = (client, msg, args) => {
           }
         })
       }).catch((error) => {
-        msg.channel.send(':exclamation: │ Failed to run the command.')
+        msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+        client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
       })
     }).catch((error) => {
-      msg.channel.send(':exclamation: │ Failed to run the command.')
+      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+      client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
     })
   }
 }

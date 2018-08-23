@@ -1,5 +1,3 @@
-const Discord = require('discord.js')
-
 module.exports = async (client, message) => {
   // Ignore all bots
   if (message.author.bot) return

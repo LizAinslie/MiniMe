@@ -1,7 +1,7 @@
 const cmdStatuses = [] // eslint-disable-line no-unused-vars
 exports.run = (client, message, params) => {
   if (!params[0]) {
-    const commandNames = Array.from(client.commands.keys())
+//     const commandNames = Array.from(client.commands.keys())
 //     const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0)
     message.channel.send({
       embed: {
@@ -35,6 +35,10 @@ exports.run = (client, message, params) => {
             value: client.commands.filter(c => c.help.type === 'rp').map(c => '`' + c.help.name + '`').join(', ')
           },
           {
+            name: ':moneybag: │ **Economy Commands:**',
+            value: client.commands.filter(c => c.help.type === 'eco').map(c => '`' + c.help.name + '`').join(', ')
+          },
+          {
             name: ':hammer: │ **Moderator Commands:**',
             value: client.commands.filter(c => c.help.type === 'mod').map(c => '`' + c.help.name + '`').join(', ')
           },
@@ -56,7 +60,9 @@ exports.run = (client, message, params) => {
       mod: 'Moderator',
       nsfw: 'NSFW',
       dev: 'Developer',
-      rp: 'Roleplay'
+      rp: 'Roleplay',
+      vc: 'Voice',
+      eco: 'Economy'
     }
 
     let command = params[0]
