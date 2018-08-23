@@ -22,14 +22,14 @@ exports.resolveUser = (client, query, returnIDOnly = false, preventUsernameSearc
 			if (users.length > 0 && !returnIDOnly) return resolve(users[0])
       if (returnIDOnly) return resolve(users[0].id)
 		}
-		reject(new Error())
+		reject(new Error('Invalid User!'))
 	})
 }
 
 exports.log = (client, entity, info) => {
   let logs = entity.guild.channels.get(client.guildSettings.getProp(entity.guild.id, 'logChannel'))
   logs.send(info).catch(err => {
-    console.debug("I didn't have the permissions to log something to the #logs channel.")
+    client.rollbar.error("Didn't have the permissions to log something to the #logs channel: " + err)
   })
 }
 
@@ -77,7 +77,7 @@ exports.resolveChannel = (bot, query, guild) => {
 	return new Promise((resolve, reject) => {
 		if (/^\d+$/.test(query)) {
 			if (guild) {
-				if (!guild.channels.has(query)) reject()
+				if (!guild.channels.has(query)) reject(new Error(`Guild with id ${guild.id} does not have channel: ${query}`))
 				resolve(guild.channels.get(query))
 			} else {
 				const channel = query in bot.channelGuildMap && bot.guilds.get(bot.channelGuildMap[query]).channels.get(query)
@@ -86,7 +86,7 @@ exports.resolveChannel = (bot, query, guild) => {
 		} else if (/^<#(\d+)>$/.test(query)) {
 			const match = query.match(/^<#(\d+)>$/)
 			if (guild) {
-				if (!guild.channels.has(match[1])) reject()
+				if (!guild.channels.has(match[1])) reject(new Error(`Guild with id ${guild.id} does not have channel: ${match[1]}`))
 				resolve(guild.channels.get(match[1]))
 			} else {
 				const channel = match[1] in bot.channelGuildMap && bot.guilds.get(bot.channelGuildMap[match[1]]).channels.get(match[1])
@@ -96,7 +96,7 @@ exports.resolveChannel = (bot, query, guild) => {
 			const channels = guild.channels.filter((channel) => channel.name.toLowerCase().includes(query.toLowerCase()))
 			if (channels.length > 0) return resolve(channels[0])
 		}
-		reject()
+		reject(new Error('Invalid Channel!'))
 	})
 }
 
@@ -113,6 +113,6 @@ exports.resolveRole = (bot, query, guild) => {
 			const roles = guild.roles.filter((role) => role.name.toLowerCase().includes(query.toLowerCase()))
 			if (roles.length > 0) return resolve(roles[0])
 		}
-		reject()
+		reject(new Error('Invalid Role!'))
 	})
 }
