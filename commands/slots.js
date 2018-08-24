@@ -1,3 +1,5 @@
+const xorshift = require('xorshift')
+
 exports.run = (client, message) => {
   let reel = [
     ':custard:',
@@ -15,7 +17,7 @@ exports.run = (client, message) => {
 
   let reels = []
   for (let i = 0; i < 3; i++) {
-    reels.push(reel[Math.floor(Math.random() * reel.length)])
+    reels.push(reel[Math.floor(xorshift.random() * reel.length)])
   }
   let amt = 0
   if (reels[0] === reels[1] && reels[1] === reels[2]) {
