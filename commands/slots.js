@@ -17,7 +17,7 @@ exports.run = (client, message) => {
   for (let i = 0; i < 3; i++) {
     reels.push(reel[Math.floor(Math.random() * reel.length)])
   }
-  let amt
+  let amt = 0
   if (reels[0] === reels[1] && reels[1] === reels[2]) {
     amt = 100
   } else if (reels[0] === reels[2]) {
@@ -35,7 +35,7 @@ exports.run = (client, message) => {
       title: 'Slot Machine',
       description: reels.join(' │ '),
       footer: {
-        text: reels[0] === reels[1] && reels[1] === reels[2] ? 'Congrats! You won, and **$' + amt.toString() + '** has been added to your account!' : 'Sorry, you lost.'
+        text: reels[0] === reels[1] && reels[1] === reels[2] ? 'Congrats! You won, and $' + amt.toString() + ' has been added to your account!' : 'Sorry, you lost.'
       }
     }
   }).catch(e => {
