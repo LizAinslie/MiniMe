@@ -1,5 +1,5 @@
 exports.run = (client, msg, args) => {
-  const discrims = msg.guild.members.filterArray(user => user.discriminator === args[0])
+  const discrims = msg.guild.members.filterArray(user => user.discriminator === parseInt(args[0], 10))
   if (!discrims[0]) return msg.channel.send(':exclamation: │ No users with that discriminator!')
   msg.channel.send({
     embed: {
