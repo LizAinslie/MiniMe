@@ -37,7 +37,7 @@ exports.run = (client, message) => {
       title: 'Slot Machine',
       description: reels.join(' │ '),
       footer: {
-        text: reels[0] === reels[1] && reels[1] === reels[2] || reels[0] === reels[2] ? 'Congrats! You won, and $' + amt.toString() + ' has been added to your account!' : 'Sorry, you lost.'
+        text: reels[0] === reels[1] && reels[1] === reels[2] || reels[0] === reels[2] ? 'Congrats! You won, and <:coins:482589075459801098>' + amt.toString() + ' Minicoins have been added to your account!' : 'Sorry, you lost.'
       }
     }
   }).catch(e => {

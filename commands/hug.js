@@ -8,7 +8,7 @@ exports.run = (client, msg, args) => {
         embed: {
           author: {
             icon_url: msg.author.displayAvatarURL,
-            text: `${msg.author.username} gave ${user.username} a hug!`
+            name: `${msg.author.username} gave ${user.username} a hug!`
           },
           timestamp: new Date(),
           footer: {
@@ -17,7 +17,8 @@ exports.run = (client, msg, args) => {
           },
           image: {
             url: res.body.url
-          }
+          },
+          color: client.config.color
         }
       })
     }).catch(err => {

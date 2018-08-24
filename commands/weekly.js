@@ -10,7 +10,7 @@ exports.run = (client, msg) => {
     } else {
       client.userData.set(key, parseInt(client.userData.get(key), 10) + 1000)
     }
-    msg.channel.send(':dollar: │ You got your **$1000** weekly reward.')
+    msg.channel.send(':dollar: │ You got your weekly reward of **<:coins:482589075459801098>1000 Minicoins**')
     // Adds the user to the set so that they can't talk for a week
     cooldown.add(msg.author.id)
     setTimeout(() => {

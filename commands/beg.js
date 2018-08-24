@@ -11,7 +11,7 @@ exports.run = (client, msg) => {
     } else {
       client.userData.set(key, parseInt(client.userData.get(key), 10) + amt)
     }
-    msg.channel.send(':dollar: │ You begged and got **$' + amt.toString() + '**.')
+    msg.channel.send(':dollar: │ You begged and got **<:coins:482589075459801098>' + amt.toString() + ' Minicoins**.')
     // Adds the user to the set so that they can't talk for 30 seconds
     cooldown.add(msg.author.id)
     setTimeout(() => {

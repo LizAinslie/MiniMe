@@ -5,12 +5,12 @@ exports.run = (client, msg, args) => {
     util.resolveUser(client, args.join(' ')).then(user => {
       let key = `${user.id}-balance`
       let balance = client.userData.get(key)
-      msg.reply('you have **$' + balance.toString() + '** in your bank account.')
+      msg.reply(`${user.username}#${user.discriminator} has **<:coins:482589075459801098>` + balance.toString() + ' Minicoins** in their bank account.')
     })
   } else {
     let key = `${msg.author.id}-balance`
     let balance = client.userData.get(key)
-    msg.reply('you have **$' + balance.toString() + '** in your bank account.')
+    msg.reply('you have **<:coins:482589075459801098>' + balance.toString() + ' Minicoins** in your bank account.')
   }
 }
 
