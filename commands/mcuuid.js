@@ -16,5 +16,6 @@ exports.help = {
   description: 'Get a Minecraft account UUID from a username',
   usage: 'mcuuid <username>',
   fullDesc: 'Get a Minecraft account UUID from a username',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

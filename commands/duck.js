@@ -15,9 +15,10 @@ exports.run = (client, msg) => {
 }
 
 exports.help = {
-  name: 'randomduck',
+  name: 'duck',
   description: 'Gets a random duck picture.',
-  usage: 'randomduck',
+  usage: 'duck',
   fullDesc: 'Gets a random duck picture.',
-  type: 'fun'
+  type: 'img',
+  status: 2
 }

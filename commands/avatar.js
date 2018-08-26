@@ -50,5 +50,6 @@ exports.help = {
   description: 'Steals an avatar.',
   usage: 'avatar <user>',
   fullDesc: 'Steals an avatar. You must supply an id or a mention.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

@@ -32,5 +32,6 @@ exports.help = {
   description: 'Starts a poll.',
   usage: 'poll <question>',
   fullDesc: 'Starts a poll.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

@@ -24,5 +24,6 @@ exports.help = {
   description: 'Check the amount of money in your bank account.',
   usage: 'balance [user]',
   fullDesc: 'Check the amount of money in you (or someone else\'s) bank account.',
-  type: 'eco'
+  type: 'eco',
+  status: 2
 }

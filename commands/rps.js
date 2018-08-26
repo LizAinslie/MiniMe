@@ -12,5 +12,6 @@ exports.help = {
   description: 'Play rock-paper-scissors with the bot.',
   usage: 'rps [rock|paper|scissors]',
   fullDesc: 'Play rock-paper-scissors with the bot.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

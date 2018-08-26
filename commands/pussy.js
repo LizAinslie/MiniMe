@@ -59,5 +59,6 @@ exports.help = {
   description: 'Gives you a picture of a pussy.',
   usage: 'pussy',
   fullDesc: 'Gives you a picture of a pussy.',
-  type: 'nsfw'
+  type: 'nsfw',
+  status: 2
 }

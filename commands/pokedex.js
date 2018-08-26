@@ -21,5 +21,6 @@ exports.help = {
   description: 'Look for a Pokemon in the Pokedex.',
   usage: 'pokedex <pokemon>',
   fullDesc: 'Look for a Pokemon in the Pokedex.',
-  type: 'fun'
+  type: 'fun',
+  status: 0
 }

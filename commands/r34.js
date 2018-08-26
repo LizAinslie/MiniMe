@@ -59,5 +59,6 @@ exports.help = {
   description: 'Provides Rule34 porn.',
   usage: 'r34',
   fullDesc: 'Provides Rule34 porn.',
-  type: 'nsfw'
+  type: 'nsfw',
+  status: 2
 }

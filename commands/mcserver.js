@@ -48,5 +48,6 @@ exports.help = {
   description: 'Gets Minecraft server info.',
   usage: 'mcserver <ip>',
   fullDesc: 'Gets Minecraft server info. Must provide a server IP.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

@@ -7,5 +7,6 @@ exports.help = {
   description: 'Have the bot provide support.',
   usage: 'support',
   fullDesc: 'Have the bot provide support. Will link to the support server.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

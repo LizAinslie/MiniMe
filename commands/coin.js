@@ -11,5 +11,6 @@ exports.help = {
   description: 'Flips a coin.',
   usage: 'coin',
   fullDesc: 'Flips a coin.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

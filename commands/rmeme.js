@@ -23,9 +23,10 @@ exports.run = (client, msg) => {
 }
 
 exports.help = {
-  name: 'redditmeme',
+  name: 'rmeme',
   description: 'Gets a random meme from Reddit.',
-  usage: 'redditmeme',
+  usage: 'rmeme',
   fullDesc: 'Gets a random meme from Reddit.',
-  type: 'fun'
+  type: 'img',
+  status: 2
 }

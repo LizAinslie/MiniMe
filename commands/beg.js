@@ -26,5 +26,6 @@ exports.help = {
   description: 'Beg for money.',
   usage: 'beg',
   fullDesc: 'Beg for money.',
-  type: 'eco'
+  type: 'eco',
+  status: 2
 }

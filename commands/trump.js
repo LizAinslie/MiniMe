@@ -11,5 +11,6 @@ exports.help = {
   description: 'Trump quotes generator',
   usage: 'trump',
   fullDesc: 'Trump quotes generator',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

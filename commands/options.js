@@ -26,5 +26,6 @@ exports.help = {
   description: 'Configure your server options.',
   usage: 'options <1|0> | <1|0>',
   fullDesc: 'Configure your server options. The first option is whether to do logs, the second is whether to welcome users. 0=False, 1=True',
-  type: 'mod'
+  type: 'mod',
+  status: 2
 }

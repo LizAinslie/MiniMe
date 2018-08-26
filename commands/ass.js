@@ -59,5 +59,6 @@ exports.help = {
   description: 'Provides ass pictures.',
   usage: 'ass',
   fullDesc: 'Provides ass pictures.',
-  type: 'nsfw'
+  type: 'nsfw',
+  status: 2
 }

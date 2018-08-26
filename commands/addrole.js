@@ -84,5 +84,6 @@ exports.help = {
   description: 'Have the bot add a role.',
   usage: 'addrole <name> <color> <position> <mentionable> <separate>',
   fullDesc: 'Have the bot add a role. Permissions must be set up in the server\'s settings.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

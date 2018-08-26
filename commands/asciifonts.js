@@ -7,5 +7,6 @@ exports.help = {
   description: 'Get a list of ASCII fonts.',
   usage: 'asciifonts',
   fullDesc: 'Get a list of ASCII fonts.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

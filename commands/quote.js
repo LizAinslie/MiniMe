@@ -13,5 +13,6 @@ exports.help = {
   description: 'Fetches a random quote.',
   usage: 'quote',
   fullDesc: 'Fetches a random quote.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

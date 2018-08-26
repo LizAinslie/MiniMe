@@ -1,5 +1,5 @@
 exports.run = (client, msg) => {
-  return msg.reply('you can vote for me here:\nhttps://botlist.space/view/456926578228723724')
+  return msg.reply('you can vote for me here:\nhttps://botlist.space/view/mini-me')
 }
 
 exports.help = {
@@ -7,5 +7,6 @@ exports.help = {
   description: 'Get a vote link.',
   usage: 'vote',
   fullDesc: 'Get a vote link.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

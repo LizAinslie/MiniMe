@@ -75,5 +75,6 @@ exports.help = {
   description: 'Retrieve bot information from the Discord Bot List.',
   usage: 'dbl <botName>',
   fullDesc: 'Retrieve bot information from the Discord Bot List. Must supply a bot name.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

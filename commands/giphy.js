@@ -52,5 +52,6 @@ exports.help = {
   description: 'Gets a gif from giphy.',
   usage: 'giphy <searchTerm>',
   fullDesc: 'Gets a gif from giphy. Warning: Some images can be NSFW.',
-  type: 'nsfw'
+  type: 'nsfw',
+  status: 1
 }

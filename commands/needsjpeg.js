@@ -32,5 +32,6 @@ exports.help = {
   description: 'Show someone their avatar with more JPEG.',
   usage: 'needsjpeg <user>',
   fullDesc: 'Show someone their avatar with more JPEG.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

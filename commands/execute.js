@@ -23,5 +23,6 @@ exports.help = {
   description: 'Executes a bash command.',
   usage: 'execute <command>',
   fullDesc: 'Executes a bash command. Only RailRunner16 can use it. :P',
-  type: 'dev'
+  type: 'dev',
+  status: 2
 }

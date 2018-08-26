@@ -31,5 +31,6 @@ exports.help = {
   description: 'Makes ASCII art.',
   usage: 'ascii <font> | <text>',
   fullDesc: 'Makes ASCII art.',
-  type: 'fun'
+  type: 'fun',
+  status: 1
 }

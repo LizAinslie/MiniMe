@@ -36,5 +36,6 @@ exports.help = {
   description: 'Hug a user.',
   usage: 'hug <user>',
   fullDesc: 'Hug a user.',
-  type: 'rp'
+  type: 'rp',
+  status: 2
 }

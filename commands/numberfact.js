@@ -14,5 +14,6 @@ exports.help = {
   description: 'Gets a number fact.',
   usage: 'numberfact <number>',
   fullDesc: 'Gets a number fact. Must supply a number (No Googol!)',
-  type: 'fun'
+  type: 'fun',
+  status: 1
 }

@@ -10,5 +10,6 @@ exports.help = {
   description: 'Have the bot leave a voice channel.',
   usage: 'leave',
   fullDesc: 'Have the bot leave a voice channel.',
-  type: 'vc'
+  type: 'vc',
+  status: 2
 }

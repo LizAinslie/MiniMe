@@ -1,4 +1,8 @@
-const cmdStatuses = [] // eslint-disable-line no-unused-vars
+const cmdStatuses = [
+  '<:offline:313956277237710868>',
+  '<:away:313956277220802560>',
+  '<:online:313956277808005120>'
+] // eslint-disable-line no-unused-vars
 exports.run = (client, message, params) => {
   if (!params[0]) {
 //     const commandNames = Array.from(client.commands.keys())
@@ -7,7 +11,7 @@ exports.run = (client, message, params) => {
       embed: {
         title: 'Command List',
         color: client.config.color,
-        description: `Use \`${client.config.prefix}help <commandname>\` for details.`,
+        description: `Use \`${client.config.prefix}help <commandname>\` for usage and details.`,
         author: {
           icon_url: message.author.displayAvatarURL,
           name: `Help │ Requested by ${message.author.username}#${message.author.discriminator}`
@@ -20,35 +24,43 @@ exports.run = (client, message, params) => {
         fields: [
           {
             name: ':wrench: │ **Utility Commands:**',
-            value: client.commands.filter(c => c.help.type === 'util').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'util').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':loud_sound: │ **Voice Commands:**',
-            value: client.commands.filter(c => c.help.type === 'vc').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'vc').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':tada: │ **Fun Commands:**',
-            value: client.commands.filter(c => c.help.type === 'fun').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'fun').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+          },
+          {
+            name: ':mountain_snow: │ **Random Image Commands:**',
+            value: client.commands.filter(c => c.help.type === 'img').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':scroll: │ **Roleplay Commands:**',
-            value: client.commands.filter(c => c.help.type === 'rp').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'rp').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':moneybag: │ **Economy Commands:**',
-            value: client.commands.filter(c => c.help.type === 'eco').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'eco').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':hammer: │ **Moderator Commands:**',
-            value: client.commands.filter(c => c.help.type === 'mod').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'mod').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':underage: │ **NSFW Commands:**',
-            value: client.commands.filter(c => c.help.type === 'nsfw').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'nsfw').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':computer: │ **Developer Commands:**',
-            value: client.commands.filter(c => c.help.type === 'dev').map(c => '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'dev').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+          },
+          {
+            name: ':key2: │ Key',
+            value: `${cmdStatuses[0]} - **Off** (Not working)\n${cmdStatuses[1]} - **W. I. P.** (May not be fully working, or may not be working at all)\n${cmdStatuses[2]} - **On** (Fully working)`
           }
         ]
       }
@@ -105,5 +117,6 @@ exports.help = {
   description: 'Have the bot list commands.',
   usage: 'help[ <command>]',
   fullDesc: 'Have the bot list commands. If you give it a certain command, it will give an extended description.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

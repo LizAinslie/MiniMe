@@ -25,5 +25,6 @@ exports.help = {
   description: 'Gives bot stats.',
   usage: 'stats',
   fullDesc: 'Gives bot stats. Includes all version info, usage info, and numerical info.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

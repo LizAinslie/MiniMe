@@ -25,5 +25,6 @@ exports.help = {
   description: 'Collect your hourly money.',
   usage: 'hourly',
   fullDesc: 'Collect your hourly money.',
-  type: 'eco'
+  type: 'eco',
+  status: 2
 }

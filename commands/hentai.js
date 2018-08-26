@@ -59,5 +59,6 @@ exports.help = {
   description: 'Provides hentai pictures.',
   usage: 'hentai',
   fullDesc: 'Provides hentai pictures.',
-  type: 'nsfw'
+  type: 'nsfw',
+  status: 2
 }

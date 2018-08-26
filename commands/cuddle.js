@@ -8,7 +8,7 @@ exports.run = (client, msg, args) => {
         embed: {
           author: {
             icon_url: msg.author.displayAvatarURL,
-            text: `${msg.author.username} cuddled ${user.username}.`
+            name: `${msg.author.username} cuddled ${user.username}.`
           },
           timestamp: new Date(),
           footer: {
@@ -17,7 +17,8 @@ exports.run = (client, msg, args) => {
           },
           image: {
             url: res.body.url
-          }
+          },
+          color: client.config.color
         }
       })
     }).catch(err => {
@@ -35,5 +36,6 @@ exports.help = {
   description: 'Cuddle a user.',
   usage: 'cuddle <user>',
   fullDesc: 'Cuddle a user.',
-  type: 'rp'
+  type: 'rp',
+  status: 2
 }

@@ -56,5 +56,6 @@ exports.help = {
   description: 'Fetches a random XKCD comic.',
   usage: 'xkcd [number]',
   fullDesc: 'Fetches a random XKCD comic, or the specified comic by number.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

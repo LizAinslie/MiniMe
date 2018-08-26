@@ -72,5 +72,6 @@ exports.help = {
   description: 'Gets you weather information.',
   usage: 'weather <location>',
   fullDesc: 'Gets you weather information. You must provide a location.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

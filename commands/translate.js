@@ -16,5 +16,6 @@ exports.help = {
   description: 'Translates text.',
   usage: 'translate <locale> <text>',
   fullDesc: 'Translates text to the specified locale.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

@@ -13,5 +13,6 @@ exports.help = {
   description: 'Have the bot choose one thing over another.',
   usage: 'choose <choice 1> | <choice 2>[ | <choice 3>...]',
   fullDesc: 'Have the bot choose one thing over another. The first two choices are required, but you can add as many choices as you want after those.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

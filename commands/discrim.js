@@ -23,5 +23,6 @@ exports.help = {
   description: 'Get all the users with a certain discriminator.',
   usage: 'discrim <discriminator>',
   fullDesc: 'Get all the users with a certain discriminator.',
-  type: 'util'
+  type: 'util',
+  status: 1
 }

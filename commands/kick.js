@@ -27,5 +27,6 @@ exports.help = {
   description: 'Kicks a user.',
   usage: 'kick <user> <reason>',
   fullDesc: 'Kicks a user. Only available to Mods and Owners',
-  type: 'mod'
+  type: 'mod',
+  status: 2
 }

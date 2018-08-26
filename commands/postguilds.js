@@ -24,5 +24,6 @@ exports.help = {
   description: 'Post guild counts on all botlists.',
   usage: 'postguilds',
   fullDesc: 'Post guild counts on all botlists.',
-  type: 'dev'
+  type: 'dev',
+  status: 2
 }

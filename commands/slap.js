@@ -25,5 +25,6 @@ exports.help = {
   description: 'Slap a user.',
   usage: 'slap <user>',
   fullDesc: 'Slap a user.',
-  type: 'rp'
+  type: 'rp',
+  status: 2
 }

@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 const Canvas = require('canvas')
 
 exports.run = async (client, msg, args) => {
-  const users = msg.mentions.users
+  const users = Array.from(msg.mentions.users.values())
   const canvas = Canvas.createCanvas(500, 250)
   const ctx = canvas.getContext('2d')
 
@@ -25,5 +25,6 @@ exports.help = {
   description: 'See who would win.',
   usage: 'whowouldwin <@user1> | <@user2>',
   fullDesc: 'See who would win. Must supply 2 mentions.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

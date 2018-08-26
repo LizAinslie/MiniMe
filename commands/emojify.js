@@ -20,17 +20,17 @@ const mapping = {
   mapping[c] = mapping[c.toUpperCase()] = ` :regional_indicator_${c}:`
 })
 
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
   try {
     if (args.length < 1) {
       message.channel.send('You must provide some text to emojify!')
     }
 
     message.channel.send(args.join(' ').split('').map(c => mapping[c] || c).join(''))
-    } catch (err) {
-      message.channel.send(`:exclamation: │ There was an error running the command. This incident has been reported.`)
-      client.rollbar.error(`Error on emojify commands\n\nError:\n\n ${err}`)
-    }
+  } catch (err) {
+    message.channel.send(`:exclamation: │ There was an error running the command. This incident has been reported.`)
+    client.rollbar.error(`Error on emojify commands\n\nError:\n\n ${err}`)
+  }
 }
 
 exports.help = {
@@ -38,5 +38,6 @@ exports.help = {
   description: 'Says your text in big LETTERS.',
   usage: 'emojify <text>',
   fullDesc: 'Says your text in big LETTERS.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

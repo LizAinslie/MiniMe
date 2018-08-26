@@ -2,11 +2,11 @@ const snekfetch = require('snekfetch')
 const Discord = require('discord.js')
 
 exports.run = (client, msg) => {
-  snekfetch.get('https://catapi.glitch.me/random').then(res => {
+  snekfetch.get('https://animals.anidiots.guide/lion').then(res => {
     const embed = new Discord.RichEmbed()
     .setColor(client.config.color)
-    .setAuthor(`Cat │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
-    .setImage(res.body.url)
+    .setAuthor(`Lion │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
+    .setImage(res.body.link)
     msg.channel.send(embed)
   }).catch((error) => {
     msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
@@ -15,9 +15,10 @@ exports.run = (client, msg) => {
 }
 
 exports.help = {
-  name: 'randomcat',
-  description: 'Gets a random cat picture.',
-  usage: 'randomcat',
-  fullDesc: 'Gets a random cat picture.',
-  type: 'fun'
+  name: 'lion',
+  description: 'Gets a random lion picture.',
+  usage: 'lion',
+  fullDesc: 'Gets a random lion picture.',
+  type: 'img',
+  status: 2
 }

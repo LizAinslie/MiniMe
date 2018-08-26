@@ -18,5 +18,6 @@ exports.help = {
   description: 'Removes messages in bulk.',
   usage: 'purge <number>',
   fullDesc: 'Removes messages in bulk. Up to 100 messages can be removed at once.',
-  type: 'mod'
+  type: 'mod',
+  status: 2
 }

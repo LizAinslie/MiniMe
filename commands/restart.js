@@ -14,5 +14,6 @@ exports.help = {
   description: 'Restarts the bot.',
   usage: 'restart',
   fullDesc: 'Restarts the bot.',
-  type: 'dev'
+  type: 'dev',
+  status: 2
 }

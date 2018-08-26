@@ -13,5 +13,6 @@ exports.help = {
   description: 'Gets a random FML quote.',
   usage: 'fml',
   fullDesc: 'Gets a random FML quote.',
-  type: 'fun'
+  type: 'fun',
+  status: 1
 }

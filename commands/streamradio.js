@@ -18,5 +18,6 @@ exports.help = {
   description: 'Streams radio from an internet source to your voice channel.',
   usage: 'streamradio <url>',
   fullDesc: 'Streams radio from an internet source to your voice channel.',
-  type: 'vc'
+  type: 'vc',
+  status: 2
 }

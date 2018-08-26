@@ -23,5 +23,6 @@ exports.help = {
   description: 'Search the Urban Dictionary.',
   usage: 'urban <term>',
   fullDesc: 'Search the Urban Dictionary.',
-  type: 'nsfw'
+  type: 'nsfw',
+  status: 2
 }

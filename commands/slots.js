@@ -50,5 +50,6 @@ exports.help = {
   description: 'Play the slot machine.',
   usage: 'slots',
   fullDesc: 'Play the slot machine.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

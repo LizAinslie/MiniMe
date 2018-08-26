@@ -76,5 +76,6 @@ exports.help = {
   description: 'Gets information about the server you are currently in.',
   usage: 'serverinfo',
   fullDesc: 'Gets information about the server you are currently in.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

@@ -25,5 +25,6 @@ exports.help = {
   description: 'Collect your weekly money.',
   usage: 'weekly',
   fullDesc: 'Collect your weekly money.',
-  type: 'eco'
+  type: 'eco',
+  status: 2
 }

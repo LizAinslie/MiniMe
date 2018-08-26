@@ -13,5 +13,6 @@ exports.help = {
   description: 'Rates a waifu.',
   usage: 'ratewaifu <name>',
   fullDesc: 'Rates a waifu. Must have a name as the first and only parameter.',
-  type: 'fun'
+  type: 'fun',
+  status: 2
 }

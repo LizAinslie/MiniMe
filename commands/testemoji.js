@@ -1,4 +1,4 @@
-const emojis = [
+  const emojis = [
   'streaming <:streaming:313956277132853248>'
 ]
 
@@ -14,5 +14,6 @@ exports.help = {
   description: 'Tests emojis.',
   usage: 'testemoji',
   fullDesc: 'Tests emojis.',
-  type: 'dev'
+  type: 'dev',
+  status: 2
 }

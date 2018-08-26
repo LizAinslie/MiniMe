@@ -2,10 +2,10 @@ const snekfetch = require('snekfetch')
 const Discord = require('discord.js')
 
 exports.run = (client, msg) => {
-  snekfetch.get('https://animals.anidiots.guide/lion').then(res => {
+  snekfetch.get('https://animals.anidiots.guide/panda').then(res => {
     const embed = new Discord.RichEmbed()
     .setColor(client.config.color)
-    .setAuthor(`Lion │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
+    .setAuthor(`Panda │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
     .setImage(res.body.link)
     msg.channel.send(embed)
   }).catch((error) => {
@@ -15,9 +15,10 @@ exports.run = (client, msg) => {
 }
 
 exports.help = {
-  name: 'randomlion',
-  description: 'Gets a random lion picture.',
-  usage: 'randomlion',
-  fullDesc: 'Gets a random lion picture.',
-  type: 'fun'
+  name: 'panda',
+  description: 'Gets a random panda picture.',
+  usage: 'panda',
+  fullDesc: 'Gets a random panda picture.',
+  type: 'img',
+  status: 2
 }

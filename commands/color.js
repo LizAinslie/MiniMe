@@ -45,5 +45,6 @@ exports.help = {
   description: 'Convert a color.',
   usage: 'color <color>',
   fullDesc: 'Convert a color.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

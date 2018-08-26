@@ -73,5 +73,6 @@ exports.help = {
   description: 'Gives info on the specified user.',
   usage: 'userinfo[ <user>]',
   fullDesc: 'Gives info on the specified user. If no user is given, info on the user running the command.',
-  type: 'util'
+  type: 'util',
+  status: 2
 }

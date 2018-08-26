@@ -59,5 +59,6 @@ exports.help = {
   description: 'Provides a gif of porn.',
   usage: 'porngif',
   fullDesc: 'Provides a gif of porn.',
-  type: 'nsfw'
+  type: 'nsfw',
+  status: 2
 }

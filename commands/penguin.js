@@ -2,10 +2,10 @@ const snekfetch = require('snekfetch')
 const Discord = require('discord.js')
 
 exports.run = (client, msg) => {
-  snekfetch.get('https://animals.anidiots.guide/tiger').then(res => {
+  snekfetch.get('https://animals.anidiots.guide/penguin').then(res => {
     const embed = new Discord.RichEmbed()
     .setColor(client.config.color)
-    .setAuthor(`Tiger │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
+    .setAuthor(`Penguin │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
     .setImage(res.body.link)
     msg.channel.send(embed)
   }).catch((error) => {
@@ -15,9 +15,10 @@ exports.run = (client, msg) => {
 }
 
 exports.help = {
-  name: 'randomtiger',
-  description: 'Gets a random tiger picture.',
-  usage: 'randomtiger',
-  fullDesc: 'Gets a random tiger picture.',
-  type: 'fun'
+  name: 'penguin',
+  description: 'Gets a random penguin picture.',
+  usage: 'penguin',
+  fullDesc: 'Gets a random penguin picture.',
+  type: 'img',
+  status: 2
 }
