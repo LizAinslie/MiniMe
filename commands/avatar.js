@@ -1,4 +1,5 @@
 const resolveUser = require('../util/resolveUser.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   if (args[0]) {

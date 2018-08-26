@@ -1,6 +1,7 @@
 var Jimp = require('jimp')
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+const Discord = require('discord.js')
 
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {

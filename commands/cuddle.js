@@ -1,5 +1,6 @@
 const snek = require('snekfetch')
 const resolveUser = require('../util/resolveUser.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {

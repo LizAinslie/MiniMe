@@ -38,8 +38,12 @@ exports.run = (client, message, params) => {
             value: client.commands.filter(c => c.help.type === 'fun').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':mountain_snow: │ **Random Image Commands:**',
+            name: ':camera_with_flash: │ **Random Image Commands:**',
             value: client.commands.filter(c => c.help.type === 'img').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+          },
+          {
+            name: ':mountain_snow: │ **Image Generation Commands:**',
+            value: client.commands.filter(c => c.help.type === 'imgen').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
             name: ':scroll: │ **Roleplay Commands:**',

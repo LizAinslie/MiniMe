@@ -30,10 +30,10 @@ module.exports = async (client, message) => {
 //   }
 
   // Ignore messages not starting with the prefix (in config.json)
-  const prefixes = ['m::', `<@${client.user.id}>`];
-  let prefix = false;
-  for(const thisPrefix of prefixes) {
-    if(message.content.toLowerCase().startsWith(thisPrefix)) prefix = thisPrefix;
+  const prefixes = ['m::', `<@${client.user.id}>`]
+  let prefix = false
+  for (const thisPrefix of prefixes) {
+    if (message.content.toLowerCase().startsWith(thisPrefix)) prefix = thisPrefix
   }
   if (message.content.indexOf(prefix) !== 0) return
 
