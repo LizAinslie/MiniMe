@@ -1,4 +1,5 @@
 const c2c = require('colorcolor')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   const color = args.join(' ')
@@ -8,7 +9,7 @@ exports.run = (client, msg, args) => {
         icon_url: msg.author.displayAvatarURL,
         text: `Color │ Requested by ${msg.author.username}#${msg.author.discriminator}`
       },
-      color: client.config.color,
+      color: getEmbedColor(msg),
       footer: {
         icon_url: client.user.avatarURL,
         text: 'Status: 200'

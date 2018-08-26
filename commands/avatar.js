@@ -1,11 +1,11 @@
-const util = require('../util.js')
+const resolveUser = require('../util/resolveUser.js')
 
 exports.run = (client, msg, args) => {
   if (args[0]) {
-    util.resolveUser(client, args.join(' ')).then(user => {
+    resolveUser(client, args.join(' ')).then(user => {
       msg.channel.send({
         embed: {
-          color: client.config.color,
+          color: getEmbedColor(msg),
           author: {
             icon_url: msg.author.displayAvatarURL,
             name: `${user.username}#${user.discriminator}'s avatar │ Requested by ${msg.author.username}#${msg.author.discriminator}`

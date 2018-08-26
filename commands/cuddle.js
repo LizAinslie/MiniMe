@@ -1,8 +1,8 @@
 const snek = require('snekfetch')
-const util = require('../util.js')
+const resolveUser = require('../util/resolveUser.js')
 
 exports.run = (client, msg, args) => {
-  util.resolveUser(client, args.join(' ')).then(user => {
+  resolveUser(client, args.join(' ')).then(user => {
     snek.get('https://nekos.life/api/v2/img/cuddle').then(res => {
       msg.channel.send({
         embed: {
@@ -18,7 +18,7 @@ exports.run = (client, msg, args) => {
           image: {
             url: res.body.url
           },
-          color: client.config.color
+          color: getEmbedColor(msg)
         }
       })
     }).catch(err => {

@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   if (client.guildSettings.has(msg.guild.id)) {
@@ -12,7 +13,7 @@ exports.run = (client, msg, args) => {
     client.guildSettings.setProp(msg.guild.id, 'doWelcomes', welcomes)
     const embed = new Discord.RichEmbed()
     .setTitle('Server Options Updated')
-    .setColor(client.config.color)
+    .setColor(getEmbedColor(msg))
     .addField('Welcomes', welcomes.toString(), true)
     .addField('Logs', logs.toString(), true)
     msg.channel.send(embed)

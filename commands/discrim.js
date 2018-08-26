@@ -1,3 +1,5 @@
+const getEmbedColor = require('../util/getHighestRoleColor.js')
+
 exports.run = (client, msg, args) => {
   const discrims = msg.guild.members.filterArray(user => user.discriminator === parseInt(args[0], 10))
   if (!discrims[0]) return msg.channel.send(':exclamation: │ No users with that discriminator!')
@@ -8,7 +10,7 @@ exports.run = (client, msg, args) => {
         icon_url: msg.author.displayAvatarURL
       },
       timestamp: new Date(),
-      color: client.config.color,
+      color: getEmbedColor(msg),
       description: discrims.map(u => `${u.user.username}#${u.user.discriminator}`).join('\n'),
       footer: {
         text: 'Status: 200',

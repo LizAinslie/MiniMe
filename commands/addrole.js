@@ -1,5 +1,5 @@
 const funcs = require('../modules/functions.js')
-const config = require('../config.json')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, message, args) => {
   if (!args[0]) return message.channel.send(':interrobang: │ You must supply a <role> option.')
@@ -41,7 +41,7 @@ exports.run = (client, message, args) => {
   message.guild.createRole(newRole)
   .then(role => {
     const embed = {
-      color: config.color,
+      color: getEmbedColor(message),
       timestamp: new Date(),
       author: {
         name: newRole.name

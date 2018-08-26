@@ -1,4 +1,5 @@
 const snekfetch = require('snekfetch')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   const platforms = {
@@ -28,7 +29,7 @@ exports.run = (client, msg, args) => {
           icon_url: msg.author.displayAvatarURL,
           name: `Fortnite Stats │ Requested By ${msg.author.username}#${msg.author.discriminator}`
         },
-        color: client.config.color,
+        color: getEmbedColor(msg),
         title: `${player.epicUserHandle}'s ${player.platformNameLong} Fortnite account`,
         footer: {
           icon_url: client.user.avatarURL,

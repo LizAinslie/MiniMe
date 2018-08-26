@@ -1,13 +1,14 @@
 const snek = require('snekfetch')
 const Discord = require('discord.js')
-const util = require('../util.js')
+const resolveUser = require('../util/resolveUser.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
-  util.resolveUser(client, args.join(' ')).then(user => {
+  resolveUser(client, args.join(' ')).then(user => {
     snek.get('https://nekos.life/api/v2/img/slap').then(res => {
       const embed = new Discord.RichEmbed()
       .setTitle(`${msg.author.username} slapped ${user.username}.`)
-      .setColor(client.config.color)
+      .setColor(getEmbedColor(msg))
       .setImage(res.body.url)
       msg.channel.send(embed)
     }).catch(err => {

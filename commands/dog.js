@@ -1,10 +1,11 @@
 const randomPuppy = require('random-puppy')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg) => {
   randomPuppy().then(url => {
     msg.channel.send({
       embed: {
-        color: client.config.color,
+        color: getEmbedColor(msg),
         author: {
           icon_url: msg.author.displayAvatarURL,
           name: `Dog │ Requested by ${msg.author.username}#${msg.author.discriminator}`

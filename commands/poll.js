@@ -1,3 +1,5 @@
+const getEmbedColor = require('../util/getHighestRoleColor.js')
+
 exports.run = (client, message, args, level) => {
   let question = args.slice(0).join(' ')
 
@@ -6,7 +8,7 @@ exports.run = (client, message, args, level) => {
   message.channel.send({
     embed: {
       title: 'A Poll Has Been Started!',
-      color: client.config.color,
+      color: getEmbedColor(message),
       description: `${question}`,
       author: {
         name: `Poll Started By: ${message.author.username}#${message.author.discriminator}`,

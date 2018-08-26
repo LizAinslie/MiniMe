@@ -1,13 +1,13 @@
 var Jimp = require('jimp')
-const util = require('../util.js')
-const Discord = require('discord.js')
+const resolveUser = require('../util/resolveUser.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
-  util.resolveUser(client, args.join(' ')).then(user => {
+  resolveUser(client, args.join(' ')).then(user => {
     // open a file called "lenna.png"
     Jimp.read(user.displayAvatarURL, (err, img) => {
       if (err) throw err
-      img.quality(5)
+      img.quality(3)
       .getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
         if (err) throw err
         const attachment = new Discord.Attachment(buffer, 'jpeg.jpeg')
@@ -15,7 +15,7 @@ exports.run = (client, msg, args) => {
         msg.channel.send({
           embed: {
             title: `${user.username} needs more JPEG!`,
-            color: client.config.color,
+            color: getEmbedColor(msg),
             image: {
               url: 'attachment://jpeg.jpeg'
             }

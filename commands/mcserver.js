@@ -1,5 +1,5 @@
 const snekfetch = require('snekfetch')
-const config = require('../config.json')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   if (args.length < 1) return msg.channel.send(':question: │ You must provide a server IP address.')
@@ -14,7 +14,7 @@ exports.run = (client, msg, args) => {
         const data = {
           title: host + ':' + port,
           description: server.motd.replace(/[ ]{2,}/g, ' '),
-          color: config.color,
+          color: getEmbedColor(msg),
           fields: [
             {
               name: 'Players',

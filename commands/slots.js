@@ -1,4 +1,5 @@
 const xorshift = require('xorshift')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, message) => {
   let reel = [
@@ -33,7 +34,7 @@ exports.run = (client, message) => {
   }
   message.channel.send({
     embed: {
-      color: client.config.color,
+      color: getEmbedColor(message),
       title: 'Slot Machine',
       description: reels.join(' │ '),
       footer: {

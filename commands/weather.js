@@ -1,6 +1,6 @@
 const snekfetch = require('snekfetch')
-const config = require('../config.json')
-const util = require('../util')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
+const stripTrailingZero = require('../util/stripTrailingZero.js')
 
 exports.run = (client, msg, args) => {
   if (args.length < 1) return msg.channel.send(':question: │ You must provide a location.')
@@ -8,7 +8,7 @@ exports.run = (client, msg, args) => {
     msg.channel.send({
       embed: {
         title: 'Weather',
-        color: config.color,
+        color: getEmbedColor(msg),
         fields: [
           {
             name: 'Location',
@@ -17,22 +17,22 @@ exports.run = (client, msg, args) => {
           },
           {
             name: 'Temperature',
-            value: util.stripTrailingZero((result.body.main.temp * (9 / 5)) - 459.67) + ' °F / ' + util.stripTrailingZero(result.body.main.temp - 273.15) + ' °C',
+            value: stripTrailingZero((result.body.main.temp * (9 / 5)) - 459.67) + ' °F / ' + stripTrailingZero(result.body.main.temp - 273.15) + ' °C',
             inline: true
           },
           {
             name: 'Min. Temperature',
-            value: util.stripTrailingZero((result.body.main.temp_min * (9 / 5)) - 459.67) + ' °F / ' + util.stripTrailingZero(result.body.main.temp_min - 273.15) + ' °C',
+            value: stripTrailingZero((result.body.main.temp_min * (9 / 5)) - 459.67) + ' °F / ' + stripTrailingZero(result.body.main.temp_min - 273.15) + ' °C',
             inline: true
           },
           {
             name: 'Max. Temperature',
-            value: util.stripTrailingZero((result.body.main.temp_max * (9 / 5)) - 459.67) + ' °F / ' + util.stripTrailingZero(result.body.main.temp_max - 273.15) + ' °C',
+            value: stripTrailingZero((result.body.main.temp_max * (9 / 5)) - 459.67) + ' °F / ' + stripTrailingZero(result.body.main.temp_max - 273.15) + ' °C',
             inline: true
           },
           {
             name: 'Pressure',
-            value: util.stripTrailingZero(0.014 * result.body.main.pressure) + ' psi',
+            value: stripTrailingZero(0.014 * result.body.main.pressure) + ' psi',
             inline: true
           },
           {
@@ -42,12 +42,12 @@ exports.run = (client, msg, args) => {
           },
           {
             name: 'Visibility',
-            value: util.stripTrailingZero(result.body.visibility * 0.00062) + ' mi / ' + util.stripTrailingZero(result.body.visibility / 1000) + ' km',
+            value: stripTrailingZero(result.body.visibility * 0.00062) + ' mi / ' + stripTrailingZero(result.body.visibility / 1000) + ' km',
             inline: true
           },
           {
             name: 'Wind',
-            value: util.stripTrailingZero(result.body.wind.speed * (25 / 11)) + ' mph / ' + util.stripTrailingZero(result.body.wind.speed * 3.6) + ' km/h',
+            value: stripTrailingZero(result.body.wind.speed * (25 / 11)) + ' mph / ' + stripTrailingZero(result.body.wind.speed * 3.6) + ' km/h',
             inline: true
           },
           {

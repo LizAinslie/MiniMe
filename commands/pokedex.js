@@ -1,5 +1,6 @@
 const Pokedex = require('pokedex-api')
 const Discord = require('discord.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   const dex = new Pokedex()
@@ -7,7 +8,7 @@ exports.run = (client, msg, args) => {
     const embed = new Discord.RichEmbed()
     .setTitle(pokemon.name)
     .setThumbnail(pokemon.sprite)
-    .setColor(client.config.color)
+    .setColor(getEmbedColor(msg))
     .addField('Pokedex Number', pokemon.number, true)
     .addField('Mythical?', pokemon.mythical ? 'Yes' : 'No', true)
     .addField('Height', pokemon.height, true)

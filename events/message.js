@@ -2,7 +2,7 @@ module.exports = async (client, message) => {
   // Ignore all bots
   if (message.author.bot) return
   // let key
-  if (message.guild) {
+//   if (message.guild) {
 //     We'll use the key often enough that simplifying it is worth the trouble.
   //  key = `${message.guild.id}-${message.author.id}`
 
@@ -27,17 +27,22 @@ module.exports = async (client, message) => {
       // message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`)
      // client.points.setProp(key, 'level', curLevel)
    // }
-  }
+//   }
 
   // Ignore messages not starting with the prefix (in config.json)
-  if (message.content.indexOf(client.config.prefix) !== 0) return
+  const prefixes = ['m::', `<@${client.user.id}>`];
+  let prefix = false;
+  for(const thisPrefix of prefixes) {
+    if(message.content.toLowerCase().startsWith(thisPrefix)) prefix = thisPrefix;
+  }
+  if (message.content.indexOf(prefix) !== 0) return
 
 //  if (message.content === '!join') {
 //    client.emit('guildMemberAdd', message.member || await message.guild.fetchMember(message.author));
 //  }
 
   // Our standard argument/command name definition.
-  const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g)
+  const args = message.content.slice(prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()
 
 //  if (command === 'points') {

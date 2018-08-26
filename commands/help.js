@@ -1,8 +1,11 @@
+const getEmbedColor = require('../util/getHighestRoleColor.js')
+
 const cmdStatuses = [
   '<:offline:313956277237710868>',
   '<:away:313956277220802560>',
   '<:online:313956277808005120>'
 ] // eslint-disable-line no-unused-vars
+
 exports.run = (client, message, params) => {
   if (!params[0]) {
 //     const commandNames = Array.from(client.commands.keys())
@@ -10,7 +13,7 @@ exports.run = (client, message, params) => {
     message.channel.send({
       embed: {
         title: 'Command List',
-        color: client.config.color,
+        color: getEmbedColor(message),
         description: `Use \`${client.config.prefix}help <commandname>\` for usage and details.`,
         author: {
           icon_url: message.author.displayAvatarURL,

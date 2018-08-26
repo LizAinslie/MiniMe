@@ -1,6 +1,7 @@
 const dateformat = require('dateformat')
-const util = require('../util.js')
+const resolveUser = require('../util/resolveUser.js')
 const funcs = require('../modules/functions.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 const statuses = {
   online: '<:online:313956277808005120>',
@@ -10,11 +11,11 @@ const statuses = {
 }
 
 exports.run = (client, message, args) => {
-  util.resolveUser(client, args.length > 0 ? args.join(' ') : message.author.id).then((user) => {
+  resolveUser(client, args.length > 0 ? args.join(' ') : message.author.id).then((user) => {
     message.channel.send({
       embed: {
         title: user.username + '#' + user.discriminator,
-        color: client.config.color,
+        color: getEmbedColor(message),
         thumbnail: {
           url: user.displayAvatarURL
         },

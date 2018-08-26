@@ -1,15 +1,16 @@
 const snekfetch = require('snekfetch')
-const util = require('../util.js')
+const resolveUser = require('../util/resolveUser.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
-  util.resolveUser(client, args.join(' ')).then(user => {
+  resolveUser(client, args.join(' ')).then(user => {
     if (!user.bot) return msg.channel.send(`:exclamation: | ${user} is not a bot!`)
     snekfetch.get(`https://discordbots.org/api/bots/${user.id}`).then(res => {
       const bot = res.body
       msg.channel.send({
         embed: {
           title: bot.username,
-          color: client.config.color,
+          color: getEmbedColor(msg),
           thumbnail: {
             url: user.displayAvatarURL
           },

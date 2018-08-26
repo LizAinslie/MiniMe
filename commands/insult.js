@@ -1,10 +1,10 @@
 const snekfetch = require('snekfetch')
-const util = require('../util.js')
+const resolveUser = require('../util/resolveUser.js')
 
 exports.run = (client, msg, args) => {
   snekfetch.get('https://insult.mattbas.org/api/insult.json').then((result) => {
     if (args.length > 0) {
-      util.resolveUser(client, args.join(' ')).then((user) => {
+      resolveUser(client, args.join(' ')).then((user) => {
         msg.channel.send((msg.channel.guild && msg.channel.guild.members.has(user.id) ? '<@' + user.id + '>' : user.username + '#' + user.discriminator) + ' ' + JSON.parse(result.body).insult)
       }).catch(() => {
         msg.channel.send(':exclamation: │ Unable to find any users by that query.')

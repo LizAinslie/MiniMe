@@ -4,13 +4,13 @@ const snekfetch = require('snekfetch')
 exports.run = (client, msg) => {
   if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
   snekfetch.get(`https://botlist.space/api/bots/${client.user.id}/upvotes?ids=true`)
-  .set('Authorization', client.config.apis.bls)
+  .set('Authorization', client.config.apis.botlists.bls)
   .end((err, res) => {
  if (err) {
       msg.channel.send(':exclamation: │ There was an error running the command. This incident has been reported.')
       client.rollbar.error(`[hentaibomb.js] snekfetch error: ${err}`)
     }
-    var check = res.body.includes(msg.author.id)
+    var check = res.body.includes(msg.author.id.toString())
     if (msg.author.id === client.config.ownerID) check = 1
     if (check === 1) {
       randomPuppy('hentai').then(url => {

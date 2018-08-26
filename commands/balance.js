@@ -1,8 +1,8 @@
-const util = require('../util.js')
+const resolveUser = require('../util/resolveUser.js')
 
 exports.run = (client, msg, args) => {
   if (args[0]) {
-    util.resolveUser(client, args.join(' ')).then(user => {
+    resolveUser(client, args.join(' ')).then(user => {
       let key = `${user.id}-balance`
       let balance = 0
       if (client.userData.has(key)) {

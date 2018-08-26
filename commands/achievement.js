@@ -1,3 +1,5 @@
+const getEmbedColor = require('../util/getHighestRoleColor.js')
+
 exports.run = (client, message, args) => {
   try {
     let [title, contents] = args.join(' ').split('|')
@@ -15,7 +17,7 @@ exports.run = (client, message, args) => {
     message.channel.send({
       embed: {
         description: `**${message.author.username}** Achievement!`,
-        color: client.config.color,
+        color: getEmbedColor(message),
         image: {
           url: url
         }

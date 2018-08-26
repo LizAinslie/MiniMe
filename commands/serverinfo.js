@@ -1,8 +1,10 @@
+const getEmbedColor = require('../util/getHighestRoleColor.js')
+
 exports.run = (client, msg) => {
   const guild = msg.guild
   msg.channel.send({
     embed: {
-      color: client.config.color,
+      color: getEmbedColor(msg),
       timestamp: new Date(),
       footer: {
         icon_url: client.user.avatarURL,

@@ -1,6 +1,7 @@
 const snek = require('snekfetch')
 
 exports.run = (client, msg, args) => {
+  if (!args[0]) return msg.channel.send(':exclamation: │ You must give me a number to search!')
   snek.get(`http://numbersapi.com/${args[0]}/trivia?default=Boring+number+is+boring.`).then(res => {
     msg.channel.send(res.body.toString())
   }).catch((error) => {
@@ -15,5 +16,5 @@ exports.help = {
   usage: 'numberfact <number>',
   fullDesc: 'Gets a number fact. Must supply a number (No Googol!)',
   type: 'fun',
-  status: 1
+  status: 2
 }

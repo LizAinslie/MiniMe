@@ -12,7 +12,9 @@ process.on('unhandledRejection', console.error)
 
 const client = new Discord.Client()
 const config = require('./config.json')
+const colors = require('./colors.json')
 client.config = config
+client.colors = colors
 
 client.railEmoji = client.emojis.find('name', 'rail')
 // client.idiot = new Idiot.Client(config.apis.idiot, { dev: true })

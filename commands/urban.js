@@ -1,5 +1,6 @@
 const ud = require('urban-dictionary')
 const Discord = require('discord.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
@@ -9,7 +10,7 @@ exports.run = (client, msg, args) => {
       msg.channel.send(':exclamation: │ There was an error!')
     } else {
       const embed = new Discord.RichEmbed()
-      .setColor(client.config.color)
+      .setColor(getEmbedColor(msg))
       .setTitle(entries[0].word)
       .setDescription(entries[0].definition)
       .addField('Example', entries[0].example)
