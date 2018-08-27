@@ -1,23 +1,29 @@
 exports.run = async (client, msg, args) => {
-  // This command removes all messages from all users in the channel, up to 100.
+  // This command removes all msgs from all users in the channel, up to 100.
   if (!msg.member.roles.some(r => [client.guildSettings.getProp(msg.guild.id, 'ownerRole'), client.guildSettings.getProp(msg.guild.id, 'modRole'), client.guildSettings.getProp(msg.guild.id, 'helperRole')].includes(r.name))) { return msg.reply(':no_entry_sign: │ Sorry, you don\'t have permissions to use this!') }
   // get the delete count, as an actual number.
-  const deleteCount = parseInt(args[0], 10)
-
-  // Ooooh nice, combined conditions. <3
-  if (!deleteCount || deleteCount < 2 || deleteCount > 100) { return msg.reply('please provide a number between 2 and 100 for the number of messages to delete') }
-
-  // So we get our messages, and delete them. Simple enough, right?
-  const fetched = await msg.channel.fetchMessages({limit: deleteCount})
-  msg.channel.bulkDelete(fetched)
-    .catch(error => msg.reply(`Couldn't delete messages because of: ${error}`))
+  const user = msg.mentions.users.first();
+  // Parse Amount
+  const amount = !!parseInt(msg.content.split(' ')[1]) ? parseInt(msg.content.split(' ')[1]) : parseInt(msg.content.split(' ')[2])
+  if (!amount) return msg.reply('Must specify an amount to delete!');
+  if (!amount && !user) return msg.reply('Must specify a user and amount, or just an amount, of messages to purge!');
+  // Fetch 100 msgs (will be filtered and lowered up to max amount requested)
+  msg.channel.fetchMessages({
+   limit: 100,
+  }).then((messages) => {
+   if (user) {
+   const filterBy = user ? user.id : Client.user.id;
+   messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount);
+   }
+   msg.channel.bulkDelete(messages).catch(error => client.rollbar.error(error.stack));
+  });
 }
 
 exports.help = {
   name: 'purge',
-  description: 'Removes messages in bulk.',
+  description: 'Removes msgs in bulk.',
   usage: 'purge <number>',
-  fullDesc: 'Removes messages in bulk. Up to 100 messages can be removed at once.',
+  fullDesc: 'Removes msgs in bulk. Up to 100 msgs can be removed at once.',
   type: 'mod',
   status: 2
 }
