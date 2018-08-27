@@ -17,7 +17,7 @@ exports.run = (client, msg, args) => {
     embed: {
       author: {
         icon_url: msg.author.displayAvatarURL,
-        text: `Color │ Requested by ${msg.author.username}#${msg.author.discriminator}`
+        name: `Color │ Requested by ${msg.author.username}#${msg.author.discriminator}`
       },
       color: getEmbedColor(msg),
       thumbnail: {
