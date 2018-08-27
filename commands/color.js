@@ -9,7 +9,7 @@ exports.run = (client, msg, args) => {
   const ctx = canvas.getContext('2d')
   
   ctx.fillStyle = color
-  ctx.drawRect(0, 0, canvas.width, canvas.height)
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
   
   const attachment = new Discord.Attachment(canvas.toBuffer(), 'color.png')
   
