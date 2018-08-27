@@ -26,47 +26,47 @@ exports.run = (client, message, params) => {
         timestamp: new Date(),
         fields: [
           {
-            name: ':wrench: │ **Utility Commands:**',
+            name: ':wrench: │ __**Utility Commands:**__',
             value: client.commands.filter(c => c.help.type === 'util').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':loud_sound: │ **Voice Commands:**',
+            name: ':loud_sound: │ __**Voice Commands:**__',
             value: client.commands.filter(c => c.help.type === 'vc').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':tada: │ **Fun Commands:**',
+            name: ':tada: │ __**Fun Commands:**__',
             value: client.commands.filter(c => c.help.type === 'fun').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':camera_with_flash: │ **Random Image Commands:**',
+            name: ':camera_with_flash: │ __**Random Image Commands:**__',
             value: client.commands.filter(c => c.help.type === 'img').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':mountain_snow: │ **Image Generation Commands:**',
+            name: ':mountain_snow: │ __**Image Generation Commands:**__',
             value: client.commands.filter(c => c.help.type === 'imgen').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':scroll: │ **Roleplay Commands:**',
+            name: ':scroll: │ __**Roleplay Commands:**__',
             value: client.commands.filter(c => c.help.type === 'rp').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':moneybag: │ **Economy Commands:**',
+            name: ':moneybag: │ __**Economy Commands:**__',
             value: client.commands.filter(c => c.help.type === 'eco').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':hammer: │ **Moderator Commands:**',
+            name: ':hammer: │ __**Moderator Commands:**__',
             value: client.commands.filter(c => c.help.type === 'mod').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':underage: │ **NSFW Commands:**',
+            name: ':underage: │ __**NSFW Commands:**__',
             value: client.commands.filter(c => c.help.type === 'nsfw').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':computer: │ **Developer Commands:**',
+            name: ':computer: │ __**Developer Commands:**__',
             value: client.commands.filter(c => c.help.type === 'dev').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
           },
           {
-            name: ':key2: │ Key',
+            name: ':key: │ __**Key**__',
             value: `${cmdStatuses[0]} - **Off** (Not working)\n${cmdStatuses[1]} - **W. I. P.** (May not be fully working, or may not be working at all)\n${cmdStatuses[2]} - **On** (Fully working)`
           }
         ]
@@ -99,7 +99,7 @@ exports.run = (client, message, params) => {
             text: 'Status: 200'
           },
           timestamp: new Date(),
-          color: client.config.color,
+          color: getEmbedColor(message),
           description: command.help.fullDesc,
           fields: [
             {
