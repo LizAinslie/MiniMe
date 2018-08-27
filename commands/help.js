@@ -27,43 +27,43 @@ exports.run = (client, message, params) => {
         fields: [
           {
             name: ':wrench: │ __**Utility Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'util').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'util').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':loud_sound: │ __**Voice Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'vc').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'vc').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':tada: │ __**Fun Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'fun').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'fun').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':camera_with_flash: │ __**Random Image Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'img').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'img').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':mountain_snow: │ __**Image Generation Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'imgen').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'imgen').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':scroll: │ __**Roleplay Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'rp').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'rp').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':moneybag: │ __**Economy Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'eco').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'eco').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':hammer: │ __**Moderator Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'mod').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'mod').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':underage: │ __**NSFW Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'nsfw').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'nsfw').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':computer: │ __**Developer Commands:**__',
-            value: client.commands.filter(c => c.help.type === 'dev').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ')
+            value: client.commands.filter(c => c.help.type === 'dev').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
             name: ':key: │ __**Key**__',
