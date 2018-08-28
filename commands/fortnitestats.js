@@ -51,5 +51,5 @@ exports.help = {
   usage: 'fortnitestats <pc|xbox|ps4> <epicNickname>',
   fullDesc: 'Retrieves a user\'s Fortnite stats',
   type: 'util',
-  status: 1
+  status: 2
 }
