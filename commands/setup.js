@@ -28,7 +28,7 @@ exports.run = (client, msg, args) => {
 exports.help = {
   name: 'setup',
   description: 'Sets your server up.',
-  usage: 'setup <logChannel> | <welcomeChannel> | <ownerRole> | <modRole> | <helperRole> | <muteRole>',
+  usage: 'setup <logChannelName> | <welcomeChannelName> | <ownerRoleName> | <modRoleName> | <helperRoleName> | <muteRoleName>',
   fullDesc: 'Sets your server up for use with advanced features. Example: `' + config.prefix + 'setup bot-hell | welcome | Owner | Admin | Web Mod | muted`',
   type: 'util',
   status: 2
