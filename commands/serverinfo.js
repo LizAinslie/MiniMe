@@ -24,7 +24,7 @@ exports.run = (client, msg) => {
           inline: true
         },
         {
-          name: 'Owner',
+          name: '<:owner:455810041027756053> │ Owner',
           value: guild.owner.toString(),
           inline: true
         },
