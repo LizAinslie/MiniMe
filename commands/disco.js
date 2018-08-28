@@ -4,6 +4,7 @@ const snekfetch = require('snekfetch')
 const Discord = require('discord.js')
 
 exports.run = (client, msg, args) => {
+  msg.channel.startTyping()
   if (args[0]) {
     resolveUser(client, args.join(' ')).then(user => {
       snekfetch.get(`https://triggered-api.tk/api/v2/disco?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
@@ -27,6 +28,7 @@ exports.run = (client, msg, args) => {
           },
           files: [attachment]
         })
+        msg.channel.stopTyping()
       })
     })
   } else {
@@ -51,6 +53,7 @@ exports.run = (client, msg, args) => {
         },
         files: [attachment]
       })
+      msg.channel.stopTyping()
     })
   }
 }

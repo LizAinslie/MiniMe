@@ -15,7 +15,7 @@ exports.run = (client, msg, args) => {
       client.rollbar.error(`[fortnitestats.js] snekfetch error: ${err}`)
     }
     const player = res.body
-    let values
+    let values = []
     for (let stat of player.lifeTimeStats) {
       values.push({
         name: stat.key,
