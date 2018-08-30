@@ -36,7 +36,7 @@ exports.help = {
   name: 'eval',
   description: 'Evaluates JavaScript.',
   usage: 'eval <code>',
-  fullDesc: `Evaluates Javascript. Can only be used by <@${config.ownerID}>. :P`,
+  fullDesc: `Evaluates Javascript. Can only be used by my developer. :P`,
   type: 'dev',
   status: 2
 }
