@@ -1,4 +1,5 @@
 const snekfetch = require('snekfetch')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   if (args.length > 0) {
@@ -12,7 +13,7 @@ exports.run = (client, msg, args) => {
           embed: {
             title: result.body.safe_title,
             description: result.body.alt,
-            color: client.config.color,
+            color: getEmbedColor(msg),
             image: {
               url: result.body.img
             }
@@ -34,7 +35,7 @@ exports.run = (client, msg, args) => {
           embed: {
             title: result.body.safe_title,
             description: result.body.alt,
-            color: client.config.color,
+            color: getEmbedColor(msg),
             image: {
               url: result.body.img
             }

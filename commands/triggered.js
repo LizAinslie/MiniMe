@@ -7,14 +7,14 @@ exports.run = (client, msg, args) => {
   msg.channel.send('<a:typing:393848431413559296> │ Generating...').then(message => {
     if (args[0]) {
       resolveUser(client, args.join(' ')).then(user => {
-        snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-          const attachment = new Discord.Attachment(res.body, 'blurple.png')
+        snekfetch.get(`https://triggered-api.tk/api/v2/triggered?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+          const attachment = new Discord.Attachment(res.body, 'triggered.gif')
           
           message.delete()
           msg.channel.send({
             embed: {
               author: {
-                name: `${user.username} has been blurplefied!`,
+                name: `${user.username} has been triggered!`,
                 icon_url: msg.author.displayAvatarURL
               },
               footer: {
@@ -24,7 +24,7 @@ exports.run = (client, msg, args) => {
               timestamp: new Date(),
               color: getEmbedColor(msg),
               image: {
-                url: 'attachment://blurple.png'
+                url: 'attachment://triggered.gif'
               }
             },
             files: [attachment]
@@ -32,14 +32,14 @@ exports.run = (client, msg, args) => {
         })
       })
     } else {
-      snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-        const attachment = new Discord.Attachment(res.body, 'blurple.png')
+      snekfetch.get(`https://triggered-api.tk/api/v2/triggered?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+        const attachment = new Discord.Attachment(res.body, 'triggered.gif')
         
         message.delete()
         msg.channel.send({
           embed: {
             author: {
-              name: `${msg.author.username} has been blurplefied!`,
+              name: `${msg.author.username} has been triggered!`,
               icon_url: msg.author.displayAvatarURL
             },
             footer: {
@@ -49,7 +49,7 @@ exports.run = (client, msg, args) => {
             timestamp: new Date(),
             color: getEmbedColor(msg),
             image: {
-              url: 'attachment://blurple.png'
+              url: 'attachment://triggered.gif'
             }
           },
           files: [attachment]
@@ -60,10 +60,10 @@ exports.run = (client, msg, args) => {
 }
 
 exports.help = {
-  name: 'blurple',
-  description: 'Blurplefy someone!',
-  usage: 'blurple [user]',
-  fullDesc: 'Blurplefy someone!',
+  name: 'triggered',
+  description: 'Trigger someone!',
+  usage: 'triggered [user]',
+  fullDesc: 'Trigger someone!',
   type: 'imgen',
   status: 2
 }

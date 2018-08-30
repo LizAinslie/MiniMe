@@ -11,7 +11,7 @@ exports.run = (client, message) => {
     .setColor(getEmbedColor(message))
     .addField(':floppy_disk: │ Mem Usage', `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
     .addField(':clock4: │ Uptime', duration, true)
-    .addField('Command Count', client.commands.array().length, true)
+    .addField(':keyboard: │ Command Count', client.commands.array().length, true)
     .addField(':busts_in_silhouette: │ Users', client.users.size.toLocaleString(), true)
     .addField('<:servers:484062453265858561> │ Servers', client.guilds.size.toLocaleString(), true)
     .addField('<:djs:484062455618863126> │ Discord.js', version, true)

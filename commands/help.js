@@ -42,7 +42,7 @@ exports.run = (client, message, params) => {
             value: client.commands.filter(c => c.help.type === 'img').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
-            name: ':mountain_snow: │ __**Image Generation Commands:**__',
+            name: ':sunrise_over_mountains: │ __**Image Manipulation Commands:**__',
             value: client.commands.filter(c => c.help.type === 'imgen').map(c => cmdStatuses[c.help.status] + '`' + c.help.name + '`').join(', ') + '\n​'
           },
           {
@@ -83,6 +83,11 @@ exports.run = (client, message, params) => {
       vc: 'Voice',
       eco: 'Economy'
     }
+    const cmdStatusNames = [
+      'Offline',
+      'W. I. P.',
+      'Online'
+    ]
 
     let command = params[0]
     if (client.commands.has(command)) {
@@ -92,7 +97,7 @@ exports.run = (client, message, params) => {
           title: command.help.name,
           author: {
             icon_url: message.author.displayAvatarURL,
-            name: `Help | Requested by ${message.author.username}#${message.author.discriminator}`
+            name: `Help │ Requested by ${message.author.username}#${message.author.discriminator}`
           },
           footer: {
             icon_url: client.user.avatarURL,
@@ -110,6 +115,11 @@ exports.run = (client, message, params) => {
             {
               name: 'Type',
               value: cmdTypes[command.help.type],
+              inline: true
+            },
+            {
+              name: 'Type',
+              value: cmdStatuses[command.help.status] + ' │ ' + cmdStatusNames[command.help.status],
               inline: true
             }
           ]

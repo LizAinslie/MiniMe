@@ -15,6 +15,7 @@ exports.run = (client, msg, args) => {
   .setDescription(`${member.user.username}#${member.user.discriminator}`)
   .setColor(client.config.color)
   .addField('Reason', reason)
+  
   let logChannel = msg.guild.channels.get(client.guildSettings.getProp(msg.guild.id, 'logChannel'))
   logChannel.send(embed)
 }

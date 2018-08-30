@@ -1,6 +1,6 @@
 /* eslint no-eval: 0 */
-
-const config = require('../config.json')
+const formatArbitrary = require('../util/formatArbitrary.js')
+const uploadToHastebin = require('../util/uploadToHastebin.js')
 
 const clean = text => {
   if (typeof text === 'string') {
@@ -11,17 +11,25 @@ const clean = text => {
 }
 
 exports.run = async (client, message, args) => {
-  if (message.author.id !== config.ownerID) { return }
-    try {
-      const code = args.join(' ')
-      let evaled = await eval(code)
+  if (message.author.id !== client.config.ownerID) { return message.channel.send(':no_entry_sign: │ Only my developer can use this!') }
+  try {
+    const code = args.join(' ')
+    let evaled = await eval(code)
 
-      if (typeof evaled !== 'string') { evaled = require('util').inspect(evaled) }
+    if (typeof evaled !== 'string') { evaled = require('util').inspect(evaled) }
 
-      message.channel.send(clean(evaled), { code: 'xl' })
-    } catch (err) {
-      message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
+    if (formatArbitrary(client, clean(evaled)).length > 1992) {
+      uploadToHastebin(result).then((url) => {
+        message.channel.send(':outbox_tray: │ ' + url)
+      }).catch((error) => {
+        message.channel.send(':exclamation: │ Failed to upload result to hastebin. `' + error.message + '`')
+      })
+    } else {
+      message.channel.send('```js\n' + formatArbitrary(client, clean(evaled)) + '```')
     }
+  } catch (err) {
+    message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
+  }
 }
 
 exports.help = {

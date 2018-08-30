@@ -16,7 +16,7 @@ module.exports = async (client, message) => {
   util.log(client, message, {
     embed: {
       title: 'Message Delete',
-      color: client.colors.YELLOW,
+      color: client.config.color,
       thumbnail: {
         url: entry.executor.avatarURL
       },
