@@ -4,14 +4,15 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg) => {
   if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
-  snekfetch.get(`https://botlist.space/api/bots/${client.user.id}/upvotes?ids=true`)
-  .set('Authorization', client.config.apis.botlists.bls)
+  .get(`https://discordbots.org/api/bots/${client.user.id}/check`)
+  .set('Authorization', client.config.apis.botlists.dbl) 
+  .query({ userId: msg.author.id })
   .end((err, res) => {
     if (err) {
       msg.channel.send(':exclamation: │ There was an error running the command. This incident has been reported.')
       client.rollbar.error(`[r34.js] snekfetch error: ${err}`)
     }
-    var check = res.body.includes(msg.author.id.toString())
+    var check = res.body.voted
     if (msg.author.id === client.config.ownerID) check = 1
     if (check === 1) {
       randomPuppy('rule34').then(url => {
@@ -37,11 +38,11 @@ exports.run = (client, msg) => {
       msg.channel.send({
         embed: {
           title: 'Upvoters-Only Command',
-          url: 'https://botlist.space/view/456926578228723724',
+          url: 'https://discordbots.org/bot/luki/vote',
           description: 'This command is available only for upvoters',
           fields: [{
               name: 'Go upvote at',
-              value: 'https://botlist.space/view/456926578228723724'
+              value: 'https://discordbots.org/bot/luki/vote'
             }
           ],
           timestamp: new Date(),

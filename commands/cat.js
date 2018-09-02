@@ -1,10 +1,11 @@
 const snekfetch = require('snekfetch')
 const Discord = require('discord.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg) => {
   snekfetch.get('https://catapi.glitch.me/random').then(res => {
     const embed = new Discord.RichEmbed()
-    .setColor(client.config.color)
+    .setColor(getEmbedColor(msg))
     .setAuthor(`Cat │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
     .setImage(res.body.url)
     msg.channel.send(embed)

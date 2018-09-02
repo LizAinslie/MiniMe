@@ -1,6 +1,5 @@
 exports.run = async (client, message, args) => {
-  if (!client.guildSettings.has(message.guild.id)) return message.channel.send(':exclamation: │ You must set up your server first! Use the `setup` command to do this.')
-  if (!message.member.roles.some(r => [client.guildSettings.getProp(message.guild.id, 'ownerRole'), client.guildSettings.getProp(message.guild.id, 'modRole')].includes(r.name))) { return message.reply(':no_entry_sign: │ Sorry, you don\'t have permissions to use this!') }
+  if (!message.member.hasPermission('BAN_MEMBERS')) { return message.reply(':no_entry_sign: │ You need the permission `BAN_MEMBERS` to use this.') }
   let member = message.mentions.members.first()
   if (!member) { return message.reply('Please mention a valid member of this server') }
   if (!member.bannable) { return message.reply('I cannot ban this user! Do they have a higher role? Do I have ban permissions?') }

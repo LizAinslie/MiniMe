@@ -4,7 +4,7 @@ module.exports = (client, query, returnIDOnly = false, preventUsernameSearch = f
 			const username = query.match(/^[^#]+/)[0]
 			const discrim = query.match(/[0-9]{4}$/)[0]
 			const users = client.users.filter((u) => u.username.toLowerCase() === username.toLowerCase() && u.discriminator === discrim)
-			if (users.length > 0 && !returnIDOnly) return resolve(users[0])
+			if (users.size > 0 && !returnIDOnly) return resolve(users.first())
 			if (returnIDOnly) return resolve(users[0].id)
 		} else if (/^[0-9]{14,22}$/.test(query)) {
 			if (returnIDOnly) return resolve(query)
@@ -16,8 +16,8 @@ module.exports = (client, query, returnIDOnly = false, preventUsernameSearch = f
 			if (user) return resolve(user)
 		} else if (!preventUsernameSearch) {
 			const users = client.users.filter((u) => u.username.toLowerCase().includes(query.toLowerCase()))
-			if (users.length > 0 && !returnIDOnly) return resolve(users[0])
-      if (returnIDOnly) return resolve(users[0].id)
+			if (users.size > 0 && !returnIDOnly) return resolve(users.first())
+      if (returnIDOnly) return resolve(users.first().id)
 		}
 		reject(new Error('Invalid User!'))
 	})
