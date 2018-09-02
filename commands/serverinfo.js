@@ -62,12 +62,12 @@ exports.run = (client, msg, args) => {
             },
             {
               name: ':dividers: │ Roles',
-              value: guild.roles.map(r => r.name).join(', '),
+              value: guild.roles.map(r => r.name).join(', ').length <= 1024 ? guild.roles.map(r => r.name).join(', ') : guild.roles.size,
               inline: true
             },
             {
               name: ':dividers: │ Custom Emoji',
-              value: guild.emojis.map(e => `${e}`).join(', '),
+              value: guild.emojis.map(e => `${e}`).join('').length <= 1024 ? guild.emojis.map(e => `${e}`).join('') : guild.emojis.size,
               inline: true
             }
           ]
@@ -137,12 +137,12 @@ exports.run = (client, msg, args) => {
           },
           {
             name: ':dividers: │ Roles',
-            value: guild.roles.map(r => `<@&${r.id}>`).join(', '),
+            value: guild.roles.map(r => `<@&${r.id}>`).join(', ').length <= 1024 ? guild.roles.map(r => `<@&${r.id}>`).join(', ') : guild.roles.size,
             inline: true
           },
           {
             name: ':dividers: │ Custom Emoji',
-            value: guild.emojis.map(e => `${e}`).join(', '),
+            value: guild.emojis.map(e => `${e}`).join('').length <= 1024 ? guild.emojis.map(e => `${e}`).join('') : guild.emojis.size,
             inline: true
           }
         ]

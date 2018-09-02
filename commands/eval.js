@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
     if (typeof evaled !== 'string') { evaled = require('util').inspect(evaled) }
 
     if (formatArbitrary(client, clean(evaled)).length > 1992) {
-      uploadToHastebin(result).then((url) => {
+      uploadToHastebin(formatArbitrary(client, clean(evaled))).then((url) => {
         message.channel.send(':outbox_tray: │ ' + url)
       }).catch((error) => {
         message.channel.send(':exclamation: │ Failed to upload result to hastebin. `' + error.message + '`')
