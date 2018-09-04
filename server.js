@@ -5,6 +5,7 @@ const Enmap = require('enmap')
 const EnmapSql = require('enmap-sqlite')
 var Rollbar = require('rollbar')
 // const Idiot = require('idiotic-api')
+const rethinkdb = require('rethinkdbdash')
 
 // Initialize the provider
 
@@ -17,6 +18,9 @@ client.config = config
 client.colors = colors
 
 client.railEmoji = client.emojis.find('name', 'rail')
+
+const r = rethinkdb(config.rethinkdb)
+client.r = r
 // client.idiot = new Idiot.Client(config.apis.idiot, { dev: true })
 // client.points = new Enmap({provider: new EnmapSql({ name: 'points' })})
 

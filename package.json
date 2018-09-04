@@ -41,6 +41,7 @@
     "pokedex-api": "^1.1.1",
     "querystring": "^0.2.0",
     "random-puppy": "^1.1.0",
+    "rethinkdbdash": "^2.3.31",
     "rollbar": "^2.4.4",
     "snekfetch": "^4.0.4",
     "urban-dictionary": "^2.1.2",

@@ -1,0 +1,36 @@
+{
+  "token": "put your discord token in here",
+  "prefix": "your prefix",
+  "color": 5663536,
+  "ownerID": "your user id",
+  "emoji": "⭐",
+  "info": {
+    "id": "bot client id"
+  },
+  "rethinkdb": {
+    "silent": true,
+    "discovery": true,
+    "host": "localhost",
+    "db": "minime"
+  },
+  "dashboard": {
+    "callback": "",
+    "secret": "",
+    "sessionSecret": "random gibberish in here",
+    "domain": ""
+  },
+  "apis": {
+    "giphy": "",
+    "fortnite": "",
+    "openweathermap": "",
+    "rollbar": "",
+    "yt": "",
+    "idiot": "",
+    "triggered": "",
+    "botlists": {
+      "bls": "",
+      "dbg": "",
+      "dbl": ""
+    }
+  }
+}

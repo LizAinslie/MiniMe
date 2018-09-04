@@ -330,5 +330,5 @@ module.exports = client => {
   })
   console.log('dashboard 6')
 
-  app.listen(8080)
+  app.listen(3000)
 }
