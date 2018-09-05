@@ -1,6 +1,6 @@
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
-exports.run = (client, message, args, level) => {
+exports.run = (client, message, args) => {
   let question = args.slice(0).join(' ')
 
   if (args.length === 0) { return message.reply('**Invalid Format:** `!poll <Question>`') }
