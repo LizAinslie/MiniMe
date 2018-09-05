@@ -1,6 +1,7 @@
 /* eslint no-eval: 0 */
 const formatArbitrary = require('../util/formatArbitrary.js')
 const uploadToHastebin = require('../util/uploadToHastebin.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 const clean = text => {
   if (typeof text === 'string') {
@@ -25,10 +26,56 @@ exports.run = async (client, message, args) => {
         message.channel.send(':exclamation: │ Failed to upload result to hastebin. `' + error.message + '`')
       })
     } else {
-      message.channel.send('```js\n' + formatArbitrary(client, clean(evaled)) + '```')
+      message.channel.send({
+        embed: {
+          author: {
+            name: `Eval │ Requested by ${message.author.username}#${message.author.discriminator}`,
+            icon_url: message.author.displayAvatarURL
+          },
+          footer: {
+            text: 'Status: 200',
+            icon_url: client.user.avatarURL
+          },
+          timestamp: new Date(),
+          color: getEmbedColor(message),
+          fields: [
+            {
+              name: ':inbox_tray: │ Input',
+              value: code
+            },
+            {
+              name: ':outbox_tray: │ Output',
+              value: '```js\n' + formatArbitrary(client, clean(evaled)) + '```'
+            }
+          ]
+        }
+      })
     }
   } catch (err) {
-    message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``)
+    message.channel.send({
+      embed: {
+        author: {
+          name: `Eval │ Requested by ${message.author.username}#${message.author.discriminator}`,
+          icon_url: message.author.displayAvatarURL
+        },
+        footer: {
+          text: 'Status: 200',
+          icon_url: client.user.avatarURL
+        },
+        timestamp: new Date(),
+        color: getEmbedColor(message),
+        fields: [
+          {
+            name: ':inbox_tray: │ Input',
+            value: code
+          },
+          {
+            name: ':outbox_tray: │ Error',
+            value: `\`\`\`xl\n${formatArbitrary(client, clean(err))}\n\`\`\``
+          }
+        ]
+      }
+    })
   }
 }
 
