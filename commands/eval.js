@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
           fields: [
             {
               name: ':inbox_tray: │ Input',
-              value: code
+              value: '```' + code + '```'
             },
             {
               name: ':outbox_tray: │ Output',
