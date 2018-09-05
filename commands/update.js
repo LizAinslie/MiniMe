@@ -16,3 +16,12 @@ exports.run = (client, msg) => {
 		}
 	})
 }
+
+exports.help = {
+  name: 'update',
+  description: 'Updates the bot.',
+  usage: 'update',
+  fullDesc: 'Updates the bot',
+  type: 'dev',
+  status: 2
+}
