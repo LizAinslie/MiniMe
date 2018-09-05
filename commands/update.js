@@ -15,6 +15,7 @@ exports.run = (client, msg) => {
 			msg.channel.send(':inbox_tray: │ Pulled from GitHub:\n```bash\n' + result + '```')
 		}
 	})
+  msg.channel.send('Updated the bot.')
 }
 
 exports.help = {
