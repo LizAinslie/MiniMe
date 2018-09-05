@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
           fields: [
             {
               name: ':inbox_tray: │ Input',
-              value: '```' + code + '```'
+              value: '```js\n' + code + '```'
             },
             {
               name: ':outbox_tray: │ Output',
@@ -67,11 +67,11 @@ exports.run = async (client, message, args) => {
         fields: [
           {
             name: ':inbox_tray: │ Input',
-            value: code
+            value: '```js\n' + code + '```'
           },
           {
             name: ':outbox_tray: │ Error',
-            value: `\`\`\`xl\n${formatArbitrary(client, clean(err))}\n\`\`\``
+            value: `\`\`\`js\n${formatArbitrary(client, clean(err))}\n\`\`\``
           }
         ]
       }
