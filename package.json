@@ -9,6 +9,7 @@
     "restart": "pm2 restart 13 --update-env && pm2 logs 13 --lines 45"
   },
   "dependencies": {
+    "better-sqlite-pool": "^0.1.2",
     "body-parser": "latest",
     "bufferutil": "latest",
     "canvas": "github:Automattic/node-canvas#92b192447e9b9ae98da0f801e4e34afdd1dc1ef8",
@@ -31,6 +32,7 @@
     "idiotic-api": "latest",
     "libsodium": "latest",
     "libsodium-wrappers": "latest",
+    "lodash": "^4.17.10",
     "marked": "latest",
     "moment": "latest",
     "moment-duration-format": "latest",
@@ -45,7 +47,7 @@
     "rollbar": "^2.4.4",
     "snekfetch": "^4.0.4",
     "urban-dictionary": "^2.1.2",
-    "uws": "^10.148.2",
+    "uws": "^99.0.0",
     "xorshift": "^1.1.1",
     "youtube-dl": "^1.12.2",
     "ytdl-core": "^0.24.0"

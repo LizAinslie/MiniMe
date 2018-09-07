@@ -1,6 +1,6 @@
 const dateformat = require('dateformat')
 const resolveUser = require('../util/resolveUser.js')
-const funcs = require('../modules/functions.js')
+const { capitalize } = require('lodash')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 const statuses = {
@@ -56,7 +56,7 @@ exports.run = (client, message, args) => {
           },
           {
             name: 'Status:',
-            value: `${statuses[user.presence.status]} │ ${funcs.toTitleCase(user.presence.status)}`,
+            value: `${statuses[user.presence.status]} │ ${capitalize(user.presence.status)}`,
             inline: true
           }
         ]
