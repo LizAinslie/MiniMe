@@ -29,6 +29,7 @@
     "google-translate-api": "github:mini-me-makers/google-translate-api",
     "helmet": "latest",
     "idiotic-api": "latest",
+    "jimp": "^0.4.0",
     "libsodium": "latest",
     "libsodium-wrappers": "latest",
     "marked": "latest",
