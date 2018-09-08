@@ -26,3 +26,8 @@ Mini Me is an awesome bot for your server that gives your staff power and lets y
 - An ascii font finder.
 - An urban dictionary.
 - A Minecraft server info finder.
+
+## Mini Me is on These Botlists and more:
+<a href="https://discordbotlist.com/bots/456926578228723724">
+	<img width="380" height="140" src="https://discordbotlist.com/bots/456926578228723724/widget" alt="Mini Me stats on Discord Bot List">
+</a>
