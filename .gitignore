@@ -1,3 +1,4 @@
 ecosystem.json
-data/**
+data
 config.json
+node_modules
