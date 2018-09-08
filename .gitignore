@@ -1,11 +1,5 @@
 ecosystem.json
-<<<<<<< HEAD
 data
 config.json
 node_modules
-=======
-data/
-config.json
-node_modules/
-.glitch-assets
->>>>>>> 848425e8d41fbfafe07e8d904bd0e78797111f1a
+yarn.lock
