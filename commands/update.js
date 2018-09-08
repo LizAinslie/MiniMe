@@ -1,8 +1,10 @@
 const execute = require('child_process')
+const formatArbitrary = require('../util.formatArbitrary.js')
+const uploadToHastebin = require('../util/uploadToHastebin.js')
 
 exports.run = (client, msg) => {
   if (msg.author.id !== client.config.ownerID) return msg.channel.send(':no_entry_sign: │ You are not my developer!')
-  execute.exec('git pull && pm2 restart 1', (error, stdout, stderr) => {
+  execute.exec('git pull && npm i && pm2 restart 4', (error, stdout, stderr) => {
     if (error) { return console.error(error) }
 		const result = formatArbitrary(client, stderr || stdout)
 		if (result.length > 1992) {
