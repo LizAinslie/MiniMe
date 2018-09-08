@@ -65,7 +65,7 @@ exports.run = (client, msg) => {
     client.rollbar.error(`Discordbotlist.com server count update failed : ${err}`)
   })
   snekfetch.post(`https://discordbot.world/api/bot/${client.user.id}/stats`)
-  .set('Authorization', client.config.apis.botlists.dblcom)
+  .set('Authorization', client.config.apis.botlists.dbw)
   .send({
     guild_count: client.guilds.size,
   }).then(() => {
