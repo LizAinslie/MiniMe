@@ -1,5 +1,5 @@
 ecosystem.json
-data/
+data
 config.json
-node_modules/
-.glitch-assets
+node_modules
+yarn.lock
