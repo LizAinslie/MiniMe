@@ -48,6 +48,37 @@ exports.run = (client, msg) => {
     })
     client.rollbar.error(`Discordbots.group server count update failed : ${err}`)
   })
+  snekfetch.post(`https://discordbotlist.com/api/bots/${client.user.id}/stats`)
+  .set('Authorization', client.config.apis.botlists.dblcom)
+  .send({
+    guilds: client.guilds.size,
+    users: client.users.size
+  }).then(() => {
+    msg.channel.send(':white_check_mark: │ Updated **discordbotlist.com** stats.').catch(err => {
+      client.rollbar.error(`Error sending message in channel with id: ${msg.channel.id} | ${err}`)
+    })
+    console.log('Updated discordbotlist.com stats.')
+  }).catch(err => {
+    msg.channel.send(':exclamation: │ Failed to update **discordbotlist.com** stats.').catch(err => {
+      client.rollbar.error(`Error sending message in channel with id: ${msg.channel.id} | ${err}`)
+    })
+    client.rollbar.error(`Discordbotlist.com server count update failed : ${err}`)
+  })
+  snekfetch.post(`https://discordbot.world/api/bot/${client.user.id}/stats`)
+  .set('Authorization', client.config.apis.botlists.dblcom)
+  .send({
+    guild_count: client.guilds.size,
+  }).then(() => {
+    msg.channel.send(':white_check_mark: │ Updated **discordbot.world** stats.').catch(err => {
+      client.rollbar.error(`Error sending message in channel with id: ${msg.channel.id} | ${err}`)
+    })
+    console.log('Updated discordbot.world stats.')
+  }).catch(err => {
+    msg.channel.send(':exclamation: │ Failed to update **discordbot.world** stats.').catch(err => {
+      client.rollbar.error(`Error sending message in channel with id: ${msg.channel.id} | ${err}`)
+    })
+    client.rollbar.error(`Discordbot.world server count update failed : ${err}`)
+  })
 }
 
 exports.help = {
