@@ -8,7 +8,7 @@ exports.run = (client, msg, args) => {
 			});
     })
   } else {
-    client.r.table('balance').get(user.id).run((error, balance) => {
+    client.r.table('balance').get(msg.author.id).run((error, balance) => {
       msg.reply('you have **<:coins:482589075459801098>' + balance ? balance.amount.toLocaleString() : 0 + ' Minicoins** in your bank account.')
 		});
   }
