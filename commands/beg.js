@@ -12,7 +12,7 @@ exports.run = (client, msg) => {
     }).catch((error) => {
       msg.channel.send(':exclamation: │ Failed to run the command! This incident has been reported.')
 			client.rollbar.error(`Failed to update balance of user with id ${msg.author.id}: ${error}`)
-		});
+		})
     // Adds the user to the set so that they can't talk for 30 seconds
     cooldown.add(msg.author.id)
     setTimeout(() => {
