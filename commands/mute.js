@@ -1,5 +1,3 @@
-const Discord = require('discord.js')
-
 exports.run = (client, msg, args) => {
   if (!msg.member.hasPermission('MANAGE_ROLES')) return msg.channel.createMessage(':no_entry_sign: │ You need the permission `MANAGE_ROLES` to use this.')
   let member = msg.mentions.members.first()
