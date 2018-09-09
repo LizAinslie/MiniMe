@@ -1,5 +1,8 @@
 const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+const Nekos = require('nekos.life')
+
+const neko = new Nekos()
 
 const apiBase = `https://nekos.life/api/v2/img/`
 
@@ -32,7 +35,7 @@ exports.run = async (client, msg, args) => {
       })
       break
     case 'femdom':
-      body = await snekfetch.get(apiBase + 'femdom')
+      body = await JSON.parse(JSON.stringify(await neko.getNSFWGirlSoloGif()))
       msg.channel.send({
         embed: embed(client, msg, body.url)
       })
