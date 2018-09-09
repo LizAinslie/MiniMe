@@ -8,7 +8,7 @@ module.exports = async (client, guild, user) => {
     const entry = await guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
 
     const logChannel = guild.channels.get(settings.logChannel) 
-    logChannel.send({
+    logChannel.createMessage({
       embed: {
         title: 'User Ban',
         color: client.colors.RED,

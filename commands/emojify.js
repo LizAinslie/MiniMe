@@ -23,12 +23,12 @@ const mapping = {
 exports.run = (client, message, args) => {
   try {
     if (args.length < 1) {
-      message.channel.send('You must provide some text to emojify!')
+      message.channel.createMessage('You must provide some text to emojify!')
     }
 
-    message.channel.send(args.join(' ').split('').map(c => mapping[c] || c).join('')).catch(console.log)
+    message.channel.createMessage(args.join(' ').split('').map(c => mapping[c] || c).join('')).catch(console.log)
   } catch (err) {
-    message.channel.send(`:exclamation: │ There was an error running the command. This incident has been reported.`)
+    message.channel.createMessage(`:exclamation: │ There was an error running the command. This incident has been reported.`)
     client.rollbar.error(`Error on emojify commands\n\nError:\n\n ${err}`)
   }
 }

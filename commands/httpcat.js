@@ -1,7 +1,7 @@
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
-  msg.channel.send({
+  msg.channel.createMessage({
     embed: {
       authora: {
         icon_url: msg.author.displayAvatarURL,

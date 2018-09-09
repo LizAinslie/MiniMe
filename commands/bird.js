@@ -3,7 +3,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg) => {
   snekfetch.get('http://random.birb.pw/tweet/').then(res => {
-    msg.channel.send({
+    msg.channel.createMessage({
       embed: {
         author: {
           icon_url: msg.author.displayAvatarURL,
@@ -21,7 +21,7 @@ exports.run = (client, msg) => {
       }
     })
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported')
     client.rollbar.error(`[badmeme.js] snekfetch error: ${error}`)
   })
 }

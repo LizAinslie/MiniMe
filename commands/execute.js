@@ -3,18 +3,18 @@ const uploadToHastebin = require('../util/uploadToHastebin.js')
 const formatArbitrary = require('../util/formatArbitrary.js')
 
 exports.run = (client, msg, args) => {
-	if (msg.author.id !== client.config.ownerID) return msg.channel.send(':no_entry_sign: │ You do not have permission to run this command.')
+	if (msg.author.id !== client.config.ownerID) return msg.channel.createMessage(':no_entry_sign: │ You do not have permission to run this command.')
 	childProcess.exec(args.join(' '), (error, stdout, stderr) => {
     if (error) { return console.error(error) }
 		const result = formatArbitrary(client, stderr || stdout)
 		if (result.length > 1992) {
 			uploadToHastebin(result).then((url) => {
-				msg.channel.send(':outbox_tray: │ ' + url)
+				msg.channel.createMessage(':outbox_tray: │ ' + url)
 			}).catch((error) => {
-				msg.channel.send(':exclamation: │ Failed to upload result to hastebin. `' + error.message + '`')
+				msg.channel.createMessage(':exclamation: │ Failed to upload result to hastebin. `' + error.message + '`')
 			})
 		} else {
-			msg.channel.send('```bash\n' + result + '```')
+			msg.channel.createMessage('```bash\n' + result + '```')
 		}
 	})
 }

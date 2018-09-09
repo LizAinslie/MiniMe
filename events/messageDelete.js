@@ -2,10 +2,10 @@ const dateformat = require('dateformat')
 const util = require('../util.js')
 
 module.exports = async (client, message) => {
-  client.r.table('serverSettings').get(guild.id).run(async(error, settings) => {
+  client.r.table('serverSettings').get(message.channel.guild.id).run(async(error, settings) => {
     if (!settings) return
     if (!settings.doLogs) return
-    const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
+    const entry = await message.channel.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
 
     // Define an empty user for now. This will be used later in the guide.
     let user = ''
@@ -14,8 +14,8 @@ module.exports = async (client, message) => {
     } else {
       user = message.author.username
     }
-    const logChannel = message.guild.channels.get(settings.logChannel)
-    logChannel.send({
+    const logChannel = message.channel.guild.channels.get(settings.logChannel)
+    logChannel.createMessage({
       embed: {
         title: 'Message Delete',
         color: client.config.color,

@@ -5,7 +5,7 @@ exports.run = async (client, msg) => {
     const { body: html } = await request.get('http://www.fmylife.com/random')
     const root = HTMLParser.parse(html)
     const article = root.querySelector('.block a')
-    return msg.channel.send(article.text)
+    return msg.channel.createMessage(article.text)
 }
 
 exports.help = {

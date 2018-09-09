@@ -2,9 +2,9 @@ const snekfetch = require('snekfetch')
 
 exports.run = (client, msg) => {
   snekfetch.get('http://api.icndb.com/jokes/random').then((result) => {
-    msg.channel.send(result.body.value.joke)
+    msg.channel.createMessage(result.body.value.joke)
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
     client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
   })
 }

@@ -1,5 +1,5 @@
 exports.run = (client, msg) => {
-  msg.channel.send('<:sadcat:484503671359668244>')
+  msg.channel.createMessage('<:sadcat:484503671359668244>')
 }
 
 exports.help = {

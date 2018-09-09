@@ -1,5 +1,5 @@
 exports.run = async (client, message, args) => {
-  if (!message.member.hasPermission('KICK_MEMBERS')) { return message.channel.send(':no_entry_sign: │ You need the permission `KICK_MEMBERS` to use this.') }
+  if (!message.member.hasPermission('KICK_MEMBERS')) { return message.channel.createMessage(':no_entry_sign: │ You need the permission `KICK_MEMBERS` to use this.') }
 
   // Let's first check if we have a member and if we can kick them!
   // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
@@ -15,8 +15,8 @@ exports.run = async (client, message, args) => {
 
   // Now, time for a swift kick in the nuts!
   await member.kick(reason)
-    .catch(error => message.channel.send(`Sorry ${message.author} I couldn't kick because of : ${error}`))
-    message.channel.send(`${member.user.username}#${member.user.discriminator} has been kicked by ${message.author.username}#${message.author.discriminator} because: ${reason}`)
+    .catch(error => message.channel.createMessage(`Sorry ${message.author} I couldn't kick because of : ${error}`))
+    message.channel.createMessage(`${member.user.username}#${member.user.discriminator} has been kicked by ${message.author.username}#${message.author.discriminator} because: ${reason}`)
 }
 
 exports.help = {

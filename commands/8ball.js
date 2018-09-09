@@ -21,9 +21,9 @@ const responses = [
 	'Very doubtful'
 ]
 exports.run = (client, message, args) => {
-  if (args.length < 1) return message.channel.send(':question: │ Missing `<question>` option.')
-  if (!(args[args.length - 1].endsWith('?'))) return message.channel.send(':question: │ Missing a `?`.')
-  message.channel.send(':crystal_ball: │ ' + responses[Math.floor(Math.random() * responses.length)])
+  if (args.length < 1) return message.channel.createMessage(':question: │ Missing `<question>` option.')
+  if (!(args[args.length - 1].endsWith('?'))) return message.channel.createMessage(':question: │ Missing a `?`.')
+  message.channel.createMessage(':crystal_ball: │ ' + responses[Math.floor(Math.random() * responses.length)])
 }
 
 exports.help = {

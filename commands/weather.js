@@ -3,9 +3,9 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 const stripTrailingZero = require('../util/stripTrailingZero.js')
 
 exports.run = (client, msg, args) => {
-  if (args.length < 1) return msg.channel.send(':question: │ You must provide a location.')
+  if (args.length < 1) return msg.channel.createMessage(':question: │ You must provide a location.')
   snekfetch.get('https://api.openweathermap.org/data/2.5/weather?q=' + encodeURIComponent(args.join(' ')) + '&APPID=' + client.config.apis.openweathermap).then((result) => {
-    msg.channel.send({
+    msg.channel.createMessage({
       embed: {
         title: 'Weather',
         color: getEmbedColor(msg),
@@ -62,8 +62,8 @@ exports.run = (client, msg, args) => {
       }
     })
   }).catch((error) => {
-    if (error.statusCode === 404) return msg.channel.send(':exclamation: │ Unable to find any locations by that name.')
-    msg.channel.send(':exclamation: │ Failed to run the command.')
+    if (error.statusCode === 404) return msg.channel.createMessage(':exclamation: │ Unable to find any locations by that name.')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command.')
   })
 }
 

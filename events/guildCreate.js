@@ -1,7 +1,7 @@
 module.exports = (client, guild) => {
   const guildLogChannel = client.channels.get('480811642045595648')
 
-  guildLogChannel.send({
+  guildLogChannel.createMessage({
     embed: {
       color: client.config.color,
         title: 'Guild Create',

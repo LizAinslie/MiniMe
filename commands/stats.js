@@ -1,22 +1,57 @@
-const { version } = require('discord.js')
+const { version } = require('eris')
 const moment = require('moment')
 require('moment-duration-format')
-const Discord = require('discord.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, message) => {
   const duration = moment.duration(client.uptime).format(' D [days], H [hrs], m [mins], s [secs]')
-  const embed = new Discord.RichEmbed().setTitle('Statistics')
-    .setAuthor(client.user.username, client.user.avatarURL)
-    .setColor(getEmbedColor(message))
-    .addField(':floppy_disk: │ Mem Usage', `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
-    .addField(':clock4: │ Uptime', duration, true)
-    .addField(':keyboard: │ Command Count', client.commands.array().length, true)
-    .addField(':busts_in_silhouette: │ Users', client.users.size.toLocaleString(), true)
-    .addField('<:servers:484062453265858561> │ Servers', client.guilds.size.toLocaleString(), true)
-    .addField('<:djs:484062455618863126> │ Discord.js', version, true)
-    .addField('<:js:484062454477881344> │ Node', process.version, true)
-  message.channel.send({embed})
+  message.channel.createMessage({
+    embed: {
+      title: 'Stats',
+      author: {
+        name: client.user.username,
+        icon_url: client.user.avatarURL
+      },
+      color: getEmbedColor(message),
+      fields: [
+        {
+          name: ':floppy_disk: │ Mem Usage',
+          value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,
+          inline: true
+        },
+        {
+          name: ':clock4: │ Uptime',
+          value: duration,
+          inline: true
+        },
+        {
+          name: ':keyboard: │ Command Count',
+          value: client.commands.array(),
+          inline: true
+        },
+        {
+          name: ':busts_in_silhouette: │ Users',
+          value: client.users.size.toLocaleString(),
+          inline: true
+        },
+        {
+          name: '<:servers:484062453265858561> │ Servers',
+          value: client.guilds.size.toLocaleString(),
+          inline: true
+        },
+        {
+          name: '<:djs:484062455618863126> │ Discord.js',
+          value: version,
+          inline: true
+        },
+        {
+          name: '<:js:484062454477881344> │ Node',
+          value: process.version,
+          inline: true
+        }
+      ]
+    }
+  })
 }
 
 exports.help = {

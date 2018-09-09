@@ -1,5 +1,5 @@
 exports.run = (client, message, args) => {
-  message.channel.send(`:ping_pong: │ Pong! \`Latency: ${client.ping}ms\``).catch(console.error)
+  message.channel.createMessage(`:ping_pong: │ Pong! \`Latency: ${client.ping}ms\``).catch(console.error)
 }
 
 exports.help = {

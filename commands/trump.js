@@ -2,7 +2,7 @@ const snek = require('snekfetch')
 
 exports.run = (client, message) => {
   snek.get('https://api.whatdoestrumpthink.com/api/v1/quotes/random').then(r => {
-    message.channel.send(r.body.message)
+    message.channel.createMessage(r.body.message)
   })
 }
 

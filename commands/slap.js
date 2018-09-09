@@ -6,7 +6,7 @@ const Logger = require('../util/Logger.js')
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {
     snek.get('https://nekos.life/api/v2/img/slap').then(res => {
-      msg.channel.send({
+      msg.channel.createMessage({
         embed: {
           title: `${msg.author.username} slapped ${user.username}.`,
           color: getEmbedColor(msg),
@@ -21,11 +21,11 @@ exports.run = (client, msg, args) => {
         }
       })
     }).catch(err => {
-      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+      msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
       Logger.error('[slap.js] Error getting image from nekos.life.', err)
     })
   }).catch(err => {
-    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
     Logger.error('[slap.js] Error resolving user.', err)
   })
 }

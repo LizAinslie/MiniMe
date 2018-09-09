@@ -4,7 +4,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 exports.run = (client, msg, args) => {
   if (args[0]) {
     resolveUser(client, args.join(' ')).then(user => {
-      msg.channel.send({
+      msg.channel.createMessage({
         embed: {
           color: getEmbedColor(msg),
           author: {
@@ -22,11 +22,11 @@ exports.run = (client, msg, args) => {
         }
       })
     }).catch((error) => {
-      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+      msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
       client.rollbar.error(`[avatar.js] resolveUser error: ${error}`)
     })
   } else {
-    msg.channel.send({
+    msg.channel.createMessage({
       embed: {
         color: client.config.color,
         author: {

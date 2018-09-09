@@ -9,7 +9,7 @@ exports.run = (client, msg, args) => {
     horizontalLayout: 'default',
     verticalLayout: 'default'
   }) + '```'
-  msg.channel.send({
+  msg.channel.createMessage({
     embed: {
       color: client.config.color,
       description: ascii,

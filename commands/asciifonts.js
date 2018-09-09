@@ -1,5 +1,5 @@
 exports.run = (client, msg) => {
-  msg.channel.send('Here is a list of fonts to be used with `' + client.config.prefix + 'ascii`: http://www.figlet.org/examples.html')
+  msg.channel.createMessage('Here is a list of fonts to be used with `' + client.config.prefix + 'ascii`: http://www.figlet.org/examples.html')
 }
 
 exports.help = {

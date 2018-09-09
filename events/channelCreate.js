@@ -7,7 +7,7 @@ module.exports = async (client, channel) => {
     const entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_CREATE'}).then(audit => audit.entries.first())
     
     const logChannel = channel.guild.channels.get(settings.logChannel)
-    logChannel.send({
+    logChannel.createMessage({
       embed: {
         title: 'Channel Create',
         color: client.colors.GREEN,

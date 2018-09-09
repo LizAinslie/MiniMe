@@ -11,7 +11,7 @@ exports.run = (client, msg, args) => {
   .set('TRN-Api-Key', client.config.apis.fortnite)
   .end((err, res) => {
     if (err) {
-      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+      msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
       client.rollbar.error(`[fortnitestats.js] snekfetch error: ${err}`)
     }
     const player = res.body
@@ -23,7 +23,7 @@ exports.run = (client, msg, args) => {
         inline: true
       })
     }
-    msg.channel.send({
+    msg.channel.createMessage({
       embed: {
         author: {
           icon_url: msg.author.displayAvatarURL,
@@ -40,7 +40,7 @@ exports.run = (client, msg, args) => {
       }
     })
   }).catch(err => {
-    msg.channel.send(':exclamation: │ Failed to retrieve stats for that user!')
+    msg.channel.createMessage(':exclamation: │ Failed to retrieve stats for that user!')
     client.rollbar.error(`[fortnitestats.js] snekfetch error: ${err}`)
   })
 }

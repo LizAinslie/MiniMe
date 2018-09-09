@@ -12,7 +12,7 @@ const clean = text => {
 }
 
 exports.run = async (client, message, args) => {
-  if (message.author.id !== client.config.ownerID) { return message.channel.send(':no_entry_sign: │ Only my developer can use this!') }
+  if (message.author.id !== client.config.ownerID) { return message.channel.createMessage(':no_entry_sign: │ Only my developer can use this!') }
   try {
     const code = args.join(' ')
     let evaled = await eval(code)
@@ -21,12 +21,12 @@ exports.run = async (client, message, args) => {
 
     if (formatArbitrary(client, clean(evaled)).length > 1992) {
       uploadToHastebin(formatArbitrary(client, clean(evaled))).then((url) => {
-        message.channel.send(':outbox_tray: │ ' + url)
+        message.channel.createMessage(':outbox_tray: │ ' + url)
       }).catch((error) => {
-        message.channel.send(':exclamation: │ Failed to upload result to hastebin. `' + error.message + '`')
+        message.channel.createMessage(':exclamation: │ Failed to upload result to hastebin. `' + error.message + '`')
       })
     } else {
-      message.channel.send({
+      message.channel.createMessage({
         embed: {
           author: {
             name: `Eval │ Requested by ${message.author.username}#${message.author.discriminator}`,
@@ -52,7 +52,7 @@ exports.run = async (client, message, args) => {
       })
     }
   } catch (err) {
-    message.channel.send({
+    message.channel.createMessage({
       embed: {
         author: {
           name: `Eval │ Requested by ${message.author.username}#${message.author.discriminator}`,

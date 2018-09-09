@@ -3,7 +3,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg) => {
   snekfetch.get('https://catapi.glitch.me/random').then(res => {
-    msg.channel.send({
+    msg.channel.createMessage({
       embed: {
         author: {
           name: `Cat │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
@@ -21,7 +21,7 @@ exports.run = (client, msg) => {
       }
     })
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported')
     client.rollbar.error(`[badmeme.js] snekfetch error: ${error}`)
   })
 }

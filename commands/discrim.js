@@ -12,9 +12,9 @@ exports.run = (client, msg, args) => {
     }
   }
   if (matches.length === 0) {
-    msg.channel.send(":exclamation: │ No matches found.");
+    msg.channel.createMessage(":exclamation: │ No matches found.");
   } else {
-    msg.channel.send({
+    msg.channel.createMessage({
       embed: {
         author: {
           name: `Discriminator ${args[0]} (${matches.length}) │ Requested by ${msg.author.username}#${msg.author.discriminator}`,

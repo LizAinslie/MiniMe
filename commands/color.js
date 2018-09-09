@@ -13,7 +13,7 @@ exports.run = (client, msg, args) => {
   
   const attachment = new Discord.Attachment(canvas.toBuffer(), 'color.png')
   
-  msg.channel.send({
+  msg.channel.createMessage({
     embed: {
       author: {
         icon_url: msg.author.displayAvatarURL,

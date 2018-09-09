@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
 
     if (title.length > 20 || contents.length > 20) return message.edit('Max Length: 20 Characters. Soz.').then(message.delete.bind(message), 2000)
     const url = `https://www.minecraftskinstealer.com/achievement/a.php?i=${rnd}&h=${encodeURIComponent(title)}&t=${encodeURIComponent(contents)}`
-    message.channel.send({
+    message.channel.createMessage({
       embed: {
         description: `**${message.author.username}** Achievement!`,
         color: getEmbedColor(message),

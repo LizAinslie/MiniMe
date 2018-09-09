@@ -2,9 +2,9 @@ const snekfetch = require('snekfetch')
 
 exports.run = (client, msg) => {
   snekfetch.get('https://dog-api.kinduff.com/api/facts').then(res => {
-    msg.channel.send(res.body.facts[0])
+    msg.channel.createMessage(res.body.facts[0])
   }).catch(err => {
-    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
     client.rollbar.error(`[dogfact.js] REST call failed: ${err}`)
   })
 }

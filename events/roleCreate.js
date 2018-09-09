@@ -8,7 +8,7 @@ module.exports = async (client, role) => {
     const entry = await role.guild.fetchAuditLogs({type: 'ROLE_CREATE'}).then(audit => audit.entries.first())
   
     const logChannel = role.guild.channels.get(settings.logChannel)
-    logChannel.send({
+    logChannel.createMessage({
       embed: {
         title: 'Role Create',
         color: client.config.color,

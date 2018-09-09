@@ -17,7 +17,7 @@ exports.run = async (client, msg, args) => {
 
   const attachment = new Discord.Attachment(canvas.toBuffer(), 'whowouldwin.png')
 
-  msg.channel.send('Who would win?', attachment)
+  msg.channel.createMessage('Who would win?', attachment)
 }
 
 exports.help = {

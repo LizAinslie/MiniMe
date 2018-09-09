@@ -13,7 +13,7 @@ exports.run = (client, msg, args) => {
         if (err) throw err
         const attachment = new Discord.Attachment(buffer, 'jpeg.jpeg')
 
-        msg.channel.send({
+        msg.channel.createMessage({
           embed: {
             title: `${user.username} needs more JPEG!`,
             color: getEmbedColor(msg),

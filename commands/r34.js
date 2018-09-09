@@ -4,20 +4,20 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 const Logger = require('../util/Logger.js')
 
 exports.run = (client, msg) => {
-  if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
+  if (!msg.channel.nsfw) return msg.channel.createMessage(':exclamation: │ You can only run this command in a NSFW channel!')
   .get(`https://discordbots.org/api/bots/${client.user.id}/check`)
   .set('Authorization', client.config.apis.botlists.dbl) 
   .query({ userId: msg.author.id })
   .end((err, res) => {
     if (err) {
-      msg.channel.send(':exclamation: │ There was an error running the command. This incident has been reported.')
+      msg.channel.createMessage(':exclamation: │ There was an error running the command. This incident has been reported.')
       Logger.error(client, `[r34.js] snekfetch error.`, err)
     }
     var check = res.body.voted
     if (msg.author.id === client.config.ownerID) check = 1
     if (check === 1) {
       randomPuppy('rule34').then(url => {
-        msg.channel.send({
+        msg.channel.createMessage({
           embed: {
             author: {
               icon_url: msg.author.displayAvatarURL,
@@ -36,7 +36,7 @@ exports.run = (client, msg) => {
         })
       })
     } else {
-      msg.channel.send({
+      msg.channel.createMessage({
         embed: {
           title: 'Upvoters-Only Command',
           url: 'https://discordbots.org/bot/luki/vote',

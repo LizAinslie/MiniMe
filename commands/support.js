@@ -1,5 +1,5 @@
 exports.run = (client, msg) => {
-  msg.channel.send('https://discord.gg/9CH4ARd')
+  msg.channel.createMessage('https://discord.gg/9CH4ARd')
 }
 
 exports.help = {

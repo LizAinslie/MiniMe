@@ -5,7 +5,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {
     snek.get('https://nekos.life/api/kiss').then(res => {
-      msg.channel.send({
+      msg.channel.createMessage({
         embed: {
           author: {
             icon_url: msg.author.displayAvatarURL,
@@ -23,11 +23,11 @@ exports.run = (client, msg, args) => {
         }
       })
     }).catch(err => {
-      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+      msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
       client.rollbar.error('[kiss.js] Error getting image from nekos.life: ' + err)
     })
   }).catch(err => {
-    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
     client.rollbar.error('[kiss.js] Error resolving user: ' + err)
   })
 }

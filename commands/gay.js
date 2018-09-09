@@ -9,7 +9,7 @@ exports.run = (client, msg, args) => {
       snekfetch.get(`https://triggered-api.tk/api/v2/rainbow?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
         const attachment = new Discord.Attachment(res.body, 'gay.png')
 
-        msg.channel.send({
+        msg.channel.createMessage({
           embed: {
             author: {
               name: `${user.username} is gay!`,
@@ -33,7 +33,7 @@ exports.run = (client, msg, args) => {
     snekfetch.get(`https://triggered-api.tk/api/v2/rainbow?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
       const attachment = new Discord.Attachment(res.body, 'gay.png')
 
-      msg.channel.send({
+      msg.channel.createMessage({
         embed: {
           author: {
             name: `${msg.author.username} is gay!`,

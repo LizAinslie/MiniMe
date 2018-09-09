@@ -4,14 +4,14 @@ const snekfetch = require('snekfetch')
 const Discord = require('discord.js')
 
 exports.run = (client, msg, args) => {
-  msg.channel.send('<a:typing:393848431413559296> │ Generating...').then(message => {
+  msg.channel.createMessage('<a:typing:393848431413559296> │ Generating...').then(message => {
     if (args[0]) {
       resolveUser(client, args.join(' ')).then(user => {
         snekfetch.get(`https://triggered-api.tk/api/v2/disco?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
           const attachment = new Discord.Attachment(res.body, 'disco.gif')
           
           message.delete()
-          msg.channel.send({
+          msg.channel.createMessage({
             embed: {
               author: {
                 name: `${user.username} is dancing to the disco!`,
@@ -37,7 +37,7 @@ exports.run = (client, msg, args) => {
         const attachment = new Discord.Attachment(res.body, 'disco.gif')
         
         message.delete()
-        msg.channel.send({
+        msg.channel.createMessage({
           embed: {
             author: {
               name: `${msg.author.username} is dancing to the disco!`,

@@ -1,6 +1,6 @@
 exports.run = (client, msg, args) => {
-  if (msg.author.id !== client.config.ownerID) return msg.channel.send(':no_entry_sign: │ You are not muy developer!')
-  msg.channel.send(args.join(' '))
+  if (msg.author.id !== client.config.ownerID) return msg.channel.createMessage(':no_entry_sign: │ You are not muy developer!')
+  msg.channel.createMessage(args.join(' '))
 }
 
 exports.help = {

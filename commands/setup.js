@@ -4,35 +4,35 @@ const resolveRole = require('../util/resolveRole.js')
 const Logger = require('../util/Logger.js')
 
 exports.run = (client, msg, args) => {
-  if (!msg.member.hasPermission('MANAGE_GUILD') && msg.author.id !== client.config.ownerID) return msg.channel.send(':no_entry_sign: | You do not have permission to do this!')
+  if (!msg.member.hasPermission('MANAGE_GUILD') && msg.author.id !== client.config.ownerID) return msg.channel.createMessage(':no_entry_sign: | You do not have permission to do this!')
   args = args.join(' ').split('|')
   let owner, mod, helper, welcome, logs, mute
 
-  resolveChannel(client, args[0].trim(), msg.guild).then(logChannel => {
+  resolveChannel(client, args[0].trim(), msg.channel.guild).then(logChannel => {
     logs = logChannel.id
   })
   
-  resolveChannel(client, args[1].trim(), msg.guild).then(welcomeChannel => {
+  resolveChannel(client, args[1].trim(), msg.channel.guild).then(welcomeChannel => {
     welcome = welcomeChannel.id
   })
   
-  resolveRole(client, args[2].trim(), msg.guild).then(ownerRole => {
+  resolveRole(client, args[2].trim(), msg.channel.guild).then(ownerRole => {
     owner = ownerRole.name
   })
   
-  resolveRole(client, args[3].trim(), msg.guild).then(modRole => {
+  resolveRole(client, args[3].trim(), msg.channel.guild).then(modRole => {
     mod = modRole.name
   })
   
-  resolveRole(client, args[4].trim(), msg.guild).then(helperRole => {
+  resolveRole(client, args[4].trim(), msg.channel.guild).then(helperRole => {
     helper = helperRole.name
   })
   
-  resolveRole(client, args[5].trim(), msg.guild).then(muteRole => {
+  resolveRole(client, args[5].trim(), msg.channel.guild).then(muteRole => {
     mute = muteRole.id
   })
   
-  client.r.table('serverSettings').get(msg.guild.id).run((error, settings) => {
+  client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
 			if (error) return Logger.error(client, 'Setup error.', error)
 			if (settings) {
 				client.r.table('serverSettings').get(msg.guild.id).update({
@@ -46,11 +46,11 @@ exports.run = (client, msg, args) => {
 					doWelcomes: true
 				}).run((error) => {
 					if (error) return Logger.error(client, 'Setup error.', error)
-          msg.channel.send('All done! Your server is now set up!')
+          msg.channel.createMessage('All done! Your server is now set up!')
 				})
 			} else {
 				client.r.table('serverSettings').insert({
-					id: msg.guild.id,
+					id: msg.channel.guild.id,
 					logChannel: logs,
 					welcomeChannel: welcome,
 					ownerRole: owner,
@@ -61,7 +61,7 @@ exports.run = (client, msg, args) => {
 					doWelcomes: true
 				}).run((error) => {
 					if (error) return Logger.error(client, 'Setup error', error)
-          msg.channel.send('All done! Your server is now set up!')
+          msg.channel.createMessage('All done! Your server is now set up!')
 				})
 			}
 		})

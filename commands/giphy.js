@@ -1,5 +1,5 @@
 exports.run = (client, msg, args) => {
-  if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
+  if (!msg.channel.nsfw) return msg.channel.createMessage(':exclamation: │ You can only run this command in a NSFW channel!')
   const gif = require('giphy-api')(client.config.apis.giphy)
   const search = args.join(' ')
   gif.search({

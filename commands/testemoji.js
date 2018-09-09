@@ -3,9 +3,9 @@
 ]
 
 exports.run = (client, msg) => {
-  if (msg.author.id !== client.config.ownerID) return msg.channel.send(':no_entry_sign: │ Only my developer can use this!')
+  if (msg.author.id !== client.config.ownerID) return msg.channel.createMessage(':no_entry_sign: │ Only my developer can use this!')
   for (let emoji of emojis) {
-    msg.channel.send(emoji)
+    msg.channel.createMessage(emoji)
   }
 }
 

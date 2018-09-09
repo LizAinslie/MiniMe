@@ -4,7 +4,7 @@ const resolveGuild = require('../util/resolveGuild.js')
 exports.run = (client, msg, args) => {
   if (args[0]) {
     resolveGuild(client, args.join(' ')).then(guild => {
-      msg.channel.send({
+      msg.channel.createMessage({
         embed: {
           color: getEmbedColor(msg),
           timestamp: new Date(),
@@ -74,12 +74,12 @@ exports.run = (client, msg, args) => {
         }
       })
     }).catch(err => {
-      msg.channel.send(':interrobang: │ Unable to find a guild by that query!')
+      msg.channel.createMessage(':interrobang: │ Unable to find a guild by that query!')
       console.log(err)
     })
   } else {
     const guild = msg.guild
-    msg.channel.send({
+    msg.channel.createMessage({
       embed: {
         color: getEmbedColor(msg),
         timestamp: new Date(),

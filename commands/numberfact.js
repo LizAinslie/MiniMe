@@ -1,11 +1,11 @@
 const snek = require('snekfetch')
 
 exports.run = (client, msg, args) => {
-  if (!args[0]) return msg.channel.send(':exclamation: │ You must give me a number to search!')
+  if (!args[0]) return msg.channel.createMessage(':exclamation: │ You must give me a number to search!')
   snek.get(`http://numbersapi.com/${args[0]}/trivia?default=Boring+number+is+boring.`).then(res => {
-    msg.channel.send(res.body.toString())
+    msg.channel.createMessage(res.body.toString())
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
     client.rollbar.error(`[numberfact.js] snekfetch error: ${error}`)
   })
 }

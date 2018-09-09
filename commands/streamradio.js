@@ -1,15 +1,15 @@
 exports.run = (client, message, args) => {
-  if (args.length === 0) return message.channel.send(':interrobang: │ You never supplied a stream URL!')
+  if (args.length === 0) return message.channel.createMessage(':interrobang: │ You never supplied a stream URL!')
   const streamURL = args.slice(0, args.length).join(' ')
   if (message.member.voiceChannel) {
     message.member.voiceChannel.join()
     .then(connection => {
-      message.channel.send(':play_pause: │ Connected! Playing..')
+      message.channel.createMessage(':play_pause: │ Connected! Playing..')
       connection.playArbitraryInput(`${streamURL}`)
     })
     .catch(console.log)
   } else {
-    message.channel.send(':exclamation: │ You are not in a voice channel!')
+    message.channel.createMessage(':exclamation: │ You are not in a voice channel!')
   }
 }
 

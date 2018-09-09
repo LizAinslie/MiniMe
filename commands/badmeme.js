@@ -3,9 +3,9 @@ const snekfetch = require('snekfetch')
 exports.run = (client, msg) => {
   snekfetch.get('https://api.imgflip.com/get_memes').then(res => {
     const meme = res.body.data.memes[Math.floor(Math.random() * res.body.data.memes.length)]
-    msg.channel.send(meme.name, { file: meme.url })
+    msg.channel.createMessage(meme.name, { file: meme.url })
   }).catch((error) => {
-    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported')
     client.rollbar.error(`[badmeme.js] snekfetch error: ${error}`)
   })
 }

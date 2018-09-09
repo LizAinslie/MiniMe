@@ -3,7 +3,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg) => {
   randomPuppy().then(url => {
-    msg.channel.send({
+    msg.channel.createMessage({
       embed: {
         color: getEmbedColor(msg),
         author: {

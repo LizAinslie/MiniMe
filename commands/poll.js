@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
 
   if (args.length === 0) { return message.reply('**Invalid Format:** `' + client.config.prefix + 'poll <Question>`') }
 
-  message.channel.send({
+  message.channel.createMessage({
     embed: {
       title: 'A Poll Has Been Started!',
       color: getEmbedColor(message),

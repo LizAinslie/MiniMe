@@ -12,7 +12,7 @@ const statuses = {
 
 exports.run = (client, message, args) => {
   resolveUser(client, args.length > 0 ? args.join(' ') : message.author.id).then((user) => {
-    message.channel.send({
+    message.channel.createMessage({
       embed: {
         title: user.username + '#' + user.discriminator,
         color: getEmbedColor(message),
@@ -63,7 +63,7 @@ exports.run = (client, message, args) => {
       }
     })
   }).catch(() => {
-    message.channel.send(':exclamation: │ I was unable to find any users from that query.')
+    message.channel.createMessage(':exclamation: │ I was unable to find any users from that query.')
   })
 }
 

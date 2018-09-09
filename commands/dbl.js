@@ -4,10 +4,10 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {
-    if (!user.bot) return msg.channel.send(`:exclamation: | ${user} is not a bot!`)
+    if (!user.bot) return msg.channel.createMessage(`:exclamation: | ${user} is not a bot!`)
     snekfetch.get(`https://discordbots.org/api/bots/${user.id}`).then(res => {
       const bot = res.body
-      msg.channel.send({
+      msg.channel.createMessage({
         embed: {
           title: bot.username,
           color: getEmbedColor(msg),
@@ -62,11 +62,11 @@ exports.run = (client, msg, args) => {
         }
       })
     }).catch(err => {
-      msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+      msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
       client.rollbar.error('Error looking up bot on DBL: ' + err)
     })
   }).catch(err => {
-    msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
+    msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
     client.rollbar.error('Error looking up bot on DBL: ' + err)
   })
 }

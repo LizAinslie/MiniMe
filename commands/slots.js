@@ -33,7 +33,7 @@ exports.run = (client, message) => {
   } else {
     client.userData.set(key, parseInt(client.userData.get(key), 10) + amt)
   }
-  message.channel.send({
+  message.channel.createMessage({
     embed: {
       color: getEmbedColor(message),
       title: 'Slot Machine',

@@ -1,4 +1,4 @@
-const Discord = require('discord.js')
+const Eris = require('eris')
 const fs = require('fs')
 // const music = require('./music.js')
 const Enmap = require('enmap')
@@ -11,9 +11,9 @@ const rethinkdb = require('rethinkdbdash')
 
 process.on('unhandledRejection', console.error)
 
-const client = new Discord.Client()
 const config = require('./config.json')
 const colors = require('./colors.json')
+const client = new Eris(config.token)
 client.config = config
 client.colors = colors
 
@@ -57,4 +57,4 @@ fs.readdir('./commands/', (err, files) => {
   })
 })
 
-client.login(config.token)
+client.connect()
