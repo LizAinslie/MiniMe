@@ -1,5 +1,4 @@
 const snek = require('snekfetch')
-const Discord = require('discord.js')
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const Logger = require('../util/Logger.js')
@@ -7,11 +6,20 @@ const Logger = require('../util/Logger.js')
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {
     snek.get('https://nekos.life/api/v2/img/slap').then(res => {
-      const embed = new Discord.RichEmbed()
-      .setTitle(`${msg.author.username} slapped ${user.username}.`)
-      .setColor(getEmbedColor(msg))
-      .setImage(res.body.url)
-      msg.channel.send(embed)
+      msg.channel.send({
+        embed: {
+          title: `${msg.author.username} slapped ${user.username}.`,
+          color: getEmbedColor(msg),
+          timestamp: new Date(),
+          image: {
+            url: res.body.url
+          },
+          footer: {
+            icon_url: client.user.avatarURL,
+            text: 'Status: 200'
+          }
+        }
+      })
     }).catch(err => {
       msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
       Logger.error('[slap.js] Error getting image from nekos.life.', err)

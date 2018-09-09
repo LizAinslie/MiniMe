@@ -6,7 +6,7 @@ exports.run = (client, msg) => {
     msg.channel.send(':scroll: │ ' + result.body.quote + ' — *' + result.body.author + '*')
   }).catch((error) => {
     msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
-    Logger.error(`[quote.js] snekfetch error.`, error)
+    Logger.error(client, `[quote.js] snekfetch error.`, error)
   })
 }
 

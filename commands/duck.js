@@ -1,13 +1,25 @@
 const snekfetch = require('snekfetch')
-const Discord = require('discord.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg) => {
   snekfetch.get('https://random-d.uk/api/v1/random?type=jpg').then(res => {
-    const embed = new Discord.RichEmbed()
-    .setColor(client.config.color)
-    .setAuthor(`Duck │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
-    .setImage(res.body.url)
-    msg.channel.send(embed)
+    msg.channel.send({
+      embed: {
+        author: {
+          name: `Duck │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
+          icon_url: msg.author.displayAvatarURL
+        },
+        color: getEmbedColor(msg),
+        footer: {
+          text: 'Status: 200',
+          icon_url: client.user.avatarURL
+        },
+        timestamp: new Date(),
+        image: {
+          url: res.body.url
+        }
+      }
+    })
   }).catch((error) => {
     msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
     client.rollbar.error(`[badmeme.js] snekfetch error: ${error}`)

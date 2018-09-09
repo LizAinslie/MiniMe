@@ -10,7 +10,7 @@ exports.run = (client, msg) => {
   .end((err, res) => {
     if (err) {
       msg.channel.send(':exclamation: │ There was an error running the command. This incident has been reported.')
-      Logger.error(`[pussy.js] snekfetch error.`, err)
+      Logger.error(client, `[pussy.js] snekfetch error.`, err)
     }
     var check = res.body.includes(msg.author.id.toString())
     if (msg.author.id === client.config.ownerID) check = 1

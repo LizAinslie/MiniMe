@@ -11,7 +11,7 @@ exports.run = (client, msg) => {
   .end((err, res) => {
     if (err) {
       msg.channel.send(':exclamation: │ There was an error running the command. This incident has been reported.')
-      Logger.error(`[r34.js] snekfetch error.`, err)
+      Logger.error(client, `[r34.js] snekfetch error.`, err)
     }
     var check = res.body.voted
     if (msg.author.id === client.config.ownerID) check = 1

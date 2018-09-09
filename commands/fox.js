@@ -1,13 +1,25 @@
 const snek = require('snekfetch')
-const Discord = require('discord.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg) => {
   snek.get('https://randomfox.ca/floof/').then(res => {
-    const embed = new Discord.RichEmbed()
-    .setColor(client.config.color)
-    .setAuthor(`Fox │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
-    .setImage(res.body.image)
-    msg.channel.send(embed)
+    msg.channel.send({
+      embed: {
+        author: {
+          name: `Fox │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
+          icon_url: msg.author.displayAvatarURL
+        },
+        color: getEmbedColor(msg),
+        footer: {
+          text: 'Status: 200',
+          icon_url: client.user.avatarURL
+        },
+        timestamp: new Date(),
+        image: {
+          url: res.body.image
+        }
+      }
+    })
   }).catch((error) => {
     msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
     client.rollbar.error(`[badmeme.js] snekfetch error: ${error}`)

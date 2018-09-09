@@ -1,12 +1,25 @@
 const snekfetch = require('snekfetch')
-const Discord = require('discord.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg) => {
   snekfetch.get('https://api.bunnies.io/v2/loop/random/?media=gif,png').then(res => {
-    const embed = new Discord.RichEmbed()
-    .setAuthor(`Bunny │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
-    .setImage(res.body.media.poster)
-    msg.channel.send(embed)
+    msg.channel.send({
+      embed: {
+        author: {
+          name: `Bunny │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
+          icon_url: msg.author.displayAvatarURL
+        },
+        color: getEmbedColor(msg),
+        footer: {
+          text: 'Status: 200',
+          icon_url: client.user.avatarURL
+        },
+        timestamp: new Date(),
+        image: {
+          url: res.body.media.poster
+        }
+      }
+    })
   }).catch((error) => {
     msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
     client.rollbar.error(`[badmeme.js] snekfetch error: ${error}`)

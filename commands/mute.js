@@ -9,15 +9,7 @@ exports.run = (client, msg, args) => {
   if (!reason) reason = 'No reason provided.'
 
   member.addRole(client.guildSettings.getProp(msg.guild.id, 'muteRole'))
-  const embed = new Discord.RichEmbed()
-  .setTitle('User Mute')
-  .setThumbnail(member.user.displayAvatarURL)
-  .setDescription(`${member.user.username}#${member.user.discriminator}`)
-  .setColor(client.config.color)
-  .addField('Reason', reason)
-  
-  let logChannel = msg.guild.channels.get(client.guildSettings.getProp(msg.guild.id, 'logChannel'))
-  logChannel.send(embed)
+  msg.channel.send(`Muted ${member.user.username}`)
 }
 
 exports.help = {

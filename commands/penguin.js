@@ -1,17 +1,29 @@
 const snekfetch = require('snekfetch')
-const Discord = require('discord.js')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 const Logger = require('../util/Logger.js')
 
 exports.run = (client, msg) => {
   snekfetch.get('https://animals.anidiots.guide/penguin').then(res => {
-    const embed = new Discord.RichEmbed()
-    .setColor(client.config.color)
-    .setAuthor(`Penguin │ Requested by ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL)
-    .setImage(res.body.link)
-    msg.channel.send(embed)
+    msg.channel.send({
+      embed: {
+        author: {
+          name: `Penguin │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
+          icon_url: msg.author.displayAvatarURL
+        },
+        color: getEmbedColor(msg),
+        timestamp: new Date(),
+        image: {
+          url: res.body.link
+        },
+        footer: {
+          icon_url: client.user.avatarURL,
+          text: 'Status: 200'
+        }
+      }
+    })
   }).catch((error) => {
     msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
-    Logger.error(`[penguin.js] snekfetch error.`, error)
+    Logger.error(client, `[penguin.js] snekfetch error.`, error)
   })
 }
 
