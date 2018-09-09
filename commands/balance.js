@@ -5,13 +5,13 @@ exports.run = (client, msg, args) => {
     resolveUser(client, args.join(' ')).then(user => {
       client.r.table('balance').get(user.id).run((error, balance) => {
         const bal = balance ? balance.amount.toString() : 0
-        msg.channel.send(`${user.username}#${user.discriminator} has **<:coins:482589075459801098>` + bal + ' Minicoins** in their bank account.')
+        msg.channel.send(`${user.username}#${user.discriminator} has **<:coins:482589075459801098> ${bal} Minicoins** in their bank account.`)
 			});
     })
   } else {
     client.r.table('balance').get(msg.author.id).run((error, balance) => {
       const bal = balance ? balance.amount.toString() : 0
-      msg.channel.send('You have **<:coins:482589075459801098>' + bal + ' Minicoins** in your bank account.')
+      msg.channel.send(`You have **<:coins:482589075459801098> ${bal} Minicoins** in your bank account.`)
 		});
   }
 }
