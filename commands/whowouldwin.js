@@ -6,9 +6,9 @@ exports.run = async (client, msg, args) => {
   const canvas = Canvas.createCanvas(500, 250)
   const ctx = canvas.getContext('2d')
 
-  const { body: avatar1Buffer } = await snekfetch.get(users[0].displayAvatarURL)
+  const { body: avatar1Buffer } = await snekfetch.get(users[0].avatarURL)
   const avatar1 = await Canvas.loadImage(avatar1Buffer)
-  const { body: avatar2Buffer } = await snekfetch.get(users[1].displayAvatarURL)
+  const { body: avatar2Buffer } = await snekfetch.get(users[1].avatarURL)
   const avatar2 = await Canvas.loadImage(avatar2Buffer)
 
   ctx.drawImage(avatar1, 0, 0, 250, canvas.height)
