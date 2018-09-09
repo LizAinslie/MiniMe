@@ -1,7 +1,7 @@
-const Nekos = require('nekos.life')
+const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
-const neko = new Nekos()
+const apiBase = `https://nekos.life/api/v2/img/`
 
 const embed = (client, msg, url) => {
   return {
@@ -23,17 +23,18 @@ const embed = (client, msg, url) => {
 
 exports.run = async (client, msg, args) => {
   if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
+  let body
   switch (args[0].toLowerCase()) {
     case 'solo':
-      let urlObj1 = JSON.parse(await neko.getNSFWGirlSoloGif())
+      body = await snekfetch.get(apiBase + 'solo')
       msg.channel.send({
-        embed: embed(client, msg, urlObj1.url)
+        embed: embed(client, msg, body.url)
       })
       break
     case 'femdom':
-      let urlObj2 = JSON.parse(await neko.getNSFWFemdom())
+      body = await snekfetch.get(apiBase + 'femdom')
       msg.channel.send({
-        embed: embed(client, msg, urlObj2.url)
+        embed: embed(client, msg, body.url)
       })
       break
     default:
