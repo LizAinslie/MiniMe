@@ -30,7 +30,7 @@ exports.run = (client, msg, args) => {
       })
       break
     case 'femdom':
-      neko.getNSFWFemdom.then(url => {
+      neko.getNSFWFemdom().then(url => {
         msg.channel.send({
           embed: embed(client, msg, url)
         })
