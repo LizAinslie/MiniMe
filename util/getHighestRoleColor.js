@@ -5,10 +5,10 @@ module.exports = msg => {
     if (roles.length > 0) {
       color = roles[0].color
     } else {
-      color = 0xFFFFFF
+      color = 16777215
     }
   } else {
-    color = 0xFFFFFF
+    color = 16777215
   }
   return color
 }

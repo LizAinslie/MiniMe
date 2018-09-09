@@ -1,8 +1,9 @@
 {
-  "GREEN": "#28a745",
-  "BLUE": "#007bff",
-  "RED": "#dc3545",
-  "YELLOW": "#ffc107",
-  "ORANGE": "#fd7e14",
-  "CYAN": "#17a2b8"
+  "GREEN": 2664261,
+  "BLUE": 31743,
+  "RED": 14431557,
+  "YELLOW": 16761095,
+  "ORANGE": 16612884,
+  "CYAN": 1548984,
+  "WHITE": 16777215
 }

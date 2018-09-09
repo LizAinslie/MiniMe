@@ -1,4 +1,3 @@
-const util = require('../util.js')
 const dateformat = require('dateformat')
 
 module.exports = async (client, channel) => {
@@ -11,7 +10,7 @@ module.exports = async (client, channel) => {
     logChannel.send({
       embed: {
         title: 'Channel Create',
-        color: client.config.color,
+        color: client.colors.GREEN,
         thumbnail: {
           url: entry.executor.avatarURL
         },
