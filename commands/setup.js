@@ -35,7 +35,7 @@ exports.run = (client, msg, args) => {
   client.r.table('serverSettings').get(msg.guild.id).run((error, settings) => {
 			if (error) return Logger.error(client, 'Setup error.', error)
 			if (settings) {
-				client.r.table('serverSettings').get().update({
+				client.r.table('serverSettings').get(msg.guild.id).update({
 					logChannel: logs,
 					welcomeChannel: welcome,
 					ownerRole: owner,
