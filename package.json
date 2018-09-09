@@ -22,6 +22,7 @@
     "ejs": "latest",
     "enmap": "latest",
     "enmap-sqlite": "latest",
+    "eris": "^0.9.0",
     "express": "latest",
     "express-session": "latest",
     "fast-html-parser": "latest",
