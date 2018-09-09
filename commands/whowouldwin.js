@@ -2,7 +2,7 @@ const snekfetch = require('snekfetch')
 const Canvas = require('canvas')
 
 exports.run = async (client, msg, args) => {
-  const users = Array.from(msg.mentions.users.values())
+  const users = msg.mentions
   const canvas = Canvas.createCanvas(500, 250)
   const ctx = canvas.getContext('2d')
 
