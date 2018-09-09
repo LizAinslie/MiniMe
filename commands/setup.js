@@ -41,7 +41,9 @@ exports.run = (client, msg, args) => {
 					ownerRole: owner,
 					modRole: mod,
 					helperRole: helper,
-					muteRole: mute
+					muteRole: mute,
+					doLogs: true,
+					doWelcomes: true
 				}).run((error) => {
 					if (error) return Logger.error(client, 'Setup error.', error)
           msg.channel.send('All done! Your server is now set up!')
@@ -54,7 +56,9 @@ exports.run = (client, msg, args) => {
 					ownerRole: owner,
 					modRole: mod,
 					helperRole: helper,
-					muteRole: mute
+					muteRole: mute,
+					doLogs: true,
+					doWelcomes: true
 				}).run((error) => {
 					if (error) return Logger.error(client, 'Setup error', error)
           msg.channel.send('All done! Your server is now set up!')
