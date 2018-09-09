@@ -6,7 +6,6 @@ exports.run = (client, msg, args) => {
   if (args[0]) {
     resolveUser(client, args.join(' ')).then(user => {
       snekfetch.get(`https://triggered-api.tk/api/v2/beautiful?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-        const attachment = new Discord.Attachment(res.body, 'beautiful.png')
 
         msg.channel.createMessage({
           embed: {
@@ -24,8 +23,7 @@ exports.run = (client, msg, args) => {
               url: 'attachment://beautiful.png'
             }
           },
-          files: [attachment]
-        })
+        }, res.body)
       })
     })
   } else {
