@@ -1,6 +1,7 @@
 const config = require('../config.json')
 const resolveChannel = require('../util/resolveChannel.js')
 const resolveRole = require('../util/resolveRole.js')
+const Logger = require('../util/Logger.js')
 
 exports.run = (client, msg, args) => {
   if (client.guildSettings.has(msg.guild.id) && !msg.member.roles.some(r => [client.guildSettings.getProp(msg.guild.id, 'ownerRole')])) return msg.channel.send(':no_entry_sign: | You do not have permission to do this!')
@@ -31,18 +32,41 @@ exports.run = (client, msg, args) => {
     mute = muteRole.id
   })
   
-  const key = msg.guild.id
-    // The user and guild properties will help us in filters and leaderboards.
-  client.guildSettings.set(key, {
-    ownerRole: owner, modRole: mod, helperRole: helper, muteRole: mute, logChannel: logs, welcomeChannel: welcome, doLogs: true, doWelcomes: true
-  })
-  msg.channel.send('All done! Your server is now set up!')
+  client.r.table('serverSettings').get(msg.guild.id).run((error, settings) => {
+			if (error) return Logger.error(client, 'Setup error.', error)
+			if (settings) {
+				client.r.table('serverSettings').get().update({
+					logChannel: logs,
+					welcomeChannel: welcome,
+					ownerRole: owner,
+					modRole: mod,
+					helperRole: helper,
+					muteRole: mute
+				}).run((error) => {
+					if (error) return Logger.error(client, 'Setup error.', error)
+          msg.channel.send('All done! Your server is now set up!')
+				})
+			} else {
+				client.r.table('serverSettings').insert({
+					id: msg.guild.id,
+					logChannel: logs,
+					welcomeChannel: welcome,
+					ownerRole: owner,
+					modRole: mod,
+					helperRole: helper,
+					muteRole: mute
+				}).run((error) => {
+					if (error) return Logger.error(client, 'Setup error', error)
+          msg.channel.send('All done! Your server is now set up!')
+				})
+			}
+		})
 }
 
 exports.help = {
   name: 'setup',
   description: 'Sets your server up.',
-  usage: 'setup <logChannelName> | <welcomeChannelName> | <ownerRoleName> | <modRoleName> | <helperRoleName> | <muteRoleName>',
+  usage: 'setup <logChannel> | <welcomeChannel> | <ownerRole> | <modRole> | <helperRole> | <muteRole>',
   fullDesc: 'Sets your server up for use with advanced features. Example: `' + config.prefix + 'setup bot-hell | welcome | Owner | Admin | Web Mod | muted`',
   type: 'util',
   status: 2
