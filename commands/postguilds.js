@@ -50,7 +50,7 @@ exports.run = (client, msg) => {
     Logger.error(`Discordbots.group server count update failed : ${err}`)
   })
   snekfetch.post(`https://discordbotlist.com/api/bots/${client.user.id}/stats`)
-  .set('Authorization', client.config.apis.botlists.dblcom)
+  .set('Authorization', `Bot ${client.config.apis.botlists.dblcom}`)
   .send({
     guilds: client.guilds.size,
     users: client.users.size
