@@ -1,5 +1,6 @@
 const snekfetch = require('snekfetch')
 const Discord = require('discord.js')
+const Logger = require('../util/Logger.js')
 
 exports.run = (client, msg) => {
   snekfetch.get('https://animals.anidiots.guide/penguin').then(res => {
@@ -10,7 +11,7 @@ exports.run = (client, msg) => {
     msg.channel.send(embed)
   }).catch((error) => {
     msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported')
-    client.rollbar.error(`[badmeme.js] snekfetch error: ${error}`)
+    Logger.error(`[penguin.js] snekfetch error.`, error)
   })
 }
 

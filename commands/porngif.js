@@ -1,6 +1,7 @@
 const randomPuppy = require('random-puppy')
 const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+const Logger = require('../util/Logger.js')
 
 exports.run = (client, msg) => {
   if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
@@ -9,7 +10,7 @@ exports.run = (client, msg) => {
   .end((err, res) => {
     if (err) {
       msg.channel.send(':exclamation: │ There was an error running the command. This incident has been reported.')
-      client.rollbar.error(`[porngif.js] snekfetch error: ${err}`)
+      Logger.error(`[porngif.js] snekfetch error.`, err)
     }
     var check = res.body.includes(msg.author.id.toString())
     if (msg.author.id === client.config.ownerID) check = 1

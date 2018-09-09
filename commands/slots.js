@@ -1,5 +1,6 @@
 const xorshift = require('xorshift')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+const Logger = require('../util/Logger.js')
 
 exports.run = (client, message) => {
   let reel = [
@@ -9,7 +10,7 @@ exports.run = (client, message) => {
     ':icecream:',
     ':lollipop:',
     ':chocolate_bar:',
-    // ':moneybag:',
+    ':moneybag:',
     ':shaved_ice:',
     ':doughnut:',
     ':cookie:',
@@ -42,7 +43,7 @@ exports.run = (client, message) => {
       }
     }
   }).catch(e => {
-    client.rollbar.error(e)
+    Logger.error('Slots error.', e)
   })
 }
 

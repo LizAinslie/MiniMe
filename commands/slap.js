@@ -2,6 +2,7 @@ const snek = require('snekfetch')
 const Discord = require('discord.js')
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+const Logger = require('../util/Logger.js')
 
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {
@@ -13,11 +14,11 @@ exports.run = (client, msg, args) => {
       msg.channel.send(embed)
     }).catch(err => {
       msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
-      client.rollbar.error('[slap.js] Error getting image from nekos.life: ' + err.message)
+      Logger.error('[slap.js] Error getting image from nekos.life.', err)
     })
   }).catch(err => {
     msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
-    client.rollbar.error('[slap.js] Error resolving user: ' + err.message + '][' + err.body)
+    Logger.error('[slap.js] Error resolving user.', err)
   })
 }
 

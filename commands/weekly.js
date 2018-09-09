@@ -1,4 +1,5 @@
 const updateBalance = require('../util/updateBalance.js')
+const Logger = require('../util/Logger.js')
 
 const cooldown = new Set()
 exports.run = (client, msg) => {
@@ -10,7 +11,7 @@ exports.run = (client, msg) => {
       msg.channel.send(':dollar: │ You got your weekly reward of **<:coins:482589075459801098>1000 Minicoins**')
     }).catch((error) => {
       msg.channel.send(':exclamation: │ Failed to run the command! This incident has been reported.')
-			client.rollbar.error(`Failed to update balance of user with id ${msg.author.id}: ${error}`)
+			Logger.error(`Failed to update balance of user with id ${msg.author.id}`, error)
 		})
     // Adds the user to the set so that they can't talk for a week
     cooldown.add(msg.author.id)

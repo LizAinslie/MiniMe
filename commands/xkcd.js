@@ -1,5 +1,6 @@
 const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+const Logger = require('../util/Logger.js')
 
 exports.run = (client, msg, args) => {
   if (args.length > 0) {
@@ -21,11 +22,11 @@ exports.run = (client, msg, args) => {
         })
       }).catch((error) => {
         msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
-        client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
+        Logger.error(`[xkcd.js] snekfetch error.`, error)
       })
     }).catch((error) => {
       msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
-      client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
+      Logger.error(`[xkcd.js] snekfetch error.`, error)
     })
   } else {
     snekfetch.get('https://xkcd.com/info.0.json').then((result) => {
@@ -43,11 +44,11 @@ exports.run = (client, msg, args) => {
         })
       }).catch((error) => {
         msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
-        client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
+        Logger.error(`[xkcd.js] snekfetch error.`, error)
       })
     }).catch((error) => {
       msg.channel.send(':exclamation: │ Failed to run the command. This incident has been reported.')
-      client.rollbar.error(`[dadjoke.js] snekfetch error: ${error}`)
+      Logger.error(`[xkcd.js] snekfetch error.`, error)
     })
   }
 }
