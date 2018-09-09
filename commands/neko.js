@@ -25,13 +25,15 @@ exports.run = async (client, msg, args) => {
   if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
   switch (args[0].toLowerCase()) {
     case 'solo':
+      let urlObj1 = JSON.parse(await neko.getNSFWGirlSoloGif())
       msg.channel.send({
-        embed: embed(client, msg, await neko.getNSFWGirlSoloGif())
+        embed: embed(client, msg, urlObj1.url)
       })
       break
     case 'femdom':
+      let urlObj2 = JSON.parse(await neko.getNSFWFemdom())
       msg.channel.send({
-        embed: embed(await neko.getNSFWFemdom())
+        embed: embed(client, msg, urlObj2.url)
       })
       break
     default:
