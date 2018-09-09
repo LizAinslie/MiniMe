@@ -1,4 +1,3 @@
-const Discord = require('discord.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
