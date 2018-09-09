@@ -1,5 +1,5 @@
 const execute = require('child_process')
-const formatArbitrary = require('../util.formatArbitrary.js')
+const formatArbitrary = require('../util/formatArbitrary.js')
 const uploadToHastebin = require('../util/uploadToHastebin.js')
 
 exports.run = (client, msg) => {
