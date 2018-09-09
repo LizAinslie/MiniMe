@@ -19,7 +19,7 @@ module.exports = (bot, query, guild) => {
 			}
 		} else if (guild) {
 			const channels = guild.channels.filter((channel) => channel.name.toLowerCase().includes(query.toLowerCase()))
-			if (channels.size > 0) return resolve(channels.first())
+			if (channels.length > 0) return resolve(channels[0])
 		}
 		reject(new Error('Invalid Channel!'))
 	})

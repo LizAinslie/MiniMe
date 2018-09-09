@@ -1,10 +1,7 @@
-const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const Nekos = require('nekos.life')
 
 const neko = new Nekos()
-
-const apiBase = `https://nekos.life/api/v2/img/`
 
 const embed = (client, msg, url) => {
   return {

@@ -16,8 +16,8 @@ module.exports = (client, query, returnIDOnly = false, preventUsernameSearch = f
 			if (user) return resolve(user)
 		} else if (!preventUsernameSearch) {
 			const users = client.users.filter((u) => u.username.toLowerCase().includes(query.toLowerCase()))
-			if (users.size > 0 && !returnIDOnly) return resolve(users.first())
-      if (returnIDOnly) return resolve(users.first().id)
+			if (users.length > 0 && !returnIDOnly) return resolve(users[0])
+      if (returnIDOnly) return resolve(users[0].id)
 		}
 		reject(new Error('Invalid User!'))
 	})

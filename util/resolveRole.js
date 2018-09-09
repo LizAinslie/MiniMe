@@ -9,7 +9,7 @@ module.exports = (bot, query, guild) => {
 			if (role) return resolve(role)
 		} else {
 			const roles = guild.roles.filter((role) => role.name.toLowerCase().includes(query.toLowerCase()))
-			if (roles.size > 0) return resolve(roles.first())
+			if (roles.length > 0) return resolve(roles[0])
 		}
 		reject(new Error('Invalid Role!'))
 	})
