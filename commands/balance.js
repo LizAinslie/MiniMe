@@ -4,12 +4,12 @@ exports.run = (client, msg, args) => {
   if (args[0]) {
     resolveUser(client, args.join(' ')).then(user => {
       client.r.table('balance').get(user.id).run((error, balance) => {
-        msg.reply(`${user.username}#${user.discriminator} has **<:coins:482589075459801098>` + balance ? balance.amount.toLocaleString() : 0 + ' Minicoins** in their bank account.')
+        msg.reply(`${user.username}#${user.discriminator} has **<:coins:482589075459801098>` + balance ? balance.amount.toString() : 0 + ' Minicoins** in their bank account.')
 			});
     })
   } else {
     client.r.table('balance').get(msg.author.id).run((error, balance) => {
-      msg.reply('you have **<:coins:482589075459801098>' + balance ? balance.amount.toLocaleString() : 0 + ' Minicoins** in your bank account.')
+      msg.reply('you have **<:coins:482589075459801098>' + balance ? balance.amount.toString() : 0 + ' Minicoins** in your bank account.')
 		});
   }
 }
