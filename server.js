@@ -32,6 +32,7 @@ fs.readdir('./events/', (err, files) => {
     const event = require(`./events/${file}`)
     let eventName = file.split('.')[0]
     client.on(eventName, event.bind(null, client))
+    console.log(`bound event: ${eventName}`)
     delete require.cache[require.resolve(`./events/${file}`)]
   })
 })
