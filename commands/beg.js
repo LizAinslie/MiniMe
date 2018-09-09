@@ -7,9 +7,10 @@ exports.run = (client, msg) => {
   } else {
     // the user can type the command ... your command code goes here :)
     const amt = Math.floor(Math.random() * 3) + 1
-    updateBalance(this.r, msg.author.id, amt).then(balance => {
+    updateBalance(client.r, msg.author.id, amt).then(balance => {
       msg.channel.send(':dollar: │ You begged and got **<:coins:482589075459801098>' + amt + ' Minicoins**.')
     }).catch((error) => {
+      msg.channel.send(':exclamation: │ Failed to run the command! This incident has been reported.')
 			client.rollbar.error(`Failed to update balance of user with id ${msg.author.id}: ${error}`)
 		});
     // Adds the user to the set so that they can't talk for 30 seconds
