@@ -17,16 +17,8 @@ const client = new Eris(config.token)
 client.config = config
 client.colors = colors
 
-client.railEmoji = client.emojis.find('name', 'rail')
-
 const r = rethinkdb(config.rethinkdb)
 client.r = r
-// client.idiot = new Idiot.Client(config.apis.idiot, { dev: true })
-// client.points = new Enmap({provider: new EnmapSql({ name: 'points' })})
-
-client.guildSettings = new Enmap({provider: new EnmapSql({ name: 'settings', dataDir: './settings' })})
-
-client.userData = new Enmap({provider: new EnmapSql({ name: 'userData', dataDir: './data/' })})
 
 client.rollbar = new Rollbar({
   accessToken: config.apis.rollbar,
