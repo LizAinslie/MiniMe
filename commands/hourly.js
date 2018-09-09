@@ -6,7 +6,7 @@ exports.run = (client, msg) => {
     msg.channel.send(':stopwatch: │ You can only do this once every hour.')
   } else {
     // the user can type the command ... your command code goes here :)
-    updateBalance(client.r, msg.author.id, amt).then(balance => {
+    updateBalance(client.r, msg.author.id, 50).then(balance => {
       msg.channel.send(':dollar: │ You got your hourly reward of **<:coins:482589075459801098>50 Minicoins**')
     }).catch((error) => {
       msg.channel.send(':exclamation: │ Failed to run the command! This incident has been reported.')
