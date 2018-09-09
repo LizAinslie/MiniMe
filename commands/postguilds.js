@@ -18,21 +18,21 @@ exports.run = (client, msg) => {
     })
     client.rollbar.error(`botlist.space server count update failed : ${err}`)
   })
-  snekfetch.post(`https://discordbots.org/api/bots/${client.user.id}/stats`)
-  .set('Authorization', client.config.apis.botlists.dbl)
-  .send({
-    server_count: client.guilds.size
-  }).then(() => {
-    msg.channel.send(':white_check_mark: │ Updated **discordbots.org** stats.').catch(err => {
-      client.rollbar.error(`Error sending message in channel with id: ${msg.channel.id} | ${err}`)
-    })
-    console.log('Updated discordbots.org stats.')
-  }).catch(err => {
-    msg.channel.send(':exclamation: │ Failed to update **discordbots.org** stats.').catch(err => {
-      client.rollbar.error(`Error sending message in channel with id: ${msg.channel.id} | ${err}`)
-    })
-    client.rollbar.error(`discordbots.org server count update failed : ${err}`)
-  })
+  // snekfetch.post(`https://discordbots.org/api/bots/${client.user.id}/stats`)
+  // .set('Authorization', client.config.apis.botlists.dbl)
+  // .send({
+  //   server_count: client.guilds.size
+  // }).then(() => {
+  //   msg.channel.send(':white_check_mark: │ Updated **discordbots.org** stats.').catch(err => {
+  //     client.rollbar.error(`Error sending message in channel with id: ${msg.channel.id} | ${err}`)
+  //   })
+  //   console.log('Updated discordbots.org stats.')
+  // }).catch(err => {
+  //   msg.channel.send(':exclamation: │ Failed to update **discordbots.org** stats.').catch(err => {
+  //     client.rollbar.error(`Error sending message in channel with id: ${msg.channel.id} | ${err}`)
+  //   })
+  //   client.rollbar.error(`discordbots.org server count update failed : ${err}`)
+  // })
   snekfetch.post(`https://discordbots.group/api/bot/${client.user.id}`)
   .set('Authorization', client.config.apis.botlists.dbg)
   .send({
