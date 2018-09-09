@@ -6,7 +6,7 @@ exports.run = (client, msg) => {
   msg.channel.createMessage(`I am in **${client.guilds.size}** guilds.`)
   snekfetch.post(`https://botlist.space/api/bots/${client.user.id}`)
   .set('Authorization', client.config.apis.botlists.bls)
-  .createMessage({
+  .send({
     server_count: client.guilds.size
   }).then(() => {
     msg.channel.createMessage(':white_check_mark: │ Updated **botlist.space** stats.').catch(err => {
@@ -21,7 +21,7 @@ exports.run = (client, msg) => {
   })
   // snekfetch.post(`https://discordbots.org/api/bots/${client.user.id}/stats`)
   // .set('Authorization', client.config.apis.botlists.dbl)
-  // .createMessage({
+  // .send({
   //   server_count: client.guilds.size
   // }).then(() => {
   //   msg.channel.createMessage(':white_check_mark: │ Updated **discordbots.org** stats.').catch(err => {
@@ -36,7 +36,7 @@ exports.run = (client, msg) => {
   // })
   snekfetch.post(`https://discordbots.group/api/bot/${client.user.id}`)
   .set('Authorization', client.config.apis.botlists.dbg)
-  .createMessage({
+  .send({
     count: client.guilds.size
   }).then(() => {
     msg.channel.createMessage(':white_check_mark: │ Updated **discordbots.group** stats.').catch(err => {
@@ -51,7 +51,7 @@ exports.run = (client, msg) => {
   })
   snekfetch.post(`https://discordbotlist.com/api/bots/${client.user.id}/stats`)
   .set('Authorization', `Bot ${client.config.apis.botlists.dblcom}`)
-  .createMessage({
+  .send({
     guilds: client.guilds.size,
     users: client.users.size
   }).then(() => {
@@ -67,7 +67,7 @@ exports.run = (client, msg) => {
   })
   snekfetch.post(`https://discordbot.world/api/bot/${client.user.id}/stats`)
   .set('Authorization', client.config.apis.botlists.dbw)
-  .createMessage({
+  .send({
     guild_count: client.guilds.size,
   }).then(() => {
     msg.channel.createMessage(':white_check_mark: │ Updated **discordbot.world** stats.').catch(err => {
