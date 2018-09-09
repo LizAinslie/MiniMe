@@ -19,22 +19,19 @@ const embed = (client, msg, url) => {
   }
 }
 
-exports.run = (client, msg, args) => {
+exports.run = async (client, msg, args) => {
   if (!msg.channel.nsfw) return msg.channel.send(':exclamation: │ You can only run this command in a NSFW channel!')
-  switch (args[0]) {
+  switch (args[0].toLowerCase()) {
     case 'solo':
-      neko.getNSFWGirlSoloGif().then(url => {
-        msg.channel.send({
-          embed: embed(client, msg, url)
-        })
+      msg.channel.send({
+        embed: embed(client, msg, await neko.getNSFWGirlSoloGif())
       })
       break
     case 'femdom':
-      neko.getNSFWFemdom().then(url => {
-        msg.channel.send({
-          embed: embed(client, msg, url)
-        })
+      msg.channel.send({
+        embed: embed(await neko.getNSFWFemdom())
       })
+      break
     default:
       msg.channel.send(':interrobang: │ That is not a valid Neko type!')
   }
