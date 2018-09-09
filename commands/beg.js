@@ -1,3 +1,5 @@
+const updateBalance = require('../util/updateBalance.js')
+
 const cooldown = new Set()
 exports.run = (client, msg) => {
   if (cooldown.has(msg.author.id)) {
@@ -5,13 +7,11 @@ exports.run = (client, msg) => {
   } else {
     // the user can type the command ... your command code goes here :)
     const amt = Math.floor(Math.random() * 3) + 1
-    const key = `${msg.author.id}-balance`
-    if (!client.userData.has(key)) {
-      client.userData.set(key, amt)
-    } else {
-      client.userData.set(key, parseInt(client.userData.get(key), 10) + amt)
-    }
-    msg.channel.send(':dollar: │ You begged and got **<:coins:482589075459801098>' + amt.toString() + ' Minicoins**.')
+    updateBalance(this.r, msg.author.id, amt).then(balance => {
+      msg.channel.send(':dollar: │ You begged and got **<:coins:482589075459801098>' + amt + ' Minicoins**.')
+    }).catch((error) => {
+			client.rollbar.error(`Failed to update balance of user with id ${msg.author.id}: ${error}`)
+		});
     // Adds the user to the set so that they can't talk for 30 seconds
     cooldown.add(msg.author.id)
     setTimeout(() => {
