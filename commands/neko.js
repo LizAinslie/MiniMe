@@ -1,5 +1,7 @@
-const neko = require('nekos.life')
+const Nekos = require('nekos.life')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+
+const neko = new Nekos()
 
 const embed = (client, msg, url) => {
   return {
