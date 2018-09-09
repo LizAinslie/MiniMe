@@ -31,7 +31,7 @@ exports.run = (client, msg, args) => {
           })
           break
         case 'logs':
-          let logs = Boolean(parseInt(args[0].trim(), 10))
+          let logs = Boolean(parseInt(args[1].trim(), 10))
           client.r.table('serverSettings').get(msg.guild.id).update({
             doLogs: logs
           })
