@@ -1,83 +1,26 @@
 /* eslint no-eval: 0 */
 const formatArbitrary = require('../util/formatArbitrary.js')
 const uploadToHastebin = require('../util/uploadToHastebin.js')
-const getEmbedColor = require('../util/getHighestRoleColor.js')
+const util = require('util')
 
-const clean = text => {
-  if (typeof text === 'string') {
-    return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203))
-  } else {
-    return text
-  }
-}
-
-exports.run = async (client, message, args) => {
-  if (message.author.id !== client.config.ownerID) { return message.channel.createMessage(':no_entry_sign: │ Only my developer can use this!') }
-  let code
+exports.run = async (client, msg, args) => {
+  if (msg.author.id !== client.config.ownerID) { return msg.channel.createMessage(':no_entry_sign: │ Only my developer can use this!') }
   try {
-    code = args.join(' ')
-    let evaled = await eval(code)
-
-    if (typeof evaled !== 'string') { evaled = require('util').inspect(evaled) }
-
-    if (formatArbitrary(client, clean(evaled)).length > 1992) {
-      uploadToHastebin(formatArbitrary(client, clean(evaled))).then((url) => {
-        message.channel.createMessage(':outbox_tray: │ ' + url)
-      }).catch((error) => {
-        message.channel.createMessage(':exclamation: │ Failed to upload result to hastebin. `' + error.message + '`')
-      })
-    } else {
-      message.channel.createMessage({
-        embed: {
-          author: {
-            name: `Eval │ Requested by ${message.author.username}#${message.author.discriminator}`,
-            icon_url: message.author.displayAvatarURL
-          },
-          footer: {
-            text: 'Status: 200',
-            icon_url: client.user.avatarURL
-          },
-          timestamp: new Date(),
-          color: getEmbedColor(message),
-          fields: [
-            {
-              name: ':inbox_tray: │ Input',
-              value: '```js\n' + code + '```'
-            },
-            {
-              name: ':outbox_tray: │ Output',
-              value: '```js\n' + formatArbitrary(client, clean(evaled)) + '```'
-            }
-          ]
-        }
-      })
-    }
-  } catch (err) {
-    message.channel.createMessage({
-      embed: {
-        author: {
-          name: `Eval │ Requested by ${message.author.username}#${message.author.discriminator}`,
-          icon_url: message.author.avatarURL
-        },
-        footer: {
-          text: 'Status: 200',
-          icon_url: client.user.avatarURL
-        },
-        timestamp: new Date(),
-        color: getEmbedColor(client, message),
-        fields: [
-          {
-            name: ':inbox_tray: │ Input',
-            value: '```js\n' + code + '```'
-          },
-          {
-            name: ':outbox_tray: │ Error',
-            value: `\`\`\`js\n${formatArbitrary(client, clean(err))}\n\`\`\``
-          }
-        ]
-      }
-    })
-  }
+				let result = await eval(args.join(' '));
+				if (typeof result !== 'string') result = util.inspect(result);
+				result = formatArbitrary(result);
+				if (result.length > 1992) {
+					uploadToHastebin(result).then((url) => {
+						msg.channel.createMessage(':outbox_tray:   **»**   ' + url);
+					}).catch((error) => {
+						msg.channel.createMessage(':exclamation:   **»**   Failed to upload result to hastebin. `' + error.message + '`');
+					});
+				} else {
+					msg.channel.createMessage('```js\n' + result + '```');
+				}
+			} catch (e) {
+				msg.channel.createMessage('```js\n' + e + '```');
+			}
 }
 
 exports.help = {
