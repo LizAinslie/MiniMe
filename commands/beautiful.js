@@ -5,7 +5,7 @@ const snekfetch = require('snekfetch')
 exports.run = (client, msg, args) => {
   if (args[0]) {
     resolveUser(client, args.join(' ')).then(user => {
-      snekfetch.get(`https://triggered-api.tk/api/v2/beautiful?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+      snekfetch.get(`https://triggered-api.tk/api/v2/beautiful?url=${user.avatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
         msg.channel.createMessage({
           embed: {
             author: {
@@ -26,7 +26,7 @@ exports.run = (client, msg, args) => {
       })
     })
   } else {
-    snekfetch.get(`https://triggered-api.tk/api/v2/beautiful?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+    snekfetch.get(`https://triggered-api.tk/api/v2/beautiful?url=${msg.author.avatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
       msg.channel.createMessage({
         embed: {
           author: {
