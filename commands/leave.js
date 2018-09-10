@@ -2,7 +2,7 @@ exports.run = (client, message, args) => {
   if (message.member.voiceState.channelID) {
     const voiceChannel = message.channel.guild.channels.get(message.member.voiceState.channelID)
     voiceChannel.leave()
-    message.reply(':outbox_tray: │ Left Voice Channel.')
+    message.channel.createMessage(':outbox_tray: │ Left Voice Channel.')
   }
 }
 
