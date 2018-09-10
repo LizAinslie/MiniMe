@@ -8,7 +8,7 @@ exports.run = (client, msg, args) => {
     msg.channel.createMessage({
       embed: {
         title: 'Weather',
-        color: getEmbedColor(msg),
+        color: getEmbedColor(client, msg),
         fields: [
           {
             name: 'Location',

@@ -6,7 +6,7 @@ exports.run = (client, msg, args) => {
     resolveUser(client, args.join(' ')).then(user => {
       msg.channel.createMessage({
         embed: {
-          color: getEmbedColor(msg),
+          color: getEmbedColor(client, msg),
           author: {
             icon_url: msg.author.avatarURL,
             name: `${user.username}#${user.discriminator}'s avatar │ Requested by ${msg.author.username}#${msg.author.discriminator}`
@@ -28,7 +28,7 @@ exports.run = (client, msg, args) => {
   } else {
     msg.channel.createMessage({
       embed: {
-        color: client.config.color,
+        color: getEmbedColor(client, msg),
         author: {
           icon_url: msg.author.avatarURL,
           name: `${msg.author.username}#${msg.author.discriminator}'s avatar │ Requested by ${msg.author.username}#${msg.author.discriminator}`

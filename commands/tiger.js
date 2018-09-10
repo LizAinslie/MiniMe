@@ -10,7 +10,7 @@ exports.run = (client, msg) => {
           name: `Tiger │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
           icon_url: msg.author.displayAvatarURL
         },
-        color: getEmbedColor(msg),
+        color: getEmbedColor(client, msg),
         timestamp: new Date(),
         image: {
           url: res.body.link

@@ -12,7 +12,7 @@ exports.run = (client, message) => {
         name: client.user.username,
         icon_url: client.user.avatarURL
       },
-      color: getEmbedColor(message),
+      color: getEmbedColor(client, message),
       fields: [
         {
           name: ':floppy_disk: │ Mem Usage',
