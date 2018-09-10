@@ -13,7 +13,7 @@ exports.run = (client, message, params) => {
     message.channel.createMessage({
       embed: {
         title: 'Command List',
-        color: getEmbedColor(message),
+        color: getEmbedColor(client, message),
         description: `Use \`${client.config.prefix}help <commandname>\` for usage and details.`,
         author: {
           icon_url: message.author.displayAvatarURL,
@@ -104,7 +104,7 @@ exports.run = (client, message, params) => {
             text: 'Status: 200'
           },
           timestamp: new Date(),
-          color: getEmbedColor(message),
+          color: getEmbedColor(client, message),
           description: command.help.fullDesc,
           fields: [
             {

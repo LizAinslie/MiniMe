@@ -6,7 +6,6 @@ exports.run = (client, msg, args) => {
   if (args[0]) {
     resolveUser(client, args.join(' ')).then(user => {
       snekfetch.get(`https://triggered-api.tk/api/v2/beautiful?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-
         msg.channel.createMessage({
           embed: {
             author: {
@@ -18,18 +17,16 @@ exports.run = (client, msg, args) => {
               icon_url: client.user.avatarURL
             },
             timestamp: new Date(),
-            color: getEmbedColor(msg),
+            color: getEmbedColor(client, msg),
             image: {
               url: 'attachment://beautiful.png'
             }
           },
-        }, res.body)
+        }, { file: res.body, name: 'beautiful.png' })
       })
     })
   } else {
     snekfetch.get(`https://triggered-api.tk/api/v2/beautiful?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-      const attachment = new Discord.Attachment(res.body, 'beautiful.png')
-
       msg.channel.createMessage({
         embed: {
           author: {
@@ -41,13 +38,12 @@ exports.run = (client, msg, args) => {
             icon_url: client.user.avatarURL
           },
           timestamp: new Date(),
-          color: getEmbedColor(msg),
+          color: getEmbedColor(client, msg),
           image: {
             url: 'attachment://beautiful.png'
           }
-        },
-        files: [attachment]
-      })
+        }
+      }, { file: res.body, name: 'beautiful.png' })
     })
   }
 }
