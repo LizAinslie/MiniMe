@@ -56,7 +56,7 @@ exports.run = async (client, message, args) => {
       embed: {
         author: {
           name: `Eval │ Requested by ${message.author.username}#${message.author.discriminator}`,
-          icon_url: message.author.displayAvatarURL
+          icon_url: message.author.avatarURL
         },
         footer: {
           text: 'Status: 200',
