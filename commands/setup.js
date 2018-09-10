@@ -4,7 +4,7 @@ const resolveRole = require('../util/resolveRole.js')
 const Logger = require('../util/Logger.js')
 
 exports.run = (client, msg, args) => {
-  if (!msg.member.hasPermission('MANAGE_GUILD') && msg.author.id !== client.config.ownerID) return msg.channel.createMessage(':no_entry_sign: | You do not have permission to do this!')
+  if (!msg.member.permission.has('MANAGE_GUILD') && msg.author.id !== client.config.ownerID) return msg.channel.createMessage(':no_entry_sign: | You do not have permission to do this!')
   args = args.join(' ').split('|')
   let owner, mod, helper, welcome, logs, mute
 
