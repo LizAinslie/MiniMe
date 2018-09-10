@@ -1,6 +1,7 @@
 exports.run = (client, message, args) => {
-  if (message.member.voiceChannel) {
-    message.member.voiceChannel.leave()
+  if (message.member.voiceState.channelID) {
+    const voiceChannel = message.chennel.guild.channels.get(message.member.voiceState.channelID)
+    voiceChannel.leave()
     message.reply(':outbox_tray: │ Left Voice Channel.')
   }
 }

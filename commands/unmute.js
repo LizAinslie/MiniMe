@@ -1,5 +1,5 @@
 exports.run = (client, msg, args) => {
-  if (!msg.member.hasPermission('MANAGE_ROLES')) return msg.channel.createMessage(':no_entry_sign: │ You need the permission `MANAGE_ROLES` to use this.')
+  if (!msg.member.permission.has('MANAGE_ROLES')) return msg.channel.createMessage(':no_entry_sign: │ You need the permission `MANAGE_ROLES` to use this.')
   let member = msg.mentions.members.first()
   if (!member) return msg.channel.createMessage(':interrobang: │ You must mention a valid member of this server!')
 
