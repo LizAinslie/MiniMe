@@ -1,4 +1,3 @@
-const { version } = require('eris')
 const moment = require('moment')
 require('moment-duration-format')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
@@ -39,11 +38,11 @@ exports.run = (client, message) => {
           value: client.guilds.size.toLocaleString(),
           inline: true
         },
-        {
-          name: '<:djs:484062455618863126> │ Discord.js',
-          value: version,
-          inline: true
-        },
+        // {
+        //   name: '<:djs:484062455618863126> │ Discord.js',
+        //   value: version,
+        //   inline: true
+        // },
         {
           name: '<:js:484062454477881344> │ Node',
           value: process.version,
