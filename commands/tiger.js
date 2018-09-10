@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const Logger = require('../util/Logger.js')
@@ -8,7 +10,7 @@ exports.run = (client, msg) => {
       embed: {
         author: {
           name: `Tiger │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
-          icon_url: msg.author.displayAvatarURL
+          icon_url: msg.author.avatarURL
         },
         color: getEmbedColor(client, msg),
         timestamp: new Date(),

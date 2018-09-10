@@ -1,4 +1,6 @@
 /* eslint no-eval: 0 */
+/* Eris Fixed */
+
 const formatArbitrary = require('../util/formatArbitrary.js')
 const uploadToHastebin = require('../util/uploadToHastebin.js')
 const util = require('util')

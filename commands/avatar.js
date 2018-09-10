@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
