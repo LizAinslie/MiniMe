@@ -63,7 +63,7 @@ exports.run = async (client, message, args) => {
           icon_url: client.user.avatarURL
         },
         timestamp: new Date(),
-        color: getEmbedColor(message),
+        color: getEmbedColor(client, message),
         fields: [
           {
             name: ':inbox_tray: │ Input',
