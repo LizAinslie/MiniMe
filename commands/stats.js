@@ -26,7 +26,7 @@ exports.run = (client, message) => {
         },
         {
           name: ':keyboard: │ Command Count',
-          value: client.commands.array(),
+          value: client.commands.array().length,
           inline: true
         },
         {
