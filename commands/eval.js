@@ -13,8 +13,9 @@ const clean = text => {
 
 exports.run = async (client, message, args) => {
   if (message.author.id !== client.config.ownerID) { return message.channel.createMessage(':no_entry_sign: │ Only my developer can use this!') }
+  let code
   try {
-    const code = args.join(' ')
+    code = args.join(' ')
     let evaled = await eval(code)
 
     if (typeof evaled !== 'string') { evaled = require('util').inspect(evaled) }
