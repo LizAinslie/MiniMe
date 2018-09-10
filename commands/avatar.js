@@ -8,7 +8,7 @@ exports.run = (client, msg, args) => {
         embed: {
           color: getEmbedColor(msg),
           author: {
-            icon_url: msg.author.displayAvatarURL,
+            icon_url: msg.author.avatarURL,
             name: `${user.username}#${user.discriminator}'s avatar │ Requested by ${msg.author.username}#${msg.author.discriminator}`
           },
           footer: {
@@ -17,7 +17,7 @@ exports.run = (client, msg, args) => {
           },
           timestamp: new Date(),
           image: {
-            url: user.displayAvatarURL
+            url: user.avatarURL
           }
         }
       })
@@ -30,7 +30,7 @@ exports.run = (client, msg, args) => {
       embed: {
         color: client.config.color,
         author: {
-          icon_url: msg.author.displayAvatarURL,
+          icon_url: msg.author.avatarURL,
           name: `${msg.author.username}#${msg.author.discriminator}'s avatar │ Requested by ${msg.author.username}#${msg.author.discriminator}`
         },
         footer: {
@@ -39,7 +39,7 @@ exports.run = (client, msg, args) => {
         },
         timestamp: new Date(),
         image: {
-          url: msg.author.displayAvatarURL
+          url: msg.author.avatarURL
         }
       }
     })
