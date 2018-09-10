@@ -8,7 +8,7 @@ exports.run = async (client, msg, args) => {
   try {
 				let result = await eval(args.join(' '));
 				if (typeof result !== 'string') result = util.inspect(result);
-				result = formatArbitrary(result);
+				result = formatArbitrary(client, result);
 				if (result.length > 1992) {
 					uploadToHastebin(result).then((url) => {
 						msg.channel.createMessage(':outbox_tray:   **»**   ' + url);
