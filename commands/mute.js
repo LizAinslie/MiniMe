@@ -11,7 +11,7 @@ exports.run = (client, msg, args) => {
     if (!reason) reason = 'No reason provided.'
   
     msg.channel.guild.addMemberRole(member.id, settings.muteRole, reason)
-    msg.channel.createMessage(`Muted ${member.user.username} - \`${reason}\``)
+    msg.channel.createMessage(`Muted ${member.username} - \`${reason}\``)
   })
 }
 
