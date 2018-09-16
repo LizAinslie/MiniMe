@@ -1,5 +1,5 @@
 exports.run = async (client, message, args) => {
-  if (!message.member.hasPermission('KICK_MEMBERS')) { return message.channel.createMessage(':no_entry_sign: │ You need the permission `KICK_MEMBERS` to use this.') }
+  if (!message.member.permission.has('KICK_MEMBERS')) { return message.channel.createMessage(':no_entry_sign: │ You need the permission `KICK_MEMBERS` to use this.') }
 
   // Let's first check if we have a member and if we can kick them!
   // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.

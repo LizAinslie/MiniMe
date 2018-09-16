@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const randomPuppy = require('random-puppy')
 const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
@@ -19,10 +21,10 @@ exports.run = (client, msg) => {
         msg.channel.createMessage({
           embed: {
             author: {
-              icon_url: msg.author.displayAvatarURL,
+              icon_url: msg.author.avatarURL,
               name: `Porn Gif │ Requested by ${msg.author.username}#${msg.author.discriminator}`
             },
-            color: getEmbedColor(msg),
+            color: getEmbedColor(client, msg),
             image: {
               url: url
             },

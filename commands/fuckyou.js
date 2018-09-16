@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, msg) => {
   msg.channel.createMessage('<:sadcat:484503671359668244>')
 }

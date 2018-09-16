@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = async (client, msg, args) => {
   // This command removes all msgs from all users in the channel, up to 100.
   if (!msg.member.hasPermission('MANAGE_MESSAGES')) { return msg.channel.createMessage(':no_entry_sign: │ You need the permission `MANAGE_MESSAGES` to use this.') }
@@ -15,7 +17,11 @@ exports.run = async (client, msg, args) => {
      const filterBy = user ? user.id : client.user.id
      messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount)
    }
-   msg.channel.bulkDelete(messages).catch(error => client.rollbar.error(error.stack))
+   const messagesArray = []
+   for (message of messages) {
+     messagesArray.push(message.id)
+   }
+   msg.channel.deleteMessages(messagesArray).catch(error => client.rollbar.error(error.stack))
   })
 }
 

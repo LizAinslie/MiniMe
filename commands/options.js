@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
@@ -13,7 +15,7 @@ exports.run = (client, msg, args) => {
           msg.channel.createMessage({
             embed: {
               title: 'Server Options Updated',
-              color: getEmbedColor(msg),
+              color: getEmbedColor(client, msg),
               fields: [
                 {
                   name: 'Value Changed',
@@ -37,7 +39,7 @@ exports.run = (client, msg, args) => {
           msg.channel.createMessage({
             embed: {
               title: 'Server Options Updated',
-              color: getEmbedColor(msg),
+              color: getEmbedColor(client, msg),
               fields: [
                 {
                   name: 'Value Changed',

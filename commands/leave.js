@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, message, args) => {
   if (message.member.voiceState.channelID) {
     const voiceChannel = message.channel.guild.channels.get(message.member.voiceState.channelID)

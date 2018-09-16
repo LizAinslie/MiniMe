@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, message, args) => {
@@ -8,11 +10,11 @@ exports.run = (client, message, args) => {
   message.channel.createMessage({
     embed: {
       title: 'A Poll Has Been Started!',
-      color: getEmbedColor(message),
+      color: getEmbedColor(client, message),
       description: `${question}`,
       author: {
         name: `Poll Started By: ${message.author.username}#${message.author.discriminator}`,
-        icon_url: message.author.displayAvatarURL
+        icon_url: message.author.avatarURL
       },
       footer: {
         text: 'Status: 200',

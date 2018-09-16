@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const snek = require('snekfetch')
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
@@ -8,7 +10,7 @@ exports.run = (client, msg, args) => {
       msg.channel.createMessage({
         embed: {
           author: {
-            icon_url: msg.author.displayAvatarURL,
+            icon_url: msg.author.avatarURL,
             name: `${msg.author.username} kissed ${user.username}!`
           },
           timestamp: new Date(),
@@ -19,7 +21,7 @@ exports.run = (client, msg, args) => {
           image: {
             url: res.body.url
           },
-          color: getEmbedColor(msg)
+          color: getEmbedColor(client, msg)
         }
       })
     }).catch(err => {

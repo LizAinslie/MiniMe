@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const resolveRole = require('../util/resolveRole.js')
 
 exports.run = (client, msg, args) => {

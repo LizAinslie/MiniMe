@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const snekfetch = require('snekfetch')
 const Logger = require('../util/Logger.js')
 

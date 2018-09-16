@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, message, args) => {
   message.channel.createMessage(`:ping_pong: │ Pong! \`Latency: ${client.ping}ms\``).catch(console.error)
 }

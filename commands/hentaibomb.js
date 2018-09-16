@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const randomPuppy = require('random-puppy')
 const snekfetch = require('snekfetch')
 

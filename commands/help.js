@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 const cmdStatuses = [

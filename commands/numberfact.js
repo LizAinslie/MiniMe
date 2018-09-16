@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const snek = require('snekfetch')
 
 exports.run = (client, msg, args) => {

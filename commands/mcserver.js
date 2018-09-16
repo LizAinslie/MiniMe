@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
@@ -14,7 +16,7 @@ exports.run = (client, msg, args) => {
         const data = {
           title: host + ':' + port,
           description: server.motd.replace(/[ ]{2,}/g, ' '),
-          color: getEmbedColor(msg),
+          color: getEmbedColor(client, msg),
           fields: [
             {
               name: 'Players',
