@@ -1,11 +1,13 @@
 const figlet = require('figlet')
-const funcs = require('../modules/functions.js')
+const _ = require('lodash')
 
 exports.run = (client, msg, args) => {
-  args = args.join(' ').split('|')
-  const font = args[0]; const text = args[1]
+  let [font, text] = args.join(' ').split('|')
+  if (!text) {
+    [font, text] = ['Big', text]
+  }
   const ascii = '```' + figlet.textSync(text.trim(), {
-    font: funcs.toTitleCase(font),
+    font: _.capitalize(font),
     horizontalLayout: 'default',
     verticalLayout: 'default'
   }) + '```'
