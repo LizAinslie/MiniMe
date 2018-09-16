@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, message, args) => {
 	if (args.length > 0) {
 		const choices = args.join(' ').split('|').map((v) => v.trim()).filter(c => c !== '')

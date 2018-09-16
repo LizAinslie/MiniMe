@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const snekfetch = require('snekfetch')
@@ -12,7 +14,7 @@ exports.run = (client, msg, args) => {
             embed: {
               author: {
                 name: `${user.username} is beautiful!`,
-                icon_url: msg.author.displayAvatarURL
+                icon_url: msg.author.avatarURL
               },
               footer: {
                 text: 'Status: 200',
@@ -34,7 +36,7 @@ exports.run = (client, msg, args) => {
           embed: {
             author: {
               name: `${msg.author.username} is beautiful!`,
-              icon_url: msg.author.displayAvatarURL
+              icon_url: msg.author.avatarURL
             },
             footer: {
               text: 'Status: 200',

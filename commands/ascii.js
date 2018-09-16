@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const figlet = require('figlet')
 const _ = require('lodash')
 const getEmbedColor = require('../util/getHighestRoleColor.js')

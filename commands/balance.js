@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const resolveUser = require('../util/resolveUser.js')
 
 exports.run = (client, msg, args) => {

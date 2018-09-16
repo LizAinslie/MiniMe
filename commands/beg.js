@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const updateBalance = require('../util/updateBalance.js')
 
 const cooldown = new Set()
