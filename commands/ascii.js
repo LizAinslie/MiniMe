@@ -1,5 +1,6 @@
 const figlet = require('figlet')
 const _ = require('lodash')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   let [font, text] = args.join(' ').split('|')
@@ -13,7 +14,7 @@ exports.run = (client, msg, args) => {
   }) + '```'
   msg.channel.createMessage({
     embed: {
-      color: client.config.color,
+      color: getEmbedColor(client, msg),
       description: ascii,
       author: {
         icon_url: msg.author.avatarURL,
