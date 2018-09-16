@@ -1,8 +1,8 @@
 exports.run = (client, msg) => {
   if (Math.random() >= 0.5) {
-    msg.reply('you flipped **Heads**!')
+    msg.channel.createMessage('you flipped **Heads**!')
   } else {
-    msg.reply('you flipped **Tails**!')
+    msg.channel.createMessage('you flipped **Tails**!')
   }
 }
 
