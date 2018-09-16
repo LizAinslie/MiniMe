@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const request = require('snekfetch')
 const HTMLParser = require('fast-html-parser')
 

@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const snekfetch = require('snekfetch')
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
@@ -10,16 +12,16 @@ exports.run = (client, msg, args) => {
       msg.channel.createMessage({
         embed: {
           title: bot.username,
-          color: getEmbedColor(msg),
+          color: getEmbedColor(client, msg),
           thumbnail: {
-            url: user.displayAvatarURL
+            url: user.avatarURL
           },
           description: bot.shortdesc,
           image: {
             url: `https://discordbots.org/api/widget/${bot.id}.png`
           },
           author: {
-            icon_url: msg.author.displayAvatarURL,
+            icon_url: msg.author.avatarURL,
             name: `DBL │ Requested by ${msg.author.username}#${msg.author.discriminator}`
           },
           footer: {

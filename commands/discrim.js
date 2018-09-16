@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
@@ -18,10 +20,10 @@ exports.run = (client, msg, args) => {
       embed: {
         author: {
           name: `Discriminator ${args[0]} (${matches.length}) │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
-          icon_url: msg.author.displayAvatarURL
+          icon_url: msg.author.avatarURL
         },
         timestamp: new Date(),
-        color: getEmbedColor(msg),
+        color: getEmbedColor(client, msg),
         description: matches.join('\n'),
         footer: {
           text: 'Status: 200',

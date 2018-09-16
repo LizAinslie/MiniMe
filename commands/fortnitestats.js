@@ -26,10 +26,10 @@ exports.run = (client, msg, args) => {
     msg.channel.createMessage({
       embed: {
         author: {
-          icon_url: msg.author.displayAvatarURL,
+          icon_url: msg.author.avatarURL,
           name: `Fortnite Stats │ Requested By ${msg.author.username}#${msg.author.discriminator}`
         },
-        color: getEmbedColor(msg),
+        color: getEmbedColor(client, msg),
         title: `${player.epicUserHandle}'s ${player.platformNameLong} Fortnite account`,
         footer: {
           icon_url: client.user.avatarURL,

@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const childProcess = require('child_process')
 const uploadToHastebin = require('../util/uploadToHastebin.js')
 const formatArbitrary = require('../util/formatArbitrary.js')

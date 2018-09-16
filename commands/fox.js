@@ -7,9 +7,9 @@ exports.run = (client, msg) => {
       embed: {
         author: {
           name: `Fox │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
-          icon_url: msg.author.displayAvatarURL
+          icon_url: msg.author.avatarURL
         },
-        color: getEmbedColor(msg),
+        color: getEmbedColor(client, msg),
         footer: {
           text: 'Status: 200',
           icon_url: client.user.avatarURL

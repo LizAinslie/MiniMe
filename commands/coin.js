@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, msg) => {
   if (Math.random() >= 0.5) {
     msg.channel.createMessage('you flipped **Heads**!')

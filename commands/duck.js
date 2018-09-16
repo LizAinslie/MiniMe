@@ -1,5 +1,7 @@
+/* Eris Fixed */
 const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+
 
 exports.run = (client, msg) => {
   snekfetch.get('https://random-d.uk/api/v1/random?type=jpg').then(res => {
@@ -7,9 +9,9 @@ exports.run = (client, msg) => {
       embed: {
         author: {
           name: `Duck │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
-          icon_url: msg.author.displayAvatarURL
+          icon_url: msg.author.avatarURL
         },
-        color: getEmbedColor(msg),
+        color: getEmbedColor(client, msg),
         footer: {
           text: 'Status: 200',
           icon_url: client.user.avatarURL

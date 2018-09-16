@@ -1,17 +1,16 @@
+/* Eris Fixed */
+
 const c2c = require('colorcolor')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
-// const Canvas = require('canvas')
-// const Discord = require('discord.js')
+const Canvas = require('canvas')
 
 exports.run = (client, msg, args) => {
   const color = args.join(' ')
-  // const canvas = Canvas.createCanvas(128, 128)
-  // const ctx = canvas.getContext('2d')
+  const canvas = Canvas.createCanvas(128, 128)
+  const ctx = canvas.getContext('2d')
   
-  // ctx.fillStyle = color
-  // ctx.fillRect(0, 0, canvas.width, canvas.height)
-  
-  // const attachment = new Discord.Attachment(canvas.toBuffer(), 'color.png')
+  ctx.fillStyle = color
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
   
   msg.channel.createMessage({
     embed: {
@@ -20,9 +19,9 @@ exports.run = (client, msg, args) => {
         name: `Color │ Requested by ${msg.author.username}#${msg.author.discriminator}`
       },
       color: getEmbedColor(msg),
-      // thumbnail: {
-      //   url: 'attachment://color.png'
-      // },
+      thumbnail: {
+        url: 'attachment://color.png'
+      },
       footer: {
         icon_url: client.user.avatarURL,
         text: 'Status: 200'
@@ -50,9 +49,8 @@ exports.run = (client, msg, args) => {
           inline: true
         }
       ]
-    },
-    // files: [attachment]
-  })
+    }
+  }, { file: canvas.toBuffer(), name: 'color.png' })
 }
 
 exports.help = {

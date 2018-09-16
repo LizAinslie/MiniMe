@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const mapping = {
   ' ': '   ',
   '0': ':zero:',
