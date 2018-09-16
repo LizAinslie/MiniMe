@@ -22,7 +22,7 @@ module.exports = async (client, channel) => {
           },
           {
             name: 'Channel:',
-            value: `${channel}`,
+            value: channel.name,
             inline: true
           },
           {

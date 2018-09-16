@@ -18,7 +18,7 @@ module.exports = (client, guild) => {
           },
           {
             name: 'Server Owner',
-            value: guild.owner ? guild.owner.user.tag : 'Unknown',
+            value: client.users.get(guild.ownerid) ? client.users.get(guild.ownerid).username + client.users.get(guild.ownerid).discriminator : 'Unknown',
             inline: true
           },
           {
