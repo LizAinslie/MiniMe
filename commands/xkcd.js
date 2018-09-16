@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const Logger = require('../util/Logger.js')
@@ -14,7 +16,7 @@ exports.run = (client, msg, args) => {
           embed: {
             title: result.body.safe_title,
             description: result.body.alt,
-            color: getEmbedColor(msg),
+            color: getEmbedColor(client, msg),
             image: {
               url: result.body.img
             }
@@ -36,7 +38,7 @@ exports.run = (client, msg, args) => {
           embed: {
             title: result.body.safe_title,
             description: result.body.alt,
-            color: getEmbedColor(msg),
+            color: getEmbedColorclient(msg),
             image: {
               url: result.body.img
             }

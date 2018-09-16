@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, message, args) => {
   if (args.length === 0) return message.channel.createMessage(':interrobang: │ You never supplied a stream URL!')
   const streamURL = args.slice(0, args.length).join(' ')

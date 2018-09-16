@@ -1,7 +1,7 @@
-const config = require('../config.json')
+/* Eris Fixed */
 
 exports.run = (client, message, args) => {
-  if (message.author.id !== config.ownerID) return message.reply('Only my developer can use this command.')
+  if (message.author.id !== client.config.ownerID) return message.reply('Only my developer can use this command.')
   if (!args || args.size < 1) return message.reply('Must provide a command name to reload.')
   // the path is relative to the *current folder*, so just ./filename.js
   if (args[0].toLowerCase() === 'music') return delete require.cache[require.resolve(`../music.js`)]

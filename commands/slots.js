@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const xorshift = require('xorshift')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const Logger = require('../util/Logger.js')
@@ -35,7 +37,7 @@ exports.run = (client, message) => {
   }
   message.channel.createMessage({
     embed: {
-      color: getEmbedColor(message),
+      color: getEmbedColor(client, message),
       title: 'Slot Machine',
       description: reels.join(' │ '),
       footer: {

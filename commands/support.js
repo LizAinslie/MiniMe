@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, msg) => {
   msg.channel.createMessage('https://discord.gg/9CH4ARd')
 }

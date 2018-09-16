@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const config = require('../config.json')
 const resolveChannel = require('../util/resolveChannel.js')
 const resolveRole = require('../util/resolveRole.js')
@@ -16,19 +18,7 @@ exports.run = (client, msg, args) => {
     welcome = welcomeChannel.id
   })
   
-  resolveRole(client, args[2].trim(), msg.channel.guild).then(ownerRole => {
-    owner = ownerRole.name
-  })
-  
-  resolveRole(client, args[3].trim(), msg.channel.guild).then(modRole => {
-    mod = modRole.name
-  })
-  
-  resolveRole(client, args[4].trim(), msg.channel.guild).then(helperRole => {
-    helper = helperRole.name
-  })
-  
-  resolveRole(client, args[5].trim(), msg.channel.guild).then(muteRole => {
+  resolveRole(client, args[2].trim(), msg.channel.guild).then(muteRole => {
     mute = muteRole.id
   })
   
@@ -38,9 +28,6 @@ exports.run = (client, msg, args) => {
 				client.r.table('serverSettings').get(msg.guild.id).update({
 					logChannel: logs,
 					welcomeChannel: welcome,
-					ownerRole: owner,
-					modRole: mod,
-					helperRole: helper,
 					muteRole: mute,
 					doLogs: true,
 					doWelcomes: true
@@ -53,9 +40,6 @@ exports.run = (client, msg, args) => {
 					id: msg.channel.guild.id,
 					logChannel: logs,
 					welcomeChannel: welcome,
-					ownerRole: owner,
-					modRole: mod,
-					helperRole: helper,
 					muteRole: mute,
 					doLogs: true,
 					doWelcomes: true
@@ -70,8 +54,8 @@ exports.run = (client, msg, args) => {
 exports.help = {
   name: 'setup',
   description: 'Sets your server up.',
-  usage: 'setup <logChannel> | <welcomeChannel> | <ownerRole> | <modRole> | <helperRole> | <muteRole>',
-  fullDesc: 'Sets your server up for use with advanced features. Example: `' + config.prefix + 'setup bot-hell | welcome | Owner | Admin | Web Mod | muted`',
+  usage: 'setup <logChannel> | <welcomeChannel> | <muteRole>',
+  fullDesc: 'Sets your server up for use with advanced features. Example: `' + config.prefix + 'setup bot-hell | welcome | muted`',
   type: 'util',
   status: 2
 }

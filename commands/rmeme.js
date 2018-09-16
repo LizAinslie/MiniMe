@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const randomPuppy = require('random-puppy')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
@@ -5,9 +7,9 @@ exports.run = (client, msg) => {
   randomPuppy('memes').then(url => {
     msg.channel.createMessage({
       embed: {
-        color: getEmbedColor(msg),
+        color: getEmbedColor(client, msg),
         author: {
-          icon_url: msg.author.displayAvatarURL,
+          icon_url: msg.author.avatarURL,
           name: `Meme │ Requested by ${msg.author.username}#${msg.author.discriminator}`
         },
         image: {

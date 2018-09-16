@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, message, args) => {
   let waifu = args[0]
   let rating = Math.floor(Math.random() * 10) + 1
@@ -5,8 +7,6 @@ exports.run = (client, message, args) => {
   if (waifu.toLowerCase() === 'sytun' || waifu.toLowerCase() === 'jay t') rating = 0
   message.reply("I'd give " + waifu + ' a rating of **' + rating.toString() + '/10**.')
 }
-
-exports.type = 'text'
 
 exports.help = {
   name: 'ratewaifu',

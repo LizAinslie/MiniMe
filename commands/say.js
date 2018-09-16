@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, msg, args) => {
   if (msg.author.id !== client.config.ownerID) return msg.channel.createMessage(':no_entry_sign: │ You are not muy developer!')
   msg.channel.createMessage(args.join(' '))

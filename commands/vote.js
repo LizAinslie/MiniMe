@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 exports.run = (client, msg) => {
   return msg.reply('you can vote for me here:\nhttps://botlist.space/view/mini-me')
 }

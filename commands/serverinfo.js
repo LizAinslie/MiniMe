@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const resolveGuild = require('../util/resolveGuild.js')
 
@@ -6,7 +8,7 @@ exports.run = (client, msg, args) => {
     resolveGuild(client, args.join(' ')).then(guild => {
       msg.channel.createMessage({
         embed: {
-          color: getEmbedColor(msg),
+          color: getEmbedColor(client, msg),
           timestamp: new Date(),
           footer: {
             icon_url: client.user.avatarURL,
@@ -17,7 +19,7 @@ exports.run = (client, msg, args) => {
           },
           author: {
             name: `${guild.name} Server Info │ Requested by ${msg.author.username}#${msg.author.discriminator}`,
-            icon_url: msg.author.displayAvatarURL
+            icon_url: msg.author.avatarURL
           },
           fields: [
             {

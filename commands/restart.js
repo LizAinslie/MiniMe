@@ -1,7 +1,7 @@
-const config = require('../config.json')
+/* Eris Fixed */
 
 exports.run = (client, message) => {
-  if (message.author.id !== config.ownerID) return message.reply('Sorry, only my developer can use this command.')
+  if (message.author.id !== client.config.ownerID) return message.reply('Sorry, only my developer can use this command.')
   message.channel.createMessage('Restarting...')
   .then(msg => client.destroy())
   .then(() => client.login(process.env.DISCORD_TOKEN))

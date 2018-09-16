@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const snekfetch = require('snekfetch')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const stripTrailingZero = require('../util/stripTrailingZero.js')

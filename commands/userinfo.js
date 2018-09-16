@@ -1,3 +1,5 @@
+/* Eris Fixed */
+
 const dateformat = require('dateformat')
 const resolveUser = require('../util/resolveUser.js')
 const { capitalize } = require('lodash')
