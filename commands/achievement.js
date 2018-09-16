@@ -2,7 +2,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, message, args) => {
   try {
-    let [title, contents] = args.join(' ').split(' ')
+    let [title, contents] = args
     if (!contents) {
       [title, contents] = ['Achievement Get!', title]
     }
