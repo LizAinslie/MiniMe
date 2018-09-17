@@ -14,7 +14,7 @@ exports.run = (client, msg, args) => {
           embed: {
             title: result.body.safe_title,
             description: result.body.alt,
-            color: getEmbedColor(msg),
+            color: getEmbedColor(client, msg),
             image: {
               url: result.body.img
             }
@@ -36,7 +36,7 @@ exports.run = (client, msg, args) => {
           embed: {
             title: result.body.safe_title,
             description: result.body.alt,
-            color: getEmbedColor(msg),
+            color: getEmbedColor(client, msg),
             image: {
               url: result.body.img
             }

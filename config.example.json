@@ -12,6 +12,7 @@
     "discovery": true,
     "host": "localhost",
     "db": "minime"
+    "port": 28016
   },
   "dashboard": {
     "callback": "",
