@@ -105,9 +105,13 @@ module.exports = async (client, message) => {
 
  //  message.channel.send(`I've cleaned up ${toRemove.size} old farts.`)
  // }
-
+  let cmd
   // Grab the command data from the client.commands Enmap
-  const cmd = client.commands.get(command)
+  if (client.commands.has(command)) {
+    cmd = client.commands.get(command);
+  } else if (client.aliases.has(command)) {
+    cmd = client.commands.get(client.aliases.get(command));
+  }
 
   // If that command doesn't exist, silently exit and do nothing
   if (!cmd) return
