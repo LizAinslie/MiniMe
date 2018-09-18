@@ -60,5 +60,6 @@ exports.help = {
   usage: 'beautiful [user]',
   fullDesc: 'Make someone beautiful.',
   type: 'imgen',
-  status: 2
+  status: 2,
+  aliases: []
 }

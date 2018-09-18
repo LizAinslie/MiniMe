@@ -23,5 +23,6 @@ exports.help = {
   usage: 'mcoldnames <username>',
   fullDesc: 'Grabs the old names of a Minecraft user.',
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: []
 }

@@ -8,5 +8,6 @@ exports.help = {
   usage: 'ping',
   fullDesc: "Ping the bot. It should respond with 'pong!'.",
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: ['pong']
 }

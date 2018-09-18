@@ -32,5 +32,6 @@ exports.help = {
   usage: '8ball <question>',
   fullDesc: 'Get an accurate response from the magic 8-ball. You must ask it a question first, though.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

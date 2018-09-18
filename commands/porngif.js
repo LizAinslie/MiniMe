@@ -62,5 +62,6 @@ exports.help = {
   usage: 'porngif',
   fullDesc: 'Provides a gif of porn.',
   type: 'nsfw',
-  status: 2
+  status: 2,
+  aliases: ['pgif']
 }

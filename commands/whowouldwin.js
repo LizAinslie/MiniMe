@@ -24,5 +24,6 @@ exports.help = {
   usage: 'whowouldwin <@user1> | <@user2>',
   fullDesc: 'See who would win. Must supply 2 mentions.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

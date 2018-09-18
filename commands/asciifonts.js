@@ -8,5 +8,6 @@ exports.help = {
   usage: 'asciifonts',
   fullDesc: 'Get a list of ASCII fonts.',
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: []
 }

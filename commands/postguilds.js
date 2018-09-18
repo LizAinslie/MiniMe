@@ -88,5 +88,6 @@ exports.help = {
   usage: 'postguilds',
   fullDesc: 'Post guild counts on all botlists.',
   type: 'dev',
-  status: 2
+  status: 2,
+  aliases: []
 }

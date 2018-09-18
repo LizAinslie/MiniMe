@@ -34,5 +34,6 @@ exports.help = {
   usage: 'bunny',
   fullDesc: 'Gets a random bunny picture.',
   type: 'img',
-  status: 2
+  status: 2,
+  aliases: []
 }

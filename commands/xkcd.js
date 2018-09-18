@@ -59,5 +59,6 @@ exports.help = {
   usage: 'xkcd [number]',
   fullDesc: 'Fetches a random XKCD comic, or the specified comic by number.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

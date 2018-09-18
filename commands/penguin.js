@@ -33,5 +33,6 @@ exports.help = {
   usage: 'penguin',
   fullDesc: 'Gets a random penguin picture.',
   type: 'img',
-  status: 2
+  status: 2,
+  aliases: []
 }

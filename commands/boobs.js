@@ -63,5 +63,6 @@ exports.help = {
   usage: 'boobs',
   fullDesc: 'Provides pictures of boobs.',
   type: 'nsfw',
-  status: 2
+  status: 2,
+  aliases: []
 }

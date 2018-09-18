@@ -12,5 +12,6 @@ exports.help = {
   usage: 'leave',
   fullDesc: 'Have the bot leave a voice channel.',
   type: 'vc',
-  status: 2
+  status: 2,
+  aliases: []
 }

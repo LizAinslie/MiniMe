@@ -63,5 +63,6 @@ exports.help = {
   usage: 'ass',
   fullDesc: 'Provides ass pictures.',
   type: 'nsfw',
-  status: 2
+  status: 2,
+  aliases: []
 }

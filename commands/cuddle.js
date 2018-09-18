@@ -38,5 +38,6 @@ exports.help = {
   usage: 'cuddle <user>',
   fullDesc: 'Cuddle a user.',
   type: 'rp',
-  status: 2
+  status: 2,
+  aliases: []
 }

@@ -36,5 +36,6 @@ exports.help = {
   usage: 'achievement <title> [contents]',
   fullDesc: 'Generate a Minecraft achievement.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

@@ -15,5 +15,6 @@ exports.help = {
   usage: 'testemoji',
   fullDesc: 'Tests emojis.',
   type: 'dev',
-  status: 2
+  status: 2,
+  aliases: ['emojitest']
 }

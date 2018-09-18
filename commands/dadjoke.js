@@ -15,5 +15,6 @@ exports.help = {
   usage: 'dadjoke',
   fullDesc: 'Tells a joke. All jokes are dad jokes.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

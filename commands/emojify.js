@@ -39,5 +39,6 @@ exports.help = {
   usage: 'emojify <text>',
   fullDesc: 'Says your text in big LETTERS.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

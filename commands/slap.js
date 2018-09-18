@@ -36,5 +36,6 @@ exports.help = {
   usage: 'slap <user>',
   fullDesc: 'Slap a user.',
   type: 'rp',
-  status: 2
+  status: 2,
+  aliases: []
 }

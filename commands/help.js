@@ -135,5 +135,6 @@ exports.help = {
   usage: 'help[ <command>]',
   fullDesc: 'Have the bot list commands. If you give it a certain command, it will give an extended description.',
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: ['halp', 'commands', 'cmds']
 }

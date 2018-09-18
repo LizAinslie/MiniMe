@@ -18,5 +18,6 @@ exports.help = {
   usage: 'massremoverole <role>',
   fullDesc: 'Removes a role from many users.',
   type: 'mod',
-  status: 2
+  status: 2,
+  aliases: []
 }

@@ -26,5 +26,6 @@ exports.help = {
   usage: 'mute <@user> <reason>',
   fullDesc: 'Mutes a user.',
   type: 'mod',
-  status: 2
+  status: 2,
+  aliases: []
 }

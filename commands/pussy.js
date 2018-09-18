@@ -62,5 +62,6 @@ exports.help = {
   usage: 'pussy',
   fullDesc: 'Gives you a picture of a pussy.',
   type: 'nsfw',
-  status: 2
+  status: 2,
+  aliases: []
 }

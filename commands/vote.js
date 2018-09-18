@@ -8,5 +8,6 @@ exports.help = {
   usage: 'vote',
   fullDesc: 'Get a vote link.',
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: []
 }

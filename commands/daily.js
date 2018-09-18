@@ -27,5 +27,6 @@ exports.help = {
   usage: 'daily',
   fullDesc: 'Collect your daily money.',
   type: 'eco',
-  status: 2
+  status: 2,
+  aliases: []
 }

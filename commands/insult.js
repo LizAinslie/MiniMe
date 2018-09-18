@@ -24,5 +24,6 @@ exports.help = {
   usage: 'insult <@user>',
   fullDesc: 'Insults a user. Must mention someone to insult.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

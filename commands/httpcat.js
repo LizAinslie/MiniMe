@@ -26,5 +26,6 @@ exports.help = {
   usage: 'httpcat <num>',
   fullDesc: 'Get a cat for any HTTP code!',
   type: 'img',
-  status: 2
+  status: 2,
+  aliases: []
 }

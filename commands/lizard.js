@@ -32,5 +32,6 @@ exports.help = {
   usage: 'lizard',
   fullDesc: 'Gets a random lizard picture.',
   type: 'img',
-  status: 2
+  status: 2,
+  aliases: []
 }

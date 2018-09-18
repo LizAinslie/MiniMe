@@ -9,5 +9,6 @@ exports.help = {
   usage: 'say <text>',
   fullDesc: 'Says the specified text.',
   type: 'dev',
-  status: 2
+  status: 2,
+  aliases: []
 }

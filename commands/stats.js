@@ -59,5 +59,6 @@ exports.help = {
   usage: 'stats',
   fullDesc: 'Gives bot stats. Includes all version info, usage info, and numerical info.',
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: []
 }
