@@ -10,5 +10,6 @@ exports.help = {
   usage: 'fuckyou',
   fullDesc: 'nkdbsjhcsb',
   type: 'unlist',
-  status: 2
+  status: 2,
+  aliases: []
 }

@@ -31,5 +31,6 @@ exports.help = {
   usage: 'purge <number>',
   fullDesc: 'Removes msgs in bulk. Up to 100 msgs can be removed at once.',
   type: 'mod',
-  status: 2
+  status: 2,
+  aliases: ['clean']
 }

@@ -31,5 +31,6 @@ exports.help = {
   usage: 'rmeme',
   fullDesc: 'Gets a random meme from Reddit.',
   type: 'img',
-  status: 2
+  status: 2,
+  aliases: []
 }

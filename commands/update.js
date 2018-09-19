@@ -28,5 +28,6 @@ exports.help = {
   usage: 'update',
   fullDesc: 'Updates the bot',
   type: 'dev',
-  status: 2
+  status: 2,
+  aliases: []
 }

@@ -37,5 +37,6 @@ exports.help = {
   usage: 'ascii <font> | <text>',
   fullDesc: 'Makes ASCII art.',
   type: 'fun',
-  status: 1
+  status: 1,
+  aliases: []
 }

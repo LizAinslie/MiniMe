@@ -63,5 +63,6 @@ exports.help = {
   usage: 'lesbian',
   fullDesc: 'Provides lesbian porn.',
   type: 'nsfw',
-  status: 2
+  status: 2,
+  aliases: []
 }

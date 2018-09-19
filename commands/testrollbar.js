@@ -9,5 +9,6 @@ exports.help = {
   usage: 'testrollbar',
   fullDesc: 'Tests Mini Me\'s Rollbar integration.',
   type: 'dev',
-  status: 2
+  status: 2,
+  aliases: []
 }

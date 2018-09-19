@@ -21,5 +21,6 @@ exports.help = {
   usage: 'streamradio <url>',
   fullDesc: 'Streams radio from an internet source to your voice channel.',
   type: 'vc',
-  status: 1
+  status: 1,
+  aliases: []
 }

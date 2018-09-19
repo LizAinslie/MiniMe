@@ -65,5 +65,6 @@ exports.help = {
   usage: 'r34',
   fullDesc: 'Provides Rule34 porn.',
   type: 'nsfw',
-  status: 2
+  status: 2,
+  aliases: ['rule34']
 }

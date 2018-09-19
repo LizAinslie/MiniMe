@@ -30,5 +30,6 @@ exports.help = {
   usage: 'beg',
   fullDesc: 'Beg for money.',
   type: 'eco',
-  status: 2
+  status: 2,
+  aliases: []
 }

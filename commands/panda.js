@@ -34,5 +34,6 @@ exports.help = {
   usage: 'panda',
   fullDesc: 'Gets a random panda picture.',
   type: 'img',
-  status: 2
+  status: 2,
+  aliases: []
 }

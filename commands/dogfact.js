@@ -17,5 +17,6 @@ exports.help = {
   usage: 'dogfact',
   fullDesc: 'Gets a random dog fact.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

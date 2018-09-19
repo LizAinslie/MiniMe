@@ -16,5 +16,6 @@ exports.help = {
   usage: 'reload <command>',
   fullDesc: 'Reloads a command. Must have a command specified.',
   type: 'dev',
-  status: 2
+  status: 2,
+  aliases: []
 }

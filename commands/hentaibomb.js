@@ -52,5 +52,6 @@ exports.help = {
   usage: 'hentaibomb',
   fullDesc: 'Provides lots of hentai.',
   type: 'nsfw',
-  status: 2
+  status: 2,
+  aliases: []
 }

@@ -38,7 +38,7 @@ exports.run = (client, msg, args) => {
           embed: {
             title: result.body.safe_title,
             description: result.body.alt,
-            color: getEmbedColorclient(msg),
+            color: getEmbedColor(client, msg),
             image: {
               url: result.body.img
             }
@@ -61,5 +61,6 @@ exports.help = {
   usage: 'xkcd [number]',
   fullDesc: 'Fetches a random XKCD comic, or the specified comic by number.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

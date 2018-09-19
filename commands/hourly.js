@@ -29,5 +29,6 @@ exports.help = {
   usage: 'hourly',
   fullDesc: 'Collect your hourly money.',
   type: 'eco',
-  status: 2
+  status: 2,
+  aliases: []
 }

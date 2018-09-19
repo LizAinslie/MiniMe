@@ -68,5 +68,6 @@ exports.help = {
   usage: 'neko <solo>',
   fullDesc: 'Get a lewd Neko.',
   type: 'nsfw',
-  status: 2
+  status: 2,
+  aliases: []
 }

@@ -31,5 +31,6 @@ exports.help = {
   usage: 'eval <code>',
   fullDesc: `Evaluates Javascript. Can only be used by my developer. :P`,
   type: 'dev',
-  status: 2
+  status: 2,
+  aliases: ['ev']
 }

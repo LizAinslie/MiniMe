@@ -159,5 +159,6 @@ exports.help = {
   usage: 'serverinfo',
   fullDesc: 'Gets information about the server you are currently in.',
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: ['server']
 }

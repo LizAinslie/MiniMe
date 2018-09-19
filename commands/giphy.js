@@ -55,5 +55,6 @@ exports.help = {
   usage: 'giphy <searchTerm>',
   fullDesc: 'Gets a gif from giphy. Warning: Some images can be NSFW.',
   type: 'nsfw',
-  status: 1
+  status: 1,
+  aliases: []
 }

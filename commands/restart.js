@@ -15,5 +15,6 @@ exports.help = {
   usage: 'restart',
   fullDesc: 'Restarts the bot.',
   type: 'dev',
-  status: 2
+  status: 2,
+  aliases: []
 }

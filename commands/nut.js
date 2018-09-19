@@ -26,5 +26,6 @@ exports.help = {
   usage: 'nut <text>',
   fullDesc: 'Put text in the Nut meme.',
   type: 'fun',
-  status: 1
+  status: 1,
+  aliases: []
 }

@@ -14,5 +14,6 @@ exports.help = {
   usage: 'coin',
   fullDesc: 'Flips a coin.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

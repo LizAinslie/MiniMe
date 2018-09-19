@@ -40,5 +40,6 @@ exports.help = {
   usage: 'kiss <user>',
   fullDesc: 'Kiss a user.',
   type: 'rp',
-  status: 2
+  status: 2,
+  aliases: []
 }

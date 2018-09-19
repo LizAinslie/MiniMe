@@ -1,7 +1,10 @@
 /* Eris Fixed */
 
+const handleDatabaseError = require('../util/handleDatabaseError.js')
+
 exports.run = (client, msg, args) => {
   client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
+    if (error) return handleDatabaseError(client, error, msg)
     if (!settings) return msg.channel.createMessage('You must set up your server first!')
     if (!msg.member.permission.has('manageRoles')) return msg.channel.createMessage(':no_entry_sign: │ You need the permission `MANAGE_ROLES` to use this.')
     let member = msg.mentions[0]
@@ -12,6 +15,8 @@ exports.run = (client, msg, args) => {
   
     msg.channel.guild.addMemberRole(member.id, settings.muteRole, reason)
     msg.channel.createMessage(`Muted ${member.username} - \`${reason}\``)
+  }).catch(err => {
+    handleDatabaseError(client, err, msg)
   })
 }
 
@@ -21,5 +26,6 @@ exports.help = {
   usage: 'mute <@user> <reason>',
   fullDesc: 'Mutes a user.',
   type: 'mod',
-  status: 2
+  status: 2,
+  aliases: []
 }

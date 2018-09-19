@@ -57,5 +57,6 @@ exports.help = {
   usage: 'setup <logChannel> | <welcomeChannel> | <muteRole>',
   fullDesc: 'Sets your server up for use with advanced features. Example: `' + config.prefix + 'setup bot-hell | welcome | muted`',
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: []
 }

@@ -18,5 +18,6 @@ exports.help = {
   usage: 'badmeme',
   fullDesc: 'Have the bot find a bad meme.',
   type: 'img',
-  status: 2
+  status: 2,
+  aliases: []
 }

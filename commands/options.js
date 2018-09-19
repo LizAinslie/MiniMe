@@ -70,5 +70,6 @@ exports.help = {
   usage: 'options <logs|welcomes> <1|0>',
   fullDesc: 'Configure your server options. 0=False, 1=True',
   type: 'mod',
-  status: 2
+  status: 2,
+  aliases: ['opts']
 }

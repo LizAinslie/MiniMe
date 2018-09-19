@@ -32,5 +32,6 @@ exports.help = {
   usage: 'randomfox',
   fullDesc: 'Gets a random fox picture.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

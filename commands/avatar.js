@@ -54,5 +54,6 @@ exports.help = {
   usage: 'avatar <user>',
   fullDesc: 'Steals an avatar. You must supply an id or a mention.',
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: ['pfp']
 }

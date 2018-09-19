@@ -18,5 +18,6 @@ exports.help = {
   usage: 'ban <user> <reason>',
   fullDesc: 'Bans a user. Only available to Mods and Owners',
   type: 'mod',
-  status: 2
+  status: 2,
+  aliases: []
 }

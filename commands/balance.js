@@ -24,5 +24,6 @@ exports.help = {
   usage: 'balance [user]',
   fullDesc: 'Check the amount of money in you (or someone else\'s) bank account.',
   type: 'eco',
-  status: 2
+  status: 2,
+  aliases: ['bal', 'bank']
 }

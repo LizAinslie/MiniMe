@@ -55,5 +55,6 @@ exports.help = {
   usage: 'slots',
   fullDesc: 'Play the slot machine.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

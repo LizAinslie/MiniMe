@@ -40,5 +40,6 @@ exports.help = {
   usage: 'discrim <discriminator>',
   fullDesc: 'Get all the users with a certain discriminator.',
   type: 'util',
-  status: 2
+  status: 2,
+  aliases: []
 }

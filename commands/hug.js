@@ -40,5 +40,6 @@ exports.help = {
   usage: 'hug <user>',
   fullDesc: 'Hug a user.',
   type: 'rp',
-  status: 2
+  status: 2,
+  aliases: []
 }

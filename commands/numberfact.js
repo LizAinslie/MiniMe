@@ -18,5 +18,6 @@ exports.help = {
   usage: 'numberfact <number>',
   fullDesc: 'Gets a number fact. Must supply a number (No Googol!)',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }
