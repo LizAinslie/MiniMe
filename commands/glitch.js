@@ -6,14 +6,13 @@ exports.run = (client, msg, args) => {
   msg.channel.createMessage('<a:typing:393848431413559296> │ Generating...').then(message => {
     if (args[0]) {
       resolveUser(client, args.join(' ')).then(user => {
-        snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-          
+        snekfetch.get(`https://triggered-api.tk/api/v2/glitch?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
           message.delete()
           msg.channel.createMessage({
             embed: {
               author: {
-                name: `${user.username} has been blurplefied!`,
-                icon_url: msg.author.displayAvatarURL
+                name: `${user.username} has been glitched!`,
+                icon_url: msg.author.avatarURL
               },
               footer: {
                 text: 'Status: 200',
@@ -22,21 +21,20 @@ exports.run = (client, msg, args) => {
               timestamp: new Date(),
               color: getEmbedColor(msg),
               image: {
-                url: 'attachment://blurple.png'
+                url: 'attachment://glitch.png'
               }
             }
-          }, res.body)
+          }, { file: res.body, name: 'glitch.png'})
         })
       })
     } else {
-      snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-        
+      snekfetch.get(`https://triggered-api.tk/api/v2/glitch?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
         message.delete()
         msg.channel.createMessage({
           embed: {
             author: {
-              name: `${msg.author.username} has been blurplefied!`,
-              icon_url: msg.author.displayAvatarURL
+              name: `${msg.author.username} has been glitched!`,
+              icon_url: msg.author.avatarURL
             },
             footer: {
               text: 'Status: 200',
@@ -45,20 +43,21 @@ exports.run = (client, msg, args) => {
             timestamp: new Date(),
             color: getEmbedColor(msg),
             image: {
-              url: 'attachment://blurple.png'
+              url: 'attachment://glitch.png'
             }
           }
-        }, res.body)
+        }, { file: res.body, name: 'glitch.png'})
       })
     }
   })
 }
 
 exports.help = {
-  name: 'blurple',
-  description: 'Blurplefy someone!',
-  usage: 'blurple [user]',
-  fullDesc: 'Blurplefy someone!',
+  name: 'glitch',
+  description: 'Make someone glitch!',
+  usage: 'glitch [user]',
+  fullDesc: 'Make someone glitch!',
   type: 'imgen',
-  status: 2
+  status: 2,
+  aliases: []
 }

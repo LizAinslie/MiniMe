@@ -1,21 +1,18 @@
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const snekfetch = require('snekfetch')
-const Discord = require('discord.js')
 
 exports.run = (client, msg, args) => {
   msg.channel.createMessage('<a:typing:393848431413559296> │ Generating...').then(message => {
     if (args[0]) {
       resolveUser(client, args.join(' ')).then(user => {
-        snekfetch.get(`https://triggered-api.tk/api/v2/convmatrix?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-          const attachment = new Discord.Attachment(res.body, 'colorize.png')
-          
+        snekfetch.get(`https://triggered-api.tk/api/v2/rainbow?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
           message.delete()
           msg.channel.createMessage({
             embed: {
               author: {
-                name: `${user.username} has been colorized!`,
-                icon_url: msg.author.displayAvatarURL
+                name: `${user.username} is gay!`,
+                icon_url: msg.author.avatarURL
               },
               footer: {
                 text: 'Status: 200',
@@ -24,23 +21,20 @@ exports.run = (client, msg, args) => {
               timestamp: new Date(),
               color: getEmbedColor(msg),
               image: {
-                url: 'attachment://colorize.png'
+                url: 'attachment://gay.png'
               }
-            },
-            files: [attachment]
-          })
+            }
+          }, { file: res.body, name: 'gay.png'})
         })
       })
     } else {
-      snekfetch.get(`https://triggered-api.tk/api/v2/convmatrix?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-        const attachment = new Discord.Attachment(res.body, 'colorize.png')
-        
+      snekfetch.get(`https://triggered-api.tk/api/v2/rainbow?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
         message.delete()
         msg.channel.createMessage({
           embed: {
             author: {
-              name: `${msg.author.username} has been colorized!`,
-              icon_url: msg.author.displayAvatarURL
+              name: `${msg.author.username} is gay!`,
+              icon_url: msg.author.avatarURL
             },
             footer: {
               text: 'Status: 200',
@@ -49,21 +43,21 @@ exports.run = (client, msg, args) => {
             timestamp: new Date(),
             color: getEmbedColor(msg),
             image: {
-              url: 'attachment://colorize.png'
+              url: 'attachment://gay.png'
             }
-          },
-          files: [attachment]
-        })
+          }
+        }, { file: res.body, name: 'gay.png'})
       })
     }
   })
 }
 
 exports.help = {
-  name: 'colorize',
-  description: 'Colorize someone!',
-  usage: 'colorize [user]',
-  fullDesc: 'Colorize someone!',
+  name: 'gay',
+  description: 'Make someone look gay.',
+  usage: 'gay [user]',
+  fullDesc: 'Make someone look gay.',
   type: 'imgen',
-  status: 2
+  status: 2,
+  aliases: []
 }

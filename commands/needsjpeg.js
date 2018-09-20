@@ -1,7 +1,6 @@
 var Jimp = require('jimp')
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
-const Discord = require('discord.js')
 
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {
@@ -11,7 +10,6 @@ exports.run = (client, msg, args) => {
       img.quality(3)
       .getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
         if (err) throw err
-        const attachment = new Discord.Attachment(buffer, 'jpeg.jpeg')
 
         msg.channel.createMessage({
           embed: {
@@ -20,9 +18,8 @@ exports.run = (client, msg, args) => {
             image: {
               url: 'attachment://jpeg.jpeg'
             }
-          },
-          files: [attachment]
-        })
+          }
+        }, { file: buffer, name: 'jpeg.jpeg'})
       })
     })
   })
@@ -34,5 +31,6 @@ exports.help = {
   usage: 'needsjpeg <user>',
   fullDesc: 'Show someone their avatar with more JPEG.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }

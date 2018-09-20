@@ -13,20 +13,19 @@ exports.run = (client, msg, args) => {
             embed: {
               author: {
                 name: `${user.username} is dancing to the disco!`,
-                icon_url: msg.author.displayAvatarURL
+                icon_url: msg.author.avatarURL
               },
               footer: {
                 text: 'Status: 200',
                 icon_url: client.user.avatarURL
               },
               timestamp: new Date(),
-              color: getEmbedColor(msg),
+              color: getEmbedColor(client, msg),
               image: {
                 url: 'attachment://disco.gif'
               }
             }
-          }, res.body)
-          msg.channel.stopTyping()
+          }, { file: res.body, name: 'disco.gif'})
         })
       })
     } else {
@@ -37,19 +36,19 @@ exports.run = (client, msg, args) => {
           embed: {
             author: {
               name: `${msg.author.username} is dancing to the disco!`,
-              icon_url: msg.author.displayAvatarURL
+              icon_url: msg.author.avatarURL
             },
             footer: {
               text: 'Status: 200',
               icon_url: client.user.avatarURL
             },
             timestamp: new Date(),
-            color: getEmbedColor(msg),
+            color: getEmbedColor(client, msg),
             image: {
               url: 'attachment://disco.gif'
             }
           }
-        }, res.body)
+        }, { file: res.body, name: 'disco.gif'})
       })
     }
   })
@@ -61,5 +60,6 @@ exports.help = {
   usage: 'disco [user]',
   fullDesc: 'Make someone dance!',
   type: 'imgen',
-  status: 2
+  status: 2,
+  aliases: []
 }
