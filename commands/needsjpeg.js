@@ -1,26 +1,16 @@
-var Jimp = require('jimp')
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {
-    // open a file called "lenna.png"
-    Jimp.read(user.avatarURL, (err, img) => {
-      if (err) throw err
-      img.quality(3)
-      .getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
-        if (err) throw err
-
-        msg.channel.createMessage({
-          embed: {
-            title: `${user.username} needs more JPEG!`,
-            color: getEmbedColor(client, msg),
-            image: {
-              url: 'attachment://jpeg.jpeg'
-            }
-          }
-        }, { file: buffer, name: 'jpeg.jpeg'})
-      })
+    msg.channel.createMessage({
+      embed: {
+        title: `${user.username} needs more JPEG!`,
+        color: getEmbedColor(client, msg),
+        image: {
+          url: `api.railrunner16.me/api/gen/needsjpeg?url=${user.avatarURL}`
+        }
+      }
     })
   })
 }
