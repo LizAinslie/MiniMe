@@ -3,7 +3,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 const snekfetch = require('snekfetch')
 const getBigAvatar = require('../util/getBigAvatar.js')
 
-exports.run = (client, msg, args) => {
+exports.run = async (client, msg, args) => {
   if (!args[0]) {
     resolveUser(client, args.join(' ')).then(async user => {
       const { body: buffer } = await snekfetch.get(`https://api.railrunner16.me/api/gen/needsjpeg?url=${getBigAvatar(user)}`)
