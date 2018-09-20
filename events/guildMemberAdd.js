@@ -1,7 +1,7 @@
 const snekfetch = require('snekfetch')
 
-module.exports = async (client, member) => {
-	client.r.table('serverSettings').get(member.guild.id).run().then(settings => {
+module.exports = (client, member) => {
+	client.r.table('serverSettings').get(member.guild.id).run().then(async settings => {
 		if (!settings) return
 		if (!settings.doWelcomes) return
 		
