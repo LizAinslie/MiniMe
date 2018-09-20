@@ -30,12 +30,12 @@ exports.run = (client, message) => {
         },
         {
           name: ':busts_in_silhouette: │ Users',
-          value: client.users.size.toLocaleString(),
+          value: client.users.length.toLocaleString(),
           inline: true
         },
         {
           name: '<:servers:484062453265858561> │ Servers',
-          value: client.guilds.size.toLocaleString(),
+          value: client.guilds.length.toLocaleString(),
           inline: true
         },
         // {
