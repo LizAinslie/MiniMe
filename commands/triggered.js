@@ -1,7 +1,6 @@
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const snekfetch = require('snekfetch')
-const Discord = require('discord.js')
 
 exports.run = (client, msg, args) => {
   msg.channel.createMessage('<a:typing:393848431413559296> │ Generating...').then(message => {
