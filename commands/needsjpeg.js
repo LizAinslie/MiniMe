@@ -8,7 +8,7 @@ exports.run = (client, msg, args) => {
         title: `${user.username} needs more JPEG!`,
         color: getEmbedColor(client, msg),
         image: {
-          url: `api.railrunner16.me/api/gen/needsjpeg?url=${user.avatarURL}`
+          url: `https://api.railrunner16.me/api/gen/needsjpeg?url=${user.avatarURL}`
         }
       }
     })

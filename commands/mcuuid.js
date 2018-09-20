@@ -4,7 +4,7 @@ const snekfetch = require('snekfetch')
 
 exports.run = (client, msg, args) => {
   if (args.length < 1) return msg.channel.createMessage(':question: │ You must provide a server IP address.')
-  snekfetch.post('https://api.mojang.com/profiles/minecraft').createMessage([ args[0] ]).then((result) => {
+  snekfetch.post('https://api.mojang.com/profiles/minecraft').send([ args[0] ]).then((result) => {
     if (result.body.length < 1) return msg.channel.createMessage(':exclamation: │ Unable to find any players by that username.')
     msg.channel.createMessage(':clipboard: │ Player `' + result.body[0].name + '`\'s UUID is `' + result.body[0].id + '`.')
   }).catch((error) => {
