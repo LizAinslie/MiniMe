@@ -5,7 +5,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 exports.run = (client, msg, args) => {
   resolveUser(client, args.join(' ')).then(user => {
     // open a file called "lenna.png"
-    Jimp.read(user.displayAvatarURL, (err, img) => {
+    Jimp.read(user.avatarURL, (err, img) => {
       if (err) throw err
       img.quality(3)
       .getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
@@ -14,7 +14,7 @@ exports.run = (client, msg, args) => {
         msg.channel.createMessage({
           embed: {
             title: `${user.username} needs more JPEG!`,
-            color: getEmbedColor(msg),
+            color: getEmbedColor(client, msg),
             image: {
               url: 'attachment://jpeg.jpeg'
             }
