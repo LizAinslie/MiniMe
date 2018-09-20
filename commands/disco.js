@@ -7,7 +7,6 @@ exports.run = (client, msg, args) => {
     if (args[0]) {
       resolveUser(client, args.join(' ')).then(user => {
         snekfetch.get(`https://triggered-api.tk/api/v2/disco?url=${user.avatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-          
           message.delete()
           msg.channel.createMessage({
             embed: {
@@ -30,7 +29,6 @@ exports.run = (client, msg, args) => {
       })
     } else {
       snekfetch.get(`https://triggered-api.tk/api/v2/disco?url=${msg.author.avatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-        
         message.delete()
         msg.channel.createMessage({
           embed: {
