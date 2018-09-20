@@ -37,5 +37,6 @@ exports.help = {
   usage: 'poll <question>',
   fullDesc: 'Starts a poll.',
   type: 'fun',
-  status: 2
+  status: 2,
+  aliases: []
 }
