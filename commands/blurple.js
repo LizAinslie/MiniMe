@@ -1,12 +1,13 @@
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const snekfetch = require('snekfetch')
+const getBigAvatar = require('../util/getBigAvatar.js')
 
 exports.run = (client, msg, args) => {
   msg.channel.createMessage('<a:typing:393848431413559296> │ Generating...').then(message => {
     if (args[0]) {
       resolveUser(client, args.join(' ')).then(user => {
-        snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${user.avatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+        snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${getBigAvatar(user)}`).set({ Authorization: client.config.apis.triggered }).then(res => {
           
           message.delete()
           msg.channel.createMessage({
@@ -29,7 +30,7 @@ exports.run = (client, msg, args) => {
         })
       })
     } else {
-      snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${msg.author.avatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+      snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${getBigAvatar(msg.author)}`).set({ Authorization: client.config.apis.triggered }).then(res => {
         
         message.delete()
         msg.channel.createMessage({

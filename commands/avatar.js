@@ -2,6 +2,7 @@
 
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+const getBigAvatar = require('../util/getBigAvatar.js')
 
 exports.run = (client, msg, args) => {
   if (args[0]) {
@@ -19,7 +20,7 @@ exports.run = (client, msg, args) => {
           },
           timestamp: new Date(),
           image: {
-            url: user.avatarURL
+            url: getBigAvatar(user)
           }
         }
       })

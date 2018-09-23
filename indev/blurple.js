@@ -1,65 +1,64 @@
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
-const getBigAvatar = require
 const snekfetch = require('snekfetch')
-const getBigAvatar = require('../util/getBigAvatar.js')
 
 exports.run = (client, msg, args) => {
   msg.channel.createMessage('<a:typing:393848431413559296> │ Generating...').then(message => {
     if (args[0]) {
       resolveUser(client, args.join(' ')).then(user => {
-        snekfetch.get(`https://triggered-api.tk/api/v2/disco?url=${getBigAvatar(user)}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+        snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${user.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+          
           message.delete()
           msg.channel.createMessage({
             embed: {
               author: {
-                name: `${user.username} is dancing to the disco!`,
-                icon_url: msg.author.avatarURL
+                name: `${user.username} has been blurplefied!`,
+                icon_url: msg.author.displayAvatarURL
               },
               footer: {
                 text: 'Status: 200',
                 icon_url: client.user.avatarURL
               },
               timestamp: new Date(),
-              color: getEmbedColor(client, msg),
+              color: getEmbedColor(msg),
               image: {
-                url: 'attachment://disco.gif'
+                url: 'attachment://blurple.png'
               }
             }
-          }, { file: res.body, name: 'disco.gif'})
+          }, res.body)
         })
       })
     } else {
-      snekfetch.get(`https://triggered-api.tk/api/v2/disco?url=${getBigAvatar(msg.author)}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+      snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${msg.author.displayAvatarURL}`).set({ Authorization: client.config.apis.triggered }).then(res => {
+        
         message.delete()
         msg.channel.createMessage({
           embed: {
             author: {
-              name: `${msg.author.username} is dancing to the disco!`,
-              icon_url: msg.author.avatarURL
+              name: `${msg.author.username} has been blurplefied!`,
+              icon_url: msg.author.displayAvatarURL
             },
             footer: {
               text: 'Status: 200',
               icon_url: client.user.avatarURL
             },
             timestamp: new Date(),
-            color: getEmbedColor(client, msg),
+            color: getEmbedColor(msg),
             image: {
-              url: 'attachment://disco.gif'
+              url: 'attachment://blurple.png'
             }
           }
-        }, { file: res.body, name: 'disco.gif'})
+        }, res.body)
       })
     }
   })
 }
 
 exports.help = {
-  name: 'disco',
-  description: 'Make someone dance!',
-  usage: 'disco [user]',
-  fullDesc: 'Make someone dance!',
+  name: 'blurple',
+  description: 'Blurplefy someone!',
+  usage: 'blurple [user]',
+  fullDesc: 'Blurplefy someone!',
   type: 'imgen',
-  status: 2,
-  aliases: []
+  status: 2
 }
