@@ -1,5 +1,6 @@
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+const getBigAvatar = require
 const snekfetch = require('snekfetch')
 
 exports.run = (client, msg, args) => {

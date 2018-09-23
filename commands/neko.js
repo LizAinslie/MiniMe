@@ -57,6 +57,11 @@ exports.run = async (client, msg, args) => {
         })
       }
       break
+    case 'blowjob':
+      body = await JSON.parse(JSON.stringify(await neko.getNSFWBlowJob()))
+        msg.channel.createMessage({
+          embed: embed(client, msg, body.url)
+        })
     default:
       msg.channel.createMessage(':interrobang: │ That is not a valid Neko type!')
   }
