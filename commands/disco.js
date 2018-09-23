@@ -1,6 +1,5 @@
 const resolveUser = require('../util/resolveUser.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
-const getBigAvatar = require
 const snekfetch = require('snekfetch')
 const getBigAvatar = require('../util/getBigAvatar.js')
 
