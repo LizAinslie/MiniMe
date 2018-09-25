@@ -50,7 +50,12 @@ exports.run = async (client, msg, args) => {
         msg.channel.createMessage({
           embed: embed(client, msg, body.url)
         })
-      }else {
+      } else if (args[1] && args[1] === 'art') {
+        body = await JSON.parse(JSON.stringify(await neko.getNSFWPussyArt()))
+        msg.channel.createMessage({
+          embed: embed(client, msg, body.url)
+        })
+      } else {
         body = await JSON.parse(JSON.stringify(await neko.getNSFWPussy()))
         msg.channel.createMessage({
           embed: embed(client, msg, body.url)
@@ -59,9 +64,28 @@ exports.run = async (client, msg, args) => {
       break
     case 'blowjob':
       body = await JSON.parse(JSON.stringify(await neko.getNSFWBlowJob()))
-        msg.channel.createMessage({
-          embed: embed(client, msg, body.url)
-        })
+      msg.channel.createMessage({
+        embed: embed(client, msg, body.url)
+      })
+      break
+    case 'lesbian':
+      body = await JSON.parse(JSON.stringify(await neko.getNSFWLesbian()))
+      msg.channel.createMessage({
+        embed: embed(client, msg, body.url)
+      })
+      break
+    case 'boobs':
+      body = await JSON.parse(JSON.stringify(await neko.getNSFWBoobs()))
+      msg.channel.createMessage({
+        embed: embed(client, msg, body.url)
+      })
+      break
+    case 'anal':
+      body = await JSON.parse(JSON.stringify(await neko.getNSFWAnal()))
+      msg.channel.createMessage({
+        embed: embed(client, msg, body.url)
+      })
+      break
     default:
       msg.channel.createMessage(':interrobang: │ That is not a valid Neko type!')
   }
