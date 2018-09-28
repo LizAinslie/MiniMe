@@ -4,8 +4,9 @@ const resolveMember = require('../util/resolveMember.js')
 const resolveRole = require('../util/resolveRole.js')
 
 exports.run = async (client, msg, args) => {
-    const member = await resolveMember(client, args.shift(), msg.channel.guild)
-    resolveRole(client, args.join(" "), msg.channel.guild).then(role => {
+    args = args.split('|').trim()
+    const member = await resolveMember(client, args[1], msg.channel.guild)
+    resolveRole(client, args[2], msg.channel.guild).then(role => {
         member.addRole(role.id).then(() => {
             msg.chennel.createMessage(`Gave <@${member.id}> the role \`${role.name}\``)
         }).catch(err => {
@@ -19,7 +20,7 @@ exports.run = async (client, msg, args) => {
 exports.help = {
     name: 'giverole',
     description: 'Gives a user one or more roles.',
-    usage: 'giverole <member> <role[ role...]>',
+    usage: 'giverole <member> | <role>',
     fullDesc: 'Gives a user one or more roles.',
     type: 'mod',
     status: 2,
