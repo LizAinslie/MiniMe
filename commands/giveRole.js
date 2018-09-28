@@ -5,7 +5,7 @@ const resolveRole = require('../util/resolveRole.js')
 
 exports.run = async (client, msg, args) => {
     args = args.split('|').trim()
-    const member = await resolveMember(client, args[1], msg.channel.guild)
+    const member = await resolveMember(client, args[1], msg.channel.guild, true)
     resolveRole(client, args[2], msg.channel.guild).then(role => {
         member.addRole(role.id).then(() => {
             msg.chennel.createMessage(`Gave <@${member.id}> the role \`${role.name}\``)
