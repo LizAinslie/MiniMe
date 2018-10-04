@@ -8,7 +8,6 @@ exports.run = (client, msg, args) => {
     if (args[0]) {
       resolveUser(client, args.join(' ')).then(user => {
         snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${getBigAvatar(user)}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-          
           message.delete()
           msg.channel.createMessage({
             embed: {
@@ -26,12 +25,11 @@ exports.run = (client, msg, args) => {
                 url: 'attachment://blurple.png'
               }
             }
-          }, { file: res.body, name: 'blurple.png'})
+          }, { file: res.body, name: 'blurple.png' })
         })
       })
     } else {
       snekfetch.get(`https://triggered-api.tk/api/v2/blurple?url=${getBigAvatar(msg.author)}`).set({ Authorization: client.config.apis.triggered }).then(res => {
-        
         message.delete()
         msg.channel.createMessage({
           embed: {
@@ -49,7 +47,7 @@ exports.run = (client, msg, args) => {
               url: 'attachment://blurple.png'
             }
           }
-        }, { file: res.body, name: 'blurple.png'})
+        }, { file: res.body, name: 'blurple.png' })
       })
     }
   })

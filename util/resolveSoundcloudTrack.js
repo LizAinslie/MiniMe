@@ -1,5 +1,4 @@
 var scid = require('soundcloud-id')
-const Logger = require('./Logger.js')
 
 module.exports = (client, pageUrl) => {
   return new Promise((resolve, reject) => {

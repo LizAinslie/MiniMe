@@ -8,10 +8,10 @@ exports.run = (client, msg, args) => {
   const color = args.join(' ')
   const canvas = Canvas.createCanvas(128, 128)
   const ctx = canvas.getContext('2d')
-  
+
   ctx.fillStyle = color
   ctx.fillRect(0, 0, canvas.width, canvas.height)
-  
+
   msg.channel.createMessage({
     embed: {
       author: {

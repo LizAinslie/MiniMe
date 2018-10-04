@@ -1,4 +1,4 @@
-/* Eris Fixed */
+/* eslint-disable no-mixed-operators */
 
 const xorshift = require('xorshift')
 const getEmbedColor = require('../util/getHighestRoleColor.js')

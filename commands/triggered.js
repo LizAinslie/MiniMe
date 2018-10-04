@@ -25,7 +25,7 @@ exports.run = (client, msg, args) => {
                 url: 'attachment://triggered.gif'
               }
             }
-          }, { file: res.body, name: 'triggered.gif'})
+          }, { file: res.body, name: 'triggered.gif' })
         })
       })
     } else {
@@ -47,7 +47,7 @@ exports.run = (client, msg, args) => {
               url: 'attachment://triggered.gif'
             }
           }
-        }, { file: res.body, name: 'triggered.gif'})
+        }, { file: res.body, name: 'triggered.gif' })
       })
     }
   })

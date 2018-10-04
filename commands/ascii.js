@@ -7,7 +7,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 exports.run = (client, msg, args) => {
   let [font, text] = args.join(' ').split('|')
   if (!text) {
-    [font, text] = ['Big', text]
+    [font, text] = ['Big', text] // eslint-disable-line no-self-assign
   }
   const ascii = '```' + figlet.textSync(text.trim(), {
     font: _.capitalize(font),
