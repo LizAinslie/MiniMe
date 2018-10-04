@@ -1,5 +1,5 @@
 # Mini Me
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 Mini Me is an awesome bot for your server that gives your staff power and lets your members have fun.
 
 ## Setup:
@@ -38,8 +38,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://assets.gitlab-static.net/uploads/-/system/user/avatar/2935033/avatar.png" width="100px;"/><br /><sub><b>Natsumi H.</b></sub>](https://gitlab.com/NatsumiHB)<br />[💻](https://gitlab.com/railinator4903/mini-me/commits/master "Code") |
-| :---: |
+| [<img src="https://assets.gitlab-static.net/uploads/-/system/user/avatar/2935033/avatar.png" width="100px;"/><br /><sub><b>Natsumi H.</b></sub>](https://gitlab.com/NatsumiHB)<br />[💻](https://gitlab.com/railinator4903/mini-me/commits/master "Code") | [<img src="https://assets.gitlab-static.net/uploads/-/system/user/avatar/2902461/avatar.png" width="100px;"/><br /><sub><b>Landon Gravat</b></sub>](https://gitlab.com/railinator4903)<br />[📖](https://gitlab.com/railinator4903/mini-me/commits/master "Documentation") |
+| :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

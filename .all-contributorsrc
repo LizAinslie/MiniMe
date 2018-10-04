@@ -17,6 +17,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "railinator4903",
+      "name": "Landon Gravat",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2902461/avatar.png",
+      "profile": "https://gitlab.com/railinator4903",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
