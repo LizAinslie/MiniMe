@@ -1,7 +1,7 @@
 const snekfetch = require("snekfetch");
 
 exports.run = async (client, msg, args) => {
-    let text = message.mentions.users.first() ? message.author.username + " pats " + message.mentions.users.first().username + "!" : message.author.username + " pats themselves!";
+    let text = message.mentions.users.first() && message.mentions.users.first() != message.author ? message.author.username + " pats " + message.mentions.users.first().username + "!" : message.mentions.users.first() && message.mentions.users.first() === message.author ? message.author.username + " pats themselves!" : "Here, " + message.author.username + " I'll pat you!";
     snekfetch.get(`https://rra.ram.moe/i/r?type=pat`)
              .set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11")
              .end((err, res) => {
