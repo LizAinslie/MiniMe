@@ -8,25 +8,7 @@ Mini Me is an awesome bot for your server that gives your staff power and lets y
 3. You're all set!
 
 ## Mini Me's Features:
-- 2 types of jokes.
-- 8ball predictions.
-- Waifu ratings.
-- Logging
-- Moderation tools (ban, kick, purge)
-- A great ping command lol.
-- Translation tools.
-- User info stealers.
-- Access to the support server.
-- A Discord Bot List search command.
-- A bot stats getter for this bot.
-- An avatar stealer.
-- A vote link for the bot.
-- A weather getter.
-- A coin flipper.
-- An ascii text art generator.
-- An ascii font finder.
-- An urban dictionary.
-- A Minecraft server info finder.
+To be completely honest, there's too many features to list here, you'll just have to try the bot out and see for yourself :wink:
 
 ## Mini Me is on These Botlists and more:
 <a href="https://discordbotlist.com/bots/456926578228723724">

@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodejs server.js",
     "test": "eslint . --ext .js --fix",
-    "restart": "pm2 restart 13 --update-env && pm2 logs 13 --lines 45"
+    "restart": "pm2 restart 13 --update-env && pm2 logs 13 --lines 45",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate"
   },
   "dependencies": {
     "better-sqlite-pool": "^0.1.2",
@@ -63,6 +65,7 @@
   "license": "MIT",
   "keywords": [],
   "devDependencies": {
+    "all-contributors-cli": "^5.4.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-ejs": "0.0.2",
