@@ -1,5 +1,6 @@
 # Mini Me
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Mini Me is an awesome bot for your server that gives your staff power and lets your members have fun.
 
