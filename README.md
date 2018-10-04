@@ -1,4 +1,5 @@
 # Mini Me
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 Mini Me is an awesome bot for your server that gives your staff power and lets your members have fun.
 
 ## Setup:
@@ -31,3 +32,14 @@ Mini Me is an awesome bot for your server that gives your staff power and lets y
 <a href="https://discordbotlist.com/bots/456926578228723724">
 	<img width="380" height="140" src="https://discordbotlist.com/bots/456926578228723724/widget" alt="Mini Me stats on Discord Bot List">
 </a>
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://assets.gitlab-static.net/uploads/-/system/user/avatar/2935033/avatar.png" width="100px;"/><br /><sub><b>Natsumi H.</b></sub>](https://gitlab.com/NatsumiHB)<br />[💻](https://gitlab.com/railinator4903/mini-me/commits/master "Code") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

@@ -1,0 +1,22 @@
+{
+  "projectName": "mini-me",
+  "projectOwner": "railinator4903",
+  "repoType": "gitlab",
+  "repoHost": "https://gitlab.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "NatsumiHB",
+      "name": "Natsumi H.",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2935033/avatar.png",
+      "profile": "https://gitlab.com/NatsumiHB",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}
