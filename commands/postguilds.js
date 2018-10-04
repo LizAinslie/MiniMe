@@ -70,7 +70,7 @@ exports.run = (client, msg) => {
   snekfetch.post(`https://discordbot.world/api/bot/${client.user.id}/stats`)
   .set('Authorization', client.config.apis.botlists.dbw)
   .send({
-    guild_count: client.guilds.size,
+    guild_count: client.guilds.size
   }).then(() => {
     msg.channel.createMessage(':white_check_mark: │ Updated **discordbot.world** stats.').catch(err => {
       Logger.error(client, `Error sending message in channel with id: ${msg.channel.id}.`, err)

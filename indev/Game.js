@@ -8,7 +8,7 @@ module.exports = {
     }) {
         /* # ■  Require modules */
         let udb = require('../../core/util.js')
-        let emojis = require('../../res/emojis.js')
+        let emojis = require('../../res/emojis.js') // eslint-disable-line no-unused-vars
         let USRDB = udb.UserDB
         let Trainer = await USRDB.findOne({
             id: author.id
@@ -19,7 +19,7 @@ module.exports = {
             return reply({
                 embed: {
                     title: 'Professor Oak',
-                    description: "Hey! Wait! Don't go out! It's unsafe! Wild Pokémon live in tall grass! You need your own Pokémon for your protection. I know! Here, come with me!\n<Use the \`start\` command to get your very first pokemon>",
+                    description: "Hey! Wait! Don't go out! It's unsafe! Wild Pokémon live in tall grass! You need your own Pokémon for your protection. I know! Here, come with me!\n<Use the `start` command to get your very first pokemon>",
                     color: 0xEA3D09,
                     thumbnail: {
                         url: 'https://cdn.bulbagarden.net/upload/f/fe/Spr_HGSS_Oak.gif'
@@ -244,7 +244,7 @@ return reply({
                                         }]
                                     }
                                 })
-                    message.channel.createMessage('Use \`hit\` to draw a card, Use \`stand\` to stand').then(async (m) => {
+                    message.channel.createMessage('Use `hit` to draw a card, Use `stand` to stand').then(async (m) => {
                         await m.channel.awaitMessages(ms => ms.author.bot === false && ms.author.id === author.id && ['hit', 'stand'].includes(ms.content.toLowerCase()), {
                             time: 30000,
                             maxMatches: 1

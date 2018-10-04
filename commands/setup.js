@@ -8,20 +8,20 @@ const Logger = require('../util/Logger.js')
 exports.run = (client, msg, args) => {
   if (!msg.member.permission.has('MANAGE_GUILD') && msg.author.id !== client.config.ownerID) return msg.channel.createMessage(':no_entry_sign: | You do not have permission to do this!')
   args = args.join(' ').split('|')
-  let owner, mod, helper, welcome, logs, mute
+  let welcome, logs, mute
 
   resolveChannel(client, args[0].trim(), msg.channel.guild).then(logChannel => {
     logs = logChannel.id
   })
-  
+
   resolveChannel(client, args[1].trim(), msg.channel.guild).then(welcomeChannel => {
     welcome = welcomeChannel.id
   })
-  
+
   resolveRole(client, args[2].trim(), msg.channel.guild).then(muteRole => {
     mute = muteRole.id
   })
-  
+
   client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
 			if (error) return Logger.error(client, 'Setup error.', error)
 			if (settings) {

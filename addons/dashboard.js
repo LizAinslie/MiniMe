@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 const passport = require('passport')
 const Strategy = require('passport-discord').Strategy
 const session = require('cookie-session')

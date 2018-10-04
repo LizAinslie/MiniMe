@@ -25,7 +25,7 @@ exports.run = (client, msg, args) => {
                 url: 'attachment://colorize.png'
               }
             }
-          }, { file: res.body, name: 'colorize.png'})
+          }, { file: res.body, name: 'colorize.png' })
         })
       })
     } else {
@@ -47,7 +47,7 @@ exports.run = (client, msg, args) => {
               url: 'attachment://colorize.png'
             }
           }
-        }, { file: res.body, name: 'colorize.png'})
+        }, { file: res.body, name: 'colorize.png' })
       })
     }
   })

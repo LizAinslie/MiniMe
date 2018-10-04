@@ -26,7 +26,7 @@ exports.run = (client, msg, args) => {
               image: {
                 url: 'attachment://beautiful.png'
               }
-            },
+            }
           }, { file: res.body, name: 'beautiful.png' })
         })
       })

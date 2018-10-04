@@ -16,7 +16,6 @@ exports.run = async (client, msg, args) => {
   ctx.drawImage(avatar1, 0, 0, 250, canvas.height)
   ctx.drawImage(avatar2, 250, 0, 250, canvas.height)
 
-  
   msg.channel.createMessage('Who Would Win?', { file: canvas.toBuffer(), name: 'whowouldwin.png' })
 }
 

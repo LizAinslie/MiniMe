@@ -1,0 +1,3 @@
+**Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
+
+Before contributing, please look at our code style and how we do things to get a feel for how you should contribute. Then go right ahead and make that PR! We're always eager to recieve them! Just make sure to run your code through eslint with the `--fix` option using the presets defined in [package.json](./package.json)!

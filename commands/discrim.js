@@ -4,17 +4,17 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   // find users with specific discriminator
-  let matches = [];
+  let matches = []
 
   let users = Array.from(msg.guild.members.values()) // online users in same server as client
 
   for (let member of users) {
     if (member.user.discriminator === args[0]) { // check for matching discrim
-      matches.push(member.user.username+"#"+args[0]); // full tag
+      matches.push(member.user.username + '#' + args[0]) // full tag
     }
   }
   if (matches.length === 0) {
-    msg.channel.createMessage(":exclamation: │ No matches found.");
+    msg.channel.createMessage(':exclamation: │ No matches found.')
   } else {
     msg.channel.createMessage({
       embed: {

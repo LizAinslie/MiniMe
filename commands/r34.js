@@ -8,7 +8,7 @@ const Logger = require('../util/Logger.js')
 exports.run = (client, msg) => {
   if (!msg.channel.nsfw) return msg.channel.createMessage(':exclamation: │ You can only run this command in a NSFW channel!')
   snekfetch.get(`https://discordbots.org/api/bots/${client.user.id}/check`)
-  .set('Authorization', client.config.apis.botlists.dbl) 
+  .set('Authorization', client.config.apis.botlists.dbl)
   .query({ userId: msg.author.id })
   .end((err, res) => {
     if (err) {

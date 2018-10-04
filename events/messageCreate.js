@@ -108,8 +108,8 @@ module.exports = async (client, message) => {
   let cmd
   // Grab the command data from the client.commands Enmap
   if (client.commands.has(command)) {
-    cmd = client.commands.get(command);
-  }else {
+    cmd = client.commands.get(command)
+  } else {
     return
   }
   // If that command doesn't exist, silently exit and do nothing
