@@ -11,7 +11,7 @@
     "silent": true,
     "discovery": true,
     "host": "localhost",
-    "db": "minime"
+    "db": "minime",
     "port": 28016
   },
   "dashboard": {
