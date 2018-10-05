@@ -75,7 +75,7 @@ exports.run = (client, msg, args) => {
       console.log(err)
     })
   } else {
-    const guild = msg.guild
+    const guild = msg.channel.guild
     msg.channel.createMessage({
       embed: {
         color: getEmbedColor(client, msg),
