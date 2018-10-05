@@ -1,7 +1,7 @@
 /* Eris Fixed */
 
 const dateformat = require('dateformat')
-const resolveUser = require('../util/resolveUser.js')
+const resolveMember = require('../util/resolveMember.js')
 const { capitalize } = require('lodash')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
@@ -12,17 +12,24 @@ const statuses = {
   offline: '<:offline:313956277237710868>'
 }
 
+const gameTypes = [
+  'Playing',
+  'Streaming', 
+  'Listening', 
+  'Watching'
+]
+
 exports.run = (client, message, args) => {
-  resolveUser(client, args.length > 0 ? args.join(' ') : message.author.id).then((user) => {
+  resolveMember(client, args.length > 0 ? args.join(' ') : message.author.id, message.channel.guild).then((user) => {
     message.channel.createMessage({
       embed: {
         title: user.username + '#' + user.discriminator,
         color: getEmbedColor(message),
         thumbnail: {
-          url: user.displayAvatarURL
+          url: user.avatarURL
         },
         author: {
-          icon_url: message.author.displayAvatarURL,
+          icon_url: message.author.avatarURL,
           name: `User Info │ Requested by ${message.author.username}#${message.author.discriminator}`
         },
         footer: {
@@ -58,7 +65,12 @@ exports.run = (client, message, args) => {
           },
           {
             name: 'Status:',
-            value: `${statuses[user.presence.status]} │ ${capitalize(user.presence.status)}`,
+            value: `${statuses[user.status]} │ ${capitalize(user.status)}`,
+            inline: true
+          },
+          {
+            name: 'Game:',
+            value: user.game ? `${gameTypes[user.game.type]} ${user.game.name} │ [Join them!](${user.game.url})` : 'None',
             inline: true
           }
         ]
