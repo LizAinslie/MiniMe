@@ -106,12 +106,15 @@ module.exports = client => {
 
   app.get('/callback', passport.authenticate('discord', { failureRedirect: '/autherror' }), (req, res) => {
 //       addUser(req.user)
+    console.log('callback 1')
     if (req.user.id === client.config.ownerID) {
       req.session.isAdmin = true
     } else {
       req.session.isAdmin = false
     }
+    console.log('callback 2')
     if (req.session.backURL) {
+      console.log('callback 3')
       const url = req.session.backURL
       req.session.backURL = null
       res.redirect(url)
