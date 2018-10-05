@@ -29,7 +29,7 @@ exports.run = (client, msg, args) => {
             },
             {
               name: '<:owner:455810041027756053> │ Owner',
-              value: guild.owner.toString(),
+              value: `<@${guild.ownerID}>`,
               inline: true
             },
             {
@@ -39,7 +39,7 @@ exports.run = (client, msg, args) => {
             },
             {
               name: ':busts_in_silhouette: │ Members',
-              value: guild.members.size,
+              value: guild.memberCount,
               inline: true
             },
             {
@@ -54,12 +54,7 @@ exports.run = (client, msg, args) => {
             },
             {
               name: 'AFK Channel',
-              value: guild.afkChannel ? guild.afkChannel.toString() : 'None',
-              inline: true
-            },
-            {
-              name: 'Default Role',
-              value: guild.defaultRole.name,
+              value: guild.afkChannelID ? `<#${guild.afkChannelID}>` : 'None',
               inline: true
             },
             {
@@ -104,7 +99,7 @@ exports.run = (client, msg, args) => {
           },
           {
             name: '<:owner:455810041027756053> │ Owner',
-            value: guild.owner.toString(),
+            value: `<@${guild.ownerID}>`,
             inline: true
           },
           {
@@ -114,7 +109,7 @@ exports.run = (client, msg, args) => {
           },
           {
             name: ':busts_in_silhouette: │ Members',
-            value: guild.members.size,
+            value: guild.memberCount,
             inline: true
           },
           {
@@ -129,12 +124,7 @@ exports.run = (client, msg, args) => {
           },
           {
             name: 'AFK Channel',
-            value: guild.afkChannel ? guild.afkChannel.toString() : 'None',
-            inline: true
-          },
-          {
-            name: 'Default Role',
-            value: `<@&${guild.defaultRole.id}>`,
+            value: guild.afkChannel ? `<#${guild.afkChannelID}>` : 'None',
             inline: true
           },
           {
