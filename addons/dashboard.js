@@ -303,9 +303,9 @@ module.exports = client => {
     res.redirect(`/dashboard/${req.params.guildID}/manage`)
   })
 
-  app.get('/leaderboard', (req, res) => {
-    renderTemplate(res, req, 'leaderboard.ejs')
-  })
+  // app.get('/leaderboard', (req, res) => {
+  //   renderTemplate(res, req, 'leaderboard.ejs')
+  // })
   console.log('dashboard 5')
   app.get('/dashboard/:guildID/manage', checkAuth, (req, res) => {
     const guild = client.guilds.get(req.params.guildID)
