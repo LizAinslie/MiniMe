@@ -118,8 +118,10 @@ module.exports = client => {
       const url = req.session.backURL
       req.session.backURL = null
       res.redirect(url)
+      console.log('callback 4')
     } else {
       res.redirect('/')
+      console.log('callback 5')
     }
   })
 
