@@ -3,7 +3,7 @@
 const passport = require('passport')
 const Strategy = require('passport-discord').Strategy
 const session = require('cookie-session')
-const Discord = require('discord.js')
+const Eris = require('eris')
 
 const moment = require('moment')
 require('moment-duration-format')
@@ -149,7 +149,6 @@ module.exports = client => {
         voice: voiceChannels,
         uptime: duration,
         memoryUsage: (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2),
-        dVersion: Discord.version,
         nVersion: process.version
       }
     })
@@ -157,8 +156,7 @@ module.exports = client => {
   console.log('dashboard 3')
 
   app.get('/dashboard', checkAuth, (req, res) => {
-    const perms = Discord.Permissions
-    renderTemplate(res, req, 'dashboard.ejs', {perms})
+    renderTemplate(res, req, 'dashboard.ejs')
   })
   console.log('dashboard 4')
 
