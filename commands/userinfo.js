@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
       message.channel.createMessage({
         embed: {
           title: user.username + '#' + user.discriminator,
-          color: getEmbedColor(message),
+          color: getEmbedColor(client, message),
           thumbnail: {
             url: user.avatarURL
           },
@@ -85,7 +85,7 @@ exports.run = (client, message, args) => {
     message.channel.createMessage({
       embed: {
         title: user.username + '#' + user.discriminator,
-        color: getEmbedColor(message),
+        color: getEmbedColor(client, message),
         thumbnail: {
           url: user.avatarURL
         },
