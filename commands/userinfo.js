@@ -20,7 +20,68 @@ const gameTypes = [
 ]
 
 exports.run = (client, message, args) => {
-  resolveMember(client, args.length > 0 ? args.join(' ') : message.author.id, message.channel.guild).then((user) => {
+  if (args[0]) {
+    resolveMember(client, args.join(' '), message.channel.guild).then((user) => {
+      message.channel.createMessage({
+        embed: {
+          title: user.username + '#' + user.discriminator,
+          color: getEmbedColor(message),
+          thumbnail: {
+            url: user.avatarURL
+          },
+          author: {
+            icon_url: message.author.avatarURL,
+            name: `User Info │ Requested by ${message.author.username}#${message.author.discriminator}`
+          },
+          footer: {
+            icon_url: client.user.avatarURL,
+            text: 'Status: 200'
+          },
+          timestamp: new Date(),
+          fields: [
+            {
+              name: 'Created At:',
+              value: dateformat(user.createdAt, 'mm/dd/yyyy hh:MM:ss TT'),
+              inline: true
+            },
+            {
+              name: 'Bot:',
+              value: user.bot ? 'Yes' : 'No',
+              inline: true
+            },
+            {
+              name: 'ID:',
+              value: user.id,
+              inline: true
+            },
+            {
+              name: 'Username:',
+              value: user.username,
+              inline: true
+            },
+            {
+              name: 'Discriminator:',
+              value: user.discriminator,
+              inline: true
+            },
+            {
+              name: 'Status:',
+              value: `${statuses[user.status]} │ ${capitalize(user.status)}`,
+              inline: true
+            },
+            {
+              name: 'Game:',
+              value: user.game ? `${gameTypes[user.game.type]} ${user.game.name} │ [Join them!](${user.game.url})` : 'None',
+              inline: true
+            }
+          ]
+        }
+      })
+    }).catch(() => {
+      message.channel.createMessage(':exclamation: │ I was unable to find any users from that query.')
+    })
+  } else {
+    const user = message.member
     message.channel.createMessage({
       embed: {
         title: user.username + '#' + user.discriminator,
@@ -76,9 +137,7 @@ exports.run = (client, message, args) => {
         ]
       }
     })
-  }).catch(() => {
-    message.channel.createMessage(':exclamation: │ I was unable to find any users from that query.')
-  })
+  }
 }
 
 exports.type = 'text'
