@@ -64,7 +64,7 @@ exports.run = (client, msg, args) => {
             },
             {
               name: ':dividers: │ Custom Emoji',
-              value: guild.emojis ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('').length <= 1024 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('') : guild.emojis.length : 'None',
+              value: guild.emojis.length > 0 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('').length <= 1024 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('') : guild.emojis.length : 'None',
               inline: true
             }
           ]
@@ -134,7 +134,7 @@ exports.run = (client, msg, args) => {
           },
           {
             name: ':dividers: │ Custom Emoji',
-            value: guild.emojis ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('').length <= 1024 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('') : guild.emojis.length : 'None',
+            value: guild.emojis.length > 0 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('').length <= 1024 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('') : guild.emojis.length : 'None',
             inline: true
           }
         ]
