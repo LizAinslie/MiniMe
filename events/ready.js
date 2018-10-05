@@ -1,6 +1,4 @@
-const dashboard = require('../addons/dashboard.js')
-
-module.exports = (client, id) => {
+module.exports = client => {
   // console.log(`Ready to run in ${client.channels.size} channels on ${client.guilds.size} servers, for a total of ${client.users.size} users.`)
   client.edidStatus('online', { name: 'to Dr. Evil laugh', type: 2 })
 
@@ -9,7 +7,4 @@ module.exports = (client, id) => {
    * Extensions
    *
    */
-
-  dashboard(client)
-  console.log('loaded Dashboard extension')
 }
