@@ -32,6 +32,10 @@ exports.run = (client, msg, args) => {
                                 {
                                     name: 'Married To',
                                     value: profile.marriedTo ? `${client.users.get(profile.marriedTo).username}#${client.users.get(profile.marriedTo).username}` : 'Nobody'
+                                },
+                                {
+                                    name: 'Items',
+                                    value: `:pick: │ ${profile.itemPick}\n:ring: │ ${profile.itemRing}`
                                 }
                             ]
                         }
@@ -67,6 +71,10 @@ exports.run = (client, msg, args) => {
                             {
                                 name: 'Married To',
                                 value: profile.marriedTo ? `${client.users.get(profile.marriedTo).username}#${client.users.get(profile.marriedTo).username}` : 'Nobody'
+                            },
+                            {
+                                name: 'Items',
+                                value: `:pick: │ ${profile.itemPick}\n:ring: │ ${profile.itemRing}`
                             }
                         ]
                     }
