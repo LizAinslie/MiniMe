@@ -1,4 +1,5 @@
 const snekfetch = require('snekfetch')
+const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
   if (args.length < 1) return msg.channel.createMessage(':question: │ You must provide a subreddit.')
@@ -7,7 +8,7 @@ exports.run = (client, msg, args) => {
     msg.channel.createMessage({
       embed: {
         title: result.body.data.display_name,
-        color: this.bot.embedColor,
+        color: getEmbedColor(client, msg),
         description: result.body.data.public_description,
         url: 'https://www.reddit.com/r/' + args[0] + '/',
         thumbnail: {
