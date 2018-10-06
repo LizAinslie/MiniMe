@@ -21,7 +21,7 @@ exports.run = (client, msg, args) => {
                             fields: [
                                 {
                                     name: 'Balance',
-                                    value: balance ? balance.toString() : 0,
+                                    value: balance.amount ? balance.amount.toString() : 0,
                                     inline: true
                                 },
                                 {
@@ -60,7 +60,7 @@ exports.run = (client, msg, args) => {
                         fields: [
                             {
                                 name: 'Balance',
-                                value: balance ? balance.toString() : 0,
+                                value: balance.amount ? balance.amount.toString() : 0,
                                 inline: true
                             },
                             {

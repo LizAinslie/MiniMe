@@ -21,6 +21,7 @@ exports.run = (client, msg, args) => {
     					if (error) return;
                     });
                 }
+                msg.channel.createMessage(`Set your description to **${args.join(' ')}**.`)
             });
     }
 }
