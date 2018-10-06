@@ -14,7 +14,7 @@ exports.run = async (client, msg, args) => {
                     Logger.error(client, `[pat.js] snekfetch error.`, err)
                 }
 
-                let gif = 'https://rra.ram.moe/' + res.body.path
+                let gif = 'https://rra.ram.moe' + res.body.path
                 msg.channel.createMessage({
                     embed: {
                         author: {
@@ -38,7 +38,7 @@ exports.run = async (client, msg, args) => {
                 Logger.error(client, `[pat.js] snekfetch error.`, err)
             }
 
-            let gif = 'https://rra.ram.moe/' + res.body.path
+            let gif = 'https://rra.ram.moe' + res.body.path
             msg.channel.createMessage({
                 embed: {
                     author: {
