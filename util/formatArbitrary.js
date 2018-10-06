@@ -5,6 +5,8 @@ module.exports = (client, data) => {
 	data = data.replace(new RegExp(client.config.apis.botlists.bls, 'g'), '-- SENSITIVE INFORMATION --')
 	data = data.replace(new RegExp(client.config.apis.botlists.dbl, 'g'), '-- SENSITIVE INFORMATION --')
 	data = data.replace(new RegExp(client.config.apis.botlists.dbg, 'g'), '-- SENSITIVE INFORMATION --')
+	data = data.replace(new RegExp(client.config.apis.botlists.dbw, 'g'), '-- SENSITIVE INFORMATION --')
+	data = data.replace(new RegExp(client.config.apis.botlists.dblcom, 'g'), '-- SENSITIVE INFORMATION --')
 	data = data.replace(new RegExp(client.config.apis.triggered, 'g'), '-- SENSITIVE INFORMATION --')
 	data = data.replace(new RegExp(client.config.apis.idiot, 'g'), '-- SENSITIVE INFORMATION --')
 	data = data.replace(new RegExp(client.config.apis.yt, 'g'), '-- SENSITIVE INFORMATION --')
