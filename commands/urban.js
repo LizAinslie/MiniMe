@@ -1,5 +1,4 @@
 const ud = require('urban-dictionary')
-const Discord = require('discord.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const Logger = require('../util/Logger.js')
 
@@ -10,12 +9,19 @@ exports.run = (client, msg, args) => {
       Logger.error('[urban.js] urban error.', error)
       msg.channel.createMessage(':exclamation: │ There was an error!')
     } else {
-      const embed = new Discord.RichEmbed()
-      .setColor(getEmbedColor(msg))
-      .setTitle(entries[0].word)
-      .setDescription(entries[0].definition)
-      .addField('Example', entries[0].example)
-      msg.channel.createMessage(embed)
+      msg.channel.createMessage({
+        embed: {
+          color: getEmbedColor(client, msg),
+          description: entries[0].definition,
+          title: entries[0].word,
+          fields: [
+            {
+              name: 'Example', 
+              value: entries[0].example
+            }
+          ]
+        }
+      })
     }
   })
 }
@@ -26,5 +32,6 @@ exports.help = {
   usage: 'urban <term>',
   fullDesc: 'Search the Urban Dictionary.',
   type: 'nsfw',
-  status: 2
+  status: 2,
+  aliases: ['ud', 'urbandict']
 }

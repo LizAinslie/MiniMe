@@ -2,7 +2,6 @@ const Eris = require('eris')
 const fs = require('fs')
 // const music = require('./music.js')
 const Enmap = require('enmap')
-const EnmapSql = require('enmap-sqlite')
 var Rollbar = require('rollbar')
 // const Idiot = require('idiotic-api')
 const rethinkdb = require('rethinkdbdash')
@@ -49,10 +48,12 @@ fs.readdir('./commands/', (err, files) => {
     let commandName = file.split('.')[0]
     console.log(`Attempting to load command ${commandName}`)
     client.commands.set(commandName, props)
-    // props.help.aliases.forEach(alias => {
-    //   client.aliases.set(alias, props.help.name);
-    // });
+    props.help.aliases.forEach(alias => {
+      client.aliases.set(alias, props.help.name);
+    });
   })
 })
 
+
 client.connect()
+console.log('loaded Dashboard extension')

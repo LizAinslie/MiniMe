@@ -25,7 +25,7 @@ exports.run = (client, msg, args) => {
                 url: 'attachment://disco.gif'
               }
             }
-          }, { file: res.body, name: 'disco.gif'})
+          }, { file: res.body, name: 'disco.gif' })
         })
       })
     } else {
@@ -47,7 +47,7 @@ exports.run = (client, msg, args) => {
               url: 'attachment://disco.gif'
             }
           }
-        }, { file: res.body, name: 'disco.gif'})
+        }, { file: res.body, name: 'disco.gif' })
       })
     }
   })

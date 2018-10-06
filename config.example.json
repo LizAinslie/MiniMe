@@ -1,6 +1,6 @@
 {
   "token": "put your discord token in here",
-  "prefix": "your prefix",
+  "prefix": ["your prefix"],
   "color": 5663536,
   "ownerID": "your user id",
   "emoji": "⭐",
@@ -11,7 +11,7 @@
     "silent": true,
     "discovery": true,
     "host": "localhost",
-    "db": "minime"
+    "db": "minime",
     "port": 28016
   },
   "dashboard": {

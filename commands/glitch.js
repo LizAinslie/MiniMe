@@ -25,7 +25,7 @@ exports.run = (client, msg, args) => {
                 url: 'attachment://glitch.png'
               }
             }
-          }, { file: res.body, name: 'glitch.png'})
+          }, { file: res.body, name: 'glitch.png' })
         })
       })
     } else {
@@ -47,7 +47,7 @@ exports.run = (client, msg, args) => {
               url: 'attachment://glitch.png'
             }
           }
-        }, { file: res.body, name: 'glitch.png'})
+        }, { file: res.body, name: 'glitch.png' })
       })
     }
   })

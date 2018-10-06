@@ -29,7 +29,7 @@ exports.run = (client, msg, args) => {
             },
             {
               name: '<:owner:455810041027756053> │ Owner',
-              value: guild.owner.toString(),
+              value: `<@${guild.ownerID}>`,
               inline: true
             },
             {
@@ -39,7 +39,7 @@ exports.run = (client, msg, args) => {
             },
             {
               name: ':busts_in_silhouette: │ Members',
-              value: guild.members.size,
+              value: guild.memberCount,
               inline: true
             },
             {
@@ -54,12 +54,7 @@ exports.run = (client, msg, args) => {
             },
             {
               name: 'AFK Channel',
-              value: guild.afkChannel ? guild.afkChannel.toString() : 'None',
-              inline: true
-            },
-            {
-              name: 'Default Role',
-              value: guild.defaultRole.name,
+              value: guild.afkChannelID ? `<#${guild.afkChannelID}>` : 'None',
               inline: true
             },
             {
@@ -69,7 +64,7 @@ exports.run = (client, msg, args) => {
             },
             {
               name: ':dividers: │ Custom Emoji',
-              value: guild.emojis.map(e => `${e}`).join('').length <= 1024 ? guild.emojis.map(e => `${e}`).join('') : guild.emojis.size,
+              value: guild.emojis.length > 0 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('').length <= 1024 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('') : guild.emojis.length : 'None',
               inline: true
             }
           ]
@@ -80,7 +75,7 @@ exports.run = (client, msg, args) => {
       console.log(err)
     })
   } else {
-    const guild = msg.guild
+    const guild = msg.channel.guild
     msg.channel.createMessage({
       embed: {
         color: getEmbedColor(client, msg),
@@ -104,7 +99,7 @@ exports.run = (client, msg, args) => {
           },
           {
             name: '<:owner:455810041027756053> │ Owner',
-            value: guild.owner.toString(),
+            value: `<@${guild.ownerID}>`,
             inline: true
           },
           {
@@ -114,7 +109,7 @@ exports.run = (client, msg, args) => {
           },
           {
             name: ':busts_in_silhouette: │ Members',
-            value: guild.members.size,
+            value: guild.memberCount,
             inline: true
           },
           {
@@ -129,12 +124,7 @@ exports.run = (client, msg, args) => {
           },
           {
             name: 'AFK Channel',
-            value: guild.afkChannel ? guild.afkChannel.toString() : 'None',
-            inline: true
-          },
-          {
-            name: 'Default Role',
-            value: `<@&${guild.defaultRole.id}>`,
+            value: guild.afkChannel ? `<#${guild.afkChannelID}>` : 'None',
             inline: true
           },
           {
@@ -144,7 +134,7 @@ exports.run = (client, msg, args) => {
           },
           {
             name: ':dividers: │ Custom Emoji',
-            value: guild.emojis.map(e => `${e}`).join('').length <= 1024 ? guild.emojis.map(e => `${e}`).join('') : guild.emojis.size,
+            value: guild.emojis.length > 0 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('').length <= 1024 ? guild.emojis.map(e => `<:${e.name}:${e.id}>`).join('') : guild.emojis.length : 'None',
             inline: true
           }
         ]

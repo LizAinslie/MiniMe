@@ -1,7 +1,9 @@
 /* Eris Fixed */
 
-exports.run = (client, message, args) => {
-  message.channel.createMessage(`:ping_pong: │ Pong! \`Latency: ${client.ping}ms\``).catch(console.error)
+exports.run = (client, msg, args) => {
+  msg.channel.createMessage(':ping_pong: │ Pinging...').then((m) => {
+		m.edit(':ping_pong: │ Pong! `' + (Date.now() - m.timestamp) + 'ms`');
+	});
 }
 
 exports.help = {
