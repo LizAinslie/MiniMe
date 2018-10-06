@@ -24,3 +24,13 @@ exports.run = (client, msg, args) => {
             });
     }
 }
+
+exports.help = {
+    name: 'setprofile',
+    description: 'Set your profile settings.',
+    usage: 'setprofile description <value>',
+    fullDesc: 'Set your profile settings.',
+    type: 'fun',
+    status: 2,
+    aliases: []
+  }
