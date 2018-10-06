@@ -21,3 +21,13 @@ exports.run = (client, msg, args) => {
     client.rollbar.error('Failed to get subreddit: ' + error)
   })
 }
+
+exports.help = {
+  name: 'reddit',
+  description: 'Get info on a subreddit.',
+  usage: 'reddit <subreddit>',
+  fullDesc: 'Get info on a subreddit.',
+  type: 'util',
+  status: 2,
+  aliases: []
+}
