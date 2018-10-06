@@ -1,5 +1,3 @@
-// fixed
-
 const resolveMember = require('../util/resolveMember.js')
 const resolveRole = require('../util/resolveRole.js')
 
