@@ -3,10 +3,10 @@ const snekfetch = require('snekfetch')
 exports.run = (client, msg, args) => {
   if (args.length < 1) return msg.channel.send(':question: │ You must provide a subreddit.')
   snekfetch.get('https://www.reddit.com/r/' + args[0] + '/about.json').then((result) => {
-   if (!('display_name' in result.body.data)) return msg.channel.send(':exclamation: │ Unable to find a subreddit by that name.') // dumb dumb reddit
-   msg.channel.send({
-     embed: {
-      title: result.body.data.display_name,
+    if (!('display_name' in result.body.data)) return msg.channel.send(':exclamation: │ Unable to find a subreddit by that name.') // dumb dumb reddit
+    msg.channel.send({
+      embed: {
+        title: result.body.data.display_name,
         color: this.bot.embedColor,
         description: result.body.data.public_description,
         url: 'https://www.reddit.com/r/' + args[0] + '/',
