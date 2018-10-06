@@ -57,9 +57,9 @@ exports.run = async (client, msg, args) => {
 exports.help = {
     name: 'pat',
     description: 'Pat someone.',
-    usage: 'pat',
+    usage: 'pat [user]',
     fullDesc: 'Pat someone by mentioning them (or pat yourself).',
     type: 'img',
-    status: 1,
+    status: 2,
     aliases: ['pet']
 }
