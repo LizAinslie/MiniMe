@@ -1,9 +1,11 @@
+const config = require('../config.json');
+
 module.exports = async (client, message) => {
   // Ignore all bots
   if (message.author.bot) return
 
   // Ignore messages not starting with the prefix (in config.json)
-  const prefixes = ['m::', `<@${client.user.id}>`]
+  const prefixes = [...config.prefix, `<@${client.user.id}>`];
   let prefix = false
   for (const thisPrefix of prefixes) {
     if (message.content.toLowerCase().startsWith(thisPrefix)) prefix = thisPrefix

@@ -41,6 +41,7 @@
     "marked": "latest",
     "moment": "^2.22.2",
     "moment-duration-format": "^2.2.2",
+    "nekos.life": "^1.1.4",
     "node-opus": "latest",
     "passport": "^0.4.0",
     "passport-discord": "^0.1.3",
