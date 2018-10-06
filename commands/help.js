@@ -120,8 +120,13 @@ exports.run = (client, message, params) => {
               inline: true
             },
             {
-              name: 'Type',
+              name: 'Status',
               value: cmdStatuses[command.help.status] + ' │ ' + cmdStatusNames[command.help.status],
+              inline: true
+            },
+            {
+              name: 'Aliases',
+              value: command.help.aliases.map(a => `\`${a}\``).join(', '),
               inline: true
             }
           ]
