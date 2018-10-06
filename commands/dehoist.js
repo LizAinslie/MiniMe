@@ -1,8 +1,12 @@
 exports.run = (client, msg) => {
+    let members = 0;
     msg.channel.guild.members.forEach(member => {
-        member.edit({ nick: member.nick.replace(/^(!|:|'|{|}|\?|\.|;|:|"|\*|\/)+/g, '') })
-        msg.channel.createMessage(':white_check_mark: │ Members Dehoisted!')
+        if (member.nick) {
+            member.edit({ nick: member.nick.replace(/^(!|:|'|{|}|\?|\.|;|:|"|\*|\/)+/g, '') })
+            members += 1
+        }
     })
+    msg.channel.createMessage(`:white_check_mark: │ **${members}** Members Dehoisted!`)
 }
 
 exports.help = {
