@@ -38,14 +38,9 @@
     "libsodium-wrappers": "latest",
     "lodash": "^4.17.10",
     "marked": "latest",
-<<<<<<< HEAD
-    "moment": "latest",
-    "moment-duration-format": "latest",
-    "nekos.life": "^1.1.4",
-=======
-    "moment": "^2.22.2",
     "moment-duration-format": "^2.2.2",
->>>>>>> 480b0ea09827646c60b27cec941846cb2d49fe7a
+    "nekos.life": "^1.1.4",
+    "moment": "^2.22.2",
     "node-opus": "latest",
     "passport": "^0.4.0",
     "passport-discord": "^0.1.3",
