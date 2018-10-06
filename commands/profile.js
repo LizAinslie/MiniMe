@@ -85,11 +85,11 @@ exports.run = (client, msg, args) => {
 }
 
 exports.help = {
-  name: 'balance',
-  description: 'Check the amount of money in your bank account.',
-  usage: 'balance [user]',
-  fullDesc: 'Check the amount of money in you (or someone else\'s) bank account.',
-  type: 'eco',
+  name: 'profile',
+  description: 'Check a users profile.',
+  usage: 'profile [user]',
+  fullDesc: 'Check a users profile.',
+  type: 'fun',
   status: 2,
-  aliases: ['bal', 'bank']
+  aliases: []
 }
