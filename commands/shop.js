@@ -12,12 +12,12 @@ exports.run = (client, msg, args) => {
                     description: 'These are the items you can buy.',
                     fields: [
                         {
-                            name: ':pick:Pick',
+                            name: ':pick: │ Pick',
                             value: '<:coins:482589075459801098> 100\nEnables you to work.',
                             inline: true
                         },
                         {
-                            name: ':ring:Ring',
+                            name: ':ring: │ Ring',
                             value: '<:coins:482589075459801098> 10000\nUse this to get married to someone.'
                         }
                     ]
