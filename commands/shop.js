@@ -89,7 +89,7 @@ exports.help = {
     description: 'Use the shop.',
     usage: 'shop <buy [item]|list>',
     fullDesc: 'Use the shop.',
-    type: 'fun',
+    type: 'eco',
     status: 2,
     aliases: ['store']
 }
