@@ -84,7 +84,7 @@ module.exports = client => {
 	// Views
 
 	app.get('/', (req, res) => {
-		res.render('index.ejs', { bot: client, user: req.user, path: req.url });
+		res.render('index.ejs', {  bot: client, user: req.user ? client.users.get(req.user.id) : null, path: req.url });
 	});
 
 	app.get('/commands', (req, res) => {
@@ -101,8 +101,21 @@ module.exports = client => {
 
 	app.get('/me', authenticate(), (req, res) => res.redirect(`/manage/user/${req.user.id}`));
 
-	app.get('/manage/user/:id', authenticate(), (req, res) => {
-		res.render('user.ejs');
+	app.get('/manage/user/:id', authenticate(), async (req, res) => {
+		let userProfile = await client.r.table('users').get(req.user.id);
+
+		if (!userProfile) {
+			userProfile = {
+				id: req.user.id,
+				description: 'This user prefers to keep their autobiography a mystery.',
+				developer: false,
+				itemPick: 0,
+				itemRing: 0,
+				marriedTo: null
+			};
+		}
+
+		res.render('user.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url });
 	});
 
 	app.get('/manage/server/:id', authenticate(), (req, res) => {
