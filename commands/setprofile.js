@@ -34,4 +34,4 @@ exports.help = {
     type: 'fun',
     status: 2,
     aliases: []
-  }
+}
