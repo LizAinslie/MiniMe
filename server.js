@@ -5,6 +5,7 @@ const Enmap = require('enmap')
 var Rollbar = require('rollbar')
 // const Idiot = require('idiotic-api')
 const rethinkdb = require('rethinkdbdash')
+const dashboard = require('./addons/dashboard.js')
 
 // Initialize the provider
 
@@ -56,4 +57,6 @@ fs.readdir('./commands/', (err, files) => {
 
 
 client.connect()
+
+dashboard(client)
 console.log('loaded Dashboard extension')

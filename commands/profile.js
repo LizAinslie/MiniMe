@@ -46,6 +46,7 @@ exports.run = (client, msg, args) => {
         })
     } else {
         client.r.table('users').get(msg.author.id).run((error, profile) => {
+			if (!profile) return msg.channel.createMessage(':exclamation: │ You haven\'t set up your profile!')
             client.r.table('balance').get(msg.author.id).run().then(balance => {
                 msg.channel.createMessage({
                     embed: {
@@ -82,7 +83,7 @@ exports.run = (client, msg, args) => {
                 })
             })
         })
-  }
+  	}
 }
 
 exports.help = {
