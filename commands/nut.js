@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
          image.composite(text, 15, 5)
          image.getBuffer(Jimp.AUTO, (err, buffer) => {
            if (err) return console.log(err)
-           message.channel.createMessage({file: buffer, name: 'nut.js'})
+           message.channel.createMessage({ file: buffer, name: 'nut.js' })
          })
       })
     })
