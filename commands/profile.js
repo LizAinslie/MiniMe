@@ -6,6 +6,7 @@ exports.run = (client, msg, args) => {
     if (args[0]) {
         resolveUser(client, args.join(' ')).then(user => {
             client.r.table('users').get(user.id).run((error, profile) => {
+                if (!profile) return msg.channel.createMessage(':exclamation: │ That user has no profile!')
                 client.r.table('balance').get(user.id).run().then(balance => {
                     msg.channel.createMessage({
                         embed: {
