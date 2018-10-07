@@ -92,7 +92,7 @@ exports.run = async (client, msg, args) => {
 }
 
 exports.help = {
-  name: 'urban',
+  name: 'neko',
   description: 'Get a lewd Neko.',
   usage: 'neko <solo>',
   fullDesc: 'Get a lewd Neko.',
