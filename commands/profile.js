@@ -22,7 +22,7 @@ exports.run = (client, msg, args) => {
                             fields: [
                                 {
                                     name: 'Balance',
-                                    value: balance.amount ? '<:coins:482589075459801098> ' + balance.amount.toString() : '<:coins:482589075459801098> 0',
+                                    value: balance ? '<:coins:482589075459801098> ' + balance.amount.toString() : '<:coins:482589075459801098> 0',
                                     inline: true
                                 },
                                 {
@@ -61,7 +61,7 @@ exports.run = (client, msg, args) => {
                         fields: [
                             {
                                 name: 'Balance',
-                                value: balance.amount ? balance.amount.toString() : 0,
+                                value: balance ? balance.amount.toString() : 0,
                                 inline: true
                             },
                             {
