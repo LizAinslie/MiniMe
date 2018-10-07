@@ -15,21 +15,21 @@ module.exports = client => {
 	const authenticate = (admin = false) => {
 		return async (req, res, next) => {
 			if (!req.isAuthenticated()) return res.redirect('/login');
-			
+
 			if (admin) {
 				const user = await client.r.table('users').get(req.user.id);
 				if (!user) return res.sendStatus(401);
 				if (!user.developer) return res.sendStatus(401);
 			}
-			
+
 			next();
 		};
 	};
-	
+
 	app.use(session({
 		secret: client.config.dashboard.sessionSecret
 	}));
-	
+
 	app.use(passport.initialize());
 	app.use(passport.session());
 
@@ -62,13 +62,13 @@ module.exports = client => {
 
 		if (existingUser) await client.r.table('oauth').get(user.id).update(user);
 		else await client.r.table('oauth').insert(user);
-		
+
 		cb(null, user.id)
 	});
-	
+
 	passport.deserializeUser(async (id, cb) => {
 		const user = await client.r.table('oauth').get(id);
-		
+
 		cb(null, user);
 	});
 
@@ -84,7 +84,7 @@ module.exports = client => {
 	// Views
 
 	app.get('/', (req, res) => {
-		res.render('index.ejs');
+		res.render('index.ejs', { bot: client, user: req.user, path: req.url });
 	});
 
 	app.get('/commands', (req, res) => {
@@ -98,6 +98,8 @@ module.exports = client => {
 	app.get('/admin', authenticate(true), (req, res) => {
 		res.render('admin.ejs');
 	});
+
+	app.get('/me', authenticate(), (req, res) => res.redirect(`/manage/user/${req.user.id}`));
 
 	app.get('/manage/user/:id', authenticate(), (req, res) => {
 		res.render('user.ejs');
