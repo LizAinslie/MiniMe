@@ -11,7 +11,7 @@ exports.run = (client, message, args) => {
       Jimp.loadFont(Jimp.FONT_SANS_32_BLACK).then(function (font) {
          text.print(font, 0, 0, suffix, 650)
          image.composite(text, 15, 5)
-         image.getBuffer(Jimp.AUTO, (err, buffer) => {
+         image.getBuffer(Jimp.MIME_JPEG, (err, buffer) => {
            if (err) return console.log(err)
            message.channel.createMessage({ file: buffer, name: 'nut.js' })
          })
