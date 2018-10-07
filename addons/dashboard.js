@@ -1,20 +1,90 @@
 /* eslint-disable no-unused-vars */
 
 const express = require('express');
+const passport = require('passport');
+const session = require('express-session');
 const { Strategy } = require('passport-discord');
+const config = require('../config.json');
 
 const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/../dashboard/templates`);
 
-app.use('static', express.static(`${__dirname}/../dashboard/static`));
-
 module.exports = client => {
+	const authenticate = (admin = false) => {
+		return async (req, res, next) => {
+			if (!req.isAuthenticated()) return res.redirect('/login');
+
+			if (admin) {
+				const user = await client.r.table('users').get(req.user.id);
+				if (!user) return res.sendStatus(401);
+				if (!user.developer) return res.sendStatus(401);
+			}
+
+			next();
+		};
+	};
+
+	app.use(session({
+		secret: client.config.dashboard.sessionSecret
+	}));
+
+	app.use(passport.initialize());
+	app.use(passport.session());
+
+	passport.serializeUser(async (profile, cb) => {
+		const avatarUrl = profile.avatar ? `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}${profile.avatar.startsWith('a_') ? '.gif' : '.png'}` : `https://cdn.discordapp.com/embed/avatars/${profile.discriminator % 5}.png`;
+
+		const availableServers = profile.guilds.filter(g => g.owner || (g.permissions & 8) === 8 || (g.permissions & 32) === 32).map(g => {
+			const serverIcon = g.icon ? `https://cdn.discordapp.com/icons/${g.id}/${g.icon}.png` : g.name.replace(/\w+/g, w => w[0]).replace(/\s/g, '');
+
+			return {
+				id: g.id,
+				name: g.name,
+				icon: serverIcon,
+				owner: g.owner,
+				permissions: g.permissions
+			};
+		});
+
+		const user = {
+			id: profile.id,
+			accessToken: profile.accessToken,
+			username: profile.username,
+			discriminator: profile.discriminator,
+			tag: `${profile.username}#${profile.discriminator}`,
+			avatar: avatarUrl,
+			servers: availableServers
+		};
+
+		const existingUser = await client.r.table('oauth').get(user.id);
+
+		if (existingUser) await client.r.table('oauth').get(user.id).update(user);
+		else await client.r.table('oauth').insert(user);
+
+		cb(null, user.id)
+	});
+
+	passport.deserializeUser(async (id, cb) => {
+		const user = await client.r.table('oauth').get(id);
+
+		cb(null, user);
+	});
+
+	passport.use(new Strategy({
+		clientID: config.info.id,
+		clientSecret: config.dashboard.secret,
+		callbackURL: config.dashboard.callback,
+		scope: ['identify', 'guilds']
+	}, (aT, rT, profile, cb) => cb(undefined, profile)));
+
+	app.use('static', express.static(`${__dirname}/../dashboard/static`));
+
 	// Views
 
 	app.get('/', (req, res) => {
-		res.render('index.ejs');
+		res.render('index.ejs', {  bot: client, user: req.user ? client.users.get(req.user.id) : null, path: req.url });
 	});
 
 	app.get('/commands', (req, res) => {
@@ -25,23 +95,40 @@ module.exports = client => {
 		res.render('stats.ejs');
 	});
 
-	app.get('/admin', (req, res) => {
+	app.get('/admin', authenticate(true), (req, res) => {
 		res.render('admin.ejs');
 	});
 
-	app.get('/manage/user/:id', (req, res) => {
-		res.render('user.ejs');
+	app.get('/me', authenticate(), (req, res) => res.redirect(`/manage/user/${req.user.id}`));
+
+	app.get('/manage/user/:id', authenticate(), async (req, res) => {
+		let userProfile = await client.r.table('users').get(req.user.id);
+
+		if (!userProfile) {
+			userProfile = {
+				id: req.user.id,
+				description: 'This user prefers to keep their autobiography a mystery.',
+				developer: false,
+				itemPick: 0,
+				itemRing: 0,
+				marriedTo: null
+			};
+		}
+
+		res.render('user.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url });
 	});
 
-	app.get('/manage/server/:id', (req, res) => {
-		res.render('server.js');
+	app.get('/manage/server/:id', authenticate(), (req, res) => {
+		res.render('server.ejs');
 	});
 
 	// OAuth
 
-	app.get('/login');
+	app.get('/login', passport.authenticate('discord'));
 
-	app.get('/callback');
+	app.get('/callback', passport.authenticate('discord'), (req, res) => {
+		res.redirect(`/manage/user/${req.user.id}`);
+	});
 };
 
 app.listen(3100);
