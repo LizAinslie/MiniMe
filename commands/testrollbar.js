@@ -1,6 +1,8 @@
 exports.run = (client, msg) => {
-  if (msg.author.id !== client.config.ownerID) return msg.channel.createMessage(':no_entry_sign: │ Only my developer can use this command!')
-  client.rollbar.log('Testing Rollbar from Discord')
+    client.r.table('users').get(msg.author.id).run().then(user => {
+        if (!user.developer) return msg.channel.createMessage(':no_entry_sign: │ Only my developer can use this command!')
+        client.rollbar.log('Testing Rollbar from Discord')
+    })
 }
 
 exports.help = {
