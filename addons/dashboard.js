@@ -212,7 +212,16 @@ module.exports = client => {
 		const server = client.guilds.get(req.params.id);
 		if (!server) return res.redirect(`https://discordapp.com/oauth2/authorize?scope=bot&permissions=0&client_id=${client.user.id}&guild_id=${req.params.id}&response_type=code&redirect_uri=${encodeURIComponent(`https://${config.dashboard.domain}/serverAdd`)}`);
 		
-		const settings = await client.r.table('serverSettings').get(server.id)
+		let settings = await client.r.table('serverSettings').get(server.id)
+		
+		if (!settings) {
+			settings = {
+				id: server.id,
+				logChannel: null,
+				welcomeChannel: null,
+				muteRole: null
+			}
+		}
 		
 		res.render('server.ejs', { bot: client, path: req.url, user: req.user, guild: server, settings: settings});
 	});
