@@ -88,7 +88,7 @@ module.exports = client => {
 	});
 
 	app.get('/commands', (req, res) => {
-		res.render('commands.ejs');
+		res.render('commands.ejs', { cmds: client.commands });
 	});
 
 	app.get('/stats', (req, res) => {

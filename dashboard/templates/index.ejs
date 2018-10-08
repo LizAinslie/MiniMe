@@ -1,17 +1,16 @@
 <%- include('blocks/header', {bot, user, path}) %>
-<div class="container">
   <div class="jumbotron">
     <div>
-    <style>
-    .flex-item {
-      display: flex;
-      align-items: center;
-  }
-  .flex-item img{
-      flex-grow:0;
-      flex-shrink:0;
-  }
-</style>
+      <style>
+        .flex-item {
+          display: flex;
+          align-items: center;
+        }
+        .flex-item img{
+          flex-grow:0;
+          flex-shrink:0;
+        }
+      </style>
       <% if (user) { %>
         <h1>Hello, <%= user.username %></h1>
         <div class="flex-item">
