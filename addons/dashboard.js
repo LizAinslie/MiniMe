@@ -109,7 +109,7 @@ module.exports = client => {
 	});
 
 	app.get('/admin', authenticate(true), (req, res) => {
-		res.render('admin.ejs', { updated: false });
+		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: false });
 	});
 
 	app.get('/admin', authenticate(true), (req, res, next) => {
@@ -121,7 +121,7 @@ module.exports = client => {
 		} else {
 			res.sendStatus(400)
 		}
-		res.render('admin.ejs', { updated: true });
+		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: true });
 	});
 	
 	app.get('/user/:id', async (req, res) => {
