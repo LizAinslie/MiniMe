@@ -126,6 +126,8 @@ module.exports = client => {
 		
 		if (!description) return next();
 
+		if (description.length > 250) description = `${description.slice(0, 247)}...`;
+
 		client.r.table('users').get(req.params.id).run().then(user => {
 			if (user) {
 				client.r.table('users').get(user.id).update({
