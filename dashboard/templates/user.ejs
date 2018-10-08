@@ -5,31 +5,37 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-4">
+			<div class="col-3 col-sm-6">
 				<div class="card card-body">
 					<h5 class="card-title">Rings:</h5>
 					<p class="card-text"><%= profile.itemRing %></p>
 				</div>
 			</div>
-			<div class="col-4">
+			<div class="col-3 col-sm-6">
 				<div class="card card-body">
 					<h5 class="card-title">Picks:</h5>
 					<p class="card-text"><%= profile.itemPick %></p>
 				</div>
 			</div>
-			<div class="col-4">
+			<div class="col-3 col-sm-6">
 				<div class="card card-body">
 					<h5 class="card-title">Married To:</h5>
 					<p class="card-text"><%= profile.marriedTo ? bot.users.get(profile.marriedTo).username : 'Nobody' %></p>
 				</div>
 			</div>
-		</div>
-		<form action="/user/<%= profile.id %>">
-			<div class="form-row">
-				<label for="desc">Description</label>
-				<textarea class="form-control" name="desc" id="desc" value="<%= profile.description %>"><%= profile.description %></textarea>
+			<div class="col-3 col-sm-6">
+				<div class="card card-body">
+					<h5 class="card-title">Balance:</h5>
+					<p class="card-text"><%= balance ? balance.amount : 0 %> Minicoins</p>
+				</div>
 			</div>
+		</div>
+		<form action="/manage/user/<%= user.id %>">
 			<div class="form-row">
+				<label for="description">Description</label>
+				<textarea class="form-control" name="description" id="description" value="<%= profile.description %>"><%= profile.description %></textarea>
+			</div>
+			<div class="form-row mt-3">
 				<input type="submit" class="btn btn-primary">
 			</div>
 		</form>

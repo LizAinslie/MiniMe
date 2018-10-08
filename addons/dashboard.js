@@ -98,11 +98,10 @@ module.exports = client => {
 	app.get('/admin', authenticate(true), (req, res) => {
 		res.render('admin.ejs');
 	});
-
-	app.get('/me', authenticate(), (req, res) => res.redirect(`/manage/user/${req.user.id}`));
-
-	app.get('/manage/user/:id', authenticate(), async (req, res) => {
-		let userProfile = await client.r.table('users').get(req.user.id);
+	
+	app.get('/user/:id', authenticate(), async (req, res) => {
+		let userProfile = await client.r.table('users').get(req.params.id);
+		let balance = await client.r.table('balance').get(req.params.id)
 
 		if (!userProfile) {
 			userProfile = {
@@ -115,7 +114,61 @@ module.exports = client => {
 			};
 		}
 
-		res.render('user.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url });
+		res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url, balance: balance });
+	})
+
+	app.get('/me', authenticate(), (req, res) => res.redirect(`/manage/user/${req.user.id}`));
+	
+	app.post('/manage/user/:id', authenticate(), async (req, res) => {
+		if(req.params.id != req.user.id) return res.sendStatus(403)
+		let description = req.body.description;
+		let balance = await client.r.table('balance').get(req.params.id)
+		
+		client.r.table('users').get(req.params.id).run().then(user => {
+			if (user) {
+				client.r.table('users').get(user.id).update({
+					description: description
+				}).run().then(user => {
+					res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.user.id), profile: user, path: req.url, balance: balance });
+				}).catch(err  => {
+					client.rollbar.error(err)
+					res.sendStatus(500)
+				})
+			} else {
+				client.r.table('users').get(user.id).insert({
+					id: req.user.id,
+					description: description,
+					developer: false,
+					itemPick: 0,
+					itemRing: 0,
+					marriedTo: null
+				}).run().then(user => {
+					res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.user.id), profile: user, path: req.url, balance: balance });
+				}).catch(err  => {
+					client.rollbar.error(err)
+					res.sendStatus(500)
+				})
+			}
+		})
+	})
+
+	app.get('/manage/user/:id', authenticate(), async (req, res) => {
+		if(req.params.id != req.user.id) return res.sendStatus(403)
+		let userProfile = await client.r.table('users').get(req.params.id);
+		let balance = await client.r.table('balance').get(req.params.id)
+
+		if (!userProfile) {
+			userProfile = {
+				id: req.user.id,
+				description: 'This user prefers to keep their autobiography a mystery.',
+				developer: false,
+				itemPick: 0,
+				itemRing: 0,
+				marriedTo: null
+			};
+		}
+
+		res.render('user.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url, balance: balance });
 	});
 
 	app.get('/manage/server/:id', authenticate(), (req, res) => {
