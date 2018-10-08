@@ -11,6 +11,21 @@
         </div>
 	</div>
 	<div class="container">
-		<% guild.channels.forEach(channel => { %>
-			
+		<form action="/manage/guild/<%= guild.id %>">
+			<div class="form-row">
+				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+		    		<label for="logChannel">Logging Channel</label>
+    				<select class="form-control" id="logChannel" name="logChannel">
+						<% guild.channels.forEach(channel => { 
+							if (channel.id === settings.logChannel) {%>
+								<option selected value="<%= channel.id %>">#<%= channel.name %></option>
+							<% } else { %>
+								<option value="<%= channel.id %>">#<%= channel.name %></option>
+							<% }
+						}) %>
+					</select>
+				</div>
+			</div>
+		</form>
 	</div>
+<%- include('./blocks/footer') %>
