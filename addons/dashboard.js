@@ -195,7 +195,19 @@ module.exports = client => {
 		res.render('user.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url, balance: balance });
 	});
 
+	app.get('/serverAdd', (req, res) => {
+		const id = req.query.guild_id;
+		if (!id) return res.sendStatus(400);
+
+		res.redirect(`/manage/server/${id}`);
+	});
+
 	app.get('/manage/server/:id', authenticate(), (req, res) => {
+		if (!req.user.servers.find(s => s.id === req.params.id)) return res.sendStatus(401);
+
+		const server = client.guilds.get(req.params.id);
+		if (!server) return res.redirect(`https://discordapp.com/oauth2/authorize?scope=bot&permissions=0&client_id=${client.user.id}&guild_id=${req.params.id}&response_type=code&redirect_uri=${encodeURIComponent(`https://${config.dashboard.domain}/serverAdd`)}`);
+
 		res.render('server.ejs');
 	});
 
