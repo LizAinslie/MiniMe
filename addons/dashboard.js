@@ -108,20 +108,20 @@ module.exports = client => {
 		});
 	});
 
-	app.get('/admin', authenticate(true), (req, res) => {
-		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: false });
+	app.get('/admin', authenticate(true), (req, res, next) => {
+		if (!req.query.update) return next();
+
+		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: true });
+
+		execute.exec('git pull', (error, stdout, stderr) => {
+			if (error) { return console.error(error) }
+			console.log(stdout || stderr)
+			process.exit();
+		})
 	});
 
-	app.get('/admin', authenticate(true), (req, res, next) => {
-		if (req.query.update) {
-			execute.exec('git pull && pm2 restart 4', (error, stdout, stderr) => {
-				if (error) { return console.error(error) }
-				console.log(stdout || stderr)
-			})
-		} else {
-			res.sendStatus(400)
-		}
-		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: true });
+	app.get('/admin', authenticate(true), (req, res) => {
+		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: false });
 	});
 	
 	app.get('/user/:id', async (req, res) => {
