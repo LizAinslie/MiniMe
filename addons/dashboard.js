@@ -99,7 +99,7 @@ module.exports = client => {
 		res.render('admin.ejs');
 	});
 	
-	app.get('/user/:id', authenticate(), async (req, res) => {
+	app.get('/user/:id', async (req, res) => {
 		let userProfile = await client.r.table('users').get(req.params.id);
 		let balance = await client.r.table('balance').get(req.params.id)
 
