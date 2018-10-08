@@ -99,13 +99,13 @@ module.exports = client => {
 		res.render('admin.ejs');
 	});
 	
-	app.get('/user/:id', authenticate(), async (req, res) => {
+	app.get('/user/:id', async (req, res) => {
 		let userProfile = await client.r.table('users').get(req.params.id);
 		let balance = await client.r.table('balance').get(req.params.id)
 
 		if (!userProfile) {
 			userProfile = {
-				id: req.user.id,
+				id: req.params.id,
 				description: 'This user prefers to keep their autobiography a mystery.',
 				developer: false,
 				itemPick: 0,
@@ -114,7 +114,7 @@ module.exports = client => {
 			};
 		}
 
-		res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url, balance: balance });
+		res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.params.id), profile: userProfile, path: req.url, balance: balance });
 	})
 
 	app.get('/me', authenticate(), (req, res) => res.redirect(`/manage/user/${req.user.id}`));
