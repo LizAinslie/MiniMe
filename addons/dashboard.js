@@ -3,6 +3,7 @@
 const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
+const RethinkSession = require('session-rethinkdb')(session);
 const { Strategy } = require('passport-discord');
 const config = require('../config.json');
 const execute = require('child_process')
@@ -30,8 +31,11 @@ module.exports = client => {
 		};
 	};
 
+	const rethinkStore = new RethinkSession(client.r);
+
 	app.use(session({
-		secret: client.config.dashboard.sessionSecret
+		secret: client.config.dashboard.sessionSecret,
+		store: rethinkStore
 	}));
 
 	app.use(passport.initialize());
