@@ -119,17 +119,19 @@ module.exports = client => {
 
 	app.get('/me', authenticate(), (req, res) => res.redirect(`/manage/user/${req.user.id}`));
 	
-	app.post('/manage/user/:id', authenticate(), async (req, res) => {
+	app.get('/manage/user/:id', authenticate(), async (req, res, next) => {
 		if(req.params.id != req.user.id) return res.sendStatus(403)
-		let description = req.body.description;
+		let description = req.query.description;
 		let balance = await client.r.table('balance').get(req.params.id)
 		
+		if (!description) return next();
+
 		client.r.table('users').get(req.params.id).run().then(user => {
 			if (user) {
 				client.r.table('users').get(user.id).update({
 					description: description
 				}).run().then(user => {
-					res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.user.id), profile: user, path: req.url, balance: balance });
+					next();
 				}).catch(err  => {
 					client.rollbar.error(err)
 					res.sendStatus(500)
@@ -143,7 +145,7 @@ module.exports = client => {
 					itemRing: 0,
 					marriedTo: null
 				}).run().then(user => {
-					res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.user.id), profile: user, path: req.url, balance: balance });
+					next();
 				}).catch(err  => {
 					client.rollbar.error(err)
 					res.sendStatus(500)
