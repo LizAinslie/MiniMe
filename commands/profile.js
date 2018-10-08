@@ -32,7 +32,7 @@ exports.run = (client, msg, args) => {
                                 },
                                 {
                                     name: 'Married To',
-                                    value: profile.marriedTo ? `${client.users.get(profile.marriedTo).username}#${client.users.get(profile.marriedTo).username}` : 'Nobody'
+                                    value: profile.marriedTo ? `${client.users.get(profile.marriedTo).username}#${client.users.get(profile.marriedTo).discriminator}` : 'Nobody'
                                 },
                                 {
                                     name: 'Items',
@@ -72,7 +72,7 @@ exports.run = (client, msg, args) => {
                             },
                             {
                                 name: 'Married To',
-                                value: profile.marriedTo ? `${client.users.get(profile.marriedTo).username}#${client.users.get(profile.marriedTo).username}` : 'Nobody'
+                                value: profile.marriedTo ? `${client.users.get(profile.marriedTo).username}#${client.users.get(profile.marriedTo).discriminator}` : 'Nobody'
                             },
                             {
                                 name: 'Items',
