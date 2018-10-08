@@ -206,13 +206,15 @@ module.exports = client => {
 		res.redirect(`/manage/server/${id}`);
 	});
 
-	app.get('/manage/server/:id', authenticate(), (req, res) => {
+	app.get('/manage/server/:id', authenticate(), async (req, res) => {
 		if (!req.user.servers.find(s => s.id === req.params.id)) return res.sendStatus(401);
 
 		const server = client.guilds.get(req.params.id);
 		if (!server) return res.redirect(`https://discordapp.com/oauth2/authorize?scope=bot&permissions=0&client_id=${client.user.id}&guild_id=${req.params.id}&response_type=code&redirect_uri=${encodeURIComponent(`https://${config.dashboard.domain}/serverAdd`)}`);
-
-		res.render('server.ejs');
+		
+		const settings = await client.r.table('serverSettings').get(server.id)
+		
+		res.render('server.ejs', { bot: client, path: req.url, user: req.user, guild: server, settings: settings});
 	});
 
 	// OAuth

@@ -1,0 +1,55 @@
+<%- include('./blocks/header', { bot, user, path }) %>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+            <div class="media">
+                <img class="mr-3" src="<%= guild.iconURL %>" alt="Icon">
+                <div class="media-body">
+                    <h3 class="mt-0"><%= guild.name %></h5>
+                    Settings
+                </div>
+            </div>
+        </div>
+	</div>
+	<div class="container">
+		<form action="/manage/guild/<%= guild.id %>">
+			<div class="form-row">
+				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+		    		<label for="logChannel">Logging Channel</label>
+    				<select class="form-control" id="logChannel" name="logChannel">
+						<% guild.channels.forEach(channel => { 
+							if (channel.id === settings.logChannel) {%>
+								<option selected value="<%= channel.id %>">#<%= channel.name %></option>
+							<% } else { %>
+								<option value="<%= channel.id %>">#<%= channel.name %></option>
+							<% }
+						}) %>
+					</select>
+				</div>
+				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+		    		<label for="welcomeChannel">Welcome Channel</label>
+    				<select class="form-control" id="welcomeChannel" name="welcomeChannel">
+						<% guild.channels.forEach(channel => { 
+							if (channel.id === settings.welcomeChannel) {%>
+								<option selected value="<%= channel.id %>">#<%= channel.name %></option>
+							<% } else { %>
+								<option value="<%= channel.id %>">#<%= channel.name %></option>
+							<% }
+						}) %>
+					</select>
+				</div>
+				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+		    		<label for="muteRole">Muted Role</label>
+    				<select class="form-control" id="muteRole" name="muteRole">
+						<% guild.roles.forEach(role => { 
+							if (role.id === settings.muteRole) {%>
+								<option selected value="<%= role.id %>">@<%= role.name %></option>
+							<% } else { %>
+								<option value="<%= role.id %>">@<%= role.name %></option>
+							<% }
+						}) %>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+<%- include('./blocks/footer') %>
