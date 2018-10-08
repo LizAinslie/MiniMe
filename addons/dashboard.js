@@ -96,7 +96,7 @@ module.exports = client => {
 
 	app.get('/stats', (req, res) => {
 		res.render('stats.ejs', { 
-			user: client.users.get(req.user.id), 
+			user: client.user, 
 			bot: client, 
 			path: req.url, 
 			nVersion: process.version, 
