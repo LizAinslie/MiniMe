@@ -105,7 +105,7 @@ module.exports = client => {
 
 		if (!userProfile) {
 			userProfile = {
-				id: req.user.id,
+				id: req.params.id,
 				description: 'This user prefers to keep their autobiography a mystery.',
 				developer: false,
 				itemPick: 0,
@@ -114,7 +114,7 @@ module.exports = client => {
 			};
 		}
 
-		res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url, balance: balance });
+		res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.params.id), profile: userProfile, path: req.url, balance: balance });
 	})
 
 	app.get('/me', authenticate(), (req, res) => res.redirect(`/manage/user/${req.user.id}`));
