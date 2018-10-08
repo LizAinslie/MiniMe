@@ -49,7 +49,7 @@
           pathArray = path.split("/").slice(1);
           pathArray = pathArray.map(p=> {
             if(bot.guilds.has(p)) return bot.guilds.get(p).name;
-            return p.toProperCase();
+            return p;
           });
           let builtPath = "";
           for(let i = 0; i < pathArray.length; i++) {
