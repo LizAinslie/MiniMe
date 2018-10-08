@@ -5,6 +5,7 @@ const passport = require('passport');
 const session = require('express-session');
 const { Strategy } = require('passport-discord');
 const config = require('../config.json');
+const execute = require('child_process')
 
 const moment = require('moment')
 require('moment-duration-format')
@@ -108,7 +109,19 @@ module.exports = client => {
 	});
 
 	app.get('/admin', authenticate(true), (req, res) => {
-		res.render('admin.ejs');
+		res.render('admin.ejs', { updated: false });
+	});
+
+	app.get('/admin', authenticate(true), (req, res, next) => {
+		if (req.query.update) {
+			execute.exec('git pull && pm2 restart 4', (error, stdout, stderr) => {
+				if (error) { return console.error(error) }
+				console.log(stdout || stderr)
+			})
+		} else {
+			res.sendStatus(400)
+		}
+		res.render('admin.ejs', { updated: true });
 	});
 	
 	app.get('/user/:id', async (req, res) => {
