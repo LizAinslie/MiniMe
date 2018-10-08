@@ -6,6 +6,9 @@ const session = require('express-session');
 const { Strategy } = require('passport-discord');
 const config = require('../config.json');
 
+const moment = require('moment')
+require('moment-duration-format')
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -92,7 +95,17 @@ module.exports = client => {
 	});
 
 	app.get('/stats', (req, res) => {
-		res.render('stats.ejs');
+		res.render('stats.ejs', { 
+			user: client.users.get(req.user.id), 
+			bot: client, 
+			path: req.url, 
+			nVersion: process.version, 
+			channels: client.channels.size, 
+			servers: client.guilds.size, 
+			uptime: moment.duration(client.uptime).format(' D [days], H [hrs], m [mins], s [secs]'), 
+			memoryUsage: (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2),
+			members: client.users.size
+		});
 	});
 
 	app.get('/admin', authenticate(true), (req, res) => {
