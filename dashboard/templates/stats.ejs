@@ -5,16 +5,12 @@
         <img class="mr-3" src="<%= bot.user.dynamicAvatarURL("png", 2048) %>" alt="Avatar">
         <div class="media-body">
           <h3 class="mt-0">Mini Me</h5>
-          Stats
+          Statistics
         </div>
       </div>
     </div>
   </div>
   <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col col-10"><h3>Statistics</h3>
-      </div>
-    </div>
     <div class="row justify-content-md-center">
       <div class="col-5 text-nowrap"><i class="fa fa-fw fa-server" aria-hidden="true"></i> Servers:</div>
       <div class="col-5 text-nowrap"><strong><%= servers %></strong></div>
@@ -36,4 +32,4 @@
       <div class="col-5 text-nowrap"><strong><%= nVersion %></strong></div>
     </div>
   </div>
-<% include ./blocks/footer %>
+<%- include('./blocks/footer') %>
