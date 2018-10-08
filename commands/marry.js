@@ -11,7 +11,7 @@ exports.run = (client, msg, args) => {
             let responses = await msg.channel.awaitMessages(m => m.author.id === toMarry.id, { time: 10000, maxMatches: 1 });
             
             if (responses[0].content.toLowerCase() == "yes") {
-                msg.channel.createMessage(`<@${msg.author.id}>, <@${toMarry.id}> accepted your proposal!`)
+                msg.channel.createMessage(`<@${msg.author.id}>, <@${toMarry.id}> accepted your proposal! :tada:`)
                 
                 client.r.table('users').get(msg.author.id).update({
                     marriedTo: toMarry.id,
@@ -23,6 +23,10 @@ exports.run = (client, msg, args) => {
                         msg.channel.createMessage(`<@${msg.author.id}> and <@${toMarry.id}> are married now! :tada:`)
                     })
                 })
+            } else if (responses[0].content.toLowerCase() == "no") {
+                msg.channel.createMessage(`<@${msg.author.id}>, <@${toMarry.id}> declined your proposal. :cry:`)
+            } else {
+                msg.channel.createMessage(`<@${toMarry.id}>, you must say either \`yes\` or \`no\`. Cancelling...`)
             }
         })
     })
