@@ -1,3 +1,5 @@
+const resolveUser = require('../util/resolveUser.js')
+
 exports.run = (client, msg, args) => {
     client.r.table('users').get(msg.author.id).run().then(profile => {
         if (!profile) return msg.channel.createMessage(':exclamation: │ You haven\'t set up your profile!')
