@@ -3,6 +3,7 @@
 const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
+const RethinkSession = require('session-rethinkdb')(session);
 const { Strategy } = require('passport-discord');
 const config = require('../config.json');
 const execute = require('child_process')
@@ -30,8 +31,11 @@ module.exports = client => {
 		};
 	};
 
+	const rethinkStore = new RethinkSession(client.r);
+
 	app.use(session({
-		secret: client.config.dashboard.sessionSecret
+		secret: client.config.dashboard.sessionSecret,
+		store: rethinkStore
 	}));
 
 	app.use(passport.initialize());
@@ -108,20 +112,20 @@ module.exports = client => {
 		});
 	});
 
-	app.get('/admin', authenticate(true), (req, res) => {
-		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: false });
+	app.get('/admin', authenticate(true), (req, res, next) => {
+		if (!req.query.update) return next();
+
+		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: true });
+
+		execute.exec('git pull', (error, stdout, stderr) => {
+			if (error) { return console.error(error) }
+			console.log(stdout || stderr)
+			process.exit();
+		})
 	});
 
-	app.get('/admin', authenticate(true), (req, res, next) => {
-		if (req.query.update) {
-			execute.exec('git pull && pm2 restart 4', (error, stdout, stderr) => {
-				if (error) { return console.error(error) }
-				console.log(stdout || stderr)
-			})
-		} else {
-			res.sendStatus(400)
-		}
-		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: true });
+	app.get('/admin', authenticate(true), (req, res) => {
+		res.render('admin.ejs', { bot: client, user: req.user, path: req.url, updated: false });
 	});
 	
 	app.get('/user/:id', async (req, res) => {
@@ -195,7 +199,19 @@ module.exports = client => {
 		res.render('user.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url, balance: balance });
 	});
 
+	app.get('/serverAdd', (req, res) => {
+		const id = req.query.guild_id;
+		if (!id) return res.sendStatus(400);
+
+		res.redirect(`/manage/server/${id}`);
+	});
+
 	app.get('/manage/server/:id', authenticate(), (req, res) => {
+		if (!req.user.servers.find(s => s.id === req.params.id)) return res.sendStatus(401);
+
+		const server = client.guilds.get(req.params.id);
+		if (!server) return res.redirect(`https://discordapp.com/oauth2/authorize?scope=bot&permissions=0&client_id=${client.user.id}&guild_id=${req.params.id}&response_type=code&redirect_uri=${encodeURIComponent(`https://${config.dashboard.domain}/serverAdd`)}`);
+
 		res.render('server.ejs');
 	});
 
