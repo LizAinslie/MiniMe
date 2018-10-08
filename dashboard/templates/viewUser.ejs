@@ -1,0 +1,41 @@
+<%- include('blocks/header', {bot, user, path}) %>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="media">
+                <img class="mr-3" src="<%= user.dynamicAvatarURL("png", 2048) %>" alt="Avatar">
+                <div class="media-body">
+                    <h5 class="mt-0"><% user.username + '#' + user.username %></h5>
+                    <%= profile.description %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+		<div class="row">
+			<div class="col-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="card card-body">
+					<h5 class="card-title">Rings:</h5>
+					<p class="card-text"><%= profile.itemRing %></p>
+				</div>
+			</div>
+			<div class="col-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="card card-body">
+					<h5 class="card-title">Picks:</h5>
+					<p class="card-text"><%= profile.itemPick %></p>
+				</div>
+			</div>
+			<div class="col-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="card card-body">
+					<h5 class="card-title">Married To:</h5>
+					<p class="card-text"><%= profile.marriedTo ? bot.users.get(profile.marriedTo).username : 'Nobody' %></p>
+				</div>
+			</div>
+			<div class="col-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="card card-body">
+					<h5 class="card-title">Balance:</h5>
+					<p class="card-text"><%= balance ? balance.amount : 0 %> Minicoins</p>
+				</div>
+			</div>
+		</div>
+    </div>
+<% include ./blocks/footer %>
