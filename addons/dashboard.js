@@ -142,18 +142,14 @@ module.exports = client => {
 		res.render('viewUser.ejs', {  bot: client, user: client.users.get(req.params.id), profile: userProfile, path: req.url, balance: balance });
 	})
 
-	app.get('/me', authenticate(), (req, res) => res.redirect(`/manage/user/${req.user.id}`));
-	
-	app.get('/manage/user/:id', authenticate(), async (req, res, next) => {
-		if(req.params.id != req.user.id) return res.sendStatus(403)
+	app.get('/me',  authenticate(), async (req, res, next) => {
 		let description = req.query.description;
-		let balance = await client.r.table('balance').get(req.params.id)
+		let balance = await client.r.table('balance').get(req.user.id)
 		
 		if (!description) return next();
-
 		if (description.length > 250) description = `${description.slice(0, 247)}...`;
 
-		client.r.table('users').get(req.params.id).run().then(user => {
+		client.r.table('users').get(req.user.id).run().then(user => {
 			if (user) {
 				client.r.table('users').get(user.id).update({
 					description: description
@@ -181,10 +177,9 @@ module.exports = client => {
 		})
 	})
 
-	app.get('/manage/user/:id', authenticate(), async (req, res) => {
-		if(req.params.id != req.user.id) return res.sendStatus(403)
-		let userProfile = await client.r.table('users').get(req.params.id);
-		let balance = await client.r.table('balance').get(req.params.id)
+	app.get('/me', authenticate(), async (req, res) => {
+		let userProfile = await client.r.table('users').get(req.user.id);
+		let balance = await client.r.table('balance').get(req.user.id)
 
 		if (!userProfile) {
 			userProfile = {
@@ -209,7 +204,7 @@ module.exports = client => {
 	app.get('/login', passport.authenticate('discord'));
 
 	app.get('/callback', passport.authenticate('discord'), (req, res) => {
-		res.redirect(`/manage/user/${req.user.id}`);
+		res.redirect(`/me`);
 	});
 };
 
