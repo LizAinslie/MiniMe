@@ -4,7 +4,7 @@
             <div class="media">
                 <img class="mr-3" src="<%= user.dynamicAvatarURL("png", 2048) %>" alt="Avatar">
                 <div class="media-body">
-                    <h3 class="mt-0"><%= user.username + '#' + user.username %></h5>
+                    <h3 class="mt-0"><%= user.username + '#' + user.discriminator %></h5>
                     <%= profile.description %>
                 </div>
             </div>
