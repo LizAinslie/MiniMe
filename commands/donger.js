@@ -28,9 +28,10 @@ exports.run = (client, msg, args) => {
                 })
             })
             break;
-        case 'list':
+        case 'category':
+        case 'cat':
             client.r.table('dongers').filter({ category: args.join(' ').toLowerCase() }).run().then(category => {
-                msg.channel.createMessage(`**Dongers in category ${args[0]}:**\n${category.map(c => `${c.id}\n`)}`)
+                msg.channel.createMessage(`**Dongers in category ${args[0]}:**\n${category.map(c => `${c.id}`).join('\n')}`)
             })
     }
 }
@@ -38,7 +39,7 @@ exports.run = (client, msg, args) => {
 exports.help = {
   name: 'donger',
   description: 'Access dongers in Discord!',
-  usage: 'donger <list <category>|info <donger>>',
+  usage: 'donger <cat <category>|info <donger>>',
   fullDesc: 'Access dongers in Discord!',
   type: 'util',
   status: 2,
