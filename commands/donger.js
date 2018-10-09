@@ -53,7 +53,7 @@ exports.run = (client, msg, args) => {
                         verified: false
                     }).run().then(donger => {
                         msg.channel.createMessage(`:white_check_mark: │ Added **${args.join(' ')}** to be reviewed! View it using the id **${did}**.`)
-                        client.channels.get('499349902346682370').createMessage({
+                        client.guilds.get('497450474711023617').channels.get('499349902346682370').createMessage({
                             embed: {
                                 author: {
                                     icon_url: msg.author.avatarURL,
