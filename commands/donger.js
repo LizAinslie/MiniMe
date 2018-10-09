@@ -46,7 +46,7 @@ exports.run = (client, msg, args) => {
             client.r.table('dongers').getAll(args.join(' '), { index: 'emote' }).run().then(dongers => {
                 if (!dongers.length) {
                     client.r.table('dongers').insert({
-                        id: args.randomstring.generate(3),
+                        id: randomstring.generate(3),
                         emote: args.join(' '),
                         categories: [],
                         verified: false
