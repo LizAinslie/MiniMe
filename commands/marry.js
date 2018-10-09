@@ -8,7 +8,7 @@ exports.run = (client, msg, args) => {
         resolveUser(client, args.join(' ')).then(async toMarry => {
             if (toMarry.bot) return msg.channel.createMessage(':exclamation: │ You can\'t marry a bot!')
             msg.channel.createMessage(`<@${toMarry.id}>, do you accept <@${msg.author.id}>'s proposal?`)
-            let responses = await msg.channel.awaitMessages(m => m.author.id === toMarry.id, { time: 10000, maxMatches: 1 });
+            let responses = await msg.channel.awaitMessages(m => m.author.id === toMarry.id, { time: 10000, maxMatches: 100 });
             
             if (responses[0].content.toLowerCase() == "yes") {
                 msg.channel.createMessage(`<@${msg.author.id}>, <@${toMarry.id}> accepted your proposal! :tada:`)
