@@ -20,7 +20,7 @@ exports.run = (client, msg, args) => {
                 icon_url: client.user.avatarURL
               },
               timestamp: new Date(),
-              color: getEmbedColor(msg),
+              color: getEmbedColor(client, msg),
               image: {
                 url: 'attachment://triggered.gif'
               }
@@ -42,7 +42,7 @@ exports.run = (client, msg, args) => {
               icon_url: client.user.avatarURL
             },
             timestamp: new Date(),
-            color: getEmbedColor(msg),
+            color: getEmbedColor(client, msg),
             image: {
               url: 'attachment://triggered.gif'
             }
