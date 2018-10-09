@@ -20,8 +20,8 @@ exports.run = (client, msg, args) => {
                                 value: donger.id
                             },
                             {
-                                name: 'Category',
-                                value: donger.category
+                                name: 'Categories',
+                                value: donger.categories.map(c => c).join(', ')
                             }
                         ]
                     }
@@ -30,7 +30,9 @@ exports.run = (client, msg, args) => {
             break;
         case 'category':
         case 'cat':
-            client.r.table('dongers').filter({ category: args.join(' ').toLowerCase() }).run().then(category => {
+            client.r.table('dongers').filter(donger => {
+                donger("categories").contains(args.join(' ').toLowerCase())
+            }).run().then(category => {
                 msg.channel.createMessage(`**Dongers in category ${args[0]}:**\n${category.map(c => c.id).join('\n')}`)
             })
     }
