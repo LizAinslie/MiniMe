@@ -40,7 +40,7 @@ exports.run = (client, msg, args) => {
             client.r.table('dongers').filter(donger => {
                 return donger('categories').contains(args.join(' ').toLowerCase()).and(donger('verified').eq(true))
             }).run().then(category => {
-                msg.channel.createMessage(`__**Dongers in category ${args[0]}:**__\n${category.map(c => `**${c.id}** │ ${escapeMarkdown(c.emote)}`).join('\n')}\n\n__**Hint:** Use the bold text on the left to get a specific donger's info.__`)
+                msg.channel.createMessage(`__**Dongers in category ${args[0]}:**__\n${category.map(c => `**${c.id}** │ ${c.emote.replace(/\*/g, '\\*').replace(/~/g, '\\~'.replace(/_/g, '\\_'))}`).join('\n')}\n\n__**Hint:** Use the bold text on the left to get a specific donger's info.__`)
             })
             break;
         case 'submit':
