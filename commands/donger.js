@@ -31,7 +31,7 @@ exports.run = (client, msg, args) => {
         case 'category':
         case 'cat':
             client.r.table('dongers').filter(donger => {
-                donger("categories").contains(args.join(' ').toLowerCase())
+                return donger("categories").contains(args.join(' ').toLowerCase())
             }).run().then(category => {
                 msg.channel.createMessage(`**Dongers in category ${args[0]}:**\n${category.map(c => c.id).join('\n')}`)
             })
