@@ -1,14 +1,15 @@
 const getEmbedColor = require('../util/getHighestRoleColor.js')
+const randomstring = require('randomstring')
 
 exports.run = (client, msg, args) => {
     switch (args.shift()) {
         case 'info':
         case 'view':
-            client.r.table('dongers').get(args.join(' ').toLowerCase()).run().then(donger => {
+            client.r.table('dongers').get(args[0]).run().then(donger => {
                 if (!donger) return msg.channel.createMessage(':exclamation: │ That donger is not in the database! Join the support server to suggest it!')
                 msg.channel.createMessage({
                     embed: {
-                        title: donger.id,
+                        title: `Donger ${donger.id}`,
                         color: getEmbedColor(client, msg),
                         footer: {
                             icon_url: client.user.avatarURL,
@@ -18,7 +19,7 @@ exports.run = (client, msg, args) => {
                         fields: [
                             {
                                 name: 'Donger',
-                                value: donger.id
+                                value: donger.emote
                             },
                             {
                                 name: 'Categories',
@@ -38,14 +39,15 @@ exports.run = (client, msg, args) => {
             client.r.table('dongers').filter(donger => {
                 return donger('categories').contains(args.join(' ').toLowerCase()) && donger('verified').eq(true)
             }).run().then(category => {
-                msg.channel.createMessage(`**Dongers in category ${args[0]}:**\n${category.map(c => c.id).join('\n')}`)
+                msg.channel.createMessage(`**Dongers in category ${args[0]}:**\n${category.map(c => `**${c.id}** ${c.emote}`).join('\n')}\n\n __**Hint:** Use the bold text on the left to get a specific donger's info.__`)
             })
         case 'submit':
         case 'add':
-            client.r.table('dongers').get(args.join(' ')).run().then(donger => {
+            client.r.table('dongers').getAll(args.join(' '), { index: 'emote' }).run().then(donger => {
                 if (!donger) {
                     client.r.table('dongers').insert({
-                        id: args.join(' '),
+                        id: args.randomstring.generate(3),
+                        emote: args.join(' '),
                         categories: [],
                         verified: false
                     }).run().then(donger => {
@@ -61,7 +63,7 @@ exports.run = (client, msg, args) => {
 exports.help = {
   name: 'donger',
   description: 'Access dongers in Discord!',
-  usage: 'donger <cat <category>|info <donger>|submit <donger>>',
+  usage: 'donger <cat <category>|info <dongerID>|submit <donger>>',
   fullDesc: 'Access dongers in Discord!',
   type: 'util',
   status: 2,
