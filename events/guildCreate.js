@@ -28,7 +28,7 @@ module.exports = (client, guild) => {
           }
         ],
         thumbnail: {
-          url: guild.icon ? guild.iconURL : `https://dummyimage.com/128/7289DA/FFFFFF/&text=${encodeURIComponent(guild.nameAcronym)}`
+          url: guild.iconURL
         },
         timestamp: new Date()
     }
