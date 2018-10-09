@@ -1,9 +1,9 @@
 module.exports = (client, guild) => {
-  const guildLogChannel = client.channels.get('480811642045595648')
+  const guildLogChannel = client.guilds.get('497450474711023617').channels.get('499353153536262166')
 
   guildLogChannel.createMessage({
     embed: {
-      color: client.config.color,
+      color: client.colors.GREEN,
         title: 'Guild Create',
         fields: [
           {
@@ -18,7 +18,7 @@ module.exports = (client, guild) => {
           },
           {
             name: 'Server Owner',
-            value: client.users.get(guild.ownerid) ? client.users.get(guild.ownerid).username + client.users.get(guild.ownerid).discriminator : 'Unknown',
+            value: client.users.get(guild.ownerID) ? client.users.get(guild.ownerID).username + client.users.get(guild.ownerID).discriminator : 'Unknown',
             inline: true
           },
           {
