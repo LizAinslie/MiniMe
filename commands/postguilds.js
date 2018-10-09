@@ -2,6 +2,7 @@
 
 const snekfetch = require('snekfetch')
 const Logger = require('../util/Logger.js')
+const DisBots = require('discordbots.tk');
 
 exports.run = (client, msg) => {
   client.r.table('users').get(msg.author.id).run().then(user => {
@@ -83,6 +84,9 @@ exports.run = (client, msg) => {
       })
       Logger.error(client, `Discordbot.world server count update failed : ${err}`)
     })
+    const DisBotsClient = new DisBots(client.config.apis.botlists.dbtk); 
+    DisBotsClient.postServerCount(client.guilds.size)
+    msg.channel.createMessage(':white_check_mark: │ Updated **discordbots.tk** stats.')
   })
 }
 
