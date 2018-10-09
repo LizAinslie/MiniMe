@@ -17,7 +17,7 @@
 		    		<label for="logChannel">Logging Channel</label>
 					<select class="form-control" id="logChannel" name="logChannel">
 						<% if (settings.logChannel) { %>
-							<option value="<%= null %>">None</option>
+							<option value="null">None</option>
 							<% guild.channels.forEach(channel => { 
 								if (channel.id === settings.logChannel) { %>
 									<option selected value="<%= channel.id %>">#<%= channel.name %></option>
@@ -37,7 +37,7 @@
 		    		<label for="welcomeChannel">Welcome Channel</label>
     				<select class="form-control" id="welcomeChannel" name="welcomeChannel">
 						<% if (settings.welcomeChannel) { %>
-							<option value="<%= null %>">None</option>
+							<option value="null">None</option>
 							<% guild.channels.forEach(channel => { 
 								if (channel.id === settings.welcomeChannel) { %>
 									<option selected value="<%= channel.id %>">#<%= channel.name %></option>
@@ -57,7 +57,7 @@
 		    		<label for="muteRole">Muted Role</label>
     				<select class="form-control" id="muteRole" name="muteRole">
 						<% if (settings.muteRole) { %>
-							<option value="<%= null %>">None</option>
+							<option value="null">None</option>
 							<% guild.roles.forEach(role => { 
 								if (role.id === settings.muteRole) { %>
 									<option selected value="<%= role.id %>">@<%= role.name %></option>
