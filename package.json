@@ -27,6 +27,7 @@
     "enmap-sqlite": "latest",
     "eris": "^0.9.0",
     "eris-additions": "^1.2.5",
+    "escape-markdown": "^1.0.4",
     "express": "^4.16.3",
     "express-session": "latest",
     "fast-html-parser": "latest",

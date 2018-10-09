@@ -1,5 +1,6 @@
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 const randomstring = require('randomstring')
+const escapeMarkdown = require('../util/escapeMarkdown.js')
 
 exports.run = (client, msg, args) => {
     switch (args.shift()) {
@@ -39,7 +40,7 @@ exports.run = (client, msg, args) => {
             client.r.table('dongers').filter(donger => {
                 return donger('categories').contains(args.join(' ').toLowerCase()).and(donger('verified').eq(true))
             }).run().then(category => {
-                msg.channel.createMessage(`__**Dongers in category ${args[0]}:**__\n${category.map(c => `**${c.id}** │ ${c.emote.replace(/\*/g, '\*').replace(/_/g, '\_').replace(/~/g, '\~')}`).join('\n')}\n\n__**Hint:** Use the bold text on the left to get a specific donger's info.__`)
+                msg.channel.createMessage(`__**Dongers in category ${args[0]}:**__\n${category.map(c => `**${c.id}** │ \`${c.emote}\``).join('\n')}\n\n__**Hint:** Use the bold text on the left to get a specific donger's info.__`)
             })
             break;
         case 'submit':
