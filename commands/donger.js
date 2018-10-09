@@ -39,9 +39,11 @@ exports.run = (client, msg, args) => {
             client.r.table('dongers').filter(donger => {
                 return donger('categories').contains(args.join(' ').toLowerCase()) && donger('verified').eq(true)
             }).run().then(category => {
-                msg.channel.createMessage(`**Dongers in category ${args[0]}:**\n${category.map(c => `**${c.id}** ${c.emote}`).join('\n')}\n\n __**Hint:** Use the bold text on the left to get a specific donger's info.__`)
+                msg.channel.createMessage(`**Dongers in category ${args[0]}:**\n${category.map(c => `**${c.id}** │ ${c.emote}`).join('\n')}\n\n __**Hint:** Use the bold text on the left to get a specific donger's info.__`)
             })
+            break;
         case 'submit':
+        case 'create':
         case 'add':
             client.r.table('dongers').getAll(args.join(' '), { index: 'emote' }).run().then(dongers => {
                 if (!dongers.length) {
@@ -57,6 +59,7 @@ exports.run = (client, msg, args) => {
                     msg.channel.createMessage(':exclamation: │ That donger already exists!')
                 }
             })
+            break;
     }
 }
 
