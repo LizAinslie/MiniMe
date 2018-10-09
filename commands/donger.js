@@ -49,7 +49,7 @@ exports.run = (client, msg, args) => {
                         categories: [],
                         verified: false
                     }).run().then(donger => {
-                        msg.channel.createMessage(`:white_check_mark: │ Added **${donger.id}** to be reviewed!`)
+                        msg.channel.createMessage(`:white_check_mark: │ Added **${args.join(' ')}** to be reviewed!`)
                     })
                 } else {
                     msg.channel.createMessage(':exclamation: │ That donger already exists!')
