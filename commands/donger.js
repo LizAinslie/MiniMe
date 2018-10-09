@@ -23,7 +23,7 @@ exports.run = (client, msg, args) => {
                             },
                             {
                                 name: 'Categories',
-                                value: donger.categories.map(c => c).join(', ')
+                                value: donger.categories.length ? donger.categories.map(c => c).join(', ') : 'None'
                             },
                             {
                                 name: 'Verified',
