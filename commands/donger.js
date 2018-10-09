@@ -43,24 +43,19 @@ exports.run = (client, msg, args) => {
             })
         case 'submit':
         case 'add':
-            // Create a secondary index on the last_name attribute
-            client.r.table('dongers').indexCreate('emote').run().then(() => {
-                client.r.table('dongers').indexWait('emote').run().then(() => {
-                    client.r.table('dongers').getAll(args.join(' '), { index: 'emote' }).run().then(donger => {
-                        if (!donger) {
-                            client.r.table('dongers').insert({
-                                id: args.randomstring.generate(3),
-                                emote: args.join(' '),
-                                categories: [],
-                                verified: false
-                            }).run().then(donger => {
-                                msg.channel.createMessage(`:white_check_mark: │ Added **${args.join(' ')}** to be reviewed!`)
-                            })
-                        } else {
-                            msg.channel.createMessage(':exclamation: │ That donger already exists!')
-                        }
+            client.r.table('dongers').getAll(args.join(' '), { index: 'emote' }).run().then(donger => {
+                if (!donger) {
+                    client.r.table('dongers').insert({
+                        id: args.randomstring.generate(3),
+                        emote: args.join(' '),
+                        categories: [],
+                        verified: false
+                    }).run().then(donger => {
+                        msg.channel.createMessage(`:white_check_mark: │ Added **${args.join(' ')}** to be reviewed!`)
                     })
-                })
+                } else {
+                    msg.channel.createMessage(':exclamation: │ That donger already exists!')
+                }
             })
     }
 }
