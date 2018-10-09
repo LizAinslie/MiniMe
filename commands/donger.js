@@ -3,7 +3,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 exports.run = (client, msg, args) => {
     switch (args.shift()) {
         case 'info':
-            client.r.table('dongers').get(args[0]),run().then(donger => {
+            client.r.table('dongers').get(args[0]).run().then(donger => {
                 if (!donger) return msg.channel.createMessage(':exclamation: │ That donger is not in the database! Join the support server to suggest it!')
                 msg.channel.createMessage({
                     embed: {
