@@ -22,7 +22,7 @@ exports.run = (client, msg, args) => {
                             fields: [
                                 {
                                     name: 'Balance',
-                                    value: balance ? '<:coins:482589075459801098> ' + balance.amount.toString() : '<:coins:482589075459801098> 0',
+                                    value: balance ? '<:coins:482589075459801098>' + balance.amount.toString() + ' Minicoins' : '<:coins:482589075459801098>0 Minicoins',
                                     inline: true
                                 },
                                 {
@@ -62,7 +62,7 @@ exports.run = (client, msg, args) => {
                         fields: [
                             {
                                 name: 'Balance',
-                                value: balance ? balance.amount.toString() : 0,
+                                value: balance ? '<:coins:482589075459801098>' + balance.amount.toString() + ' Minicoins' : '<:coins:482589075459801098>0 Minicoins',
                                 inline: true
                             },
                             {
