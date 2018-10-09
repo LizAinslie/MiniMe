@@ -199,6 +199,10 @@ module.exports = client => {
 		res.render('user.ejs', {  bot: client, user: client.users.get(req.user.id), profile: userProfile, path: req.url, balance: balance });
 	});
 
+	app.get('/dashboard', authenticate(), (req, res) => {
+		res.render('dashboard.ejs');
+	});
+
 	app.get('/serverAdd', (req, res) => {
 		const id = req.query.guild_id;
 		if (!id) return res.sendStatus(400);
@@ -206,12 +210,51 @@ module.exports = client => {
 		res.redirect(`/manage/server/${id}`);
 	});
 
-	app.get('/manage/server/:id', authenticate(), async (req, res) => {
+	app.get('/manage/server/:id', authenticate(), async (req, res, next) => {
 		if (!req.user.servers.find(s => s.id === req.params.id)) return res.sendStatus(401);
-
+		
 		const server = client.guilds.get(req.params.id);
 		if (!server) return res.redirect(`https://discordapp.com/oauth2/authorize?scope=bot&permissions=0&client_id=${client.user.id}&guild_id=${req.params.id}&response_type=code&redirect_uri=${encodeURIComponent(`https://${config.dashboard.domain}/serverAdd`)}`);
+	
+		next();
+	});
+	
+	app.get('/manage/server/:id', async (req, res, next) => {
+		const server = client.guilds.get(req.params.id);
 		
+		const dbEntry = await client.r.table('serverSettings').get(server.id);
+		
+		const defaults = dbEntry || {
+			id: server.id,
+			doLogs: true,
+			doWelcomes: true,
+			logChannel: null,
+			muteRole: null,
+			welcomeChannel: null
+		};
+		
+		const newData = {};
+		
+		const isBool = v => ['true', 'false'].indexOf(v) !== -1;
+		const serverHas = (value, type) => value === 'null' || type.has(value);
+		
+		if (isBool(req.query.doLogs)) newData.doLogs = JSON.parse(req.query.doLogs);
+		if (isBool(req.query.doWelcomes)) newData.doWelcomes = JSON.parse(req.query.doWelcomes);
+		
+		if (serverHas(req.query.logChannel, server.channels)) newData.logChannel = req.query.logChannel === 'null' ? null : req.query.logChannel;
+		if (serverHas(req.query.muteRole, server.roles)) newData.muteRole = req.query.muteRole === 'null' ? null : req.query.muteRole;
+		if (serverHas(req.query.welcomeChannel, server.channels)) newData.welcomeChannel = req.query.welcomeChannel === 'null' ? null : req.query.welcomeChannel;
+		
+		const serverData = Object.assign(defaults, newData);
+		
+		if (!dbEntry) await client.r.table('serverSettings').insert(serverData);
+		else await client.r.table('serverSettings').update(serverData);
+		
+		next();
+	});
+
+	app.get('/manage/server/:id', async (req, res) => {
+		const server = client.guilds.get(req.params.id);
 		let settings = await client.r.table('serverSettings').get(server.id)
 		
 		if (!settings) {

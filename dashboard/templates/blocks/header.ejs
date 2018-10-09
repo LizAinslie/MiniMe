@@ -46,14 +46,14 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
         <%
-          pathArray = path.split("/").slice(1);
+          pathArray = path.split('?')[0].split("/").slice(1);
           pathArray = pathArray.map(p=> {
             if(bot.guilds.has(p)) return bot.guilds.get(p).name;
             return p;
           });
           let builtPath = "";
           for(let i = 0; i < pathArray.length; i++) {
-            builtPath += "/"+path.split("/").slice(1)[i]; %>
+            builtPath += "/"+path.split('?')[0].split("/").slice(1)[i]; %>
           <li class="breadcrumb-item<% if((i+1) === pathArray.length) {%> active"><%= pathArray[i] %><% } else { %>"><a href="<%= builtPath %>"><%= pathArray[i] %></a><% } %></li>
         <% } %>
       </ol>
