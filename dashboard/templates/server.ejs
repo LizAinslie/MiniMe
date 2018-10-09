@@ -74,6 +74,35 @@
 					</select>
 				</div>
 			</div>
+			<div class="form-row">
+				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+		    		<label for="doLogs">Do Logging</label>
+					<select class="form-control" id="doLogs" name="doLogs">
+						<% if (settings.doLogs) { %>
+							<option selected value="<%= true %>">Yes</option>
+							<option value="<%= false %>">No</option>
+						<% } else { %>
+							<option value="<%= true %>">Yes</option>
+							<option selected value="<%= false %>">No</option>
+						<% } %>
+					</select>
+				</div>
+				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+		    		<label for="doWelcomes">Do Welcomes</label>
+    				<select class="form-control" id="doWelcomes" name="doWelcomes">
+						<% if (settings.doWelcomes) { %>
+							<option selected value="<%= true %>">Yes</option>
+							<option value="<%= false %>">No</option>
+						<% } else { %>
+							<option value="<%= true %>">Yes</option>
+							<option selected value="<%= false %>">No</option>
+						<% } %>
+					</select>
+				</div>
+				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+		    		<input type="submit" class="btn btn-primary btn-block" />
+				</div>
+			</div>
 		</form>
 	</div>
 <%- include('./blocks/footer') %>

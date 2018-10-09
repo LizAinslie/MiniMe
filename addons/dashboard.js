@@ -219,7 +219,9 @@ module.exports = client => {
 				id: server.id,
 				logChannel: null,
 				welcomeChannel: null,
-				muteRole: null
+				muteRole: null,
+				doWelcomes: true,
+				doLogs: true
 			}
 		}
 		
