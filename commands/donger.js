@@ -36,7 +36,9 @@ exports.run = (client, msg, args) => {
             break;
         case 'category':
         case 'cat':
-            client.r.table('dongers').filter(donger => donger.categories.includes(args.join(' ').toLowerCase()) && donger.verified).run().then(category => {
+            client.r.table('dongers').filter(donger => {
+                return donger('categories').contains(args.join(' ').toLowerCase()).and(donger('verified').eq(true))
+            }).run().then(category => {
                 msg.channel.createMessage(`__**Dongers in category ${args[0]}:**__\n${category.map(c => `**${c.id}** │ ${c.emote}`).join('\n')}\n\n__**Hint:** Use the bold text on the left to get a specific donger's info.__`)
             })
             break;
