@@ -4,7 +4,7 @@ module.exports = (client, guild) => {
   guildLogChannel.createMessage({
     embed: {
       color: client.colors.RED,
-        title: 'Guild Create',
+        title: 'Guild Delete',
         fields: [
           {
             name: 'Server Name',
@@ -18,7 +18,7 @@ module.exports = (client, guild) => {
           },
           {
             name: 'Server Owner',
-            value: client.users.get(guild.ownerid) ? client.users.get(guild.ownerid).username + '#' + client.users.get(guild.ownerid).discriminator : 'Unknown',
+            value: client.users.get(guild.ownerID) ? client.users.get(guild.ownerID).username + '#' + client.users.get(guild.ownerID).discriminator : 'Unknown',
             inline: true
           },
           {
