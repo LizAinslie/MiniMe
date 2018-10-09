@@ -19,7 +19,7 @@
 						<% if (settings.logChannel) { %>
 							<option value="<%= null %>">None</option>
 							<% guild.channels.forEach(channel => { 
-								if (channel.id === settings.logChannel) {%>
+								if (channel.id === settings.logChannel) { %>
 									<option selected value="<%= channel.id %>">#<%= channel.name %></option>
 								<% } else { %>
 									<option value="<%= channel.id %>">#<%= channel.name %></option>
@@ -39,7 +39,7 @@
 						<% if (settings.welcomeChannel) { %>
 							<option value="<%= null %>">None</option>
 							<% guild.channels.forEach(channel => { 
-								if (channel.id === settings.welcomeChannel) {%>
+								if (channel.id === settings.welcomeChannel) { %>
 									<option selected value="<%= channel.id %>">#<%= channel.name %></option>
 								<% } else { %>
 									<option value="<%= channel.id %>">#<%= channel.name %></option>
@@ -59,7 +59,7 @@
 						<% if (settings.muteRole) { %>
 							<option value="<%= null %>">None</option>
 							<% guild.roles.forEach(role => { 
-								if (role.id === settings.muteRole) {%>
+								if (role.id === settings.muteRole) { %>
 									<option selected value="<%= role.id %>">@<%= role.name %></option>
 								<% } else { %>
 									<option value="<%= role.id %>">@<%= role.name %></option>
