@@ -27,7 +27,7 @@
 							}) %>
 						<% } else { %>
 							<option selected value="<%= null %>">None</option>
-							<% guild.channels.forEach(channel => {
+							<% guild.channels.forEach(channel => { %>
 								<option value="<%= channel.id %>">#<%= channel.name %></option>
 							<% }) %>
 						<% } %>
@@ -47,7 +47,7 @@
 							}) %>
 						<% } else { %>
 							<option selected value="<%= null %>">None</option>
-							<% guild.channels.forEach(channel => {
+							<% guild.channels.forEach(channel => { %>
 								<option value="<%= channel.id %>">#<%= channel.name %></option>
 							<% }) %>
 						<% } %>
@@ -67,7 +67,7 @@
 							}) %>
 						<% } else { %>
 							<option selected value="<%= null %>">None</option>
-							<% guild.roles.forEach(role => {
+							<% guild.roles.forEach(role => { %>
 								<option value="<%= role.id %>">@<%= role.name %></option>
 							<% }) %>
 						<% } %>
