@@ -43,8 +43,8 @@ exports.run = (client, msg, args) => {
             })
         case 'submit':
         case 'add':
-            client.r.table('dongers').getAll(args.join(' '), { index: 'emote' }).run().then(donger => {
-                if (!donger) {
+            client.r.table('dongers').getAll(args.join(' '), { index: 'emote' }).run().then(dongers => {
+                if (!dongers.length) {
                     client.r.table('dongers').insert({
                         id: args.randomstring.generate(3),
                         emote: args.join(' '),
