@@ -1,29 +1,56 @@
-exports.run = async (client, message, args) => {
-  if (!message.member.permission.has('KICK_MEMBERS')) { return message.channel.createMessage(':no_entry_sign: │ You need the permission `KICK_MEMBERS` to use this.') }
+const resolveMember = require('../util/resolveMember.js')
 
-  // Let's first check if we have a member and if we can kick them!
-  // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
-  // We can also support getting the member by ID, which would be args[0]
-  let member = message.mentions.members.first()
-  if (!member) { return message.reply('Please mention a valid member of this server') }
-  if (!member.kickable) { return message.reply('I cannot kick this user! Do they have a higher role? Do I have kick permissions?') }
-
-  // slice(1) removes the first part, which here should be the user mention or ID
-  // join(' ') takes all the various parts to make it a single string.
-  let reason = args.slice(1).join(' ')
-  if (!reason) { reason = 'No reason provided' }
-
-  // Now, time for a swift kick in the nuts!
-  await member.kick(reason)
-    .catch(error => message.channel.createMessage(`Sorry ${message.author} I couldn't kick because of : ${error}`))
-    message.channel.createMessage(`${member.user.username}#${member.user.discriminator} has been kicked by ${message.author.username}#${message.author.discriminator} because: ${reason}`)
+exports.run = async (client, msg, args) => {
+  if (!msg.member.permission.has('kickMembers')) return msg.channel.createMessage(':no_entry_sign: │ You need the `Kick Members` permission in order to use this command.');
+	if (!msg.channel.guild.members.get(client.user.id).permission.has('kickMembers')) return msg.channel.createMessage(':no_entry_sign: │ I need the `Kick Members` permission in order to complete this command.');
+	if (args.length < 1) return msg.channel.createMessage(':question: │ You must provide a user to kick.');
+		resolveMember(client, args[0], msg.channel.guild, true).then((member) => {
+		member.kick(null, args.length > 1 ? args.slice(1).join(' ') : null).then(() => {
+			client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
+				if (settings && settings.kickLog.enabled && settings.kickLog.channelID && msg.channel.guild.channels.has(settings.kickLog.channelID) && msg.channel.guild.channels.get(settings.kickLog.channelID).permissionsOf(this.bot.user.id).has('sendMessages')) {
+					msg.channel.guild.channels.get(settings.kickLog.channelID).createMessage({
+					  embed: {
+					    title: 'User Kicked',
+					    color: client.colors.RED,
+					    thumbnail: {
+					      url: msg.author.avatarURL
+					    },
+					    timestamp: new Date(),
+					    fields: [
+					      {
+					        name: 'Guilty User',
+					        value: `<@${member.id}> (${member.username}#${member.discriminator})`,
+					        inline: true
+					      },
+					      {
+					        name: 'Responsible Moderator',
+					        value: `<@${msg.author.id}> (${msg.author.username}#${msg.author.discriminator})`,
+					        inline: true
+					      },
+					      {
+					        name: 'Reason',
+					        value: args.length > 1 ? args.slice(1).join(' ') : 'No reason'
+					      }
+					    ]
+					  }
+					});
+				} else {
+					msg.channel.createMessage(':boot: │ Successfully kicked ' + member.username + '#' + member.discriminator + ' (' + member.id + ').');
+				}
+			});
+		}).catch(() => {
+			msg.channel.createMessage(':exclamation: │ Failed to kick ' + member.username + '#' + member.discriminator + '. Please note that I cannot kick members that have a higher role than mine.');
+		});
+	}).catch(() => {
+		msg.channel.createMessage(':exclamation: │ Unable to find any users by that query.');
+	});
 }
 
 exports.help = {
   name: 'kick',
   description: 'Kicks a user.',
-  usage: 'kick <user> <reason>',
-  fullDesc: 'Kicks a user. Only available to Mods and Owners',
+  usage: 'kick <user> [reason]',
+  fullDesc: 'Kicks a user.',
   type: 'mod',
   status: 2,
   aliases: []

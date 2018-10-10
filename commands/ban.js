@@ -1,17 +1,6 @@
 const resolveMember = require('../util/resolveMember.js')
 
 exports.run = async (client, msg, args) => {
-  // if (!message.member.hasPermission('BAN_MEMBERS')) { return message.reply(':no_entry_sign: │ You need the permission `BAN_MEMBERS` to use this.') }
-  // let member = message.mentions.members.first()
-  // if (!member) { return message.reply('Please mention a valid member of this server') }
-  // if (!member.bannable) { return message.reply('I cannot ban this user! Do they have a higher role? Do I have ban permissions?') }
-
-  // let reason = args.slice(1).join(' ')
-  // if (!reason) { reason = 'No reason provided' }
-
-  // await member.ban(reason)
-  //   .catch(error => message.channel.createMessage(`Sorry ${message.author} I couldn't ban because of : ${error}`))
-  // message.channel.createMessage(`${member.user.username}#${member.user.discriminator} has been banned by ${message.author.username}#${message.author.discriminator} because: ${reason}`)
   if (!msg.member.permission.has('banMembers')) return msg.channel.createMessage('You don\'t have the proper permissions to do this! You need `BAN_MEMBERS`');
 	if (!msg.channel.guild.members.get(client.user.id).permission.has('banMembers')) return msg.channel.createMessage('I need the permission `BAN_MEMBERS` to do this!');
 	if (args.length < 1) return msg.channel.createMessage('You must mention someone to ban!');
@@ -21,6 +10,7 @@ exports.run = async (client, msg, args) => {
 				if (settings && settings.doLogs && settings.logChannel && msg.channel.guild.channels.has(settings.logChannel) && msg.channel.guild.channels.get(settings.logChannel).permissionsOf(client.user.id).has('sendMessages')) {
 					msg.channel.guild.channels.get(settings.logChannel).createMessage({
 					  embed: {
+					  	title: 'User Banned',
 					    color: client.colors.RED,
 					    thumbnail: {
 					      url: msg.author.avatarURL
@@ -44,9 +34,9 @@ exports.run = async (client, msg, args) => {
 					    ]
 					  }
 					})
-					msg.channel.createMessage(`Banned <@${member.id}> for: \`${args.length > 1 ? args.slice(1).join(' ') : 'No reason'}\``);
+					msg.channel.createMessage(`:hammer: │ Banned <@${member.id}> for: \`${args.length > 1 ? args.slice(1).join(' ') : 'No reason'}\``);
 				} else {
-					msg.channel.createMessage(`Banned <@${member.id}> for: \`${args.length > 1 ? args.slice(1).join(' ') : 'No reason'}\``);
+					msg.channel.createMessage(`:hammer: │ Banned <@${member.id}> for: \`${args.length > 1 ? args.slice(1).join(' ') : 'No reason'}\``);
 				}
 			});
 		}).catch(() => {
@@ -60,7 +50,7 @@ exports.run = async (client, msg, args) => {
 exports.help = {
   name: 'ban',
   description: 'Bans a user.',
-  usage: 'ban <user> <reason>',
+  usage: 'ban <user> [reason]',
   fullDesc: 'Bans a user.',
   type: 'mod',
   status: 2,
