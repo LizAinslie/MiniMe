@@ -61,4 +61,4 @@ client.connect()
 dashboard(client)
 console.log('loaded Dashboard extension')
 
-client.editStatus('online', { name: 'to Dr. Evil laugh', type: 2 })
+client.editStatus('online', { name: 'Dr. Evil laugh', type: 2 })
