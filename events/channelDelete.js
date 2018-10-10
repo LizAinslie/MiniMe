@@ -26,6 +26,11 @@ module.exports = (client, channel) => {
             inline: true
           },
           {
+            name: 'Channel ID',
+            value: channel.id,
+            inline: true
+          },
+          {
             name: 'NSFW',
             value: channel.nsfw ? 'Yes' : 'No',
             inline: true

@@ -14,9 +14,6 @@ module.exports = (client, channel) => {
       embed: {
         title: 'Channel Create',
         color: client.colors.GREEN,
-        thumbnail: {
-          url: entry.executor.avatarURL
-        },
         fields: [
           {
             name: 'Channel Name',
@@ -26,6 +23,11 @@ module.exports = (client, channel) => {
           {
             name: 'Channel Mention',
             value: `<#${channel.id}>`,
+            inline: true
+          },
+          {
+            name: 'Channel ID',
+            value: channel.id,
             inline: true
           },
           {
