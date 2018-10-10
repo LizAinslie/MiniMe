@@ -67,8 +67,8 @@ exports.run = (client, msg) => {
       msg.channel.createMessage(':white_check_mark: │ Updated **discordbots.tk** stats.')
       console.log('Updated discordbots.tk stats.')
     }).catch(err => {
-      msg.channel.createMessage(':exclamation: │ Failed to update **discordbot.world** stats.')
-      Logger.error(client, `Discordbot.world server count update failed : ${err}`)
+      msg.channel.createMessage(':exclamation: │ Failed to update **discordbots.tk** stats.')
+      Logger.error(client, `Discordbots.tk server count update failed : ${err}`)
     })
   })
 }
