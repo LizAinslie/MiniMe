@@ -8,29 +8,15 @@ module.exports = async (client, message) => {
     }
     if (!settings) return
     if (!settings.doLogs) return
-    const entry = await message.channel.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
+    if (!settings.logChannel) return 
 
-    // Define an empty user for now. This will be used later in the guide.
-    let user = ''
-    if (entry.extra.channel.id === message.channel.id && (entry.target.id === message.author.id)) {
-      user = entry.executor.username
-    } else {
-      user = message.author.username
-    }
     const logChannel = message.channel.guild.channels.get(settings.logChannel)
     logChannel.createMessage({
       embed: {
         title: 'Message Delete',
-        color: client.config.color,
-        thumbnail: {
-          url: entry.executor.avatarURL
-        },
+        color: client.colors.RED,
+        timestamp: new Date(),
         fields: [
-          {
-            name: 'Executor:',
-            value: user,
-            inline: true
-          },
           {
             name: 'Message Author:',
             value: message.author.username + '#' + message.author.discriminator,
@@ -38,7 +24,7 @@ module.exports = async (client, message) => {
           },
           {
             name: 'Message Channel:',
-            value: message.channel.toString(),
+            value: `<#${message.channel.id}>`,
             inline: true
           },
           {
@@ -47,8 +33,8 @@ module.exports = async (client, message) => {
             inline: true
           },
           {
-            name: 'Time:',
-            value: dateformat(entry.createdTimestamp, 'mm/dd/yyyy hh:MM:ss TT'),
+            name: 'Created At',
+            value: dateformat(message.createdAt, 'mm/dd/yyyy hh:MM:ss TT'),
             inline: true
           }
         ]

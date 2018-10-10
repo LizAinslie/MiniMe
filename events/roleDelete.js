@@ -8,30 +8,48 @@ module.exports = async (client, role) => {
     }
     if (!settings) return
     if (!settings.doLogs) return
-    const entry = await role.guild.fetchAuditLogs({type: 'ROLE_DELETE'}).then(audit => audit.entries.first())
+    if (!settings.logChannel) return
 
     const logChannel = role.guild.channels.get(settings.logChannel)
     logChannel.createMessage({
       embed: {
         title: 'Role Delete',
-        color: client.config.color,
-        thumbnail: {
-          url: entry.executor.avatarURL
-        },
+        color: client.colors.RED,
+        timestamp: new Date(),
         fields: [
           {
-            name: 'Executor:',
-            value: entry.executor.username + '#' + entry.executor.discriminator,
+            name: 'Role Name',
+            value: role.name,
             inline: true
           },
           {
-            name: 'Role:',
-            value: `<@&${role.id}> (ID: ${role.id})`,
+            name: 'Role Mention',
+            value: `<@&${role.id}>`,
             inline: true
           },
           {
-            name: 'Time:',
-            value: dateformat(entry.createdTimestamp, 'mm/dd/yy hh:MM:ss TT'),
+            name: 'Role ID',
+            value: role.id,
+            inline: true
+          },
+          {
+            name: 'Hoisted',
+            value: role.hoist ? 'Yes' : 'No',
+            inline: true
+          },
+          {
+            name: 'Mentionable',
+            value: role.mentionable ? 'Yes' : 'No',
+            inline: true
+          },
+          {
+            name: 'Managed',
+            value: role.managed ? 'Yes' : 'No',
+            inline: true
+          },
+          {
+            name: 'Created At',
+            value: dateformat(role.createdAt, 'mm/dd/yyyy hh:MM:ss TT'),
             inline: true
           }
         ]
