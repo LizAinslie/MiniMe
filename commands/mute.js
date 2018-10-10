@@ -10,7 +10,7 @@ exports.run = (client, msg, args) => {
     let member = await resolveMember(client, args[0], msg.channel.guild)
     if (!member) return msg.channel.createMessage('You must mention a valid member of this server!')
 
-    let reason = args.shift().join(' ')
+    let reason = args.slice(1).join(' ')
     if (!reason) reason = 'No reason provided.'
 
     msg.channel.guild.addMemberRole(member.id, settings.muteRole, reason)
