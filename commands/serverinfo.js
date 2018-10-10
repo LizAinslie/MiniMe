@@ -43,17 +43,17 @@ exports.run = (client, msg, args) => {
               inline: true
             },
             {
-              name: 'Channels',
+              name: ':keyboard: │ Channels',
               value: guild.channels.size,
               inline: true
             },
             {
-              name: 'Large?',
-              value: guild.large ? 'Yes' : 'No',
+              name: ':straight_ruler: │ Size',
+              value: guild.large ? 'Large' : 'Normal',
               inline: true
             },
             {
-              name: 'AFK Channel',
+              name: ':sleeping: │ AFK Channel',
               value: guild.afkChannelID ? `<#${guild.afkChannelID}>` : 'None',
               inline: true
             },
