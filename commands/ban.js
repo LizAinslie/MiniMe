@@ -1,23 +1,68 @@
-exports.run = async (client, message, args) => {
-  if (!message.member.hasPermission('BAN_MEMBERS')) { return message.reply(':no_entry_sign: │ You need the permission `BAN_MEMBERS` to use this.') }
-  let member = message.mentions.members.first()
-  if (!member) { return message.reply('Please mention a valid member of this server') }
-  if (!member.bannable) { return message.reply('I cannot ban this user! Do they have a higher role? Do I have ban permissions?') }
+const resolveMember = require('../util/resolveMember.js')
 
-  let reason = args.slice(1).join(' ')
-  if (!reason) { reason = 'No reason provided' }
+exports.run = async (client, msg, args) => {
+  // if (!message.member.hasPermission('BAN_MEMBERS')) { return message.reply(':no_entry_sign: │ You need the permission `BAN_MEMBERS` to use this.') }
+  // let member = message.mentions.members.first()
+  // if (!member) { return message.reply('Please mention a valid member of this server') }
+  // if (!member.bannable) { return message.reply('I cannot ban this user! Do they have a higher role? Do I have ban permissions?') }
 
-  await member.ban(reason)
-    .catch(error => message.channel.createMessage(`Sorry ${message.author} I couldn't ban because of : ${error}`))
-  message.channel.createMessage(`${member.user.username}#${member.user.discriminator} has been banned by ${message.author.username}#${message.author.discriminator} because: ${reason}`)
+  // let reason = args.slice(1).join(' ')
+  // if (!reason) { reason = 'No reason provided' }
+
+  // await member.ban(reason)
+  //   .catch(error => message.channel.createMessage(`Sorry ${message.author} I couldn't ban because of : ${error}`))
+  // message.channel.createMessage(`${member.user.username}#${member.user.discriminator} has been banned by ${message.author.username}#${message.author.discriminator} because: ${reason}`)
+  if (!msg.member.permission.has('banMembers')) return msg.channel.createMessage('You don\'t have the proper permissions to do this! You need `BAN_MEMBERS`');
+	if (!msg.channel.guild.members.get(client.user.id).permission.has('banMembers')) return msg.channel.createMessage('I need the permission `BAN_MEMBERS` to do this!');
+	if (args.length < 1) return msg.channel.createMessage('You must mention someone to ban!');
+	resolveMember(client, args[0], msg.channel.guild, true).then((member) => {
+		member.ban(null, args.length > 1 ? args.slice(1).join(' ') : null).then(() => {
+			this.r.table('settings').get(msg.channel.guild.id).run((error, settings) => {
+				if (settings && settings.doLogs && settings.logChannel && msg.channel.guild.channels.has(settings.logChannel) && msg.channel.guild.channels.get(settings.logChannel).permissionsOf(client.user.id).has('sendMessages')) {
+					msg.channel.guild.channels.get(settings.logChannel).createMessage({
+					  embed: {
+					    color: client.colors.RED,
+					    thumbnail: {
+					      url: msg.author.avatarURL
+					    },
+					    timestamp: new Date(),
+					    fields: [
+					      {
+					        name: 'Guilty User',
+					        value: `<@${member.id}> (${member.username}#${member.discriminator})`,
+					        inline: true
+					      },
+					      {
+					        name: 'Responsible Moderator',
+					        value: `<@${msg.author.id}> (${msg.author.username}#${msg.author.discriminator})`,
+					        inline: true
+					      },
+					      {
+					        name: 'Reason',
+					        value: args.length > 1 ? args.slice(1).join(' ') : 'No reason'
+					      }
+					    ]
+					  }
+					})
+					msg.channel.createMessage(`Banned <@${member.id}> for: \`${args.length > 1 ? args.slice(1).join(' ') : 'No reason'}\``);
+				} else {
+					msg.channel.createMessage(`Banned <@${member.id}> for: \`${args.length > 1 ? args.slice(1).join(' ') : 'No reason'}\``);
+				}
+			});
+		}).catch(() => {
+			msg.channel.createMessage('Unable to ban! This has been reported!');
+		});
+	}).catch(() => {
+		msg.channel.createMessage('Unable to find that user!');
+	});
 }
 
 exports.help = {
   name: 'ban',
   description: 'Bans a user.',
   usage: 'ban <user> <reason>',
-  fullDesc: 'Bans a user. Only available to Mods and Owners',
+  fullDesc: 'Bans a user.',
   type: 'mod',
   status: 2,
-  aliases: []
+  aliases: ['bean']
 }
