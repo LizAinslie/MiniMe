@@ -5,7 +5,7 @@
     <% user.servers.forEach(guild => { %>
       <li class="media" style="padding: 10px;">
         <% if (guild.icon) { %>
-          <img class="d-flex mr-3 rounded-circle" src="<%= `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` %>" style="width: 80px;" alt="">
+          <img class="d-flex mr-3 rounded-circle" src="<%= guild.icon %>" style="width: 80px;" alt="">
         <% } else { %>
           <canvas style="background-color: #7289da" class="d-flex mr-3 rounded-circle" id="<%= guild.name.split(' ').join('').replace(`'`, ``) %>" width="80px" height="80px"></canvas>
           <script>
