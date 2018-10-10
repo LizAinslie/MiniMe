@@ -60,3 +60,5 @@ client.connect()
 
 dashboard(client)
 console.log('loaded Dashboard extension')
+
+client.edidStatus('online', { name: 'to Dr. Evil laugh', type: 2 })
