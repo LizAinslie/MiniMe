@@ -1,4 +1,3 @@
-const dateformat = require('dateformat')
 const Logger = require('../util/Logger.js')
 
 module.exports = (client, channel) => {
@@ -8,7 +7,7 @@ module.exports = (client, channel) => {
     }
     if (!settings) return
     if (!settings.doLogs) return
-    const entry = channel.guild.getAuditLogs(1, 10).entries[0]
+    if (!settings.logChannel) return
 
     const logChannel = channel.guild.channels.get(settings.logChannel)
     logChannel.createMessage({
@@ -20,18 +19,18 @@ module.exports = (client, channel) => {
         },
         fields: [
           {
-            name: 'Executor:',
-            value: entry.executor.username + '#' + entry.executor.discriminator,
+            name: 'Channel Name',
+            value: channel.name,
             inline: true
           },
           {
-            name: 'Channel:',
-            value: `${channel}`,
+            name: 'Channel Mention',
+            value: `<#${channel.id}>`,
             inline: true
           },
           {
-            name: 'Time:',
-            value: dateformat(entry.createdTimestamp, 'mm/dd/yy hh:MM:ss TT'),
+            name: 'NSFW',
+            value: channel.nsfw ? 'Yes' : 'No',
             inline: true
           }
         ]

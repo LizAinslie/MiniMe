@@ -1,4 +1,3 @@
-const dateformat = require('dateformat')
 const Logger = require('../util/Logger.js')
 
 module.exports = (client, channel) => {
@@ -8,30 +7,27 @@ module.exports = (client, channel) => {
     }
     if (!settings) return
     if (!settings.doLogs) return
-    const entry = channel.guild.getAuditLogs(1, 12).entries[0]
+    if (!settings.logChannel) return
 
     const logChannel = channel.guild.channels.get(settings.logChannel)
     logChannel.createMessage({
       embed: {
         title: 'Channel Delete',
-        color: client.colors.YELLOW,
-        thumbnail: {
-          url: entry.executor.avatarURL
-        },
+        color: client.colors.RED,
         fields: [
           {
-            name: 'Executor:',
-            value: entry.executor.username + '#' + entry.executor.discriminator,
-            inline: true
-          },
-          {
-            name: 'Channel:',
+            name: 'Channel Name',
             value: channel.name,
             inline: true
           },
           {
-            name: 'Time:',
-            value: dateformat(entry.createdTimestamp, 'mm/dd/yy hh:MM:ss TT'),
+            name: 'Channel Mention',
+            value: `<#${channel.id}>`,
+            inline: true
+          },
+          {
+            name: 'NSFW',
+            value: channel.nsfw ? 'Yes' : 'No',
             inline: true
           }
         ]
