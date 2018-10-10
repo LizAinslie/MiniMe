@@ -27,7 +27,7 @@ exports.run = async (client, msg, args) => {
 exports.help = {
   name: 'purge',
   description: 'Removes msgs in bulk.',
-  usage: 'purge <number>',
+  usage: 'purge <number> [user]',
   fullDesc: 'Removes msgs in bulk. Up to 100 msgs can be removed at once.',
   type: 'mod',
   status: 2,
