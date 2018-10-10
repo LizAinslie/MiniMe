@@ -14,6 +14,7 @@ module.exports = (client, channel) => {
       embed: {
         title: 'Channel Delete',
         color: client.colors.RED,
+        timestamp: new Date(),
         fields: [
           {
             name: 'Channel Name',

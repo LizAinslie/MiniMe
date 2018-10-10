@@ -8,7 +8,7 @@ module.exports = async (client, message) => {
     }
     if (!settings) return
     if (!settings.doLogs) return
-    if (!settings.logChannel) return 
+    if (!settings.logChannel) return
 
     const logChannel = message.channel.guild.channels.get(settings.logChannel)
     logChannel.createMessage({
