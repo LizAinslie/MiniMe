@@ -7,8 +7,8 @@ exports.run = async (client, msg, args) => {
 		resolveMember(client, args[0], msg.channel.guild, true).then((member) => {
 		member.kick(null, args.length > 1 ? args.slice(1).join(' ') : null).then(() => {
 			client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
-				if (settings && settings.kickLog.enabled && settings.kickLog.channelID && msg.channel.guild.channels.has(settings.kickLog.channelID) && msg.channel.guild.channels.get(settings.kickLog.channelID).permissionsOf(this.bot.user.id).has('sendMessages')) {
-					msg.channel.guild.channels.get(settings.kickLog.channelID).createMessage({
+				if (settings && settings.doLogs && settings.logChannel && msg.channel.guild.channels.has(settings.logChannel) && msg.channel.guild.channels.get(settings.logChannel).permissionsOf(client.user.id).has('sendMessages')) {
+					msg.channel.guild.channels.get(settings.logChannel).createMessage({
 					  embed: {
 					    title: 'User Kicked',
 					    color: client.colors.RED,
