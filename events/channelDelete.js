@@ -1,14 +1,14 @@
 const dateformat = require('dateformat')
 const Logger = require('../util/Logger.js')
 
-module.exports = async (client, channel) => {
-  client.r.table('serverSettings').get(channel.guild.id).run(async (error, settings) => {
+module.exports = (client, channel) => {
+  client.r.table('serverSettings').get(channel.guild.id).run((error, settings) => {
     if (error) {
       return Logger.error('Error with event.', error)
     }
     if (!settings) return
     if (!settings.doLogs) return
-    const entry = await channel.guild.getAuditLogs(1, 12).entries[0]
+    const entry = channel.guild.getAuditLogs(1, 12).entries[0]
 
     const logChannel = channel.guild.channels.get(settings.logChannel)
     logChannel.createMessage({
