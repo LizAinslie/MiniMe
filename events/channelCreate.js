@@ -8,7 +8,7 @@ module.exports = async (client, channel) => {
     }
     if (!settings) return
     if (!settings.doLogs) return
-    const entry = await channel.guild.getAuditLogs(1, 10)
+    const entry = await channel.guild.getAuditLogs(1, 10).entries[0]
 
     const logChannel = channel.guild.channels.get(settings.logChannel)
     logChannel.createMessage({
