@@ -1,18 +1,16 @@
-const map = {
-    '*': '\\*',
-    '#': '\\#',
-    '(': '\\(',
-    ')': '\\)',
-    '[': '\\[',
-    ']': '\\]',
-    _: '\\_',
-    '\\': '\\\\',
-    '+': '\\+',
-    '-': '\\-',
-    '`': '\\`',
-    '<': '&lt;',
-    '>': '&gt;',
-    '&': '&amp;'
-  };
-  
-module.exports = string => string.replace(/[\*\(\)\[\]\+\-\\_`#<>]/g, m => map[m]);
+var replacements = [
+    [ /\*/g, '\*' ],
+    [ /#/g,  '\#' ],
+    [ /\//g, '\/' ],
+    [ /\(/g, '\(' ],
+    [ /\)/g, '\)' ],
+    [ /\[/g, '\[' ],
+    [ /\]/g, '\]' ],
+    [ /_/g,  '\_' ]
+]
+
+module.exports = string => {
+    return replacements.reduce((string, replacement) => {
+        return string.replace(replacement[0], replacement[1])
+    }, string)
+ }
