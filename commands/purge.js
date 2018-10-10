@@ -17,11 +17,7 @@ exports.run = (client, msg, args) => {
 	    }
 	  }
 		Promise.all(messages.map(message => message.delete())).then(() => {
-			msg.channel.createMessage(':white_check_mark: │ Successfully cleaned `' + messages.length + '` messages.').then(m => {
-				setTimeout(() => {
-					m.delete();
-				}, 2000);
-			});
+			msg.channel.createMessage(':white_check_mark: │ Successfully cleaned `' + messages.length + '` messages.')
 		});
 	}).catch((error) => {
 		msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.');
