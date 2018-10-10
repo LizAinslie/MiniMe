@@ -33,9 +33,18 @@ module.exports = async (client, message) => {
             inline: true
           },
           {
+            name: 'Channel',
+            value: `<#${message.channel.id}`,
+            inline: true
+          },
+          {
             name: 'Created At',
             value: dateformat(message.createdAt, 'mm/dd/yyyy hh:MM:ss TT'),
             inline: true
+          },
+          {
+            name: 'Message Content',
+            value: message.content
           }
         ]
       }
