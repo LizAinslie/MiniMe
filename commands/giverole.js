@@ -6,7 +6,7 @@ exports.run = async (client, msg, args) => {
     const member = await resolveMember(client, args[0].trim(), msg.channel.guild, true)
     resolveRole(client, args[1].trim(), msg.channel.guild).then(role => {
         member.addRole(role.id).then(() => {
-            msg.chennel.createMessage(`Gave <@${member.id}> the role \`${role.name}\``)
+            msg.channel.createMessage(`Gave <@${member.id}> the role \`${role.name}\``)
         }).catch(err => {
             client.rollbar.error('could not add role: ' + err)
         })
