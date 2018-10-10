@@ -1,34 +1,33 @@
-/* Eris Fixed */
+const Logger = require('../util/Logger');
+const resolveUser = require('../util/resolveUser.js')
 
 exports.run = async (client, msg, args) => {
-  // This command removes all msgs from all users in the channel, up to 100.
-  if (!msg.member.hasPermission('MANAGE_MESSAGES')) { return msg.channel.createMessage(':no_entry_sign: │ You need the permission `MANAGE_MESSAGES` to use this.') }
-  // get the delete count, as an actual number.
-  const user = msg.mentions.users.first()
-  // Parse Amount
-  const amount = parseInt(msg.content.split(' ')[1]) ? parseInt(msg.content.split(' ')[1]) : parseInt(msg.content.split(' ')[2])
-  if (!amount) return msg.channel.createMessage('Must specify an amount to delete!')
-  if (!amount && !user) return msg.channel.createMessage('Must specify a user and amount, or just an amount, of messages to purge!')
-  // Fetch 100 msgs (will be filtered and lowered up to max amount requested)
-  msg.channel.fetchMessages({
-   limit: 100
-  }).then((messages) => {
-   if (user) {
-     const filterBy = user ? user.id : client.user.id
-     messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount)
-   }
-   const messagesArray = []
-   for (let message of messages) {
-     messagesArray.push(message.id)
-   }
-   msg.channel.deleteMessages(messagesArray).catch(error => client.rollbar.error(error.stack))
-  })
+  let member = null
+	if (!msg.member.permission.has('manageMessages')) return msg.channel.createMessage(':no_entry_sign: │ You do not have permission to run this command.');
+	if (args.length < 1) return msg.channel.createMessage(':question: │ You must provide a clean amount.');
+	if (args.length > 1) member = await resolveUser(client, args[1])
+	if (isNaN(args[0])) return msg.channel.createMessage(':exclamation: │ The clean amount must be a valid number.');
+	if (Number(args[0]) < 2) return msg.channel.createMessage(':exclamation: │ The clean amount must be greater than or equal to 2.');
+	if (Number(args[0]) > 100) return msg.channel.createMessage(':exclamation: │ The clean amount must be less than or equal to 100.');
+	msg.channel.getMessages(Number(args[0]), msg.id).then(messages => {
+	  if (member) messages = messages.filter(msg => msg.author.id === member.id)
+		Promise.all(messages.map(message => message.delete())).then(() => {
+			msg.channel.createMessage(':white_check_mark: │ Successfully cleaned `' + messages.length + '` messages.').then(m => {
+				setTimeout(() => {
+					m.delete();
+				}, 2000);
+			});
+		});
+	}).catch((error) => {
+		msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.');
+		Logger.error(error);
+	});
 }
 
 exports.help = {
   name: 'purge',
   description: 'Removes msgs in bulk.',
-  usage: 'purge <number>',
+  usage: 'purge <number> [user]',
   fullDesc: 'Removes msgs in bulk. Up to 100 msgs can be removed at once.',
   type: 'mod',
   status: 2,
