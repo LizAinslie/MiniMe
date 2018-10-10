@@ -2,7 +2,7 @@ const resolveMember = require('../util/resolveMember.js')
 
 exports.run = async (client, msg, args) => {
   if (!msg.member.permission.has('kickMembers')) return msg.channel.createMessage(':no_entry_sign: │ You need the `Kick Members` permission in order to use this command.');
-	if (!msg.channel.guild.members.get(this.bot.user.id).permission.has('kickMembers')) return msg.channel.createMessage(':no_entry_sign: │ I need the `Kick Members` permission in order to complete this command.');
+	if (!msg.channel.guild.members.get(client.user.id).permission.has('kickMembers')) return msg.channel.createMessage(':no_entry_sign: │ I need the `Kick Members` permission in order to complete this command.');
 	if (args.length < 1) return msg.channel.createMessage(':question: │ You must provide a user to kick.');
 		resolveMember(client, args[0], msg.channel.guild, true).then((member) => {
 		member.kick(null, args.length > 1 ? args.slice(1).join(' ') : null).then(() => {
