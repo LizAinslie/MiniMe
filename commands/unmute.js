@@ -1,12 +1,43 @@
+const handleDatabaseError = require('../util/handleDatabaseError.js')
+const resolveMember = require('../util/resolveMember.js')
+
 exports.run = (client, msg, args) => {
-  if (!msg.member.permission.has('MANAGE_ROLES')) return msg.channel.createMessage(':no_entry_sign: │ You need the permission `MANAGE_ROLES` to use this.')
-  let member = msg.mentions.members.first()
-  if (!member) return msg.channel.createMessage(':interrobang: │ You must mention a valid member of this server!')
+  client.r.table('serverSettings').get(msg.channel.guild.id).run(async (error, settings) => {
+    if (error) return handleDatabaseError(client, error, msg)
+    if (!settings) return msg.channel.createMessage('You must set up your server first!')
+    if (!settings.muteRole) return msg.channel.createMessage('Yoiu must set a muted role!')
+    if (!msg.member.permission.has('manageRoles')) return msg.channel.createMessage(':no_entry_sign: │ You need the permission `MANAGE_ROLES` to use this.')
+    let member = await resolveMember(client, args[0], msg.channel.guild)
+    if (!member) return msg.channel.createMessage('You must mention a valid member of this server!')
 
-  let reason = args.slice(1).join(' ')
-  if (!reason) reason = 'No reason provided.'
-
-  member.removeRole(client.guildSettings.getProp(msg.guild.id, 'muteRole'))
+    msg.channel.guild.removeMemberRole(member.id, settings.muteRole)
+    msg.channel.createMessage(`Unmuted ${member.username}`)
+    if (settings && settings.doLogs && settings.logChannel) {
+      msg.channel.guild.channels.get(settings.logChannel).createMessage({
+        embed: {
+          title: 'Member Unmute',
+          color: client.colors.GREEN,
+          thumbnail: {
+            url: msg.author.avatarURL
+          },
+          fields: [
+            {
+              name: 'Member',
+              value: `<@${member.id}> (${member.username}#${member.discriminator})`,
+              inline: true
+            },
+            {
+              name: 'Responsible Moderator',
+              value: `<@${msg.author.id}> (${msg.author.username}#${msg.author.discriminator})`,
+              inline: true
+            }
+          ]
+        }
+      })
+    }
+  }).catch(err => {
+    handleDatabaseError(client, err, msg)
+  })
 }
 
 exports.help = {
