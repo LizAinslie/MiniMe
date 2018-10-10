@@ -14,6 +14,7 @@ module.exports = (client, channel) => {
       embed: {
         title: 'Channel Create',
         color: client.colors.GREEN,
+        timestamp: new Date(),
         fields: [
           {
             name: 'Channel Name',
