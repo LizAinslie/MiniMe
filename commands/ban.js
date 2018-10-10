@@ -17,7 +17,7 @@ exports.run = async (client, msg, args) => {
 	if (args.length < 1) return msg.channel.createMessage('You must mention someone to ban!');
 	resolveMember(client, args[0], msg.channel.guild, true).then((member) => {
 		member.ban(null, args.length > 1 ? args.slice(1).join(' ') : null).then(() => {
-			this.r.table('settings').get(msg.channel.guild.id).run((error, settings) => {
+			client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
 				if (settings && settings.doLogs && settings.logChannel && msg.channel.guild.channels.has(settings.logChannel) && msg.channel.guild.channels.get(settings.logChannel).permissionsOf(client.user.id).has('sendMessages')) {
 					msg.channel.guild.channels.get(settings.logChannel).createMessage({
 					  embed: {
