@@ -49,7 +49,7 @@ exports.run = (client, msg, args) => {
             },
             {
               name: ':straight_ruler: │ Size',
-              value: guild.large ? 'Large' : 'Normal',
+              value: guild.large ? 'Large' : 'Small',
               inline: true
             },
             {
