@@ -34,6 +34,7 @@ exports.run = async (client, msg, args) => {
 					    ]
 					  }
 					});
+					msg.channel.createMessage(':boot: │ Successfully kicked ' + member.username + '#' + member.discriminator + ' (' + member.id + ').');
 				} else {
 					msg.channel.createMessage(':boot: │ Successfully kicked ' + member.username + '#' + member.discriminator + ' (' + member.id + ').');
 				}
