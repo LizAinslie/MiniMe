@@ -13,7 +13,7 @@ require('moment-duration-format')
 
 const app = express()
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs')
 app.set('views', `${__dirname}/../dashboard/templates`)
 
 module.exports = client => {
@@ -96,7 +96,7 @@ module.exports = client => {
 	})
 
 	app.get('/commands', (req, res) => {
-		res.render('commands.ejs', { cmds: client.commands });
+		res.render('commands.ejs', { cmds: client.commands })
 	})
 
 	app.get('/stats', (req, res) => {
@@ -158,8 +158,8 @@ module.exports = client => {
 				client.r.table('users').get(user.id).update({
 					description: description
 				}).run().then(user => {
-					next();
-				}).catch(err  => {
+					next()
+				}).catch(err => {
 					client.rollbar.error(err)
 					res.sendStatus(500)
 				})
@@ -172,8 +172,8 @@ module.exports = client => {
 					itemRing: 0,
 					marriedTo: null
 				}).run().then(user => {
-					next();
-				}).catch(err  => {
+					next()
+				}).catch(err => {
 					client.rollbar.error(err)
 					res.sendStatus(500)
 				})
@@ -201,21 +201,21 @@ module.exports = client => {
 
 	app.get('/dashboard', authenticate(), (req, res) => {
 		res.render('dashboard.ejs', { bot: client, path: req.url, user: req.user })
-	});
+	})
 
 	app.get('/serverAdd', (req, res) => {
 		const id = req.query.guild_id
 		if (!id) return res.sendStatus(400)
 
 		res.redirect(`/manage/server/${id}`)
-	});
+	})
 
 	app.get('/manage/server/:id', authenticate(), async (req, res, next) => {
 		if (!req.user.servers.find(s => s.id === req.params.id)) return res.sendStatus(401)
 
 		const server = client.guilds.get(req.params.id)
 		if (!server) return res.redirect(`https://discordapp.com/oauth2/authorize?scope=bot&permissions=0&client_id=${client.user.id}&guild_id=${req.params.id}&response_type=code&redirect_uri=${encodeURIComponent(`https://${config.dashboard.domain}/serverAdd`)}`)
-		next();
+		next()
 	})
 
 	app.get('/manage/server/:id', async (req, res, next) => {
