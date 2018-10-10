@@ -2,7 +2,7 @@ const resolveMember = require('../util/resolveMember.js')
 const resolveRole = require('../util/resolveRole.js')
 
 exports.run = async (client, msg, args) => {
-    args = args.split('|').trim()
+    args = args.join(' ').split('|').trim()
     const member = await resolveMember(client, args[0], msg.channel.guild, true)
     resolveRole(client, args[1], msg.channel.guild).then(role => {
         member.addRole(role.id).then(() => {
