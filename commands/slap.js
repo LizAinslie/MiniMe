@@ -39,5 +39,5 @@ exports.help = {
   fullDesc: 'Slap a user.',
   type: 'rp',
   status: 2,
-  aliases: []
+  aliases: ['hit']
 }
