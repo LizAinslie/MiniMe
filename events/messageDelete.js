@@ -23,11 +23,6 @@ module.exports = async (client, message) => {
             inline: true
           },
           {
-            name: 'Message Channel:',
-            value: `<#${message.channel.id}>`,
-            inline: true
-          },
-          {
             name: 'Message ID',
             value: message.id,
             inline: true
