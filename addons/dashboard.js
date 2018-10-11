@@ -277,6 +277,11 @@ module.exports = client => {
 	app.get('/callback', passport.authenticate('discord'), (req, res) => {
 		res.redirect(`/me`)
 	})
+	
+	app.get('/logout', (req, res) => {
+	    req.user.destroy()
+	    res.redirect('/')
+	})
 }
 
 app.listen(3100)
