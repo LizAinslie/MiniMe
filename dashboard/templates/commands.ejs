@@ -1,0 +1,22 @@
+<%- include('blocks/header', {bot, user, path}) %>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1><%= bot.user.username %> Commands</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Utility</h5>
+                    <p class="card-text">
+                        <% cmds.filter(cmd => cmd.type === 'util').map(cmd => { %>
+                            <code><%= cmd.name %></code>
+                        <% }).join(', ') %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.type === 'util').size %> Commands In This Category</h5>
+            </div>
+        </div>
+    </div>
+<%- include('./blocks/footer') %>
