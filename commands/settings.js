@@ -5,7 +5,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
 	client.r.table('users').get(msg.author.id).run().then(user => {
-		if (!msg.member.permission.has('MANAGE_GUILD') && msg.author.id !== !user.developer) return msg.channel.createMessage(':no_entry_sign: | You do not have permission to do this!')
+		if (!msg.member.permission.has('MANAGE_GUILD') && !user.developer) return msg.channel.createMessage(':no_entry_sign: | You do not have permission to do this!')
 		switch (args.shift().toLowerCase()) {
 			case 'set':
 				switch (args.shift().toLowerCase()) {
