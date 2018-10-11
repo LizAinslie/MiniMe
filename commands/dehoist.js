@@ -6,7 +6,7 @@ exports.run = (client, msg) => {
             members += 1
         }
     })
-    msg.channel.createMessage(`:white_check_mark: │ **${members}** Members Dehoisted!`)
+    msg.channel.createMessage(`:white_check_mark: │ **${members}** Member${members === 1 ? '' : 's'} Dehoisted!`)
 }
 
 exports.help = {
