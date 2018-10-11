@@ -10,12 +10,12 @@
                 <div class="card-body">
                     <h5 class="card-title">Utility</h5>
                     <p class="card-text">
-                        <% cmds.filter(cmd => cmd.type === 'util').map(cmd => { %>
-                            <code><%= cmd.name %></code>
-                        <% }).join(', ') %>
+                        <% cmds.filterArray(cmd => cmd.type === 'util').forEach(cmd => { %>
+                            <code><%= cmd.name %></code> | 
+                        <% }) %>
                     </p>
                 </div>
-                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.type === 'util').size %> Commands In This Category</h5>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.type === 'util').array().length %> Commands In This Category</h5>
             </div>
         </div>
     </div>
