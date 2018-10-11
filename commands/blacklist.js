@@ -3,7 +3,7 @@ const resolveUser = require('../util/resolveUser.js')
 exports.run = (client, msg, args) => {
     client.r.table('users').get(msg.author.id).run().then(async user => {
         if (!user.developer) return msg.channel.createMessage(':no_entry_sign: │ You are not my developer!')
-        switch (args.shift().toLowerCase) {
+        switch (args.shift()) {
             case 'add':
                 const userToBlacklist = await resolveUser(client, args.join(' '))
                 client.r.table('users').get(userToBlacklist.id).run().then(profile => {
