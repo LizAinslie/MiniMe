@@ -10,7 +10,6 @@ module.exports = async (client, message) => {
   for (const thisPrefix of prefixes) {
     if (message.content.toLowerCase().startsWith(thisPrefix)) prefix = thisPrefix
   }
-  if (message.content.indexOf(prefix) !== 0) return
 
 //  if (message.content === '!join') {
 //    client.emit('guildMemberAdd', message.member || await message.guild.fetchMember(message.author));
@@ -19,7 +18,7 @@ module.exports = async (client, message) => {
   // Our standard argument/command name definition.
   const args = message.content.slice(prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()
-  
+
   let cmd
   // Grab the command data from the client.commands Enmap
   if (client.commands.has(command)) {
