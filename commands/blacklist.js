@@ -55,3 +55,13 @@ exports.run = (client, msg, args) => {
         }
     })
 }
+
+exports.help = {
+    name: 'blacklist',
+    description: 'Manage the blacklist.',
+    usage: 'blacklist <add|remove> <user>',
+    fullDesc: 'Manage the blacklist.',
+    type: 'dev',
+    status: 2,
+    aliases: []
+}
