@@ -149,5 +149,5 @@ exports.help = {
   fullDesc: 'Gives info on the specified user. If no user is given, info on the user running the command.',
   type: 'util',
   status: 2,
-  aliases: []
+  aliases: ['user']
 }
