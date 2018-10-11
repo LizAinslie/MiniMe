@@ -10,6 +10,7 @@ module.exports = async (client, message) => {
   for (const thisPrefix of prefixes) {
     if (message.content.toLowerCase().startsWith(thisPrefix)) prefix = thisPrefix
   }
+  if (!prefix) return
 
 //  if (message.content === '!join') {
 //    client.emit('guildMemberAdd', message.member || await message.guild.fetchMember(message.author));
