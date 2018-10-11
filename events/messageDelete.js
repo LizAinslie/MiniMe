@@ -16,6 +16,9 @@ module.exports = async (client, message) => {
         title: 'Message Delete',
         color: client.colors.RED,
         timestamp: new Date(),
+        thumbnail: {
+          url: message.author.avatarURL
+        },
         fields: [
           {
             name: 'Message Author:',
