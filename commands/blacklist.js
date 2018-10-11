@@ -28,6 +28,7 @@ exports.run = (client, msg, args) => {
                         })
                     }
                 })
+                break;
             case 'remove':
                 const userToUnBlacklist = await resolveUser(client, args.join(' '))
                 client.r.table('users').get(userToUnBlacklist.id).run().then(profile => {
@@ -52,6 +53,7 @@ exports.run = (client, msg, args) => {
                         })
                     }
                 })
+                break;
         }
     })
 }
