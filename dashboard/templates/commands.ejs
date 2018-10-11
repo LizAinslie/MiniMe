@@ -17,6 +17,109 @@
                 </div>
                 <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'util').array().length %> Commands In This Category</h5>
             </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Voice</h5>
+                    <p class="card-text">
+                        <% cmds.filterArray(cmd => cmd.help.type === 'vc').forEach(cmd => { %>
+                            <code><%= cmd.help.name %></code> | 
+                        <% }) %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'vc').array().length %> Commands In This Category</h5>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Fun</h5>
+                    <p class="card-text">
+                        <% cmds.filterArray(cmd => cmd.help.type === 'fun').forEach(cmd => { %>
+                            <code><%= cmd.help.name %></code> | 
+                        <% }) %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'fun').array().length %> Commands In This Category</h5>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Image</h5>
+                    <p class="card-text">
+                        <% cmds.filterArray(cmd => cmd.help.type === 'img').forEach(cmd => { %>
+                            <code><%= cmd.help.name %></code> | 
+                        <% }) %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'img').array().length %> Commands In This Category</h5>
+            </div>
+        </div>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Image Manipulation</h5>
+                    <p class="card-text">
+                        <% cmds.filterArray(cmd => cmd.help.type === 'imgen').forEach(cmd => { %>
+                            <code><%= cmd.help.name %></code> | 
+                        <% }) %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'imgen').array().length %> Commands In This Category</h5>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Roleplay</h5>
+                    <p class="card-text">
+                        <% cmds.filterArray(cmd => cmd.help.type === 'rp').forEach(cmd => { %>
+                            <code><%= cmd.help.name %></code> | 
+                        <% }) %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'rp').array().length %> Commands In This Category</h5>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Economy</h5>
+                    <p class="card-text">
+                        <% cmds.filterArray(cmd => cmd.help.type === 'eco').forEach(cmd => { %>
+                            <code><%= cmd.help.name %></code> | 
+                        <% }) %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'eco').array().length %> Commands In This Category</h5>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Moderation</h5>
+                    <p class="card-text">
+                        <% cmds.filterArray(cmd => cmd.help.type === 'mod').forEach(cmd => { %>
+                            <code><%= cmd.help.name %></code> | 
+                        <% }) %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'mod').array().length %> Commands In This Category</h5>
+            </div>
+        </div>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">NSFW</h5>
+                    <p class="card-text">
+                        <% cmds.filterArray(cmd => cmd.help.type === 'nsfw').forEach(cmd => { %>
+                            <code><%= cmd.help.name %></code> | 
+                        <% }) %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'nsfw').array().length %> Commands In This Category</h5>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Developer</h5>
+                    <p class="card-text">
+                        <% cmds.filterArray(cmd => cmd.help.type === 'dev').forEach(cmd => { %>
+                            <code><%= cmd.help.name %></code> | 
+                        <% }) %>
+                    </p>
+                </div>
+                <h5 class="card-footer"><%= cmds.filter(cmd => cmd.help.type === 'dev').array().length %> Commands In This Category</h5>
+            </div>
         </div>
     </div>
 <%- include('./blocks/footer') %>
