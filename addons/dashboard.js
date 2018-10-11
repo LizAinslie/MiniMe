@@ -279,7 +279,7 @@ module.exports = client => {
 	})
 	
 	app.get('/logout', (req, res) => {
-	    req.user.destroy()
+	    req.session.destroy()
 	    res.redirect('/')
 	})
 }
