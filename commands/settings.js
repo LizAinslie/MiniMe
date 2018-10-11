@@ -37,7 +37,7 @@ exports.run = (client, msg, args) => {
 						})
 						break
 					case 'welcomechannel':
-						resolveChannel(client, args[1].trim(), msg.channel.guild).then(welcomeChannel => {
+						resolveChannel(client, args[0].trim(), msg.channel.guild).then(welcomeChannel => {
 							client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
 								if (error) return Logger.error(client, 'Setup error.', error)
 								if (settings) {
@@ -64,7 +64,7 @@ exports.run = (client, msg, args) => {
 						})
 						break
 					case 'muterole':
-						resolveRole(client, args[2].trim(), msg.channel.guild).then(muteRole => {
+						resolveRole(client, args[0].trim(), msg.channel.guild).then(muteRole => {
 							client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
 								if (error) return Logger.error(client, 'Setup error.', error)
 								if (settings) {
