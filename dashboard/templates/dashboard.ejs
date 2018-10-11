@@ -4,17 +4,18 @@
   <ul class="list-unstyled">
     <% user.servers.forEach(guild => { %>
       <li class="media" style="padding: 10px;">
-        <% if (guild.icon) { %>
+        <% if (/^https:\/\/cdn.discordapp.com\/.+/.exec(guild.icon)) { %>
           <img class="d-flex mr-3 rounded-circle" src="<%= guild.icon %>" style="width: 80px;" alt="">
         <% } else { %>
-          <canvas style="background-color: #7289da" class="d-flex mr-3 rounded-circle" id="<%= guild.name.split(' ').join('').replace(`'`, ``) %>" width="80px" height="80px"></canvas>
+          <canvas style="background-color: #2f3136" class="d-flex mr-3 rounded-circle" id="<%= guild.icon %>" width="80px" height="80px"></canvas>
           <script>
             function draw() {
-              const ctx = document.getElementById("<%= guild.name.split(' ').join('').replace(`'`, ``) %>").getContext('2d');
+              const ctx = document.getElementById("<%= guild.icon %>").getContext('2d');
               ctx.font = '30px Arial';
               ctx.textAlign = "center";
+              ctx.textBaseline = "middle";
               ctx.fillStyle = "white";
-              ctx.fillText("<%= guild.name.split(' ').map(v => v[0]).join('') %>", 40, 50);
+              ctx.fillText("<%= guild.icon %>", 40, 40);
             };
             draw();
           </script>
