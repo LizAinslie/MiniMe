@@ -36,7 +36,7 @@ module.exports = async (client, message) => {
     if (user && (user.blacklisted && !user.developer)) {
       return message.channel.createMessage({
         embed: {
-          description: 'You are blacklisted from using Mini Me! Join [Our support server](https://discord.gg/9HYCXrs) to get off the blacklist!',
+          description: `You are blacklisted from using Mini Me! Join [Our support server](${client.config.links.supprotServer}) to get off the blacklist!`,
           color: client.colors.RED
         }
       })
