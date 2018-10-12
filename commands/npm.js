@@ -33,7 +33,7 @@ exports.run = async (client, msg, args) => {
 				},
 				{
 					name: 'Author',
-					value: info.author.name,
+					value: info.author ? info.author.name : 'Unknown',
 					inline: true
 				},
 				{
