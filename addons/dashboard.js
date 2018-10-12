@@ -102,12 +102,12 @@ module.exports = client => {
 	app.get('/team', (req, res) => {
 		res.render('team.ejs', { bot: client, user: req.user, path: req.url })
 	})
-	
+
 	app.get('/command/:command', (req, res) => {
-	    const { command } = req.params
-	    if (!client.commands.has(command)) return res.sendStatus(404)
-	    
-	    res.render('command.ejs', { bot: client, path: req.url, user: req.user, command: client.commands.get(command) })
+		const { command } = req.params
+		if (!client.commands.has(command)) return res.sendStatus(404)
+
+		res.render('command.ejs', { bot: client, path: req.url, user: req.user, command: client.commands.get(command) })
 	})
 
 	app.get('/stats', (req, res) => {
@@ -236,11 +236,13 @@ module.exports = client => {
 
 		const defaults = dbEntry || {
 			id: server.id,
-			doLogs: true,
-			doWelcomes: true,
+			doLogs: false,
+			doWelcomes: false,
 			logChannel: null,
 			muteRole: null,
-			welcomeChannel: null
+			welcomeChannel: null,
+			autoRole: null,
+			doAutoRole: false
 		}
 
 		const newData = {}
@@ -249,10 +251,12 @@ module.exports = client => {
 		const serverHas = (value, type) => value === 'null' || type.has(value)
 
 		if (isBool(req.query.doLogs)) newData.doLogs = JSON.parse(req.query.doLogs)
+		if (isBool(req.query.doAutoRole)) newData.doAutoRole = JSON.parse(req.query.doAutoRole)
 		if (isBool(req.query.doWelcomes)) newData.doWelcomes = JSON.parse(req.query.doWelcomes)
 
 		if (serverHas(req.query.logChannel, server.channels)) newData.logChannel = req.query.logChannel === 'null' ? null : req.query.logChannel
 		if (serverHas(req.query.muteRole, server.roles)) newData.muteRole = req.query.muteRole === 'null' ? null : req.query.muteRole
+		if (serverHas(req.query.autoRole, server.roles)) newData.autoRole = req.query.autoRole === 'null' ? null : req.query.autoRole
 		if (serverHas(req.query.welcomeChannel, server.channels)) newData.welcomeChannel = req.query.welcomeChannel === 'null' ? null : req.query.welcomeChannel
 
 		const serverData = Object.assign(defaults, newData)
@@ -274,11 +278,13 @@ module.exports = client => {
 				welcomeChannel: null,
 				muteRole: null,
 				doWelcomes: true,
-				doLogs: true
+				doLogs: true,
+				autoRole: null,
+				doAutoRole: false
 			}
 		}
 
-		res.render('server.ejs', { bot: client, path: req.url, user: req.user, guild: server, settings: settings })
+		res.render('server.ejs', { bot: client, path: req.url, user: req.user, guild: server, settings: settings, update: req.query.update })
 	})
 
 	// OAuth
@@ -288,10 +294,10 @@ module.exports = client => {
 	app.get('/callback', passport.authenticate('discord'), (req, res) => {
 		res.redirect(`/me`)
 	})
-	
+
 	app.get('/logout', (req, res) => {
-	    req.session.destroy()
-	    res.redirect('/')
+		req.session.destroy()
+		res.redirect('/')
 	})
 }
 

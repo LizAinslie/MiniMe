@@ -5,8 +5,8 @@ module.exports = (client, member) => {
 			if (!settings.autoRole) return
 
 			member.addRole(settings.autoRole).then(() => {
-				if(settings.doLogs && settings.logChannel) {
-					member.guild.channels.get(settings.logchannel).createMessage({
+				if (settings.doLogs && settings.logChannel) {
+					member.guild.channels.get(settings.logChannel).createMessage({
 						embed: {
 							title: 'Member Autoroled',
 							color: client.colors.CYAN,
