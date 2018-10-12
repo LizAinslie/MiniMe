@@ -21,7 +21,9 @@
     "domain": ""
   },
   "links": {
-    "supportServer": ""
+    "supportServer": "",
+    "website": "",
+    "git": ""
   },
   "apis": {
     "giphy": "",

@@ -19,7 +19,7 @@ exports.run = (client, msg) => {
                 },
                 {
                     name: 'Links',
-                    value: `[Support Server](https://discord.gg/9HYCXrs) │ [GitLab](https://gitlab.com/MiniMeBot/mini-me) │ [Website](https://minime.railrunner16.me) │ [Bot Invite](https://discordapp.com/oauth2/authorize?client_id=456926578228723724&scope=bot&permissions=8)`
+                    value: `[Support Server](${client.config.links.supportServer}) │ [Git](${client.config.links.git}) │ [Website](${client.config.links.website}) │ [Bot Invite](https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8)`
                 }
             ]
         }
