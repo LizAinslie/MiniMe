@@ -22,7 +22,7 @@
                     <h5 class="card-title">Voice</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'vc').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a>  
                         <% }) %>
                     </p>
                 </div>
