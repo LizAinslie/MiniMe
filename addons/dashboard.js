@@ -99,11 +99,15 @@ module.exports = client => {
 		res.render('commands.ejs', { bot: client, user: req.user, path: req.url, cmds: client.commands })
 	})
 	
+	app.get('/team', (req, res) => {
+		res.render('team.ejs', { bot: client, user: req.user, path: req.url })
+	})
+	
 	app.get('/command/:command', (req, res) => {
 	    const { command } = req.params
 	    if (!client.commands.has(command)) return res.sendStatus(404)
 	    
-	    res.render('command.ejs', { client, command })
+	    res.render('command.ejs', { bot: client, path: req.url, user: req.user, command: command })
 	})
 
 	app.get('/stats', (req, res) => {
