@@ -33,7 +33,7 @@ module.exports = async (client, message) => {
   if (!cmd) return
   
   client.r.table('users').get(message.author.id).run().then(user => {
-    if (user.blacklisted && !user.developer) {
+    if (user && (user.blacklisted && !user.developer)) {
       return message.channel.createMessage({
         embed: {
           description: 'You are blacklisted from using Mini Me! Join [Our support server](https://discord.gg/9HYCXrs) to get off the blacklist!',
