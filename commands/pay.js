@@ -39,3 +39,13 @@ exports.run = (client, msg, args) => {
 		msg.channel.createMessage(':exclamation: │ Unable to find any users by that query.');
 	});
 }
+
+exports.help = {
+  name: 'pay',
+  description: 'Send a user money.',
+  usage: 'pay <user> <amount>',
+  fullDesc: 'Send a user money.',
+  type: 'eco',
+  status: 2,
+  aliases: ['send']
+}
