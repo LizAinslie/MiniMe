@@ -107,7 +107,7 @@ module.exports = client => {
 	    const { command } = req.params
 	    if (!client.commands.has(command)) return res.sendStatus(404)
 	    
-	    res.render('command.ejs', { bot: client, path: req.url, user: req.user, command: command })
+	    res.render('command.ejs', { bot: client, path: req.url, user: req.user, command: client.commands.get(command) })
 	})
 
 	app.get('/stats', (req, res) => {
