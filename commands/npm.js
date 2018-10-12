@@ -23,7 +23,7 @@ exports.run = async (client, msg, args) => {
 			fields: [
 				{
 					name: 'Version',
-					value: info.version,
+					value: info.version || '1.0.0',
 					inline: true
 				},
 				{
