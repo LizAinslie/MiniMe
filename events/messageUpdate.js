@@ -5,6 +5,7 @@ module.exports = (client, message, oldMessage) => {
         if (!settings.doLogs) return
         if (!settings.logChannel) return
         if (!message.content) return
+        if (oldMessage.content === message.content) return
         
         return message.channel.guild.channels.get(settings.logChannel).createMessage({
             embed: {
