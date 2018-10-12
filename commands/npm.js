@@ -53,7 +53,7 @@ exports.run = async (client, msg, args) => {
 				},
 				{
 					name: 'Links',
-					value: [info.homepage ? `[Website](${info.homepage})` : null, info.repository ? `[GitHub](https://${/:\/\/github.com\/.+/.exec(info.repository.url)[0]})` : null].filter(l => l).join(' | ') || 'None',
+					value: [info.homepage ? `[Website](${info.homepage})` : null, info.repository ? `[GitHub](https${/:\/\/github.com\/.+/.exec(info.repository.url)[0]})` : null].filter(l => l).join(' | ') || 'None',
 					inline: true
 				}
 			]
