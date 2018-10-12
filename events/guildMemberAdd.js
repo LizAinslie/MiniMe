@@ -1,13 +1,37 @@
-const snekfetch = require('snekfetch')
-
 module.exports = (client, member) => {
 	client.r.table('serverSettings').get(member.guild.id).run().then(async settings => {
 		if (!settings) return
-		if (!settings.doWelcomes) return
+		if (settings.doAutoRole) {
+			if (!settings.autoRole) return
 
-		const { body: buffer } = await snekfetch.get(`https://api.railrunner16.me/api/gen/welcome/${member.guild.memberCount}/${member.user.username}/${member.user.id}/${member.avatar | member.defaultAvatar}`)
-
-		const channel = member.guild.channels.get(settings.welcomeChannel)
-		channel.createMessage(`Welcome to the server, ${member.user.username}#${member.user.discriminator}!`, { file: buffer, name: 'welcome.png' })
+			member.addRole(settings.autoRole).then(() => {
+				if(settings.doLogs && settings.logChannel) {
+					member.guild.channels.get(settings.logchannel).createMessage({
+						embed: {
+							title: 'Member Autoroled',
+							color: client.colors.CYAN,
+							timestamp: new Date(),
+							thumbnail: {
+								url: member.user.avatarURL
+							},
+							fields: [
+								{
+									name: 'Role Given',
+									value: `<@&${settings.autoRole}>`,
+									inline: true
+								},
+								{
+									name: 'Member',
+									value: `<@${member.id}>`,
+									inline: true
+								}
+							]
+						}
+					})
+				}
+			}).catch(err => {
+				client.rollbar.error('could not add role: ' + err)
+			})
+		}
 	})
 }

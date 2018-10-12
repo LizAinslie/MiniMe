@@ -25,9 +25,11 @@ exports.run = (client, msg, args) => {
 										id: msg.channel.guild.id,
 										logChannel: logChannel.id,
 										welcomeChannel: null,
+										autoRole: null,
 										muteRole: null,
 										doLogs: false,
-										doWelcomes: false
+										doWelcomes: false,
+										doAutoRole: false
 									}).run((error) => {
 										if (error) return Logger.error(client, 'Setup error', error)
 										msg.channel.createMessage('Set the **Logging Channel** option successfully!')
@@ -52,9 +54,11 @@ exports.run = (client, msg, args) => {
 										id: msg.channel.guild.id,
 										logChannel: null,
 										welcomeChannel: welcomeChannel.id,
+										autoRole: null,
 										muteRole: null,
 										doLogs: false,
-										doWelcomes: false
+										doWelcomes: false,
+										doAutoRole: false
 									}).run((error) => {
 										if (error) return Logger.error(client, 'Setup error', error)
 										msg.channel.createMessage('Set the **Welcome Channel** option successfully!')
@@ -79,9 +83,11 @@ exports.run = (client, msg, args) => {
 										id: msg.channel.guild.id,
 										logChannel: null,
 										welcomeChannel: null,
+										autoRole: null,
 										muteRole: muteRole.id,
 										doLogs: false,
-										doWelcomes: false
+										doWelcomes: false,
+										doAutoRole: false
 									}).run((error) => {
 										if (error) return Logger.error(client, 'Setup error', error)
 										msg.channel.createMessage('Set the **Mute Role** option successfully!')
@@ -90,9 +96,231 @@ exports.run = (client, msg, args) => {
 							})
 						})
 						break
+					case 'autorole':
+						resolveRole(client, args[0].trim(), msg.channel.guild).then(autoRole => {
+							client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
+								if (error) return Logger.error(client, 'Setup error.', error)
+								if (settings) {
+									client.r.table('serverSettings').get(msg.guild.id).update({
+										autoRole: autoRole.id
+									}).run((error) => {
+										if (error) return Logger.error(client, 'Setup error.', error)
+										msg.channel.createMessage('Set the **Auto Role** option successfully!')
+									})
+								} else {
+									client.r.table('serverSettings').insert({
+										id: msg.channel.guild.id,
+										logChannel: null,
+										welcomeChannel: null,
+										muteRole: null,
+										autoRole: autoRole.id,
+										doLogs: false,
+										doWelcomes: false,
+										doAutoRole: false
+									}).run((error) => {
+										if (error) return Logger.error(client, 'Setup error', error)
+										msg.channel.createMessage('Set the **Auto Role** option successfully!')
+									})
+								}
+							})
+						})
+						break
 				}
 				break
-			 case 'help':
+			case 'options':
+				switch (args.shift().toLowerCase()) {
+					case 'dowelcomes':
+						let welcomes = Boolean(parseInt(args[0].trim(), 10))
+						client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
+							if (error) return Logger.error(client, 'Setup error.', error)
+							if (settings) {
+								client.r.table('serverSettings').get(msg.guild.id).update({
+									doWelcomes: welcomes
+								}).run((error) => {
+									if (error) return Logger.error(client, 'Setup error.', error)
+									msg.channel.createMessage({
+										embed: {
+											title: 'Server Options Updated',
+											color: getEmbedColor(client, msg),
+											fields: [
+												{
+													name: 'Value Changed',
+													value: 'Welcomes',
+													inline: true
+												},
+												{
+													name: 'Changed to',
+													value: welcomes.toString(),
+													inline: true
+												}
+											]
+										}
+									})
+								})
+							} else {
+								client.r.table('serverSettings').insert({
+									id: msg.channel.guild.id,
+									logChannel: null,
+									welcomeChannel: null,
+									autoRole: null,
+									muteRole: null,
+									doLogs: false,
+									doWelcomes: welcomes,
+									doAutoRole: false
+								}).run((error) => {
+									if (error) return Logger.error(client, 'Setup error', error)
+									msg.channel.createMessage({
+										embed: {
+											title: 'Server Options Updated',
+											color: getEmbedColor(client, msg),
+											fields: [
+												{
+													name: 'Value Changed',
+													value: 'Welcomes',
+													inline: true
+												},
+												{
+													name: 'Changed to',
+													value: welcomes.toString(),
+													inline: true
+												}
+											]
+										}
+									})
+								})
+							}
+						})
+						break
+					case 'dologs':
+						let logs = Boolean(parseInt(args[0].trim(), 10))
+						client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
+							if (error) return Logger.error(client, 'Setup error.', error)
+							if (settings) {
+								client.r.table('serverSettings').get(msg.guild.id).update({
+									doLogs: logs
+								}).run((error) => {
+									if (error) return Logger.error(client, 'Setup error.', error)
+									msg.channel.createMessage({
+										embed: {
+											title: 'Server Options Updated',
+											color: getEmbedColor(client, msg),
+											fields: [
+												{
+													name: 'Value Changed',
+													value: 'Logs',
+													inline: true
+												},
+												{
+													name: 'Changed to',
+													value: logs.toString(),
+													inline: true
+												}
+											]
+										}
+									})
+								})
+							} else {
+								client.r.table('serverSettings').insert({
+									id: msg.channel.guild.id,
+									logChannel: null,
+									welcomeChannel: null,
+									autoRole: null,
+									muteRole: null,
+									doLogs: logs,
+									doWelcomes: false,
+									doAutoRole: false
+								}).run((error) => {
+									if (error) return Logger.error(client, 'Setup error', error)
+									msg.channel.createMessage({
+										embed: {
+											title: 'Server Options Updated',
+											color: getEmbedColor(client, msg),
+											fields: [
+												{
+													name: 'Value Changed',
+													value: 'Logs',
+													inline: true
+												},
+												{
+													name: 'Changed to',
+													value: logs.toString(),
+													inline: true
+												}
+											]
+										}
+									})
+								})
+							}
+						})
+						break
+					case 'doautorole':
+						let autoRole = Boolean(parseInt(args[0].trim(), 10))
+						client.r.table('serverSettings').get(msg.channel.guild.id).run((error, settings) => {
+							if (error) return Logger.error(client, 'Setup error.', error)
+							if (settings) {
+								client.r.table('serverSettings').get(msg.guild.id).update({
+									doAutoRole: autoRole
+								}).run((error) => {
+									if (error) return Logger.error(client, 'Setup error.', error)
+									msg.channel.createMessage({
+										embed: {
+											title: 'Server Options Updated',
+											color: getEmbedColor(client, msg),
+											fields: [
+												{
+													name: 'Value Changed',
+													value: 'Auto-Role',
+													inline: true
+												},
+												{
+													name: 'Changed to',
+													value: autoRole.toString(),
+													inline: true
+												}
+											]
+										}
+									})
+								})
+							} else {
+								client.r.table('serverSettings').insert({
+									id: msg.channel.guild.id,
+									logChannel: null,
+									welcomeChannel: null,
+									autoRole: null,
+									muteRole: null,
+									doLogs: false,
+									doWelcomes: false,
+									doAutoRole: autoRole
+								}).run((error) => {
+									if (error) return Logger.error(client, 'Setup error', error)
+									msg.channel.createMessage({
+										embed: {
+											title: 'Server Options Updated',
+											color: getEmbedColor(client, msg),
+											fields: [
+												{
+													name: 'Value Changed',
+													value: 'Auto-Role',
+													inline: true
+												},
+												{
+													name: 'Changed to',
+													value: autoRole.toString(),
+													inline: true
+												}
+											]
+										}
+									})
+								})
+							}
+						})
+						break
+					default:
+						msg.channel.createMessage(':interrobang: │ You need to specify either `logs` or `welcomes` as a value to change!')
+						break
+				}
+				break
+			case 'help':
 				msg.channel.createMessage({
 					embed: {
 						title: 'Settings Help',
@@ -100,7 +328,11 @@ exports.run = (client, msg, args) => {
 						fields: [
 							{
 								name: 'Set',
-								value: '**Usage:** `profile set <muterole|logchannel|welcomechannel> <value>`'
+								value: '**Usage:** `settings set <muterole|logchannel|welcomechannel> <value>`'
+							},
+							{
+								name: 'Options',
+								value: '**Usage:** `settings options <dologs|dowelcomes|doautorole> <0|1>` (**0** = **false**, **1** = **true**)'
 							}
 						],
 						timestamp: new Date(),
