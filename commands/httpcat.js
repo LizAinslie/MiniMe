@@ -3,6 +3,7 @@
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
+  if (!args[0]) return msg.channel.createMessage('Give me a HTTP code!')
   msg.channel.createMessage({
     embed: {
       authora: {
