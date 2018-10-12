@@ -23,9 +23,13 @@
     	        <h5 class="card-header">Aliases</h5>
                 <div class="card-body">
                     <p class="card-text">
-                        <% command.help.aliases.length > 0 ? command.help.aliases.forEach(alias => { %>
-                            <code><%= alias %></code> 
-                        <% }) : 'None' %>
+                        <% if (command.help.aliases.length > 0) {
+                            command.help.aliases.forEach(alias => { %>
+                                <code><%= alias %></code> 
+                            <% })
+                        } else { %>
+                            None
+                        <% } %>
                     </p>
                 </div>
     	    </div>
