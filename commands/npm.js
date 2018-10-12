@@ -11,7 +11,7 @@ exports.run = async (client, msg, args) => {
 
 	const dependencies = {
 		normal: info.dependencies ? Object.keys(info.dependencies).length : 0,
-		dev: info.dependencies ? Object.keys(info.devDependencies).length : 0
+		dev: info.devDependencies ? Object.keys(info.devDependencies).length : 0
 	};
 
 	msg.channel.createMessage({
