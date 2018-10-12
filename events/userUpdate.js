@@ -1,4 +1,5 @@
 module.exports = async (client, user, oldUser) => {
+    if (!user.username || !oldUser.username) return
     let guilds = client.guilds.filter(g => g.members.has(user.id))
     if (oldUser.username != user.username || oldUser.discriminator != user.discriminator) {
         for (let guild of guilds) {
