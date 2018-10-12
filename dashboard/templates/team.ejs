@@ -1,0 +1,38 @@
+<%- include('blocks/header', {bot, user, path}) %>
+	<div class="jumbotron jumbotron-fluid mt-0">
+		<div class="container">
+			<div class="media">
+				<img class="mr-3 rounded-circle" src="<%= user.dynamicAvatarURL("png", 2048) %>" alt="Avatar">
+				<div class="media-body">
+					<h3 class="mt-0">Me</h5>
+					Settings
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+            <div class="col-lg-4 col-sm-6 text-center mb-4">
+                <img class="rounded-circle img-fluid d-block mx-auto" src="<%= bot.users.get('433445465707773963').avatarURL %>">
+                <h3><%= `${bot.users.get('433445465707773963').username}#${bot.users.get('433445465707773963').discriminator}` %>
+                    <small>Backend, Frontend, Bot</small>
+                </h3>
+                <p>The original creator, who does most of the work on the project. =3</p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center mb-4">
+                <img class="rounded-circle img-fluid d-block mx-auto" src="<%= bot.users.get('499752992422100992').avatarURL %>">
+                <h3><%= `${bot.users.get('499752992422100992').username}#${bot.users.get('499752992422100992').discriminator}` %>
+                    <small>Backend</small>
+                </h3>
+                <p>Writes the dashboard backend!</p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center mb-4">
+                <img class="rounded-circle img-fluid d-block mx-auto" src="<%= bot.users.get('369210634543300609').avatarURL %>">
+                <h3><%= `${bot.users.get('369210634543300609').username}#${bot.users.get('369210634543300609').discriminator}` %>
+                    <small>Bot</small>
+                </h3>
+                <p>Writes commands for the bot!</p>
+            </div>
+        </div>
+    </div>
+<%- include('./blocks/footer') %>
