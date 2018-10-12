@@ -4,8 +4,9 @@ module.exports = (client, message, oldMessage) => {
         if (!settings) return
         if (!settings.doLogs) return
         if (!settings.logChannel) return
+        if (!message.content) return
         
-        message.channel.guild.channels.get(settings.logChannel).createMessage({
+        return message.channel.guild.channels.get(settings.logChannel).createMessage({
             embed: {
                 title: 'Message Edit',
                 color: client.colors.YELLOW,
