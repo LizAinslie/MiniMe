@@ -11,7 +11,7 @@
                     <h5 class="card-title">Utility</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'util').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a> 
                         <% }) %>
                     </p>
                 </div>
@@ -33,7 +33,7 @@
                     <h5 class="card-title">Fun</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'fun').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a> 
                         <% }) %>
                     </p>
                 </div>
@@ -44,7 +44,7 @@
                     <h5 class="card-title">Image</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'img').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a> 
                         <% }) %>
                     </p>
                 </div>
@@ -57,7 +57,7 @@
                     <h5 class="card-title">Image Manipulation</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'imgen').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a> 
                         <% }) %>
                     </p>
                 </div>
@@ -68,7 +68,7 @@
                     <h5 class="card-title">Roleplay</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'rp').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a> 
                         <% }) %>
                     </p>
                 </div>
@@ -79,7 +79,7 @@
                     <h5 class="card-title">Economy</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'eco').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a> 
                         <% }) %>
                     </p>
                 </div>
@@ -90,7 +90,7 @@
                     <h5 class="card-title">Moderation</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'mod').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a> 
                         <% }) %>
                     </p>
                 </div>
@@ -103,7 +103,7 @@
                     <h5 class="card-title">NSFW</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'nsfw').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a> 
                         <% }) %>
                     </p>
                 </div>
@@ -114,7 +114,7 @@
                     <h5 class="card-title">Developer</h5>
                     <p class="card-text">
                         <% cmds.filterArray(cmd => cmd.help.type === 'dev').forEach(cmd => { %>
-                            <code><%= cmd.help.name %></code> | 
+                            <a href="/command/<%= cmd.help.name %>"><%= cmd.help.name %></a> 
                         <% }) %>
                     </p>
                 </div>
