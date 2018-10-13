@@ -33,5 +33,32 @@ module.exports = (client, guild, member, oldMember) => {
                 }
             })
         }
+        if (member.roles !== oldMember.roles) {
+            const rolesAdded = member.roles.filter(r => !oldMember.roles.has(r))
+            const rolesRemoved = oldMember.roles.filter(r => !member.roles.has(r))
+            const role = rolesAdded.length ? rolesAdded[0] : rolesRemoved[0]
+            guild.channels.get(settings.logChannel).createMessage({
+                embed: {
+                    title: 'Member Roles Updated',
+                    color: client.colors.YELLOW,
+                    timestamp: new Date(),
+                    thumbnail: {
+                        url: member.user.avatarURL
+                    },
+                    fields: [
+                        {
+                            name: 'Member',
+                            value: `<@${member.id}>`,
+                            inline: true
+                        },
+                        {
+                            name: `Role ${rolesAdded.length ? 'Added' : 'Removed'}`,
+                            value: `<@&${role}>`,
+                            inline: true
+                        }
+                    ]
+                }
+            })
+        }
     })
 }
