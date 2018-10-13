@@ -34,8 +34,8 @@ module.exports = (client, guild, member, oldMember) => {
             })
         }
         if (member.roles !== oldMember.roles) {
-            const rolesAdded = member.roles.filter(r => !oldMember.roles.has(r))
-            const rolesRemoved = oldMember.roles.filter(r => !member.roles.has(r))
+            const rolesAdded = member.roles.filter(r => !oldMember.roles.includes(r))
+            const rolesRemoved = oldMember.roles.filter(r => !member.roles.includes(r))
             const role = rolesAdded.length ? rolesAdded[0] : rolesRemoved[0]
             guild.channels.get(settings.logChannel).createMessage({
                 embed: {
