@@ -25,6 +25,12 @@
         </div>
 	</div>
 	<div class="container">
+		<% if (update) { %>
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Successfully updated your server settings.
+            </div>
+        <% } %>
 		<form>
 			<div class="form-row">
 				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
@@ -32,7 +38,7 @@
 					<select class="form-control" id="logChannel" name="logChannel">
 						<% if (settings.logChannel) { %>
 							<option value="null">None</option>
-							<% guild.channels.forEach(channel => { 
+							<% guild.channels.filter(c => c.type === 0).forEach(channel => { 
 								if (channel.id === settings.logChannel) { %>
 									<option selected value="<%= channel.id %>">#<%= channel.name %></option>
 								<% } else { %>
@@ -41,7 +47,7 @@
 							}) %>
 						<% } else { %>
 							<option selected value="<%= null %>">None</option>
-							<% guild.channels.forEach(channel => { %>
+							<% guild.channels.filter(c => c.type === 0).forEach(channel => { %>
 								<option value="<%= channel.id %>">#<%= channel.name %></option>
 							<% }) %>
 						<% } %>
@@ -52,7 +58,7 @@
     				<select class="form-control" id="welcomeChannel" name="welcomeChannel">
 						<% if (settings.welcomeChannel) { %>
 							<option value="null">None</option>
-							<% guild.channels.forEach(channel => { 
+							<% guild.channels.filter(c => c.type === 0).forEach(channel => { 
 								if (channel.id === settings.welcomeChannel) { %>
 									<option selected value="<%= channel.id %>">#<%= channel.name %></option>
 								<% } else { %>
@@ -61,7 +67,7 @@
 							}) %>
 						<% } else { %>
 							<option selected value="<%= null %>">None</option>
-							<% guild.channels.forEach(channel => { %>
+							<% guild.channels.filter(c => c.type === 0).forEach(channel => { %>
 								<option value="<%= channel.id %>">#<%= channel.name %></option>
 							<% }) %>
 						<% } %>
@@ -72,7 +78,7 @@
     				<select class="form-control" id="muteRole" name="muteRole">
 						<% if (settings.muteRole) { %>
 							<option value="null">None</option>
-							<% guild.roles.forEach(role => { 
+							<% guild.roles.filter(r => r.id !== guild.id).forEach(role => { 
 								if (role.id === settings.muteRole) { %>
 									<option selected value="<%= role.id %>">@<%= role.name %></option>
 								<% } else { %>
@@ -81,7 +87,7 @@
 							}) %>
 						<% } else { %>
 							<option selected value="<%= null %>">None</option>
-							<% guild.roles.forEach(role => { %>
+							<% guild.roles.filter(r => r.id !== guild.id).forEach(role => { %>
 								<option value="<%= role.id %>">@<%= role.name %></option>
 							<% }) %>
 						<% } %>
@@ -114,9 +120,44 @@
 					</select>
 				</div>
 				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
-		    		<input type="submit" class="btn btn-primary btn-block" />
+		    		<label for="doAutoRole">Do Auto Role</label>
+    				<select class="form-control" id="doAutoRole" name="doAutoRole">
+						<% if (settings.doAutoRole) { %>
+							<option selected value="<%= true %>">Yes</option>
+							<option value="<%= false %>">No</option>
+						<% } else { %>
+							<option value="<%= true %>">Yes</option>
+							<option selected value="<%= false %>">No</option>
+						<% } %>
+					</select>
 				</div>
 			</div>
+			<div class="form-row">
+				<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+					<label for="autoRole">Auto Role</label>
+					<select class="form-control" id="autoRole" name="autoRole">
+						<% if (settings.autoRole) { %>
+							<option value="null">None</option>
+							<% guild.roles.filter(r => r.id !== guild.id).forEach(role => { 
+								if (role.id === settings.autoRole) { %>
+									<option selected value="<%= role.id %>">@<%= role.name %></option>
+								<% } else { %>
+									<option value="<%= role.id %>">@<%= role.name %></option>
+								<% }
+							}) %>
+						<% } else { %>
+							<option selected value="<%= null %>">None</option>
+							<% guild.roles.filter(r => r.id !== guild.id).forEach(role => { %>
+								<option value="<%= role.id %>">@<%= role.name %></option>
+							<% }) %>
+						<% } %>
+					</select>
+				</div>
+				<div class="col-12 col-sm-6 col-md-8 col-lg-8">
+					<input type="submit" class="btn btn-primary btn-block" />
+				</div>
+			</div>
+			<input type="hidden" id="update" name="update" value="<%= true %>">
 		</form>
 	</div>
 <%- include('./blocks/footer') %>

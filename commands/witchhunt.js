@@ -19,7 +19,7 @@ const prefixes = [
 
 exports.run = (client, msg) => {
   for (let prefix of prefixes) {
-    msg.channel.send(`${prefix}help`)
+    msg.channel.createMessage(`${prefix}help`)
   }
 }
 
@@ -28,5 +28,7 @@ exports.help = {
   description: 'Searches for bots that respond to bots.',
   usage: 'witchhunt',
   fullDesc: 'Searches for bots that respond to bots.',
-  type: 'util'
+  type: 'util',
+  status: 2,
+  aliases: []
 }

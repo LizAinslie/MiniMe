@@ -11,7 +11,7 @@ exports.run = async (client, msg, args) => {
 
 	const dependencies = {
 		normal: info.dependencies ? Object.keys(info.dependencies).length : 0,
-		dev: info.dependencies ? Object.keys(info.devDependencies).length : 0
+		dev: info.devDependencies ? Object.keys(info.devDependencies).length : 0
 	};
 
 	msg.channel.createMessage({
@@ -23,7 +23,7 @@ exports.run = async (client, msg, args) => {
 			fields: [
 				{
 					name: 'Version',
-					value: info.version,
+					value: info.version || '1.0.0',
 					inline: true
 				},
 				{
@@ -33,7 +33,7 @@ exports.run = async (client, msg, args) => {
 				},
 				{
 					name: 'Author',
-					value: info.author.name,
+					value: info.author ? info.author.name : 'Unknown',
 					inline: true
 				},
 				{
@@ -53,7 +53,7 @@ exports.run = async (client, msg, args) => {
 				},
 				{
 					name: 'Links',
-					value: [info.homepage ? `[Website](${info.homepage})` : null, info.repository ? `[GitHub](${/https:\/\/github.com\/.+/.exec(info.repository.url)[0]})` : null].filter(l => l).join(' | ') || 'None',
+					value: [info.homepage ? `[Website](${info.homepage})` : null, info.repository ? `[GitHub](https${/:\/\/github.com\/.+/.exec(info.repository.url)[0]})` : null].filter(l => l).join(' | ') || 'None',
 					inline: true
 				}
 			]

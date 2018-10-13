@@ -20,6 +20,11 @@
     "sessionSecret": "random gibberish in here",
     "domain": ""
   },
+  "links": {
+    "supportServer": "",
+    "website": "",
+    "git": ""
+  },
   "apis": {
     "giphy": "",
     "fortnite": "",
@@ -31,7 +36,10 @@
     "botlists": {
       "bls": "",
       "dbg": "",
-      "dbl": ""
+      "dbl": "",
+      "dblcom": "",
+      "dbw": "",
+      "dbtk": ""
     }
   }
 }

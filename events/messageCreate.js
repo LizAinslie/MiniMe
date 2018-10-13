@@ -10,7 +10,7 @@ module.exports = async (client, message) => {
   for (const thisPrefix of prefixes) {
     if (message.content.toLowerCase().startsWith(thisPrefix)) prefix = thisPrefix
   }
-  if (message.content.indexOf(prefix) !== 0) return
+  if (!prefix) return
 
 //  if (message.content === '!join') {
 //    client.emit('guildMemberAdd', message.member || await message.guild.fetchMember(message.author));
@@ -19,7 +19,7 @@ module.exports = async (client, message) => {
   // Our standard argument/command name definition.
   const args = message.content.slice(prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()
-  
+
   let cmd
   // Grab the command data from the client.commands Enmap
   if (client.commands.has(command)) {
@@ -31,7 +31,17 @@ module.exports = async (client, message) => {
   }
   // If that command doesn't exist, silently exit and do nothing
   if (!cmd) return
-
-  // Run the command
-  cmd.run(client, message, args)
+  
+  client.r.table('users').get(message.author.id).run().then(user => {
+    if (user && (user.blacklisted && !user.developer)) {
+      return message.channel.createMessage({
+        embed: {
+          description: `You are blacklisted from using Mini Me! Join [Our support server](${client.config.links.supprotServer}) to get off the blacklist!`,
+          color: client.colors.RED
+        }
+      })
+    } else {
+      cmd.run(client, message, args)
+    }
+  })
 }

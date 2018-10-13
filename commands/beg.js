@@ -5,7 +5,7 @@ const updateBalance = require('../util/updateBalance.js')
 const cooldown = new Set()
 exports.run = (client, msg) => {
   if (cooldown.has(msg.author.id)) {
-    msg.channel.createMessage(':stopwatch: │ Wait 30 Seconds before getting begging again, you needy pleb.')
+    msg.channel.createMessage(':stopwatch: │ Wait 30 Seconds before begging again, you needy pleb.')
   } else {
     // the user can type the command ... your command code goes here :)
     const amt = Math.floor(Math.random() * 3) + 1
