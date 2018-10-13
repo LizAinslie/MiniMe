@@ -21,12 +21,12 @@ module.exports = (client, guild, member, oldMember) => {
                         },
                         {
                             name: 'Old Nick',
-                            value: oldMember.nick,
+                            value: oldMember.nick ? oldMember.nick : 'None',
                             inline: true
                         },
                         {
                             name: 'New Nick',
-                            value: member.nick,
+                            value: member.nick ? member.nick : 'None',
                             inline: true
                         }
                     ]
