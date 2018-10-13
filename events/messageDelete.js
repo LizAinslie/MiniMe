@@ -2,6 +2,7 @@ const dateformat = require('dateformat')
 const Logger = require('../util/Logger.js')
 
 module.exports = async (client, message) => {
+  if (!message.content) return
   client.r.table('serverSettings').get(message.channel.guild.id).run(async (error, settings) => {
     if (error) {
       return Logger.error('Error with event.', error)
