@@ -2,13 +2,13 @@ const formatDuration = require('../util/formatDuration')
 const config = require('../config.json')
 
 class VoiceConnection {
-	constructor (bot, player, channel, results, playlist) {
+	constructor (bot, player, channel, results) {
 		this.bot = bot
 		this.player = player
 		this.queue = []
 		this.channel = channel
 		this.volume = 100
-		this.queueSong(results, playlist)
+		this.queueSong(results)
 		this.playNext()
 		this.player.on('end', this.songEnd.bind(this))
 	}
@@ -41,39 +41,34 @@ class VoiceConnection {
 		})
 	}
 
-	queueSong (results, playlist) {
-		if (playlist) {
-			this.queue.push(...results)
-			this.channel.createMessage(':white_check_mark │ Added `' + results.length + '` songs to the queue.')
-		} else {
-			if (this.queue.length > 0) {
-				this.channel.createMessage({
-					embed: {
-						title: 'Added to Queue',
-						color: 16098851,
-						fields: [
-						    {
-						        name: 'Name',
-						        value: results[0].info.title
-						    },
-						    {
-						        name: 'Author',
-						        value: results[0].info.author
-						    },
-						    {
-						        name: 'Duration',
-						        value: formatDuration(results[0].info.length)
-						    },
-						    {
-						        name: 'Position in Queue',
-						        value: this.queue.length
-						    }
-						]
-					}
-				})
-			}
-			this.queue.push(results[0])
+	queueSong (results) {
+		if (this.queue.length > 0) {
+			this.channel.createMessage({
+				embed: {
+					title: 'Added to Queue',
+					color: 16098851,
+					fields: [
+					    {
+					        name: 'Name',
+					        value: results[0].info.title
+					    },
+					    {
+					        name: 'Author',
+					        value: results[0].info.author
+					    },
+					    {
+					        name: 'Duration',
+					        value: formatDuration(results[0].info.length)
+					    },
+					    {
+					        name: 'Position in Queue',
+					        value: this.queue.length
+					    }
+					]
+				}
+			})
 		}
+		this.queue.push(results[0])
 	}
 
 	songEnd () {
