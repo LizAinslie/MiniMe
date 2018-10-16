@@ -18,3 +18,13 @@ exports.run = (client, msg, args) => {
 		}
 	});
 }
+
+exports.help = {
+    name: 'volume',
+    description: 'Change the music volume.',
+    usage: 'volume <number>',
+    fullDesc: 'Change the music volume.',
+    type: 'vc',
+    status: 2,
+    aliases: ['vol']
+}
