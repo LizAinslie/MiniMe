@@ -14,8 +14,8 @@ const statuses = {
 
 const gameTypes = [
   'Playing',
-  'Streaming', 
-  'Listening', 
+  'Streaming',
+  'Listening',
   'Watching'
 ]
 

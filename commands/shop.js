@@ -2,7 +2,7 @@ const getEmbedColor = require('../util/getHighestRoleColor.js')
 const updateBalance = require('../util/updateBalance.js')
 
 exports.run = (client, msg, args) => {
-    switch(args.shift()) {
+    switch (args.shift()) {
         case 'list':
         case 'items':
             msg.channel.createMessage({
@@ -23,20 +23,20 @@ exports.run = (client, msg, args) => {
                     ]
                 }
             })
-            break;
+            break
         case 'buy':
-            switch(args.shift()) {
+            switch (args.shift()) {
                 case 'pick':
                     client.r.table('balance').get(msg.author.id).run((error, balance) => {
-                        if (!balance || 100 > balance.amount) return msg.channel.createMessage(':exclamation: │ You cannot spend more money than you have.');
+                        if (!balance || balance.amount < 100) return msg.channel.createMessage(':exclamation: │ You cannot spend more money than you have.')
                         updateBalance(client.r, msg.author.id, -100).then(bal => {
                             client.r.table('users').get(msg.author.id).run().then(user => {
                                 if (user) {
                                     client.r.table('users').get(msg.author.id).update({
                                         itemPick: user.itemPick + 1
                                     }).run((error) => {
-                                        if (error) return;
-                                    });
+                                        if (error) return
+                                    })
                                 } else {
                                     client.r.table('users').insert({
                                         id: msg.author.id,
@@ -46,24 +46,24 @@ exports.run = (client, msg, args) => {
                                         itemPick: 1,
                                         itemRing: 0
                                     }).run((error) => {
-                                        if (error) return;
-                                    });
+                                        if (error) return
+                                    })
                                 }
                                 msg.channel.createMessage(`You bought one :pick:Pick for **<:coins:482589075459801098> 100 Minicoins**.`)
-                            });
+                            })
                         })
                     })
                     case 'pick':
                     client.r.table('balance').get(msg.author.id).run((error, balance) => {
-                        if (!balance || 10000 > balance.amount) return msg.channel.createMessage(':exclamation: │ You cannot spend more money than you have.');
+                        if (!balance || balance.amount < 10000) return msg.channel.createMessage(':exclamation: │ You cannot spend more money than you have.')
                         updateBalance(client.r, msg.author.id, -10000).then(bal => {
                             client.r.table('users').get(msg.author.id).run().then(user => {
                                 if (user) {
                                     client.r.table('users').get(msg.author.id).update({
                                         itemRing: user.itemRing + 1
                                     }).run((error) => {
-                                        if (error) return;
-                                    });
+                                        if (error) return
+                                    })
                                 } else {
                                     client.r.table('users').insert({
                                         id: msg.author.id,
@@ -73,11 +73,11 @@ exports.run = (client, msg, args) => {
                                         itemPick: 0,
                                         itemRing: 1
                                     }).run((error) => {
-                                        if (error) return;
-                                    });
+                                        if (error) return
+                                    })
                                 }
                                 msg.channel.createMessage(`You bought one :ring:Ring for **<:coins:482589075459801098> 10000 Minicoins**.`)
-                            });
+                            })
                         })
                     })
             }

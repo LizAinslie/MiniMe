@@ -8,7 +8,7 @@ exports.help = {
   name: 'calc',
   description: 'Calculate an arithmetic expression.',
   usage: 'calc <expression>',
-  fullDesc: "Calculate an arithmetic expression.",
+  fullDesc: 'Calculate an arithmetic expression.',
   type: 'util',
   status: 2,
   aliases: []

@@ -7,7 +7,7 @@ module.exports = async (client, user, oldUser) => {
                 if (!settings) return
                 if (!settings.doLogs) return
                 if (!settings.logChannel) return
-                
+
                 guild.channels.get(settings.logChannel).createMessage({
                     embed: {
                         title: 'Username Update',

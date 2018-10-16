@@ -16,7 +16,7 @@ exports.run = (client, msg, args) => {
           title: entries[0].word,
           fields: [
             {
-              name: 'Example', 
+              name: 'Example',
               value: entries[0].example
             }
           ]

@@ -3,7 +3,7 @@ const Logger = require('../util/Logger.js')
 const getEmbedColor = require('../util/getHighestRoleColor.js')
 
 exports.run = (client, msg, args) => {
-    switch(args.shift().toLowerCase()) {
+    switch (args.shift().toLowerCase()) {
         case 'view':
             if (args[0]) {
                 resolveUser(client, args.join(' ')).then(user => {
@@ -96,8 +96,8 @@ exports.run = (client, msg, args) => {
                             client.r.table('users').get(msg.author.id).update({
                                 description: args.join(' ')
                             }).run((error) => {
-            					if (error) return;
-                            });
+            					if (error) return
+                            })
                         } else {
                             client.r.table('users').insert({
                                 id: msg.author.id,
@@ -107,11 +107,11 @@ exports.run = (client, msg, args) => {
                                 itemPick: 0,
                                 itemRing: 0
                             }).run((error) => {
-            					if (error) return;
-                            });
+            					if (error) return
+                            })
                         }
                         msg.channel.createMessage(`Set your description to **${args.join(' ')}**.`)
-                    });
+                    })
                     break
             }
             break
