@@ -4,7 +4,7 @@ module.exports = (client, member) => {
 		if (settings.doAutoRole) {
 			if (!settings.autoRole) return
 
-			member.addRole(settings.autoRole).then(() => {
+			member.addRole(settings.autoRole, 'Automated: Autorole').then(() => {
 				if (settings.doLogs && settings.logChannel) {
 					member.guild.channels.get(settings.logChannel).createMessage({
 						embed: {
@@ -12,7 +12,7 @@ module.exports = (client, member) => {
 							color: client.colors.CYAN,
 							timestamp: new Date(),
 							thumbnail: {
-								url: member.user.avatarURL
+								url: member.user.avatarURL8
 							},
 							fields: [
 								{
