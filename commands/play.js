@@ -11,6 +11,7 @@ exports.run = (client, msg, args) => {
 	if (client.voiceConnections.has(msg.channel.guild.id) && client.voiceConnections.get(msg.channel.guild.id).channelID !== msg.member.voiceState.channelID) return msg.channel.createMessage(':no_entry_sign:   **»**   I am already playing music within a different voice channel. Please join that channel instead.')
 	const play = () => {
 		resolveTrack((/^https?:\/\//.test(args.join(' ')) ? '' : 'ytsearch:') + args.join(' ')).then(results => {
+			client.rollbar.log(results)
 			if (results.length < 1) return msg.channel.createMessage(':exclamation: │ Unable to find any videos by that query.')
 			if (client.voiceConnections.has(msg.channel.guild.id) && client.queue.has(msg.channel.guild.id)) {
 				client.queue.get(msg.channel.guild.id).queueSong(results)
