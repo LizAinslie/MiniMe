@@ -3,7 +3,7 @@ const resolveTrack = require('../util/resolveTrack.js')
 const getPlayer = require('../util/getPlayer.js')
 const Logger = require('../util/Logger.js')
 const config = require('../config.json')
-const VoiceConnection = require('../structs/VoiceConnection')
+const VoiceConnection = require('../structs/VoiceConnection.js')
 
 exports.run = (client, msg, args) => {
 	if (args.length < 1) return msg.channel.createMessage(':question: │ You must provide a query.')
@@ -19,7 +19,7 @@ exports.run = (client, msg, args) => {
 				getPlayer(client, msg.member.voiceState.channelID, msg.channel.guild.id).then((player) => {
 					client.queue.set(msg.channel.guild.id, new VoiceConnection(client, player, msg.channel, results, playlist))
 				}).catch((error) => {
-					Logger.error(error)
+					Logger.error(client, error)
 				})
 			}
 		}).catch((error) => {
