@@ -1,5 +1,5 @@
 exports.run = (client, msg) => {
-    let members = 0;
+    let members = 0
     msg.channel.guild.members.forEach(member => {
         if (member.nick) {
             member.edit({ nick: member.nick.replace(/^(!|:|'|{|}|\?|\.|;|:|"|\*|\/)+/g, '') })

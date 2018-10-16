@@ -98,7 +98,7 @@ module.exports = client => {
 	app.get('/commands', (req, res) => {
 		res.render('commands.ejs', { bot: client, user: req.user, path: req.url, cmds: client.commands })
 	})
-	
+
 	app.get('/team', (req, res) => {
 		res.render('team.ejs', { bot: client, user: req.user, path: req.url })
 	})

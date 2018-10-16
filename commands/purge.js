@@ -1,15 +1,15 @@
-const Logger = require('../util/Logger');
+const Logger = require('../util/Logger')
 const resolveUser = require('../util/resolveUser.js')
 
 exports.run = (client, msg, args) => {
-	if (!msg.member.permission.has('manageMessages')) return msg.channel.createMessage(':no_entry_sign: │ You do not have permission to run this command.');
-	if (args.length < 1) return msg.channel.createMessage(':question: │ You must provide a clean amount.');
-	if (isNaN(args[0])) return msg.channel.createMessage(':exclamation: │ The clean amount must be a valid number.');
-	if (Number(args[0]) < 2) return msg.channel.createMessage(':exclamation: │ The clean amount must be greater than or equal to 2.');
-	if (Number(args[0]) > 100) return msg.channel.createMessage(':exclamation: │ The clean amount must be less than or equal to 100.');
+	if (!msg.member.permission.has('manageMessages')) return msg.channel.createMessage(':no_entry_sign: │ You do not have permission to run this command.')
+	if (args.length < 1) return msg.channel.createMessage(':question: │ You must provide a clean amount.')
+	if (isNaN(args[0])) return msg.channel.createMessage(':exclamation: │ The clean amount must be a valid number.')
+	if (Number(args[0]) < 2) return msg.channel.createMessage(':exclamation: │ The clean amount must be greater than or equal to 2.')
+	if (Number(args[0]) > 100) return msg.channel.createMessage(':exclamation: │ The clean amount must be less than or equal to 100.')
 	msg.channel.getMessages(Number(args[0]), msg.id).then(async messages => {
 	  if (args.length > 1) {
-	    if (args[1].toLowerCase() === "bot") {
+	    if (args[1].toLowerCase() === 'bot') {
 	      messages = messages.filter(msg => msg.author.bot)
 	    } else {
 	      const user = await resolveUser(client, args[1])
@@ -18,11 +18,11 @@ exports.run = (client, msg, args) => {
 	  }
 		Promise.all(messages.map(message => message.delete())).then(() => {
 			msg.channel.createMessage(':white_check_mark: │ Successfully cleaned `' + messages.length + '` messages.')
-		});
+		})
 	}).catch((error) => {
-		msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.');
-		Logger.error(error);
-	});
+		msg.channel.createMessage(':exclamation: │ Failed to run the command. This incident has been reported.')
+		Logger.error(error)
+	})
 }
 
 exports.help = {

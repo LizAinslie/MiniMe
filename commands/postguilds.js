@@ -46,8 +46,8 @@ exports.run = (client, msg) => {
       guilds: client.guilds.size,
       users: client.users.size
     }).then(() => {
-      msg.channel.createMessage(':white_check_mark: │ Updated **discordbotlist.com** stats.').
-      console.log('Updated discordbotlist.com stats.')
+      msg.channel.createMessage(':white_check_mark: │ Updated **discordbotlist.com** stats.')
+      .console.log('Updated discordbotlist.com stats.')
     }).catch(err => {
       msg.channel.createMessage(':exclamation: │ Failed to update **discordbotlist.com** stats.')
       Logger.error(client, `Discordbotlist.com server count update failed : ${err}`)

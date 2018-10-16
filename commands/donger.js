@@ -34,7 +34,7 @@ exports.run = (client, msg, args) => {
                     }
                 })
             })
-            break;
+            break
         case 'category':
         case 'cat':
             client.r.table('dongers').filter(donger => {
@@ -42,7 +42,7 @@ exports.run = (client, msg, args) => {
             }).run().then(category => {
                 msg.channel.createMessage(`__**Dongers in category ${args[0]}:**__\n${category.map(c => `**${c.id}** │ ${escapeMarkdown(c.emote)}`).join('\n')}\n\n__**Hint:** Use the bold text on the left to get a specific donger's info.__`)
             })
-            break;
+            break
         case 'submit':
         case 'create':
         case 'add':
@@ -100,7 +100,7 @@ exports.run = (client, msg, args) => {
                     msg.channel.createMessage(':exclamation: │ That donger already exists!')
                 }
             })
-            break;
+            break
     }
 }
 

@@ -1,4 +1,4 @@
-const Eris = require("eris-additions")(require("eris"))
+const Eris = require('eris-additions')(require('eris'))
 const fs = require('fs')
 // const music = require('./music.js')
 const Enmap = require('enmap')
@@ -6,6 +6,7 @@ var Rollbar = require('rollbar')
 // const Idiot = require('idiotic-api')
 const rethinkdb = require('rethinkdbdash')
 const dashboard = require('./addons/dashboard.js')
+const Collection = require('./structs/Collection.js')
 
 // Initialize the provider
 
@@ -39,7 +40,7 @@ fs.readdir('./events/', (err, files) => {
 
 client.commands = new Enmap()
 client.aliases = new Enmap()
-client.playlists = new Enmap()
+client.queue = new Collection()
 
 fs.readdir('./commands/', (err, files) => {
   if (err) return console.error(err)
@@ -50,11 +51,10 @@ fs.readdir('./commands/', (err, files) => {
     console.log(`Attempting to load command ${commandName}`)
     client.commands.set(commandName, props)
     props.help.aliases.forEach(alias => {
-      client.aliases.set(alias, props.help.name);
-    });
+      client.aliases.set(alias, props.help.name)
+    })
   })
 })
-
 
 client.connect()
 
