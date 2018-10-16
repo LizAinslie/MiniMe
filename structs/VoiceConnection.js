@@ -15,7 +15,7 @@ class VoiceConnection {
 
 	playNext () {
 		const song = this.queue[0]
-		this.player.play(song.track)
+		this.player.play(song.info.uri)
 		this.channel.createMessage({
 			embed: {
 				title: 'Now Playing',
