@@ -47,31 +47,31 @@ class VoiceConnection {
 			this.channel.createMessage(':white_check_mark │ Added `' + results.length + '` songs to the queue.')
 		} else {
 			if (this.queue.length > 0) {
-this.channel.createMessage({
-				embed: {
-					title: 'Added to Queue',
-					color: 16098851,
-					fields: [
-					    {
-					        name: 'Name',
-					        value: results[0].info.title
-					    },
-					    {
-					        name: 'Author',
-					        value: results[0].info.author
-					    },
-					    {
-					        name: 'Duration',
-					        value: formatDuration(results[0].info.length)
-					    },
-					    {
-					        name: 'Position in Queue',
-					        value: this.queue.length
-					    }
-					]
-				}
-			})
-}
+				this.channel.createMessage({
+					embed: {
+						title: 'Added to Queue',
+						color: 16098851,
+						fields: [
+						    {
+						        name: 'Name',
+						        value: results[0].info.title
+						    },
+						    {
+						        name: 'Author',
+						        value: results[0].info.author
+						    },
+						    {
+						        name: 'Duration',
+						        value: formatDuration(results[0].info.length)
+						    },
+						    {
+						        name: 'Position in Queue',
+						        value: this.queue.length
+						    }
+						]
+					}
+				})
+			}
 			this.queue.push(results[0])
 		}
 	}

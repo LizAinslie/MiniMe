@@ -16,8 +16,9 @@ exports.run = (client, msg, args) => {
 			if (client.voiceConnections.has(msg.channel.guild.id) && client.queue.has(msg.channel.guild.id)) {
 				client.queue.get(msg.channel.guild.id).queueSong(results, playlist)
 			} else {
-				getPlayer(client, msg.member.voiceState.channelID, msg.channel.guild.id).then((player) => {
+				getPlayer(client, msg.member.voiceState.channelID, msg.channel.guild.id).then(player => {
 					client.queue.set(msg.channel.guild.id, new VoiceConnection(client, player, msg.channel, results, playlist))
+					client.queue.get(msg.channel.guild.id).queueSong(results, playlist)
 				}).catch((error) => {
 					Logger.error(client, error)
 				})
