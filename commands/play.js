@@ -14,10 +14,10 @@ exports.run = (client, msg, args) => {
 			client.rollbar.log(results)
 			if (results.length < 1) return msg.channel.createMessage(':exclamation: │ Unable to find any videos by that query.')
 			if (client.voiceConnections.has(msg.channel.guild.id) && client.queue.has(msg.channel.guild.id)) {
-				client.queue.get(msg.channel.guild.id).queueSong(results)
+				client.queue.get(msg.channel.guild.id).queueSong(results.tracks)
 			} else {
 				getPlayer(client, msg.member.voiceState.channelID, msg.channel.guild.id).then(player => {
-					client.queue.set(msg.channel.guild.id, new VoiceConnection(client, player, msg.channel, results))
+					client.queue.set(msg.channel.guild.id, new VoiceConnection(client, player, msg.channel, results.tracks))
 				}).catch((error) => {
 					Logger.error(client, error)
 				})
