@@ -17,7 +17,6 @@ exports.run = (client, msg, args) => {
 				client.queue.get(msg.channel.guild.id).queueSong(results.tracks)
 			} else {
 				getPlayer(client, msg.member.voiceState.channelID, msg.channel.guild.id).then(player => {
-				    console.log(player);
 					client.queue.set(msg.channel.guild.id, new VoiceConnection(client, player, msg.channel, results.tracks))
 				}).catch((error) => {
 					Logger.error(client, error)
