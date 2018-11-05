@@ -71,7 +71,7 @@ exports.run = (client, msg) => {
       Logger.error(client, `Discordbots.tk server count update failed : ${err}`)
     })
   })
-  snekfetch.post(`https://discordbot.world/api/bots/${client.user.id}`)
+  snekfetch.post(`https://discordsbestbots.xyz/api/bots/${client.user.id}`)
   .set('Authorization', client.config.apis.botlists.dbb)
   .send({
     guilds: client.guilds.size
