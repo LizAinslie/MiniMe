@@ -71,6 +71,17 @@ exports.run = (client, msg) => {
       Logger.error(client, `Discordbots.tk server count update failed : ${err}`)
     })
   })
+  snekfetch.post(`https://discordbot.world/api/bots/${client.user.id}`)
+  .set('Authorization', client.config.apis.botlists.dbb)
+  .send({
+    guilds: client.guilds.size
+  }).then(() => {
+    msg.channel.createMessage(':white_check_mark: │ Updated **discordsbestbots.xyz** stats.')
+    console.log('Updated discordsbestbots.xyz stats.')
+  }).catch(err => {
+    msg.channel.createMessage(':exclamation: │ Failed to update **discordsbestbots.xyz** stats.')
+    Logger.error(client, `discordsbestbots.xyz server count update failed : ${err}`)
+  })
 }
 
 exports.help = {
