@@ -162,7 +162,7 @@ module.exports = client => {
 		let balance = await client.r.table('balance').get(req.user.id)
 
 		if (!description) return next()
-		if (description.length > 250) description = `${description.slice(0, 247)}...`
+		if (description.length > 75) description = `${description.slice(0, 247)}...`
 
 		client.r.table('users').get(req.user.id).run().then(user => {
 			if (user) {
