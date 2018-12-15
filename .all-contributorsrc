@@ -1,8 +1,8 @@
 {
-  "projectName": "mini-me",
-  "projectOwner": "railinator4903",
-  "repoType": "gitlab",
-  "repoHost": "https://gitlab.com",
+  "projectName": "MiniMe",
+  "projectOwner": "railrunner166",
+  "repoType": "github",
+  "repoHost": "https://github.com",
   "files": [
     "README.md"
   ],
@@ -10,31 +10,12 @@
   "commit": true,
   "contributors": [
     {
-      "login": "NatsumiHB",
-      "name": "Natsumi H.",
-      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2935033/avatar.png",
-      "profile": "https://gitlab.com/NatsumiHB",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "railinator4903",
+      "login": "RailRunner166",
       "name": "Landon Gravat",
-      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2902461/avatar.png",
-      "profile": "https://gitlab.com/railinator4903",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/45880278?v=4",
+      "profile": "https://rr16.tk/",
       "contributions": [
-        "doc",
-        "code"
-      ]
-    },
-    {
-      "login": "sdfsdfsdf1234",
-      "name": "sdf",
-      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2435426/avatar.png",
-      "profile": "https://gitlab.com/sdfsdfsdf1234",
-      "contributions": [
-        "code"
+        "doc"
       ]
     }
   ]
