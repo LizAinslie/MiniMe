@@ -1,5 +1,5 @@
 # Mini Me
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Mini Me is an awesome bot for your server that gives your staff power and lets your members have fun.
@@ -23,8 +23,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars1.githubusercontent.com/u/45880278?v=4" width="100px;"/><br /><sub><b>Landon Gravat</b></sub>](https://rr16.tk/)<br />[📖](https://github.com/railrunner166/MiniMe/commits?author=RailRunner166 "Documentation") |
-| :---: |
+| [<img src="https://avatars1.githubusercontent.com/u/45880278?v=4" width="100px;"/><br /><sub><b>Landon Gravat</b></sub>](https://rr16.tk/)<br />[📖](https://github.com/railrunner166/MiniMe/commits?author=RailRunner166 "Documentation") [💻](https://github.com/railrunner166/MiniMe/commits?author=RailRunner166 "Code") | [<img src="https://avatars1.githubusercontent.com/u/39241405?v=4" width="100px;"/><br /><sub><b>Natsumi H.</b></sub>](https://github.com/NatsumiHB)<br />[💻](https://github.com/railrunner166/MiniMe/commits?author=NatsumiHB "Code") |
+| :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

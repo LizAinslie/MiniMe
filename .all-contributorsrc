@@ -15,7 +15,17 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/45880278?v=4",
       "profile": "https://rr16.tk/",
       "contributions": [
-        "doc"
+        "doc",
+        "code"
+      ]
+    },
+    {
+      "login": "NatsumiHB",
+      "name": "Natsumi H.",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/39241405?v=4",
+      "profile": "https://github.com/NatsumiHB",
+      "contributions": [
+        "code"
       ]
     }
   ]
