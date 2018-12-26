@@ -126,7 +126,7 @@ exports.run = (client, message, params) => {
             },
             {
               name: 'Aliases',
-              value: command.help.aliases.map(a => `\`${a}\``).join(', '),
+              value: command.help.aliases.map(a => `\`${a}\``).join(', ').length > 0 ? command.help.aliases.map(a => `\`${a}\``).join(', ') : 'None',
               inline: true
             }
           ]

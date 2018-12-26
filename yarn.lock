@@ -1742,9 +1742,9 @@ gm@^1.23.1:
     cross-spawn "^4.0.0"
     debug "^3.1.0"
 
-"google-translate-api@github:mini-me-makers/google-translate-api":
+google-translate-api@latest:
   version "2.3.0"
-  resolved "https://codeload.github.com/mini-me-makers/google-translate-api/tar.gz/e95e6157936b0b60fa8bf347f2f6be6e2e9367e7"
+  resolved "https://registry.yarnpkg.com/google-translate-api/-/google-translate-api-2.3.0.tgz#626730a123da0d57af3735dd707cda71cee919c7"
   dependencies:
     configstore "^2.0.0"
     google-translate-token latest

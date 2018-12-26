@@ -83,7 +83,7 @@ module.exports = client => {
 	passport.use(new Strategy({
 		clientID: config.info.id,
 		clientSecret: config.dashboard.secret,
-		callbackURL: config.dashboard.callback,
+		callbackURL: `https://${config.dashboard.domain}/callback`,
 		scope: ['identify', 'guilds']
 	}, (aT, rT, profile, cb) => cb(undefined, profile)))
 

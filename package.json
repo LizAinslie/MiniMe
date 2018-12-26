@@ -34,7 +34,7 @@
     "ffmpeg-binaries": "^4.0.0",
     "figlet": "latest",
     "gm": "^1.23.1",
-    "google-translate-api": "github:mini-me-makers/google-translate-api",
+    "google-translate-api": "latest",
     "helmet": "^3.13.0",
     "idiotic-api": "latest",
     "jimp": "^0.4.0",
