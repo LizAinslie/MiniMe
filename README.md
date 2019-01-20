@@ -23,7 +23,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars1.githubusercontent.com/u/45880278?v=4" width="100px;"/><br /><sub><b>Landon Gravat</b></sub>](https://rr16.tk/)<br />[📖](https://github.com/railrunner166/MiniMe/commits?author=RailRunner166 "Documentation") [💻](https://github.com/railrunner166/MiniMe/commits?author=RailRunner166 "Code") | [<img src="https://avatars1.githubusercontent.com/u/39241405?v=4" width="100px;"/><br /><sub><b>Natsumi H.</b></sub>](https://github.com/NatsumiHB)<br />[💻](https://github.com/railrunner166/MiniMe/commits?author=NatsumiHB "Code") |
+| [<img src="https://avatars1.githubusercontent.com/u/45880278?v=4" width="100px;"/><br /><sub><b>Landon Gravat</b></sub>](https://railrunner16.me/)<br />[📖](https://github.com/railrunner166/MiniMe/commits?author=RailRunner166 "Documentation") [💻](https://github.com/railrunner166/MiniMe/commits?author=RailRunner166 "Code") | [<img src="https://avatars1.githubusercontent.com/u/39241405?v=4" width="100px;"/><br /><sub><b>Natsumi H.</b></sub>](https://github.com/NatsumiHB)<br />[💻](https://github.com/railrunner166/MiniMe/commits?author=NatsumiHB "Code") |
 | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
